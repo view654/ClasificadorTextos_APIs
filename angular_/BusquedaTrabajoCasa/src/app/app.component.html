@@ -27,12 +27,14 @@
     </svg>
   </button>
   <ng-template #logueado>
-    <button style="background-color:rgba(255, 255, 255, 0); border-radius: 50%;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-emoji-sunglasses" viewBox="0 0 16 16">
+    <!--<button style="background-color:rgba(255, 255, 255, 0); border-radius: 50%;">-->
+    <a [routerLink]="['profile']"> 
+      <svg xmlns="http://www.w3.org/2000/svg" color="black" width="3vw" height="3vw" fill="currentColor" class="bi bi-emoji-sunglasses" viewBox="0 0 16 16">
         <path d="M4.968 9.75a.5.5 0 1 0-.866.5A4.498 4.498 0 0 0 8 12.5a4.5 4.5 0 0 0 3.898-2.25.5.5 0 1 0-.866-.5A3.498 3.498 0 0 1 8 11.5a3.498 3.498 0 0 1-3.032-1.75zM7 5.116V5a1 1 0 0 0-1-1H3.28a1 1 0 0 0-.97 1.243l.311 1.242A2 2 0 0 0 4.561 8H5a2 2 0 0 0 1.994-1.839A2.99 2.99 0 0 1 8 6c.393 0 .74.064 1.006.161A2 2 0 0 0 11 8h.438a2 2 0 0 0 1.94-1.515l.311-1.242A1 1 0 0 0 12.72 4H10a1 1 0 0 0-1 1v.116A4.22 4.22 0 0 0 8 5c-.35 0-.69.04-1 .116z"/>
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0z"/>
       </svg>
-    </button>
+    </a> 
+    <!--</button>-->
     <button style="margin:2vw; background-color:rgba(255, 255, 255, 0)">
       <svg xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
@@ -49,7 +51,7 @@
   </a>
   -->
 </div>
-
+<!--
 <div class="content" role="main">
   <div *ngIf="isSearch" class=menuLateral><p>Filtros</p></div>
   <div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">
@@ -85,6 +87,12 @@
     <ng-container *ngIf="!isSearch; else busqueda">
 
       <h2>¿Quenes somos?</h2>
+     -->
+      <!--
+      <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
+      <p>{{user.ID}}</p>
+      <p>{{isLogged}}</p>-->
+      <!--
       <p style="text-align: center">Tengo una gallina pinta, pipiripinta, pipirialegre y gorda, que tiene tres pollitos pintos, pipiripintos, pipirialegres y gordos. Si la gallina no hubiera sido pinta pipiripinta, pipirialegre y gorda; los pollitos no hubieran sido pintos, pipiripintos, pipirialegres y gordos.</p>
       <p style="text-align: center">Pablito clavó un clavito en la calva de un calvito. Un clavito clavó Pablito en la calva de un calvito. ¿Qué clavito clavó Pablito?</p>
       <p style="text-align: center">Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.</p>
@@ -97,7 +105,9 @@
       
     </ng-template>
   </div>
-</div>
+  
+</div>-->
+<router-outlet></router-outlet>
 
  
   <!-- Highlight Card -->
