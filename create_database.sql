@@ -47,7 +47,7 @@ CREATE TABLE  IF NOT EXISTS `trabajos`(
 
 CREATE TABLE   IF NOT EXISTS `Users_Viviendas`(
   `user_ID` int (11) NOT NULL,
-  `vivienda_ID` varchar (100) NOT NULL,
+  `vivienda_ID` int (11) NOT NULL,
   CONSTRAINT `user_ID` FOREIGN KEY (`user_ID`) REFERENCES `usuarios`(`user_ID`),
   CONSTRAINT `vivienda_ID` FOREIGN KEY (`vivienda_ID`) REFERENCES `usuarios`(`vivienda_ID`)
 
@@ -55,7 +55,7 @@ CREATE TABLE   IF NOT EXISTS `Users_Viviendas`(
 
 CREATE TABLE   IF NOT EXISTS `Users_Trabajos`(
   `user_ID` int (11) NOT NULL,
-  `trabajo_ID` varchar (100) NOT NULL,
+  `trabajo_ID` int (11) NOT NULL,
   CONSTRAINT `user_ID` FOREIGN KEY (`user_ID`) REFERENCES `usuarios`(`user_ID`),
   CONSTRAINT `trabajo_ID` FOREIGN KEY (`trabajo_ID`) REFERENCES `usuarios`(`trabajo_ID`)
 
