@@ -11,6 +11,17 @@
         <p style="margin:2vw;">Vivienda<input type="checkbox" ng-model="!trabajo"></p>
         
         <div style="margin:2vw;">
+          
+          
+          <mat-form-field style="height: 3.4vw" fill>
+            <mat-label>Filtro</mat-label>
+            <mat-select>
+            <mat-option [value] = 1>Sueldo</mat-option>
+            <mat-option [value] = 2>Lugar</mat-option>                
+            
+            </mat-select>
+          </mat-form-field>
+          <!--
           <label for="cars">Parametros</label>
           <select id="cars" name="cars">
             <option value="volvo">No</option>
@@ -19,6 +30,7 @@
             <option value="audi">Poner</option>
             <option value="audi">Aqui</option>
           </select>
+        -->
         </div>
         <input type="text" id="name" name="name" required
           minlength="4" maxlength="8" size="15">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Usuario } from './usuario_interfaz';
+
 
 @Component({
     selector: 'primer',
@@ -14,24 +14,11 @@ export class primer{
 
     public busqueda: string;
     public trabajo: boolean = true;
-    public parametro: string;
+    public parametro: number;
 
-    public user:Usuario = <Usuario>{
-        ID:1,
-        Nombre:"John",
-        Apellidos:"Smith",
-        Fecha_nacimiento:new Date(3/4/20),        
-        Email:"JohnSmith@gmail.com",
-        Contraseña:"string",
-        Sector:"Informatica",
-        Estudios:"Ingenieria Informatica",
-        Esperiencia_laboral:"Nop",
-        idiomas:["Español","Ingles","Italiano"]
-    }
 
     constructor(){
         console.log("Componente primer cargado!!");
-        console.log(this.user.Fecha_nacimiento);
         
     }
 

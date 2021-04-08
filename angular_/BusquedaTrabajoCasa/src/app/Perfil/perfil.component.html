@@ -9,27 +9,38 @@
         <label>Apellidos</label>
         <input type="text"/>
         <br/>
+        <label>{{user.ID}}</label>
+        <!--
         <label>Fecha de Nacimiento</label>
-        <input type="text"/>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="user.Fecha_nacimiento">
+          <mat-datepicker-toggle matSuffix [for]="user.Fecha_nacimiento"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      -->
         <br/>
         <label>Email</label>
+        <input type="text"/>
+        <br/>
+        <label>Contraseña</label>
         <input type="text"/>
         <br/>
     </div>
     <div>
-        <label>Nombre</label>
+        <label>Sector</label>
         <input type="text"/>
         <br/>
-        <label>Apellidos</label>
+        <label>Estudios</label>
         <input type="text"/>
         <br/>
-        <label>Fecha de Nacimiento</label>
+        <label>Experiencia Laboral</label>
         <input type="text"/>
         <br/>
-        <label>Email</label>
+        <label>Idiomas</label>
         <input type="text"/>
         <br/>
     </div>
     
 </div>
-<a [routerLink]="['/primer']">Volver a la pagina principal</a>
+<!--<a [routerLink]="['/primer']">Volver a la pagina principal</a>-->

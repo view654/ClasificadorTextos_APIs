@@ -4,8 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
+
+
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 /*
 Explicacion del codigo:
@@ -22,22 +33,39 @@ const rutas: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'primer'
+    redirectTo: 'titlebar'
   },
   {
-    path: 'primer',
-    component: primer
+    path: 'titlebar',
+    component: titlebar,
+    children:[
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'primer'
+      },
+      {
+        path: 'primer',
+        component: primer
+      },
+      {
+        path: 'profile',
+        component: perfil
+      }
+    ]
   },
   {
     path: 'profile',
     component: perfil
   }
+  
 ]
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    titlebar,
     primer,
     perfil
   ],
@@ -47,7 +75,12 @@ const rutas: Routes = [
       enableTracing: true,
       paramsInheritanceStrategy: 'always',
       useHash: true
-    }) 
+    }),
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
