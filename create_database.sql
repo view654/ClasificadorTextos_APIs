@@ -26,7 +26,8 @@ CREATE TABLE   IF NOT EXISTS `viviendas` (
   `lugar` varchar(100) NOT NULL,
   `precio` int (100) NOT NULL,
   `tipo` varchar(100) NOT NULL,
-  `compr_alq_compar` varchar(100) NOT NULL
+  `compr_alq_compar` varchar(100) NOT NULL,
+  `superficie` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
