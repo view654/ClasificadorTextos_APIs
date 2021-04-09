@@ -8,6 +8,6 @@ export interface Usuario{
     Sector:string,
     Estudios:string,
     Esperiencia_laboral:string,
-    idiomas:string[]
+    Idiomas:string[]
 
 }

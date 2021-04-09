@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,7 @@ import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 
 
+import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -53,10 +55,6 @@ const rutas: Routes = [
         component: perfil
       }
     ]
-  },
-  {
-    path: 'profile',
-    component: perfil
   }
   
 ]
@@ -77,10 +75,13 @@ const rutas: Routes = [
       useHash: true
     }),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

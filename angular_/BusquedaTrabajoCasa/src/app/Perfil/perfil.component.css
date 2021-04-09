@@ -20,7 +20,6 @@ p {
     margin: 0;
 }
 .content {
-    height: 100%;
     width: 100%;
     display: flex;
    
@@ -36,4 +35,22 @@ p {
 }
 .content>* {
     flex: 1 1 0%;
+}
+.boton {
+    margin: 2vw;
+    padding: 0.5vw;
+    background-color: #1976d2;
+    border-radius:0.5vw;
+}
+.filaCuest{
+    margin:1vw;
+}
+
+.tituloCamp{
+    font-weight:bold;
+}
+.contCamp{
+    border-radius:0.5vw;
+    height: 2vw;
+    width: 20vw;
 }

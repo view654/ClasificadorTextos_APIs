@@ -7,7 +7,7 @@ import { Usuario } from '../components/usuario_interfaz';
   styleUrls: ['./titlebar.component.css']
 })
 export class titlebar implements OnInit {
-
+  /*
   public user:Usuario = <Usuario>
     {
       ID:1,
@@ -21,7 +21,7 @@ export class titlebar implements OnInit {
       Esperiencia_laboral:"Nop",
       idiomas:["Español","Ingles","Italiano"]
   }
-
+  */
 
   constructor() { }
 

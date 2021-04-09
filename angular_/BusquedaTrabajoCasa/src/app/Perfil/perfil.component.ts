@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Usuario } from '../components/usuario_interfaz';
-import { ActivatedRoute} from '@angular/router';
+import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
+import {FormControl} from '@angular/forms';
+//import { userInfo } from 'node:os';
+//import { ActivatedRoute} from '@angular/router';
 
 
 
@@ -11,10 +14,20 @@ import { ActivatedRoute} from '@angular/router';
 })
 export class perfil {
   title = 'Perfil';
-  user: Usuario;
-  constructor(private rutaActiva: ActivatedRoute) { }
-
+  edit = false;
+  idiomas;
+  listaIdiomas: string[];
+  //@Input() item: string; // decorate the property with @Input()
+  
+  user: Usuario = variablesdeidentificacion.user;
+  //constructor(private rutaActiva: ActivatedRoute) { }
+  
+  constructor() {
+    this.idiomas = new FormControl();
+    this.idiomas.value = this.user.Idiomas;
+    this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
+  }
   ngOnInit() {
-    this.user = this.rutaActiva.snapshot.params.user
+    //this.user = this.rutaActiva.snapshot.params.user
   }
 }
