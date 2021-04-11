@@ -13,7 +13,7 @@ export class primer{
     public isSearch: boolean = false;
 
     public busqueda: string;
-    public trabajo: boolean = true;
+    public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
 

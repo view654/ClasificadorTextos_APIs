@@ -1,0 +1,41 @@
+
+.tituloCamp{
+    color:blue;
+    font-weight:bold;
+    font-size: 1.5vw;
+}
+.subtituloCamp{
+    font-weight:bold;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+}
+.contenido{
+    color:blue;
+    font-size: 1vw;
+}
+
+.losTresContenedores{
+    display: inline-block;
+    padding: 1vw;
+    width: 30vw;
+    height: 20vw;
+    vertical-align: middle;
+    
+}
+
+.boton {
+    margin: 2vw;
+    padding: 0.5vw;
+    background-color: #1976d2;
+    border-radius:0.5vw;
+}
+
+
+td.mat-cell{
+    border-bottom-style: none;
+}
+
+th.mat-header-cell{
+    border-bottom-style: none;
+}
