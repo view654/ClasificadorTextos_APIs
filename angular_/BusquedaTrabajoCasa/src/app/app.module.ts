@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatIconModule} from '@angular/material/icon'
 
 
 
@@ -68,7 +69,7 @@ const rutas: Routes = [
         component: perfil
       },
       {
-        path: 'MostrarInformacionComponent',
+        path: 'MostrarInformacionComponent/:id',
         component: MostrarInformacionComponent
       }
     ]
@@ -101,7 +102,8 @@ const rutas: Routes = [
     MatSelectModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

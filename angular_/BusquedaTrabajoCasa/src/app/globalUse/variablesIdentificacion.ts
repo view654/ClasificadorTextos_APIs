@@ -28,7 +28,9 @@ export const variablesdeidentificacion = {
     Tipo:"Adosado",
     Link:"hhh.hhhhhh.hh",
     M2:34,
-    Descripcion:""
+    Descripcion:"",
+    Telefono:678678678,
+    Email:"email@email.com"
   },
   {
     ID:2,
@@ -38,7 +40,9 @@ export const variablesdeidentificacion = {
     Tipo:"Loft",
     Link:"hhh.hhhhhh.hh",
     M2:134,
-    Descripcion:"La descripción de la propiedad es el paso definitivo para convencer al potencial comprador para realizar una oferta por tu casa o al potencial inquilino para marcar tu número e interesarse por el alquiler que ofreces.Las fotografías y el video importan mucho, muchísmo, pero la descripción de un inmueble es imprescindible para darle fuerza al contenido visual. Estos tres elementos se complementan y unidos causan un efecto mayor."
+    Descripcion:"La descripción de la propiedad es el paso definitivo para convencer al potencial comprador para realizar una oferta por tu casa o al potencial inquilino para marcar tu número e interesarse por el alquiler que ofreces.Las fotografías y el video importan mucho, muchísmo, pero la descripción de un inmueble es imprescindible para darle fuerza al contenido visual. Estos tres elementos se complementan y unidos causan un efecto mayor.",
+    Telefono:654654654,
+    Email:"emailT@emailT.com"
   },
   {
     ID:3,
@@ -48,7 +52,9 @@ export const variablesdeidentificacion = {
     Tipo:"Adosado",
     Link:"hhh.hhhhhh.hh",
     M2:34,
-    Descripcion:""
+    Descripcion:"",
+    Telefono:678678678,
+    Email:"email@email.com"
   },
   {
     ID:4,
@@ -58,7 +64,9 @@ export const variablesdeidentificacion = {
     Tipo:"Adosado",
     Link:"hhh.hhhhhh.hh",
     M2:34,
-    Descripcion:""
+    Descripcion:"",
+    Telefono:678678678,
+    Email:"email@email.com"
   }
   ],
 

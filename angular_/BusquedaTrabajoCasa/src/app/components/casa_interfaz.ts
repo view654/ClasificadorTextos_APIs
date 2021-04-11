@@ -6,5 +6,7 @@ export interface Casa{
     Tipo:string,
     Link:string,
     M2:number,
-    Descripcion:string
+    Descripcion:string,
+    Telefono:number,
+    Email:string
 }

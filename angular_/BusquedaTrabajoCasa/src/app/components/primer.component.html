@@ -60,10 +60,17 @@
         <p style="text-align: center">Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.</p>
       </ng-container>
       <ng-template #busqueda>
-        
-        <div [routerLink]="['../MostrarInformacionComponent']" style="width:50vw; height: 5vw; background-color: aqua;" class="card highlight-card card-small"></div>
-        <div style="width:50vw; height: 5vw; background-color: aqua;" class="card highlight-card card-small"></div>
-  
+        <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
+          <div *ngFor="let casa of casas">
+            <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class="tarjetas" >
+              {{casa.Lugar}}
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #dispTrabajos>
+          <div class="tarjetas"></div>
+          <div class="tarjetas"></div>
+        </ng-template>
         
       </ng-template>
     </div>

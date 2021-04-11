@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { Casa } from '../components/casa_interfaz';
 
 
 @Component({
@@ -16,6 +18,7 @@ export class primer{
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
+    casas: Casa[] = variablesdeidentificacion.casas;
 
     constructor(){
         console.log("Componente primer cargado!!");

@@ -135,6 +135,20 @@ p {
     margin-left: 60px;
   }
 
+.tarjetas{
+  width:65vw; 
+  height: 6vw; 
+  background-color: aqua;
+  margin: 2vw;
+  padding: 0.5vw;
+  border-style: inset;
+  border-radius:0.5vw;
+  border-width: 2px;
+  text-align: center;
+  font-weight: bold;
+  vertical-align: middle;
+  color: black;
+}
 
 
 
