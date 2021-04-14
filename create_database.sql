@@ -33,7 +33,7 @@ CREATE TABLE   IF NOT EXISTS `viviendas` (
 
 
 CREATE TABLE  IF NOT EXISTS `trabajos`(
-  `descripcion` varchar(100) NOT NULL,
+  `descripcion` varchar(100),
   `numero_vacantes`  int(11),
   `trabajo_ID` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `lugar` varchar(100) ,
@@ -43,7 +43,8 @@ CREATE TABLE  IF NOT EXISTS `trabajos`(
   `estudio_minimos`  varchar(100) NOT NULL,
   `experiencia_minima`  varchar(100) NOT NULL,
   `horario` varchar(100) NOT NULL,
-  `beneficios_sociales`varchar(100) NOT NULL
+  `beneficios_sociales`varchar(100) NOT NULL,
+  `idioma `varchar(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE   IF NOT EXISTS `Users_Viviendas`(
@@ -51,7 +52,6 @@ CREATE TABLE   IF NOT EXISTS `Users_Viviendas`(
   `vivienda_ID` int (11) NOT NULL,
   CONSTRAINT `user_ID` FOREIGN KEY (`user_ID`) REFERENCES `usuarios`(`user_ID`),
   CONSTRAINT `vivienda_ID` FOREIGN KEY (`vivienda_ID`) REFERENCES `usuarios`(`vivienda_ID`)
-
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE   IF NOT EXISTS `Users_Trabajos`(
@@ -59,5 +59,4 @@ CREATE TABLE   IF NOT EXISTS `Users_Trabajos`(
   `trabajo_ID` int (11) NOT NULL,
   CONSTRAINT `user_ID` FOREIGN KEY (`user_ID`) REFERENCES `usuarios`(`user_ID`),
   CONSTRAINT `trabajo_ID` FOREIGN KEY (`trabajo_ID`) REFERENCES `usuarios`(`trabajo_ID`)
-
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
