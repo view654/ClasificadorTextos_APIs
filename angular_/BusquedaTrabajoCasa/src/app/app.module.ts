@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http'
+
 import { AppComponent } from './app.component';
 import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
@@ -93,6 +95,7 @@ const rutas: Routes = [
       paramsInheritanceStrategy: 'always',
       useHash: true
     }),
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,

@@ -5,8 +5,9 @@ import { Casa } from '../components/casa_interfaz';
 
 
 export const variablesdeidentificacion = {
-    user: <Usuario>
-    {
+
+  user: <Usuario>
+  {
       ID:1,
       Nombre:"John",
       Apellidos:"Smith",
