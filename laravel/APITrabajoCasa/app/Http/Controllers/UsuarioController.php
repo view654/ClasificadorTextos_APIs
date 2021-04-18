@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
     //
     function getData(){
-        return Usuario::all();
+        return User::all();
     }
 }
