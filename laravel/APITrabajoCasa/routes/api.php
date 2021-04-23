@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('registro', 'App\Http\Controllers\UsuarioController@registro');
 Route::post('login', 'App\Http\Controllers\UsuarioController@login');
+Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
