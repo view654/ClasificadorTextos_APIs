@@ -7,12 +7,18 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use DB;
 
 class UsuarioController extends Controller
 {
     //Obtener data
     function getData(){
         return User::all();
+    }
+
+    public function mostrarUsuarios(){
+        $usuarios = DB::select('select email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
+        return response()->json($usuarios);
     }
 
     //Registro
@@ -35,8 +41,6 @@ class UsuarioController extends Controller
             $response['mensaje'] = "Usuario registrado correctamente";
             $response['codigo'] = 200;
         }
-
-        
 
         return response() -> json($response);
     }
