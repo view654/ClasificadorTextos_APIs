@@ -11,6 +11,7 @@ import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
+import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
 import { login } from './login/login.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -25,6 +26,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -74,6 +76,10 @@ const rutas: Routes = [
       {
         path: 'MostrarInformacionComponent/:id',
         component: MostrarInformacionComponent
+      },
+      {
+        path: 'MostrarTrabajoComponent/:id',
+        component: MostrarTrabajoComponent
       }
     ]
   },
@@ -92,7 +98,8 @@ const rutas: Routes = [
     primer,
     perfil,
     MostrarInformacionComponent,
-    login
+    login,
+    MostrarTrabajoComponent
   ],
   imports: [
     BrowserModule,
