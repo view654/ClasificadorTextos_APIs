@@ -11,6 +11,7 @@ import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
+import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
 import { login } from './login/login.component';
 import { favoritos } from './favoritos/favoritos.component';
 
@@ -80,6 +81,10 @@ const rutas: Routes = [
       {
         path: 'MostrarInformacionComponent/:id',
         component: MostrarInformacionComponent
+      },
+      {
+        path: 'MostrarTrabajoComponent/:id',
+        component: MostrarTrabajoComponent
       }
     ]
   },
@@ -99,7 +104,8 @@ const rutas: Routes = [
     perfil,
     MostrarInformacionComponent,
     login,
-    favoritos
+    favoritos,
+    MostrarTrabajoComponent
   ],
   imports: [
     BrowserModule,
