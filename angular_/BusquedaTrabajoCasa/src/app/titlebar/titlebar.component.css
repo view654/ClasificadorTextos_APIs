@@ -12,13 +12,13 @@
   
   }
   
-  
-  
-  
-  
-  
-  
-  
+.boton{
+  margin:1vw; 
+  padding: 2px; 
+  background-color:white; 
+  border-radius:0.25vw; 
+  border-color:antiquewhite;
+}  
   
   
   
@@ -61,6 +61,19 @@
       flex: 1;
     }
   
+    .toolbarB{
+      position: fixed;
+      z-index: 5;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      display: flex;
+      justify-content: space-around;
+      background-color: #3B6E90;
+      color: white;
+      font-weight: 600;
+    }
     .toolbar {
       position: fixed;
       z-index: 5;
@@ -70,7 +83,7 @@
       height: 60px;
       display: flex;
       align-items: center;
-      background-color: #1976d2;
+      background-color: #3B6E90;
       color: white;
       font-weight: 600;
     }
@@ -167,7 +180,7 @@
     }
   
     .card.highlight-card {
-      background-color: #1976d2;
+      background-color: #3B6E90;
       color: white;
       font-weight: 600;
       border: none;

@@ -11,7 +11,7 @@ import { Casa } from '../components/casa_interfaz';
 })
 
 export class primer{
-    public isLogged: boolean = false;
+    
     public isSearch: boolean = false;
 
     public busqueda: string;

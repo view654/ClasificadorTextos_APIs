@@ -8,9 +8,9 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
+<body>
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">
     <img 
       [routerLink]="['primer']"
       width="50"
@@ -21,11 +21,11 @@
     <div class="spacer"></div>
     <span style="font-size: 2vw;">BIENVENIDO</span>
     <div class="spacer"></div>
-    <button (click)="isLogged=true" *ngIf="!isLogged; else logueado" style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius:0.5vw;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" style="color:white" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
-        <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-      </svg>
+    <button (click)="isLogged=true" [routerLink]="['../login']" *ngIf="!isLogged; else logueado" class = "boton">
+      Log-in
+    </button>
+    <button (click)="isLogged=true" *ngIf="!isLogged;" class = "boton">
+      Registrarse
     </button>
     <ng-template #logueado>
       <!--<button style="background-color:rgba(255, 255, 255, 0); border-radius: 50%;">-->
@@ -36,11 +36,31 @@
         </svg>
       </a> 
       <!--</button>-->
+      <!--
       <button style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius:0.5;">
         <svg xmlns="http://www.w3.org/2000/svg" width="3vw" height="3vw" style="color:white" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
       </button>
+     -->
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin:2vw; border-color: rgba(255, 255, 255, 0); background-color:rgba(255, 255, 255, 0);">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Perfil</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Favoritos</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Notificaciones</span>
+        </button>
+        
+      </mat-menu>
     </ng-template>
   
     <!--
@@ -53,66 +73,16 @@
     -->
   </div>
   
-  <!--
-  <div class="content" role="main">
-    <div *ngIf="isSearch" class=menuLateral><p>Filtros</p></div>
-    <div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">
-      &nbsp;
-    </div>
-    <div style="margin: 2vw; margin-right: 4vw; text-align:center; max-width: 70vw; min-width: 500px;">
-      <div class="card highlight-card card-small">
-  
-        <p style="margin:2vw;">Trabajo<input type="checkbox" ng-model="trabajo"></p>
-  
-        <p style="margin:2vw;">Vivienda<input type="checkbox" ng-model="!trabajo"></p>
-        <p>value1 = {{trabajo}}</p><br/>
-        <div style="margin:2vw;">
-          <label for="cars">Parametros</label>
-          <select id="cars" name="cars">
-            <option value="volvo">No</option>
-            <option value="saab">Se</option>
-            <option value="fiat">Que</option>
-            <option value="audi">Poner</option>
-            <option value="audi">Aqui</option>
-          </select>
-        </div>
-        <input type="text" id="name" name="name" required
-          minlength="4" maxlength="8" size="15">
-        <button (click)="isSearch=true" style="margin:2vw; background-color:rgba(255, 255, 255, 0)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg>
-        </button>
-        
-      </div>
-  
-      <ng-container *ngIf="!isSearch; else busqueda">
-  
-        <h2>¿Quenes somos?</h2>
-       -->
-        <!--
-        <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
-        <p>{{user.ID}}</p>
-        <p>{{isLogged}}</p>-->
-        <!--
-        <p style="text-align: center">Tengo una gallina pinta, pipiripinta, pipirialegre y gorda, que tiene tres pollitos pintos, pipiripintos, pipirialegres y gordos. Si la gallina no hubiera sido pinta pipiripinta, pipirialegre y gorda; los pollitos no hubieran sido pintos, pipiripintos, pipirialegres y gordos.</p>
-        <p style="text-align: center">Pablito clavó un clavito en la calva de un calvito. Un clavito clavó Pablito en la calva de un calvito. ¿Qué clavito clavó Pablito?</p>
-        <p style="text-align: center">Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.</p>
-      </ng-container>
-      <ng-template #busqueda>
-        
-        <div style="width:50vw; height: 5vw; background-color: aqua;" class="card highlight-card card-small"></div>
-        <div style="width:50vw; height: 5vw; background-color: aqua;" class="card highlight-card card-small"></div>
-  
-        
-      </ng-template>
-    </div>
-    
-  </div>-->
+ 
   
   <router-outlet></router-outlet>
   
-   
+  <div class="toolbarB">
+    <div style="margin-top: 10px;"><p>Tlf: 987 654 321</p></div>
+    <div style="margin-top: 10px;"><p>correo@correo.com</p></div>
+    <div style="margin-top: 10px;"><p>Apruebenos</p></div>
+  </div>
+</body>
     <!-- Highlight Card -->
     <!--
     <div class="card highlight-card card-small">

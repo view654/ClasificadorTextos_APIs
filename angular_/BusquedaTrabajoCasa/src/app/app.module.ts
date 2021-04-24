@@ -11,7 +11,7 @@ import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
-
+import { login } from './login/login.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -21,10 +21,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon'
-
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -75,6 +76,10 @@ const rutas: Routes = [
         component: MostrarInformacionComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: login
   }
   
 ]
@@ -86,7 +91,8 @@ const rutas: Routes = [
     titlebar,
     primer,
     perfil,
-    MostrarInformacionComponent
+    MostrarInformacionComponent,
+    login
   ],
   imports: [
     BrowserModule,
@@ -106,7 +112,8 @@ const rutas: Routes = [
     MatNativeDateModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../components/usuario_interfaz';
+import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 
 @Component({
   selector: 'app-titlebar',
@@ -22,8 +23,13 @@ export class titlebar implements OnInit {
       idiomas:["Español","Ingles","Italiano"]
   }
   */
-
-  constructor() { }
+  user: Usuario = variablesdeidentificacion.user;
+  public isLogged = false;
+  constructor() {
+    if(this.user != null){
+      this.isLogged = true
+    }
+  }
 
   ngOnInit(): void {
   }

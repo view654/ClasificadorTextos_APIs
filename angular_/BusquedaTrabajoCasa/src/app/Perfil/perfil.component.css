@@ -39,15 +39,19 @@ p {
 .boton {
     margin: 2vw;
     padding: 0.5vw;
-    background-color: #1976d2;
+    background-color: #3B6E90;
     border-radius:0.5vw;
 }
 .filaCuest{
     margin:1vw;
 }
-
+.titulo{
+    text-align: center;
+    font-size: 16px;
+    margin-right: 10vw;
+}
 .tituloCamp{
-    font-weight:bold;
+    color:#3B6E90;
 }
 .contCamp{
     border-radius:0.5vw;
