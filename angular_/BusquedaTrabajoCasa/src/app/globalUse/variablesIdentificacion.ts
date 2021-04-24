@@ -1,7 +1,6 @@
 import { Usuario } from '../components/usuario_interfaz';
 import { Casa } from '../components/casa_interfaz';
-
-
+import { Trabajo } from '../components/trabajo_interfaz';
 
 
 export const variablesdeidentificacion = {
@@ -70,12 +69,22 @@ export const variablesdeidentificacion = {
     Email:"email@email.com"
   }
   ],
+  trabajos: <Trabajo[]>[
+  {
+    ID:1,
+    Titulo:"Distribuidor",
+    Enlace:"",
+    Jornada:"string",
+    Contrato:"string",
+    Salario:"string",
+    Experiencia:"string",
+    Funciones:"string",
+    Requisitos:"string",
+    Ofrece:"string",
+    Area:"string",
+    Localidad:"string"
+  }
+  ]
 
 
 };
-
-
-
-
-
-

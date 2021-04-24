@@ -32,24 +32,24 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <th><label class="contenido">Ubicacion</label></th>
-                    <th><label class="contenido2">{{casa_selec.Lugar}}</label></th>
+                    <th><label class="contenido">Título</label></th>
+                    <th><label class="contenido2">{{trabajo_selec.Titulo}}</label></th>
                 </tr>
                 <tr>
-                    <th><label class="contenido">M<sup>2</sup></label></th>
-                    <th><label class="contenido2">{{casa_selec.M2}}</label></th>
+                    <th><label class="contenido">Jornada</label></th>
+                    <th><label class="contenido2">{{trabajo_selec.Jornada}}</label></th>
                 </tr>
                 <tr>
-                    <th><label class="contenido">Tipo</label></th>
-                    <th><label class="contenido2">{{casa_selec.Tipo}}</label></th>
+                    <th><label class="contenido">Contrato</label></th>
+                    <th><label class="contenido2">{{trabajo_selec.Contrato}}</label></th>
                 </tr>
                 <tr>
-                    <th><label class="contenido">Opcion</label></th>
-                    <th><label class="contenido2">{{casa_selec.Compr_alq_compar}}</label></th>
+                    <th><label class="contenido">Salario</label></th>
+                    <th><label class="contenido2">{{trabajo_selec.Salario}}</label></th>
                 </tr>
                 <tr>
-                    <th><label class="contenido">Precio</label></th>
-                    <th><label class="contenido2">{{casa_selec.Precio}}</label></th>
+                    <th><label class="contenido">Experiencia</label></th>
+                    <th><label class="contenido2">{{trabajo_selec.Experiencia}}</label></th>
                 </tr>
             </table>
         </div>
@@ -78,9 +78,56 @@
             <hr/>
         </div>
         <div style="text-align: left;">
-            <label class="contenido2">{{casa_selec.Descripcion}}</label>
+            <label class="contenido2">{{trabajo_selec.Funciones}}</label>
         </div>
     </div>
+    
+    <div class="parentCont">
+        <div class="parentCont">
+            <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
+                <label class="tituloCamp">Requisitos</label>
+                <hr/>
+            </div>
+            <div style="text-align: left;">
+                <label class="contenido2">{{trabajo_selec.Requisitos}}</label>
+            </div>
+        </div>
+    <div class="parentCont">
+        
+    <div class="parentCont">
+        <div class="parentCont">
+            <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
+                <label class="tituloCamp">Ofrece</label>
+                <hr/>
+            </div>
+            <div style="text-align: left;">
+                <label class="contenido2">{{trabajo_selec.Ofrece}}</label>
+            </div>
+        </div>
+    <div class="parentCont">
+
+    <div class="parentCont">
+        <div class="parentCont">
+            <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
+                <label class="tituloCamp">Area</label>
+                <hr/>
+            </div>
+            <div style="text-align: left;">
+                <label class="contenido2">{{trabajo_selec.Area}}</label>
+            </div>
+        </div>
+    <div class="parentCont">
+
+    <div class="parentCont">
+        <div class="parentCont">
+            <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
+                <label class="tituloCamp">Localidad</label>
+                <hr/>
+            </div>
+            <div style="text-align: left;">
+                <label class="contenido2">{{trabajo_selec.Localidad}}</label>
+            </div>
+        </div>
     <div class="parentCont">
         
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
@@ -93,18 +140,22 @@
                     <svg xmlns="http://www.w3.org/2000/svg" style="padding-top: 10px;" width="20" height="20" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                     </svg>
+                <!--
                 </div>
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%;  vertical-align: middle;">
-                    <label >{{casa_selec.Telefono}}</label>
+                    <label >{{trabajo_selec.Telefono}}</label>
                 </div>
+                -->
             </div>
             <div class="tarjetas">
                 <div style="display: inline-block; width: 29%; vertical-align: middle;">
                     <mat-icon style="font-size:20px; padding-top: 10px;"> email</mat-icon>
                 </div>
+                <!--
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
-                    <label style="margin: 5px;">{{casa_selec.Email}}</label>
+                    <label style="margin: 5px;">{{trabajo_selec.Email}}</label>
                 </div>
+                -->
             </div>
             <div class="tarjetas">
                 <div style="display: inline-block; width: 29%; vertical-align: middle;">

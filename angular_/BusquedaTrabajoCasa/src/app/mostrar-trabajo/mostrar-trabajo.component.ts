@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
-import { Casa } from '../components/casa_interfaz';
+import { Trabajo } from '../components/trabajo_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 
@@ -12,24 +12,24 @@ import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 
 export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges{
   favoritos= false;
-  public casa_selec: Casa;
+  public trabajo_selec: Trabajo;
   map: mapLeaflet;
   id:string;
-  casas: Casa[] = variablesdeidentificacion.casas;
+  trabajos: Trabajo[] = variablesdeidentificacion.trabajos;
   
   constructor(private _Activatedroute:ActivatedRoute) { 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
-    for (let i = 0; i < this.casas.length; i++) {
-      if(this.casas[i].ID == parseInt(this.id, 10)){
-        this.casa_selec=this.casas[i];
+    for (let i = 0; i < this.trabajos.length; i++) {
+      if(this.trabajos[i].ID == parseInt(this.id, 10)){
+        this.trabajo_selec=this.trabajos[i];
 
       }
     }
   }
 
   
-  defcasa_selec(casa_selecionada:Casa): void{
-  this.casa_selec = casa_selecionada;
+  deftrabajo_selec(trabajo_seleccionada:Trabajo): void{
+  this.trabajo_selec = trabajo_seleccionada;
   }
 
   ngOnInit(): void {
