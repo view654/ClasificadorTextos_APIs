@@ -13,6 +13,7 @@ import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
 import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
 import { login } from './login/login.component';
+import { favoritos } from './favoritos/favoritos.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -74,6 +75,10 @@ const rutas: Routes = [
         component: perfil
       },
       {
+        path: 'favoritos',
+        component: favoritos
+      },
+      {
         path: 'MostrarInformacionComponent/:id',
         component: MostrarInformacionComponent
       },
@@ -99,6 +104,7 @@ const rutas: Routes = [
     perfil,
     MostrarInformacionComponent,
     login,
+    favoritos,
     MostrarTrabajoComponent
   ],
   imports: [

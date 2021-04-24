@@ -44,19 +44,19 @@
       </button>
      -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin:2vw; border-color: rgba(255, 255, 255, 0); background-color:rgba(255, 255, 255, 0);">
-        <mat-icon>more_vert</mat-icon>
+        <mat-icon style="color:white">more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>notifications_off</mat-icon>
+        <button mat-menu-item [routerLink]="['./profile']">
+          <mat-icon>person</mat-icon>
           <span>Perfil</span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
+        <button mat-menu-item [routerLink]="['./favoritos']">
+          <mat-icon>star</mat-icon>
           <span>Favoritos</span>
         </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
+        <button mat-menu-item>
+          <mat-icon>notification_important</mat-icon>
           <span>Notificaciones</span>
         </button>
         
