@@ -6,8 +6,8 @@ import { Casa } from '../components/casa_interfaz';
 
 export const variablesdeidentificacion = {
 
-  user: <Usuario>
-  {
+  user: <Usuario> null
+  /*{
       ID:1,
       Nombre:"John",
       Apellidos:"Smith",
@@ -18,7 +18,7 @@ export const variablesdeidentificacion = {
       Estudios:"Ingenieria Informatica",
       Esperiencia_laboral:"Nop",
       Idiomas:["Español","Ingles","Italiano"]
-  },
+  }*/,
   casas: <Casa[]>
   [
   {

@@ -3,6 +3,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 import {FormControl} from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
+import { Casa } from '../components/casa_interfaz';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class favoritos implements OnInit {
   //@Input() item: string; // decorate the property with @Input()
   
   user: Usuario = variablesdeidentificacion.user;
+  casas: Casa[] = variablesdeidentificacion.casas;
   //constructor(private rutaActiva: ActivatedRoute) { }
   
   constructor(private dataService:DataService) {

@@ -1,2 +1,20 @@
-<p>login works!</p>
-<button [routerLink]="['../titlebar']">Go back</button>
+<div class="content">
+    <div class="central">
+        <h1>Introduzca sus datos</h1>
+        <br>
+        <form class="formLog">
+            <div class="imputCaja">
+                <input class=contCamp [(ngModel)]="user" placeholder="E-mail"  type="text" />
+            </div>
+            <br>
+            <div class="imputCaja">
+                <input class=contCamp [(ngModel)]="contr" placeholder="Contraseña"  type="password"/>
+            </div>
+            <br>
+            <button class="boton">Send</button>
+        </form>
+        <p>¿Olvidaste tu contraseña? Haz click <a>aquí</a></p>
+        <br>
+        <button class="boton" [routerLink]="['../primer']">Go back</button>
+    </div>
+</div>

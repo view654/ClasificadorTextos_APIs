@@ -85,12 +85,12 @@ const rutas: Routes = [
       {
         path: 'MostrarTrabajoComponent/:id',
         component: MostrarTrabajoComponent
+      },
+      {
+        path: 'login',
+        component: login
       }
     ]
-  },
-  {
-    path: 'login',
-    component: login
   }
   
 ]

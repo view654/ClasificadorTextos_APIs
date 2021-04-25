@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class login implements OnInit {
   public isLogged: boolean = false;
-  constructor() { }
+  public user
+  public contr
+  constructor(private dataService:DataService) { }
 
   ngOnInit(): void {
+  }
+
+  iniciarSesion(): void{
+    this.dataService.log(this.user,this.contr).subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
