@@ -13,10 +13,6 @@ import { Casa } from '../components/casa_interfaz';
 })
 export class favoritos implements OnInit {
 
-  title = 'Perfil';
-  edit = false;
-  idiomas;
-  listaIdiomas: string[];
   //@Input() item: string; // decorate the property with @Input()
   
   user: Usuario = variablesdeidentificacion.user;
@@ -24,9 +20,6 @@ export class favoritos implements OnInit {
   //constructor(private rutaActiva: ActivatedRoute) { }
   
   constructor(private dataService:DataService) {
-    this.idiomas = new FormControl();
-    this.idiomas.value = this.user.Idiomas;
-    this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
     this.getUsersData();

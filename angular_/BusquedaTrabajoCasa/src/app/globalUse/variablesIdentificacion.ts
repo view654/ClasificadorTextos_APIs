@@ -6,8 +6,8 @@ import { Casa } from '../components/casa_interfaz';
 
 export const variablesdeidentificacion = {
 
-  user: <Usuario> null
-  /*{
+  user: <Usuario>
+  {
       ID:1,
       Nombre:"John",
       Apellidos:"Smith",
@@ -18,7 +18,7 @@ export const variablesdeidentificacion = {
       Estudios:"Ingenieria Informatica",
       Esperiencia_laboral:"Nop",
       Idiomas:["Español","Ingles","Italiano"]
-  }*/,
+  },
   casas: <Casa[]>
   [
   {
@@ -68,10 +68,60 @@ export const variablesdeidentificacion = {
     Descripcion:"",
     Telefono:678678678,
     Email:"email@email.com"
+  },
+  {
+    ID:2,
+    Lugar:"Tokyo",
+    Precio:30000795,
+    Compr_alq_compar:"Alquilar",
+    Tipo:"Loft",
+    Link:"hhh.hhhhhh.hh",
+    M2:134,
+    Descripcion:"La descripción de la propiedad es el paso definitivo para convencer al potencial comprador para realizar una oferta por tu casa o al potencial inquilino para marcar tu número e interesarse por el alquiler que ofreces.Las fotografías y el video importan mucho, muchísmo, pero la descripción de un inmueble es imprescindible para darle fuerza al contenido visual. Estos tres elementos se complementan y unidos causan un efecto mayor.",
+    Telefono:654654654,
+    Email:"emailT@emailT.com"
+  },
+  {
+    ID:3,
+    Lugar:"Uno",
+    Precio:200000000,
+    Compr_alq_compar:"Comprar",
+    Tipo:"Adosado",
+    Link:"hhh.hhhhhh.hh",
+    M2:34,
+    Descripcion:"",
+    Telefono:678678678,
+    Email:"email@email.com"
+  },
+  {
+    ID:2,
+    Lugar:"Tokyo",
+    Precio:30000795,
+    Compr_alq_compar:"Alquilar",
+    Tipo:"Loft",
+    Link:"hhh.hhhhhh.hh",
+    M2:134,
+    Descripcion:"La descripción de la propiedad es el paso definitivo para convencer al potencial comprador para realizar una oferta por tu casa o al potencial inquilino para marcar tu número e interesarse por el alquiler que ofreces.Las fotografías y el video importan mucho, muchísmo, pero la descripción de un inmueble es imprescindible para darle fuerza al contenido visual. Estos tres elementos se complementan y unidos causan un efecto mayor.",
+    Telefono:654654654,
+    Email:"emailT@emailT.com"
+  },
+  {
+    ID:3,
+    Lugar:"Uno",
+    Precio:200000000,
+    Compr_alq_compar:"Comprar",
+    Tipo:"Adosado",
+    Link:"hhh.hhhhhh.hh",
+    M2:34,
+    Descripcion:"",
+    Telefono:678678678,
+    Email:"email@email.com"
   }
   ],
 
-
+  iniciarSesion(usuarioLogueado){
+    this.user = usuarioLogueado;
+  }
 };
 
 

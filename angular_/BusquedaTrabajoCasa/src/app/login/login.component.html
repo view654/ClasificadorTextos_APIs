@@ -2,13 +2,13 @@
     <div class="central">
         <h1>Introduzca sus datos</h1>
         <br>
-        <form class="formLog">
+        <form (ngSubmit)="iniciarSesion()" class="formLog">
             <div class="imputCaja">
-                <input class=contCamp [(ngModel)]="user" placeholder="E-mail"  type="text" />
+                <input class=contCamp [(ngModel)]="user" name="email1" placeholder="E-mail"  type="text" />
             </div>
             <br>
             <div class="imputCaja">
-                <input class=contCamp [(ngModel)]="contr" placeholder="Contraseña"  type="password"/>
+                <input class=contCamp [(ngModel)]="contr" name="contr1" placeholder="Contraseña"  type="password"/>
             </div>
             <br>
             <button class="boton">Send</button>

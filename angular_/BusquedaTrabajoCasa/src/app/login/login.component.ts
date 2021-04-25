@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
+import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +8,6 @@ import { DataService } from 'src/app/service/data.service';
   styleUrls: ['./login.component.css']
 })
 export class login implements OnInit {
-  public isLogged: boolean = false;
   public user
   public contr
   constructor(private dataService:DataService) { }
@@ -16,8 +16,10 @@ export class login implements OnInit {
   }
 
   iniciarSesion(): void{
+    console.log("user = ", this.user, " contr = ", this.contr)
     this.dataService.log(this.user,this.contr).subscribe(res => {
       console.log(res);
+      variablesdeidentificacion.iniciarSesion(res);
     })
   }
 
