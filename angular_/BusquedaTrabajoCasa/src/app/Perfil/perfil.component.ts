@@ -29,12 +29,14 @@ export class perfil {
     this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
-    this.getUsersData();
+    console.log("Perfil");
+    console.log(this.user);
+    //this.getUsersData();
     //this.user = this.rutaActiva.snapshot.params.user
   }
-  getUsersData(){
+  /*getUsersData(){
     this.dataService.getData().subscribe(res => {
       console.log(res)
     })
-  }
+  }*/
 }

@@ -6,8 +6,8 @@ import { Casa } from '../components/casa_interfaz';
 
 export const variablesdeidentificacion = {
 
-  user: <Usuario>
-  {
+  user: <Usuario> null
+  /*{
       ID:1,
       Nombre:"John",
       Apellidos:"Smith",
@@ -18,7 +18,7 @@ export const variablesdeidentificacion = {
       Estudios:"Ingenieria Informatica",
       Esperiencia_laboral:"Nop",
       Idiomas:["Español","Ingles","Italiano"]
-  },
+  }*/,
   casas: <Casa[]>
   [
   {
@@ -121,6 +121,14 @@ export const variablesdeidentificacion = {
 
   iniciarSesion(usuarioLogueado){
     this.user = usuarioLogueado;
+    this.user.Nombre=usuarioLogueado.nombre;
+    this.user.Apellidos=usuarioLogueado.apellidos;
+    this.user.Fecha_nacimiento=usuarioLogueado.fecha_nacimiento;      
+    this.user.Email=usuarioLogueado.email;
+    this.user.Sector=usuarioLogueado.sector;
+    this.user.Estudios=usuarioLogueado.estudios;
+    this.user.Esperiencia_laboral=usuarioLogueado.experiencia_laboral;
+    console.log(this.user);
   }
 };
 

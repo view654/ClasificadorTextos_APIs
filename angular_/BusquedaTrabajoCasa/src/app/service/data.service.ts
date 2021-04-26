@@ -10,8 +10,11 @@ export class DataService {
   getData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
-  log(correo,contra){
-    return this.httpClient.post('http://127.0.0.1:8000/api/login',correo,contra);
+  log(datos){
+    return this.httpClient.post('http://127.0.0.1:8000/api/login',datos);
+  }
+  getUsuarios(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
    
 }

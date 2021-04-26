@@ -1,14 +1,15 @@
 <div class="content">
     <div class="central">
         <h1>Introduzca sus datos</h1>
+        <p *ngIf="contrIncorrecta" style="color:red">email o contraseña incorrectos</p>
         <br>
-        <form (ngSubmit)="iniciarSesion()" class="formLog">
+        <form #simpleform="ngForm" (ngSubmit)="iniciarSesion(simpleform.value)" class="formLog">
             <div class="imputCaja">
-                <input class=contCamp [(ngModel)]="user" name="email1" placeholder="E-mail"  type="text" />
+                <input class=contCamp ngModel name="email" placeholder="E-mail"  type="text" />
             </div>
             <br>
             <div class="imputCaja">
-                <input class=contCamp [(ngModel)]="contr" name="contr1" placeholder="Contraseña"  type="password"/>
+                <input class=contCamp ngModel name="password" placeholder="Contraseña"  type="password"/>
             </div>
             <br>
             <button class="boton">Send</button>
