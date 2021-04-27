@@ -24,7 +24,7 @@
     <button [routerLink]="['../login']" *ngIf="!isLogged else logueado;" class = "boton">
       Log-in
     </button>
-    <button *ngIf="!isLogged;" class = "boton">
+    <button [routerLink]="['../RegisterComponent']" *ngIf="!isLogged;" class = "boton">
       Registrarse
     </button>
     <ng-template #logueado>

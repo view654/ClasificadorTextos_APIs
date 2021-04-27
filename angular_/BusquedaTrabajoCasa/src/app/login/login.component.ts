@@ -22,10 +22,10 @@ export class login implements OnInit {
   }
 
   iniciarSesion(val): void{
-    console.log(new Date().getTime)
-    console.log("user = ", val)
+    //console.log(new Date().getTime)
+    //console.log("user = ", val)
     this.dataService.log(val).subscribe((res:any) => {
-      console.log(res)
+      //console.log(res)
       /*this.token = res['token'];*/
       if(res.mensaje=="Login correcto"){
         localStorage.setItem('token', res.data.token) 
@@ -40,7 +40,7 @@ export class login implements OnInit {
   }
   cargarUsuarios(){
     this.dataService.getUsuarios().subscribe((res:any) => {
-      console.log(res)
+      //console.log(res)
       variablesdeidentificacion.iniciarSesion(res[2])
       this.router.navigate(['/titlebar']);
     });
