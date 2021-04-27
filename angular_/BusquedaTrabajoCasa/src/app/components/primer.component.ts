@@ -21,8 +21,7 @@ export class primer{
     casas: Casa[] = variablesdeidentificacion.casas;
 
     constructor(){
-        console.log("Componente primer cargado!!");
-        
+        console.log("Componente primer cargado!!");        
     }
 
 }

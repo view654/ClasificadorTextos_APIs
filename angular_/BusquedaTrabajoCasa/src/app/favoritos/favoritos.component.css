@@ -42,19 +42,38 @@ p {
     background-color: #3B6E90;
     border-radius:0.5vw;
 }
+.mitadCaja{
+    margin:0.2vw;
+    display:flex; 
+    justify-content: center; 
+    text-align: center; 
+    flex-direction: column; 
+}
 .filaCuest{
-    margin:1vw;
+    margin-top:1vw;
+    display:flex; 
+    justify-content: center; 
+    text-align: center; 
+    flex-direction: row; 
+    height: 80px;
+    width: 300px;
+    border-style: inset;
+    border-radius:0.5vw;
+    border-width: 2px;
+    border-color: #3B6E90;
+
 }
 .titulo{
     text-align: center;
     font-size: 16px;
     margin-right: 10vw;
+
 }
 .tituloCamp{
     color:#3B6E90;
 }
 .contCamp{
     border-radius:0.5vw;
-    height: 2vw;
-    width: 20vw;
+    height: 70px;
+    width: 90px;
 }
