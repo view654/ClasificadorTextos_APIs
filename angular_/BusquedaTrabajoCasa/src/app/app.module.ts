@@ -12,26 +12,23 @@ import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
 import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { login } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { favoritos } from './favoritos/favoritos.component';
 
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-
 
 
 /*
@@ -87,6 +84,10 @@ const rutas: Routes = [
       {
         path: 'MostrarTrabajoComponent/:id',
         component: MostrarTrabajoComponent
+      },
+      {
+        path: 'NotificacionesComponent',
+        component: MostrarTrabajoComponent
       }
     ]
   },
@@ -112,7 +113,8 @@ const rutas: Routes = [
     login,
     favoritos,
     MostrarTrabajoComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotificacionesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-export interface Casa{
+export interface Trabajo{
     ID:number,
-    N_vacantes:number,
-    Lugar:string,
-    Descripcion:string,
-    Empresa:string,
-    Salario:number,
-    Link:string,
-    Estudios_minimos:number,
-    Horario:string,
-    Beneficios_sociales:number,
-    Idiomas:string
+    Titulo:string,
+    Enlace:string,
+    Jornada:string,
+    Contrato:string,
+    Salario:string,
+    Experiencia:string,
+    Funciones:string,
+    Requisitos:string,
+    Ofrece:string,
+    Area:string,
+    Localidad:string
 }
-
