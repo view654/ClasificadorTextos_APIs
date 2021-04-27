@@ -38,7 +38,16 @@ class UsuarioController extends Controller
                 ['message' => 'Usuario no encontrado'], 404
             );
         }
-        $usuario -> update($request -> all());
+        $usuario -> update([
+            'nombre'    => $request -> nombre,
+            'apellidos' => $request -> apellidos,
+            'email'     => $request -> email,
+            'password'  => bcrypt($request -> password),
+            'fecha_nacimiento' => $request -> fecha_nacimiento,
+            'sector'    => $request -> sector,
+            'estudios'    => $request -> estudios,
+            'experiencia_laboral'    => $request -> experiencia_laboral
+        ]);
         return response($usuario, 200);
     }
 
