@@ -8,6 +8,8 @@ import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
   styleUrls: ['./titlebar.component.css']
 })
 export class titlebar implements OnInit {
+
+
   /*
   public user:Usuario = <Usuario>
     {
@@ -23,15 +25,29 @@ export class titlebar implements OnInit {
       idiomas:["Español","Ingles","Italiano"]
   }
   */
-  user: Usuario = variablesdeidentificacion.user;
-  public isLogged = false;
+  user: Usuario;
+  isLogged = false;
   constructor() {
-    if(this.user != null){
-      this.isLogged = true
-    }
+
   }
 
   ngOnInit(): void {
+    this.user = variablesdeidentificacion.user;
+    if(this.user != null){
+      this.isLogged = true
+    }
+    console.log("title");
+    console.log(this.user)
+
   }
+  /*
+  static amILoged(){
+    this.user = variablesdeidentificacion.user;
+    if(this.user != null){
+      this.isLogged = true
+    }
+    console.log("title");
+    console.log(this.user)
+  }*/
 
 }

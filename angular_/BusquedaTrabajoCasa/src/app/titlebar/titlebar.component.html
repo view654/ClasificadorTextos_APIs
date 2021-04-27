@@ -21,10 +21,10 @@
     <div class="spacer"></div>
     <span style="font-size: 2vw;">BIENVENIDO</span>
     <div class="spacer"></div>
-    <button (click)="isLogged=true" [routerLink]="['../login']" *ngIf="!isLogged; else logueado" class = "boton">
+    <button [routerLink]="['../login']" *ngIf="!isLogged else logueado;" class = "boton">
       Log-in
     </button>
-    <button (click)="isLogged=true" *ngIf="!isLogged;" class = "boton">
+    <button [routerLink]="['../RegisterComponent']" *ngIf="!isLogged;" class = "boton">
       Registrarse
     </button>
     <ng-template #logueado>

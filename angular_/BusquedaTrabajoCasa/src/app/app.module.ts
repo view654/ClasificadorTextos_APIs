@@ -13,6 +13,7 @@ import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
 import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
 import { login } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { favoritos } from './favoritos/favoritos.component';
 
 import { MatNativeDateModule } from '@angular/material/core';
@@ -27,6 +28,7 @@ import {MatMenuModule} from '@angular/material/menu';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -91,6 +93,10 @@ const rutas: Routes = [
   {
     path: 'login',
     component: login
+  },
+  {
+    path: 'RegisterComponent',
+    component: RegisterComponent
   }
   
 ]
@@ -105,7 +111,8 @@ const rutas: Routes = [
     MostrarInformacionComponent,
     login,
     favoritos,
-    MostrarTrabajoComponent
+    MostrarTrabajoComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

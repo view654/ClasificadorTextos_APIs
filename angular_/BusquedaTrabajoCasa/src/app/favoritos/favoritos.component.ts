@@ -3,6 +3,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 import {FormControl} from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
+import { Casa } from '../components/casa_interfaz';
 
 
 @Component({
@@ -12,19 +13,13 @@ import { DataService } from 'src/app/service/data.service';
 })
 export class favoritos implements OnInit {
 
-  title = 'Perfil';
-  edit = false;
-  idiomas;
-  listaIdiomas: string[];
   //@Input() item: string; // decorate the property with @Input()
   
   user: Usuario = variablesdeidentificacion.user;
+  casas: Casa[] = variablesdeidentificacion.casas;
   //constructor(private rutaActiva: ActivatedRoute) { }
   
   constructor(private dataService:DataService) {
-    this.idiomas = new FormControl();
-    this.idiomas.value = this.user.Idiomas;
-    this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
     this.getUsersData();
