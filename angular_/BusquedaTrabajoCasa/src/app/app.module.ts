@@ -84,7 +84,7 @@ const rutas: Routes = [
         component: MostrarTrabajoComponent
       },
       {
-        path: 'NotificacionesComponent/:id',
+        path: 'NotificacionesComponent',
         component: MostrarTrabajoComponent
       }
     ]
