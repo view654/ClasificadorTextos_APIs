@@ -31,6 +31,17 @@ class UsuarioController extends Controller
         return response() -> json($usuario::find($user_id), 200);
     }
 
+    public function modificarUsuarioId(Request $request, $user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        $usuario -> update($request -> all());
+        return response($usuario, 200);
+    }
+
     //Registro
     public function registro(Request $request){
         $usuario = User::where('email', $request['email']) -> first();

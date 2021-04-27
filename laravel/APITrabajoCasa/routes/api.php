@@ -26,4 +26,6 @@ Route::post('login', 'App\Http\Controllers\UsuarioController@login');
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@mostrarUsuarios');
 Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioId');
 
+Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
+
 Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
