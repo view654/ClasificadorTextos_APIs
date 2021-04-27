@@ -17,8 +17,18 @@ class UsuarioController extends Controller
     }
 
     public function mostrarUsuarios(){
-        $usuarios = DB::select('select email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
+        $usuarios = DB::select('select user_id, email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
         return response()->json($usuarios);
+    }
+
+    public function mostrarUsuarioId($user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        return response() -> json($usuario::find($user_id), 200);
     }
 
     //Registro
