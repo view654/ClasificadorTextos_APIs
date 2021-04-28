@@ -64,7 +64,8 @@ class UsuarioController extends Controller
                 'nombre'    => $request -> nombre,
                 'apellidos' => $request -> apellidos,
                 'email'     => $request -> email,
-                'password'  => bcrypt($request -> password)
+                'password'  => bcrypt($request -> password),
+                'fecha_nacimiento' => $request -> fecha_nacimiento
             ]);
     
             $response['status'] = 1;

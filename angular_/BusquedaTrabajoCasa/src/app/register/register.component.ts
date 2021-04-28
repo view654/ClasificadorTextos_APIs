@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/service/data.service';
 import { Router, RouterLink } from '@angular/router';
-import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
-
 
 @Component({
   selector: 'app-register',
@@ -16,13 +14,21 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registro(val): void{
-    this.dataService.registro(val).subscribe((res:any) =>{
+  registro(val): void {
+    if(this.datosOK(val)){
+      this.dataService.registro(val).subscribe((res:any) =>{
+        this.router.navigate(['/titlebar']);
+      },
+      err => console.log(err)
+      );
+    }
 
-    },
-    err => console.log(err)
-    );
   }
 
+  datosOK(val): boolean{
+
+    return true;
+  }
+  
 
 }

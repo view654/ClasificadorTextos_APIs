@@ -25,7 +25,7 @@
             <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
             </svg>
         </div>
-        <button class=boton [routerLink]="['']">Crear Cuenta</button>
+       
         </div>
         <div style="padding-top: 2vw;">
             <form #simpleform="ngForm" (ngSubmit)="registro(simpleform.value)" class="formLog">
@@ -34,7 +34,7 @@
                 <div class=filaCuest>
                     <label class=tituloCamp>Nombre</label>
                     <br/>
-                    <input class=contCamp ngModel name="nombre" type="text"/> <!--[(ngModel)]=user.Nombre-->
+                    <input class=contCamp ngModel name="nombre" type="text"/>
                 </div>
                 <div class=filaCuest>
                     <label class=tituloCamp>Apellidos</label>
@@ -46,7 +46,7 @@
                     <br/>
                     <mat-form-field appearance="fill" class="example-form-field">
                     <mat-label>Elige una fecha</mat-label>
-                    <input matInput [matDatepicker]="datepicker" ngModel name="fecha">
+                    <input matInput [matDatepicker]="datepicker" ngModel name="fecha_nacimiento">
                     <mat-datepicker-toggle matSuffix [for]="datepicker" ></mat-datepicker-toggle>
                     <mat-datepicker #datepicker>
                         <mat-datepicker-actions>
@@ -66,33 +66,7 @@
                     <br/>
                     <input class=contCamp ngModel name="password" type="text"/>
                 </div>
-                <div  style="padding-top: 2vw;">
-                <p class = "titulo">CV</p>
-                <hr>
-                <div class=filaCuest>
-                    <label class=tituloCamp>Sector</label>
-                    <br/>
-                    <input class=contCamp ngModel name="sector" type="text"/>
-                </div>
-                <div class=filaCuest>
-                    <label class=tituloCamp>Estudios</label>
-                    <br/>
-                    <input class=contCamp ngModel name="estudios" type="text"/>
-                </div>
-                <div class=filaCuest>
-                    <label class=tituloCamp>Experiencia Laboral</label>
-                    <br/>
-                    <input class=contCamp ngModel name="explab" type="text"/>
-                </div>
-                <div class=filaCuest>
-                    <label class=tituloCamp>Idiomas</label>
-                    <br/>
-                    <input class=contCamp ngModel name="idiomas" type="text"/>
-                </div>
-                </div>
-                <div style="width: 100%; text-align: right;">
-                    <button class=boton [routerLink]="['']">Atras</button>
-                </div>
+                <button class=boton >Crear Cuenta</button>
             </form>
         </div>
     </div>
