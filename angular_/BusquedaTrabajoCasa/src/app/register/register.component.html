@@ -28,73 +28,72 @@
         <button class=boton [routerLink]="['']">Crear Cuenta</button>
         </div>
         <div style="padding-top: 2vw;">
-        <p class = "titulo">Datos Personales</p>
-        <div class=filaCuest>
-            <label class=tituloCamp>Nombre</label>
-            <br/>
-            <input class=contCamp  type="text"/> <!--[(ngModel)]=user.Nombre-->
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Apellidos</label>
-            <br/>
-            <input class=contCamp  type="text"/>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Fecha de Nacimiento</label>
-            <br/>
-            <mat-form-field appearance="fill" class="example-form-field">
-            <mat-label>Elige una fecha</mat-label>
-            <input matInput [matDatepicker]="datepicker">
-            <mat-datepicker-toggle matSuffix [for]="datepicker" ></mat-datepicker-toggle>
-            <mat-datepicker #datepicker>
-                <mat-datepicker-actions>
-                <button mat-button matDatepickerCancel>Cancel</button>
-                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
-                </mat-datepicker-actions>
-            </mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Email</label>
-            <br/>
-            <input class=contCamp type="text"/>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Contraseña</label>
-            <br/>
-            <input class=contCamp type="text"/>
-        </div>
-        </div>
-        <div  style="padding-top: 2vw;">
-        <p class = "titulo">CV</p>
-        <div class=filaCuest>
-            <label class=tituloCamp>Sector</label>
-            <br/>
-            <input class=contCamp type="text"/>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Estudios</label>
-            <br/>
-            <input class=contCamp type="text"/>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Experiencia Laboral</label>
-            <br/>
-            <input class=contCamp type="text"/>
-        </div>
-        <div class=filaCuest>
-            <label class=tituloCamp>Idiomas</label>
-            <br/>
-            <mat-form-field appearance="fill">
-            <mat-label>Idiomas</mat-label>
-            <mat-select  multiple> <!--[formControl]="idiomas"-->
-            <!-- <mat-option *ngFor="let idioma of listaIdiomas" [value]="idioma">{{idioma}}</mat-option>-->
-            </mat-select>
-            </mat-form-field>
-        </div>
-        </div>
-        <div style="width: 100%; text-align: right;">
-            <button class=boton [routerLink]="['']">Atras</button>
+            <form #simpleform="ngForm" (ngSubmit)="registro(simpleform.value)" class="formLog">
+                <p class = "titulo">Datos Personales</p>
+                <hr>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Nombre</label>
+                    <br/>
+                    <input class=contCamp ngModel name="nombre" type="text"/> <!--[(ngModel)]=user.Nombre-->
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Apellidos</label>
+                    <br/>
+                    <input class=contCamp ngModel name="apellidos" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Fecha de Nacimiento</label>
+                    <br/>
+                    <mat-form-field appearance="fill" class="example-form-field">
+                    <mat-label>Elige una fecha</mat-label>
+                    <input matInput [matDatepicker]="datepicker" ngModel name="fecha">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker" ></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Email</label>
+                    <br/>
+                    <input class=contCamp ngModel name="email" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Contraseña</label>
+                    <br/>
+                    <input class=contCamp ngModel name="password" type="text"/>
+                </div>
+                <div  style="padding-top: 2vw;">
+                <p class = "titulo">CV</p>
+                <hr>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Sector</label>
+                    <br/>
+                    <input class=contCamp ngModel name="sector" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Estudios</label>
+                    <br/>
+                    <input class=contCamp ngModel name="estudios" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Experiencia Laboral</label>
+                    <br/>
+                    <input class=contCamp ngModel name="explab" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Idiomas</label>
+                    <br/>
+                    <input class=contCamp ngModel name="idiomas" type="text"/>
+                </div>
+                </div>
+                <div style="width: 100%; text-align: right;">
+                    <button class=boton [routerLink]="['']">Atras</button>
+                </div>
+            </form>
         </div>
     </div>
 
