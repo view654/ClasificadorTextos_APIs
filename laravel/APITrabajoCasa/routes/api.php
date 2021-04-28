@@ -33,4 +33,4 @@ Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTr
 Route::post('agregarTrabajos', 'App\Http\Controllers\TrabajosController@addTrabajo');
 
 //Funciones de Favoritos o tabla intermedia de usuarios y trabajos
-Route::get('favoritosTrabajo', 'App\Http\Controllers\UsuarioController@favoritosTrabajo');
+Route::get('favoritosTrabajo/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosTrabajo');

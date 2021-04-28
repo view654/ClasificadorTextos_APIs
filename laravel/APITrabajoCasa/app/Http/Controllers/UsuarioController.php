@@ -13,13 +13,11 @@ use DB;
 class UsuarioController extends Controller
 {
 
-    public function favoritosTrabajo(){
-        $usuarios = User::all();
-        foreach ($usuarios as $usuario) {
-            foreach ($usuario -> trabajos as $trabajo) {
-                echo $trabajo -> titulo, "\n";
-                echo $usuario -> nombre, "\n";
-            }
+    public function favoritosTrabajo($user_id){
+        $usuario = User::find($user_id);
+        foreach ($usuario -> trabajos as $trabajo) {
+            echo $trabajo -> titulo, "\n";
+            echo $usuario -> nombre, "\n";
         }
     }
 
