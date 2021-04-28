@@ -39,8 +39,6 @@ def comprobarRepes(array_enlaces_nuevos):
 
     return a_anadir
 
-
-
 #Funcion para insertar al json los enlaces nuevos
 def insertar_array_json():
     #Se comprueba si alguno ya esta en el json
