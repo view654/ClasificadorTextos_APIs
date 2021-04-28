@@ -31,8 +31,6 @@ export class login implements OnInit {
       if(res.mensaje=="Login correcto"){
         localStorage.setItem('token', res.data.token) 
         var decoded = jwt_decode(res.data.token);
-        console.log(decoded);
-        console.log(decoded['user_id']);
         //var decodedHeader = jwt_decode(res.data.token, { header: true });
         //console.log(decodedHeader);
         var id = decoded['user_id'];

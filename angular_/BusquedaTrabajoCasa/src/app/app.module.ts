@@ -33,7 +33,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /*
 Explicacion del codigo:
-- Por ahora hay una sola ventana que tendra tres ventanas hijas(o almenos eso es lo que entiendo)
 - La ventana sera titlebar.component donde se situara la barra de arriba de la pagina
 - Desde la ventana app.component se accedera por defecto a la ventana titlebar.component y desde ella
     primer.component en la cual se tendra el contenido de su html + el de su padre (El acceso por

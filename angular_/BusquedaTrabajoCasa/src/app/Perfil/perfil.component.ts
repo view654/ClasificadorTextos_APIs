@@ -3,6 +3,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 import {FormControl} from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
+import jwt_decode from "jwt-decode";
 
 
 //import { userInfo } from 'node:os';
@@ -22,12 +23,14 @@ export class perfil {
   listaIdiomas: string[];
   //@Input() item: string; // decorate the property with @Input()
   
-  user: Usuario = variablesdeidentificacion.user;
+  user: Usuario;
   //constructor(private rutaActiva: ActivatedRoute) { }
   
   constructor(private dataService:DataService) {
+    this.user=Object.assign({},variablesdeidentificacion.user);
     this.idiomas = new FormControl();
-    this.idiomas.value = this.user.Idiomas;
+    console.log(this.user.idiomas.split(";"));
+    this.idiomas.value = this.user.idiomas.split(";");
     this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
@@ -39,11 +42,19 @@ export class perfil {
 
   resetValues(){
     console.log(variablesdeidentificacion.user);
-    this.user = variablesdeidentificacion.user;
+    this.user = Object.assign({},variablesdeidentificacion.user);
     console.log(this.user);
   }
-  sendValue(){
-
+  sendValue(){    
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    //var decodedHeader = jwt_decode(res.data.token, { header: true });
+    //console.log(decodedHeader);
+    var id = decoded['user_id'];
+    
+    this.dataService.modificarUsuario(id,this.user).subscribe((res:any) => {
+      variablesdeidentificacion.iniciarSesion(this.user)
+    });
   }
   /*getUsersData(){
     this.dataService.getData().subscribe(res => {
