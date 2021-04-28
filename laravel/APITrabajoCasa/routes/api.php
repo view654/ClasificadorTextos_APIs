@@ -29,3 +29,4 @@ Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@m
 Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
 
 Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
+Route::post('agregarTrabajos', 'App\Http\Controllers\TrabajosController@addTrabajo');
