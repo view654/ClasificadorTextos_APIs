@@ -31,6 +31,11 @@ class User extends Authenticatable implements JWTSubject
         'experiencia_laboral'
     ];
 
+    public function trabajos(){
+        return $this->belongsToMany(Trabajo::class, 'users_trabajos', 
+        'user_ID', 'trabajo_ID');
+    }
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -40,6 +45,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    
 
     
 }
