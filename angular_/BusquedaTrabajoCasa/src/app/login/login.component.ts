@@ -5,6 +5,7 @@ import { DataService } from 'src/app/service/data.service';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 import { titlebar } from '../titlebar/titlebar.component';
 import { Router, RouterLink } from '@angular/router';
+import jwt_decode from "jwt-decode";
 
 
 @Component({
@@ -29,7 +30,13 @@ export class login implements OnInit {
       /*this.token = res['token'];*/
       if(res.mensaje=="Login correcto"){
         localStorage.setItem('token', res.data.token) 
-        this.cargarUsuarios()
+        var decoded = jwt_decode(res.data.token);
+        console.log(decoded);
+        console.log(decoded['user_id']);
+        //var decodedHeader = jwt_decode(res.data.token, { header: true });
+        //console.log(decodedHeader);
+        var id = decoded['user_id'];
+        this.cargarUsuarios(id);
 
       }else{
         this.contrIncorrecta = true
@@ -38,10 +45,10 @@ export class login implements OnInit {
     err => console.log(err)
     );
   }
-  cargarUsuarios(){
-    this.dataService.getUsuarios().subscribe((res:any) => {
+  cargarUsuarios(id){
+    this.dataService.getUsuarioByID(id).subscribe((res:any) => {
       //console.log(res)
-      variablesdeidentificacion.iniciarSesion(res[2])
+      variablesdeidentificacion.iniciarSesion(res)
       this.router.navigate(['/titlebar']);
     });
 

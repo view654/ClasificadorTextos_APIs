@@ -3,6 +3,8 @@ import { Usuario } from '../components/usuario_interfaz';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 import {FormControl} from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
+
+
 //import { userInfo } from 'node:os';
 //import { ActivatedRoute} from '@angular/router';
 
@@ -29,10 +31,19 @@ export class perfil {
     this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
-    console.log("Perfil");
-    console.log(this.user);
+    //console.log("Perfil");
+    //console.log(this.user);
     //this.getUsersData();
     //this.user = this.rutaActiva.snapshot.params.user
+  }
+
+  resetValues(){
+    console.log(variablesdeidentificacion.user);
+    this.user = variablesdeidentificacion.user;
+    console.log(this.user);
+  }
+  sendValue(){
+
   }
   /*getUsersData(){
     this.dataService.getData().subscribe(res => {

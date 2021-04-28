@@ -11,7 +11,8 @@
       </div>
       <button (click)="edit=true" *ngIf="!edit; else editando" class=boton>Editar</button>
       <ng-template #editando>
-        <button (click)="edit=False" class=boton style="margin: 2vw;">Submit</button>
+        <button (click)="edit=False; sendValue()" class=boton style="margin: 2vw;">Submit</button>
+        <button (click)="edit=False; resetValues()" class=boton style="margin: 2vw;">Cancel</button>
       </ng-template>
     </div>
     <div style="padding-top: 2vw;">

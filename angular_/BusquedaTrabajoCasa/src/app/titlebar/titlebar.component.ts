@@ -34,11 +34,15 @@ export class titlebar implements OnInit {
   ngOnInit(): void {
     this.user = variablesdeidentificacion.user;
     if(this.user != null){
-      this.isLogged = true
+      this.isLogged = true;
     }
-    console.log("title");
-    console.log(this.user)
 
+  }
+  logOut(){
+    this.isLogged = false;
+    variablesdeidentificacion.cerrarSesion();
+    this.user = null;
+    localStorage.clear();
   }
   /*
   static amILoged(){

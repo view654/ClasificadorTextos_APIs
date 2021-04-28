@@ -16,5 +16,10 @@ export class DataService {
   getUsuarios(){
     return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
+  getUsuarioByID(id){
+    var dir:string = 'http://127.0.0.1:8000/api/mostrarUsuario/';
+    dir = dir.concat(id.toString());
+    return this.httpClient.get(dir);
+  }
    
 }

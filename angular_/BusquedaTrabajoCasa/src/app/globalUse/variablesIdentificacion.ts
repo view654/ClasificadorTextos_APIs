@@ -143,7 +143,10 @@ export const variablesdeidentificacion = {
     this.user.Sector=usuarioLogueado.sector;
     this.user.Estudios=usuarioLogueado.estudios;
     this.user.Esperiencia_laboral=usuarioLogueado.experiencia_laboral;
-    console.log(this.user);
+    //console.log(this.user);
+  },
+  cerrarSesion(){
+    this.user=null;
   }
 };
 
