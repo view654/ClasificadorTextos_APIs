@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registro(val): void{
-    this.dataService.log(val).subscribe((res:any) =>{
+    this.dataService.registro(val).subscribe((res:any) =>{
 
     },
     err => console.log(err)
