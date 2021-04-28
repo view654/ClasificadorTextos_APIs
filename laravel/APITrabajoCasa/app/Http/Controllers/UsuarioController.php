@@ -5,12 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Trabajo;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 
 class UsuarioController extends Controller
 {
+
+    public function favoritosTrabajo(){
+        $usuarios = User::all();
+        foreach ($usuarios as $usuario) {
+            foreach ($usuario -> trabajos as $trabajo) {
+                echo $trabajo -> titulo, "\n";
+                echo $usuario -> nombre, "\n";
+            }
+        }
+    }
+
+
     //Obtener data
     function getData(){
         return User::all();

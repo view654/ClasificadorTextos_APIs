@@ -19,4 +19,6 @@ class TrabajosController extends Controller
         $trabajo = Trabajo::create($request -> all());
         return response($trabajo, 201);
     }
+
+
 }
