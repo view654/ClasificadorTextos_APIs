@@ -10,6 +10,11 @@ import json
 #Una vez rematado el proceso abre el json y, borra el corchete de la ultima de viviendas json previo y añadir una coma 
 # cambia la ultima coma por un ] 
 
+#Sacamos la coma del final del archivo
+with open('./nuevos.txt', 'ab') as filehandle:
+    filehandle.seek(-1, os.SEEK_END)
+    filehandle.truncate()
+filehandle.close()
 
 #txt urls separadas por comas
 with open ("./nuevos.txt") as f:
@@ -52,61 +57,77 @@ def insertar_array_json():
         #Recorre array de enlaces a añadir
         for enlace in arrayenlaces:
             #print(enlace)
-            page = requests.get(enlace)
-            soup = BeautifulSoup(page.content, 'html.parser')
-            if (str(soup).find('re-DetailHeader-price') != -1):
+            try:
+                page = requests.get(enlace)
+                soup = BeautifulSoup(page.content, 'html.parser')
+                if (str(soup).find('re-DetailHeader-price') != -1):
 
-                div_contenido = soup.find('div', class_ = "re-RealestateDetail-topContainer")
-                precio1 = div_contenido.find('span' , class_ = "re-DetailHeader-price")
-                cositas = div_contenido.find('div' , class_ = "re-DetailHeader-propertyTitleContainer")
-                donde = cositas.find('h1', class_ = "re-DetailHeader-propertyTitle")
-                cosill = div_contenido.find('ul' , class_ = 're-DetailHeader-features')
-                lista = cosill.findAll('li' , class_ = "re-DetailHeader-featuresItem")
-                regexTipo = '^(\w*)\s'
-                regexCAC = '\.es\/es\/(.*)\/vivienda'
-                reg = 'vivienda\/(.*)\/'
-                hecho = re.search(reg, enlace).group(1)
-                absa = hecho.split('/')
+                    div_contenido = soup.find('div', class_ = "re-RealestateDetail-topContainer")
+                    precio1 = div_contenido.find('span' , class_ = "re-DetailHeader-price")
+                    cositas = div_contenido.find('div' , class_ = "re-DetailHeader-propertyTitleContainer")
+                    donde = cositas.find('h1', class_ = "re-DetailHeader-propertyTitle")
+                    cosill = div_contenido.find('ul' , class_ = 're-DetailHeader-features')
+                    lista = cosill.findAll('li' , class_ = "re-DetailHeader-featuresItem")
+                    regexTipo = '^(\w*)\s'
+                    regexCAC = '\.es\/es\/(.*)\/vivienda'
+                    reg = 'vivienda\/(.*)\/'
+                    hecho = re.search(reg, enlace).group(1)
+                    absa = hecho.split('/')
 
-                linkvivienda = enlace
-                lugarvivienda = absa[0].replace("-", " ")
-                preciovivienda = precio1.text
+                    linkvivienda = enlace
+                    lugarvivienda = absa[0].replace("-", " ")
+                    preciovivienda = precio1.text
 
-                habitacionesvivienda  = 'no especificado'
-                banosvivienda = 'no especificado'
-                metroscuadradosvivienda = ' no especificado'
-                numeroplantavivienda = 'no especificado'
+                    habitacionesvivienda  = 'no especificado'
+                    banosvivienda = 'no especificado'
+                    metroscuadradosvivienda = ' no especificado'
+                    numeroplantavivienda = 'no especificado'
 
-                for a in range (len(lista)):
-                    i = lista[a]
-                    if ((i.text).find('hab') != -1):
-                        habitacionesvivienda = i.text
-                    if ((i.text).find('ba') != -1):
-                        banosvivienda = i.text
-                    if ((i.text).find('m²') != -1):
-                        metroscuadradosvivienda = i.text
-                    if (i.text == 'Bajos'):
-                        numeroplantavivienda = 'Bajos'
-                    if((i.text).find('Planta') != -1):
-                        numeroplantavivienda = i.text
+                    for a in range (len(lista)):
+                        i = lista[a]
+                        if ((i.text).find('hab') != -1):
+                            habitacionesvivienda = i.text
+                        if ((i.text).find('ba') != -1):
+                            banosvivienda = i.text
+                        if ((i.text).find('m²') != -1):
+                            metroscuadradosvivienda = i.text
+                        if (i.text == 'Bajos'):
+                            numeroplantavivienda = 'Bajos'
+                        if((i.text).find('Planta') != -1):
+                            numeroplantavivienda = i.text
+                        
                     
-                
-                compr_alq_comparvivienda = re.search(regexCAC, enlace).group(1)
-                tipovivienda = re.search(regexTipo, donde.text).group(1)
-                array_imagenes = []
-                for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
-                    array_imagenes.append(item['src'])
-                
-                viv ="{\"link\": \"" + linkvivienda + "\",\n\t\"lugar\": \"" + lugarvivienda + "\",\n\t\"precio\": \"" + preciovivienda + "\",\n\t\"habitaciones\": \"" + habitacionesvivienda + "\",\n\t\"baños\": \"" + banosvivienda + "\",\n\t\"metros2\": \"" + metroscuadradosvivienda + "\",\n\t\"planta\": \"" + numeroplantavivienda + "\",\n\t\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\n\t\"tipo\": \"" +tipovivienda + "\",\n\t\"imagenes\": \"" + str(array_imagenes) + "\"},\n"
-                outF = open("viviendas.json", "a")
-                outF.write(viv)
-                outF.close()
-            comandosleep = 'sleep ' + str(randrange(1))
-            os.system(comandosleep)
-        
+                    compr_alq_comparvivienda = re.search(regexCAC, enlace).group(1)
+                    tipovivienda = re.search(regexTipo, donde.text).group(1)
+                    array_imagenes = []
+                    for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
+                        array_imagenes.append(item['src'])
+                    
+                    viv ="{\"link\": \"" + linkvivienda + "\",\n\t\"lugar\": \"" + lugarvivienda + "\",\n\t\"precio\": \"" + preciovivienda + "\",\n\t\"habitaciones\": \"" + habitacionesvivienda + "\",\n\t\"baños\": \"" + banosvivienda + "\",\n\t\"metros2\": \"" + metroscuadradosvivienda + "\",\n\t\"planta\": \"" + numeroplantavivienda + "\",\n\t\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\n\t\"tipo\": \"" +tipovivienda + "\",\n\t\"imagenes\": \"" + str(array_imagenes) + "\"},\n"
+                    outF = open("viviendas.json", "a")
+                    outF.write(viv)
+                    outF.close()
+                comandosleep = 'sleep ' + str(randrange(1))
+                os.system(comandosleep)
+            except:
+                print('F en ', i)
+
                 #Borra el corchete de final del json
         
         #Borra la coma y pone un corchete
 
 
 insertar_array_json()
+
+with open('./viviendas.json', 'ab') as filehandle:
+    filehandle.seek(-1, os.SEEK_END)
+    filehandle.truncate()
+filehandle.close()
+
+final = open('./viviendas.json', 'a')
+final.write(']')
+final.close()
+
+a_file = open("nuevos.txt", "w")
+a_file.truncate()
+a_file.close()
