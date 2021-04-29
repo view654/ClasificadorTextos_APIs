@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../components/usuario_interfaz';
+import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
 
 @Component({
   selector: 'app-titlebar',
@@ -7,6 +8,8 @@ import { Usuario } from '../components/usuario_interfaz';
   styleUrls: ['./titlebar.component.css']
 })
 export class titlebar implements OnInit {
+
+
   /*
   public user:Usuario = <Usuario>
     {
@@ -22,10 +25,29 @@ export class titlebar implements OnInit {
       idiomas:["Español","Ingles","Italiano"]
   }
   */
+  user: Usuario;
+  isLogged = false;
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
+    this.user = variablesdeidentificacion.user;
+    if(this.user != null){
+      this.isLogged = true
+    }
+    console.log("title");
+    console.log(this.user)
+
   }
+  /*
+  static amILoged(){
+    this.user = variablesdeidentificacion.user;
+    if(this.user != null){
+      this.isLogged = true
+    }
+    console.log("title");
+    console.log(this.user)
+  }*/
 
 }

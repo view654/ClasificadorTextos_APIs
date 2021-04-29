@@ -13,6 +13,7 @@ class User extends Authenticatable implements JWTSubject
     use HasFactory, Notifiable;
     public $timestamps = false;
     public $table = "usuarios";
+    public $primaryKey = 'user_ID';
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,16 @@ class User extends Authenticatable implements JWTSubject
         'apellidos',
         'email',
         'password',
+        'fecha_nacimiento',
+        'sector',
+        'estudios',
+        'experiencia_laboral'
     ];
+
+    public function trabajos(){
+        return $this->belongsToMany(Trabajo::class, 'users_trabajos', 
+        'user_ID', 'trabajo_ID');
+    }
 
     public function getJWTIdentifier()
     {
@@ -35,6 +45,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    
 
     
 }

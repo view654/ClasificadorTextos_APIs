@@ -8,7 +8,13 @@ export class DataService {
 
   constructor(private httpClient:HttpClient) {}
   getData(){
-    return this.httpClient.get('http://127.0.0.1:8000/rejob/usuarios');
+    return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
+  }
+  log(datos){
+    return this.httpClient.post('http://127.0.0.1:8000/api/login',datos);
+  }
+  getUsuarios(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
    
 }

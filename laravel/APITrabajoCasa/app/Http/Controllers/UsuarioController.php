@@ -5,20 +5,61 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Trabajo;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 
 class UsuarioController extends Controller
 {
+
+    public function favoritosTrabajo($user_id){
+        $usuario = User::find($user_id);
+        foreach ($usuario -> trabajos as $trabajo) {
+            echo $trabajo -> titulo, "\n";
+            echo $usuario -> nombre, "\n";
+        }
+    }
+
+
     //Obtener data
     function getData(){
         return User::all();
     }
 
     public function mostrarUsuarios(){
-        $usuarios = DB::select('select email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
+        $usuarios = DB::select('select user_id, email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
         return response()->json($usuarios);
+    }
+
+    public function mostrarUsuarioId($user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        return response() -> json($usuario::find($user_id), 200);
+    }
+
+    public function modificarUsuarioId(Request $request, $user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        $usuario -> update([
+            'nombre'    => $request -> nombre,
+            'apellidos' => $request -> apellidos,
+            'email'     => $request -> email,
+            'password'  => bcrypt($request -> password),
+            'fecha_nacimiento' => $request -> fecha_nacimiento,
+            'sector'    => $request -> sector,
+            'estudios'    => $request -> estudios,
+            'experiencia_laboral'    => $request -> experiencia_laboral
+        ]);
+        return response($usuario, 200);
     }
 
     //Registro
