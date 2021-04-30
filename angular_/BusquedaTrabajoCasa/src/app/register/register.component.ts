@@ -15,7 +15,6 @@ export class RegisterComponent implements OnInit {
   }
 
   registro(val): void {
-    val.fecha_nacimiento.applyPattern("yyyy-MM-dd");
     if(this.datosOK(val)){
       this.dataService.registro(val).subscribe((res:any) =>{
         this.router.navigate(['/titlebar']);

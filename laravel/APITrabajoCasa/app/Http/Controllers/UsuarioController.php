@@ -84,6 +84,7 @@ class UsuarioController extends Controller
     //Registro
     public function registro(Request $request){
         $usuario = User::where('email', $request['email']) -> first();
+        $fecha_nacimiento = date('Y-m-d', strtotime($request -> fecha_nacimiento));
 
         if($usuario) {
             $response['status'] = 0;
@@ -94,8 +95,8 @@ class UsuarioController extends Controller
                 'nombre'    => $request -> nombre,
                 'apellidos' => $request -> apellidos,
                 'email'     => $request -> email,
-                'password'  => bcrypt($request -> password),
-                'fecha_nacimiento' => $request -> fecha_nacimiento
+                'fecha_nacimiento' => $fecha_nacimiento,
+                'password'  => bcrypt($request -> password)
             ]);
     
             $response['status'] = 1;
