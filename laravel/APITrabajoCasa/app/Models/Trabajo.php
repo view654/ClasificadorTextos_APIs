@@ -25,7 +25,13 @@ class Trabajo extends Model
         'funciones',
         'requisitos',
         'ofrece',
-        'area'
+        'area',
+        'localidad'
     ];
+
+    public function usuarios(){
+        return $this->belongsToMany(User::class, 'users_trabajos', 
+        'trabajo_ID', 'user_ID');
+    }
 
 }
