@@ -11,27 +11,30 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 
 class UsuarioController extends Controller
-{
+{   
 
+    //Mostrar favoritos de usuario
     public function favoritosTrabajo($user_id){
         $usuario = User::find($user_id);
+        /* 
         foreach ($usuario -> trabajos as $trabajo) {
-            echo $trabajo -> titulo, "\n";
-            echo $usuario -> nombre, "\n";
-        }
+
+        } */
+        return response() -> json($usuario -> trabajos);
     }
 
-
-    //Obtener data
+    //Obtener todos los usuarios raw
     function getData(){
         return User::all();
     }
 
+    //Mostrar información de usuarios sin contraseña
     public function mostrarUsuarios(){
         $usuarios = DB::select('select user_id, email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
         return response()->json($usuarios);
     }
 
+    //Mostrar Información de Usuario determinado
     public function mostrarUsuarioId($user_id){
         $usuario = User::find($user_id);
         if (is_null($usuario)) {
@@ -42,6 +45,7 @@ class UsuarioController extends Controller
         return response() -> json($usuario::find($user_id), 200);
     }
 
+    //Modificar información de Usuario
     public function modificarUsuarioId(Request $request, $user_id){
         $usuario = User::find($user_id);
         if (is_null($usuario)) {
@@ -49,22 +53,38 @@ class UsuarioController extends Controller
                 ['message' => 'Usuario no encontrado'], 404
             );
         }
-        $usuario -> update([
-            'nombre'    => $request -> nombre,
-            'apellidos' => $request -> apellidos,
-            'email'     => $request -> email,
-            'password'  => bcrypt($request -> password),
-            'fecha_nacimiento' => $request -> fecha_nacimiento,
-            'sector'    => $request -> sector,
-            'estudios'    => $request -> estudios,
-            'experiencia_laboral'    => $request -> experiencia_laboral
-        ]);
+        if ($request -> password) {
+            echo "con CONTRASEÑA";
+            $usuario -> update([
+                'nombre'    => $request -> nombre,
+                'apellidos' => $request -> apellidos,
+                'email'     => $request -> email,
+                'password'  => bcrypt($request -> password),
+                'fecha_nacimiento' => $request -> fecha_nacimiento,
+                'sector'    => $request -> sector,
+                'estudios'    => $request -> estudios,
+                'experiencia_laboral'    => $request -> experiencia_laboral
+            ]);
+            
+        }else{
+            $usuario -> update([
+                'nombre'    => $request -> nombre,
+                'apellidos' => $request -> apellidos,
+                'email'     => $request -> email,
+                'fecha_nacimiento' => $request -> fecha_nacimiento,
+                'sector'    => $request -> sector,
+                'estudios'    => $request -> estudios,
+                'experiencia_laboral'    => $request -> experiencia_laboral
+            ]);
+        }
+        
         return response($usuario, 200);
     }
 
     //Registro
     public function registro(Request $request){
         $usuario = User::where('email', $request['email']) -> first();
+        $fecha_nacimiento = date('Y-m-d', strtotime($request -> fecha_nacimiento));
 
         if($usuario) {
             $response['status'] = 0;
@@ -75,8 +95,8 @@ class UsuarioController extends Controller
                 'nombre'    => $request -> nombre,
                 'apellidos' => $request -> apellidos,
                 'email'     => $request -> email,
-                'password'  => bcrypt($request -> password),
-                'fecha_nacimiento' => $request -> fecha_nacimiento
+                'fecha_nacimiento' => $fecha_nacimiento,
+                'password'  => bcrypt($request -> password)
             ]);
     
             $response['status'] = 1;
