@@ -14,8 +14,8 @@
             <br>
             <button class="boton">Send</button>
         </form>
-        <p>¿Olvidaste tu contraseña? Haz click <a>aquí</a></p>
+        <p>¿Olvidaste tu contraseña? Haz click <a mat-raised-button (click)="sendEmail()">aquí</a></p>
         <br>
-        <button class="boton" [routerLink]="['./primer']">Go back</button>
+        <button class="boton" [routerLink]="['../titlebar']">Go back</button>
     </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../components/usuario_interfaz';
 import { variablesdeidentificacion} from '../globalUse/variablesIdentificacion';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-titlebar',
@@ -25,9 +26,10 @@ export class titlebar implements OnInit {
       idiomas:["Español","Ingles","Italiano"]
   }
   */
+
   user: Usuario;
   isLogged = false;
-  constructor() {
+  constructor(public router:Router) {
 
   }
 
@@ -43,6 +45,7 @@ export class titlebar implements OnInit {
     variablesdeidentificacion.cerrarSesion();
     this.user = null;
     localStorage.clear();
+    this.router.navigate(['/titlebar']);
   }
   /*
   static amILoged(){

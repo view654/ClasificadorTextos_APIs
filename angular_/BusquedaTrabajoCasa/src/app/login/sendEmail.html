@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  <p>Introduce el codigo enviado</p>
+  <p style="color:orange">(No implementado, codigo: 1111. Se devolvera a la pagina principal en caso de introducir el codigo correcto)</p>
+  <p *ngIf="contrIncorrecta" style="color:red">Codigo incorrecto</p>
+  <mat-form-field>
+    <mat-label>codigo</mat-label>
+    <input matInput [(ngModel)]=codIntroducido>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onComprobarCod()" cdkFocusInitial>Ok</button>
+  <!--[mat-dialog-close]=codigo -->
+</div>
