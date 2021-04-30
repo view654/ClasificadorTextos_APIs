@@ -1,13 +1,12 @@
 export interface Usuario{
-    ID:number,
-    Nombre:string,
-    Apellidos:string,
-    Fecha_nacimiento:Date,
-    Email:string,
-    Contraseña:string,
-    Sector:string,
-    Estudios:string,
-    Esperiencia_laboral:string,
-    Idiomas:string[]
+    email:string,
+    password:string,
+    nombre:string,
+    apellidos:string,
+    fecha_nacimiento:Date,
+    sector:string,
+    estudios:string,
+    experiencia_laboral:string,
+    idiomas:string
 
 }

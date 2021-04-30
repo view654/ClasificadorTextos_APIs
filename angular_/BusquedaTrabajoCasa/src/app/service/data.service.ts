@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class DataService {
 
+
   constructor(private httpClient:HttpClient) {}
   getData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
@@ -16,5 +17,20 @@ export class DataService {
   getUsuarios(){
     return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
+
+  getUsuarioByID(id){
+    var dir:string = 'http://127.0.0.1:8000/api/mostrarUsuario/';
+    dir = dir.concat(id.toString());
+    return this.httpClient.get(dir);
+  }
+  modificarUsuario(id,datos){
+    var dir:string = 'http://127.0.0.1:8000/api/modificarUsuario/';
+    dir = dir.concat(id.toString());
+    return this.httpClient.put(dir,datos);
+  }
    
+  registro(datos){
+    return this.httpClient.post('http://127.0.0.1:8000/api/registro',datos);
+  }
+
 }

@@ -11,7 +11,8 @@
       </div>
       <button (click)="edit=true" *ngIf="!edit; else editando" class=boton>Editar</button>
       <ng-template #editando>
-        <button (click)="edit=False" class=boton style="margin: 2vw;">Submit</button>
+        <button (click)="edit=False; sendValue()" class=boton style="margin: 2vw;">Submit</button>
+        <button (click)="edit=False; resetValues()" class=boton style="margin: 2vw;">Cancel</button>
       </ng-template>
     </div>
     <div style="padding-top: 2vw;">
@@ -19,19 +20,19 @@
       <div class=filaCuest>
         <label class=tituloCamp>Nombre</label>
         <br/>
-        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.Nombre type="text"/>
+        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.nombre type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Apellidos</label>
         <br/>
-        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.Apellidos type="text"/>
+        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.apellidos type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Fecha de Nacimiento</label>
         <br/>
         <mat-form-field appearance="fill" class="example-form-field">
           <mat-label>Elige una fecha</mat-label>
-          <input matInput [matDatepicker]="datepicker"[(ngModel)]=user.Fecha_nacimiento  [disabled]="!edit">
+          <input matInput [matDatepicker]="datepicker"[(ngModel)]=user.fecha_nacimiento  [disabled]="!edit">
           <mat-datepicker-toggle matSuffix [for]="datepicker" ></mat-datepicker-toggle>
           <mat-datepicker #datepicker>
             <mat-datepicker-actions>
@@ -44,12 +45,12 @@
       <div class=filaCuest>
         <label class=tituloCamp>Email</label>
         <br/>
-        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.Email type="text"/>
+        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.email type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Contraseña</label>
         <br/>
-        <input class=contCamp [disabled]="!edit" type="text"/>
+        <input class=contCamp [disabled]="!edit" [(ngModel)]=contrasena type="password"/>
       </div>
     </div>
     <div  style="padding-top: 2vw;">
@@ -57,17 +58,17 @@
       <div class=filaCuest>
         <label class=tituloCamp>Sector</label>
         <br/>
-        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.Sector type="text"/>
+        <input class=contCamp [disabled]="!edit" [(ngModel)]=user.sector type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Estudios</label>
         <br/>
-        <input class=contCamp  [disabled]="!edit" [(ngModel)]=user.Estudios type="text"/>
+        <input class=contCamp  [disabled]="!edit" [(ngModel)]=user.estudios type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Experiencia Laboral</label>
         <br/>
-        <input class=contCamp  [disabled]="!edit" [(ngModel)]=user.Esperiencia_laboral type="text"/>
+        <input class=contCamp  [disabled]="!edit" [(ngModel)]=user.experiencia_laboral type="text"/>
       </div>
       <div class=filaCuest>
         <label class=tituloCamp>Idiomas</label>
