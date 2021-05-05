@@ -17,7 +17,7 @@ class TrabajosController extends Controller
         return $json;
     }
 
-    //Añadir trabajos a la base de datos
+    //Añadir trabajos a la base de datos con relación a usuario
     public function addTrabajo(Request $request, $user_id){
         $enlace_trabajo = Trabajo::where('enlace', $request['enlace']) -> first();
         if($enlace_trabajo){
