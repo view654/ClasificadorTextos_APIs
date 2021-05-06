@@ -35,3 +35,12 @@ Route::post('agregarTrabajos/{user_id}', 'App\Http\Controllers\TrabajosControlle
 
 //Funciones de Favoritos o tabla intermedia de usuarios y trabajos
 Route::get('favoritosTrabajo/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosTrabajo');
+
+
+//Funciones de Viviendas
+Route::get('mostrarViviendasJSON', 'App\Http\Controllers\ViviendasController@mostrarViviendasJSON');
+Route::get('mostrarTodasViviendas', 'App\Http\Controllers\ViviendasController@mostrarTodosViviendas');
+Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
+
+//Funciones de Favoritos o tabla intermedia de usuarios y viviendas
+Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritasViviendas');

@@ -1,3 +1,4 @@
+from re import U
 from bs4 import BeautifulSoup
 import requests
 import os
@@ -6,8 +7,18 @@ from random import randrange
 
 
 #Rango de paginas de las que quieres coger
-for i in range (2, 15):
-        url_dinamica = 'https://www.fotocasa.es/es/alquiler/viviendas/leon-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C7%2C24%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=42.6008&longitude=-5.56229'
+for i in range (2, 287):
+        url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/granada-capital/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C1%2C18%2C291%2C515%2C18087%2C0%2C0%2C0&gridType=3&latitude=37.1777&longitude=-3.59869'
+        #851url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/granada-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C1%2C18%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=37.1743&longitude=-3.59888'
+        #788url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/girona-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C9%2C17%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=41.9829&longitude=2.82446'
+        #358url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/cordoba-capital/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C1%2C14%2C287%2C0%2C14021%2C0%2C0%2C0&gridType=3&latitude=37.8808&longitude=-4.77896'
+        #497url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/cordoba-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C1%2C14%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=37.8854&longitude=-4.77603'
+        #259url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/ciudad-real-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C8%2C13%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=38.9849&longitude=-3.92843'
+        #680url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/castellon-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C19%2C12%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=39.986&longitude=-0.037866'
+        #527url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/cantabria-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C6%2C39%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=43.4612&longitude=-3.80912'
+        #561url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/cadiz-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C1%2C11%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=36.5301&longitude=-6.29246'
+        #212url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/burgos-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C7%2C9%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=42.3408&longitude=-3.70232'
+        #257url_dinamica = 'https://www.fotocasa.es/es/comprar/viviendas/badajoz-provincia/todas-las-zonas/l/'+str(i)+'?combinedLocationIds=724%2C11%2C6%2C0%2C0%2C0%2C0%2C0%2C0&gridType=3&latitude=38.8781&longitude=-6.97032'
         print(url_dinamica)
 
         #Por si peta
@@ -36,10 +47,10 @@ for i in range (2, 15):
                                                         outF.write(link)
                                                         outF.write(',')
                                                         outF.close()
-                                comandosleep = 'sleep ' + str(randrange(3))
+                                comandosleep = 'sleep ' + str(randrange(1))
                                 os.system(comandosleep)
                 else:
-                        comandosleep = 'sleep ' + str(randrange(3))
+                        comandosleep = 'sleep ' + str(randrange(1))
                         os.system(comandosleep)
                         continue
         except:

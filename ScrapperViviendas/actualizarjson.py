@@ -98,7 +98,7 @@ if(len(array_links_antiguos)!=0):
                         array_imagenes.append(item['src'])
                     
                     #Construimos un string simulando la estructura de un objeto en json
-                    viv ="\n{\"link\": \"" + linkvivienda + "\",\n\t\"lugar\": \"" + lugarvivienda + "\",\n\t\"precio\": \"" + preciovivienda + "\",\n\t\"habitaciones\": \"" + habitacionesvivienda + "\",\n\t\"baños\": \"" + banosvivienda + "\",\n\t\"metros2\": \"" + metroscuadradosvivienda + "\",\n\t\"planta\": \"" + numeroplantavivienda + "\",\n\t\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\n\t\"tipo\": \"" +tipovivienda + "\",\n\t\"imagenes\": \"" + str(array_imagenes) + "\"},"
+                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": \"" + preciovivienda + "\",\"habitaciones\": \"" + habitacionesvivienda + "\",\"banos\": \"" + banosvivienda + "\",\"metros2\": \"" + metroscuadradosvivienda + "\",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda + "\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
                     
                     #Lo escribimos en el json
                     outF.write(viv)

@@ -30,19 +30,24 @@ def comprobarRepes(array_enlaces_nuevos):
     news = []
     for nuevo in array_enlaces_nuevos:
         if nuevo not in news:
-            news.appends(nuevo)
+            news.append(nuevo)
+
 
     #Lee json ya creado con las viviendas y guarda variables en el array links antiguos
     with open('viviendas.json', 'r') as f:
+
         viviendas_dict = json.load(f)
     for vivienda in viviendas_dict:
         array_links_antiguos.append(vivienda['link'])
+
+
 
     #Hace comprobacion de si alguno de los nuevos ya estaba en el array antiguo
     a_anadir = []
     for item in news:
         if item not in array_links_antiguos:
             a_anadir.append(item)
+
     #Imprimimos cuantos enlaces nuevos hay para añadir y lo devolvemos
     print(len(a_anadir))
     return a_anadir
@@ -114,7 +119,7 @@ def insertar_array_json():
                     for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
                         array_imagenes.append(item['src'])
 
-                    viv ="\n{\"link\": \"" + linkvivienda + "\",\n\t\"lugar\": \"" + lugarvivienda + "\",\n\t\"precio\": \"" + preciovivienda + "\",\n\t\"habitaciones\": \"" + habitacionesvivienda + "\",\n\t\"baños\": \"" + banosvivienda + "\",\n\t\"metros2\": \"" + metroscuadradosvivienda + "\",\n\t\"planta\": \"" + numeroplantavivienda + "\",\n\t\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\n\t\"tipo\": \"" +tipovivienda + "\",\n\t\"imagenes\": \"" + str(array_imagenes) + "\"},"
+                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": \"" + preciovivienda + "\",\"habitaciones\": \"" + habitacionesvivienda + "\",\"banos\": \"" + banosvivienda + "\",\"metros2\": \"" + metroscuadradosvivienda + "\",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda + "\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
                     outF = open("viviendas.json", "a")
                     outF.write(viv)
                     outF.close()

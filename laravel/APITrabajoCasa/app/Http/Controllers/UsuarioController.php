@@ -13,7 +13,7 @@ use DB;
 class UsuarioController extends Controller
 {   
 
-    //Mostrar favoritos de usuario
+    //Mostrar trabajos favoritos de usuario
     public function favoritosTrabajo($user_id){
         $usuario = User::find($user_id);
         /* 
@@ -21,6 +21,16 @@ class UsuarioController extends Controller
 
         } */
         return response() -> json($usuario -> trabajos);
+    }
+
+    //Mostrar viviendas favoritas de usuario
+    public function favoritasViviendas($user_id){
+        $usuario = User::find($user_id);
+        /* 
+        foreach ($usuario -> viviendas as $vivienda) {
+
+        } */
+        return response() -> json($usuario -> viviendas);
     }
 
     //Obtener todos los usuarios raw
