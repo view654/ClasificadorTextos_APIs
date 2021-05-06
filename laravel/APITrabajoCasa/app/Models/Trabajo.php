@@ -30,7 +30,7 @@ class Trabajo extends Model
     ];
 
     public function usuarios(){
-        return $this->belongsToMany(User::class, 'users_trabajos', 
+        return $this->belongsToMany(User::class, 'trabajo_usuario', 
         'trabajo_ID', 'user_ID');
     }
 
