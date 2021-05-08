@@ -1,7 +1,7 @@
 import { Usuario } from '../components/usuario_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
-
+import { Notificacion } from '../components/notificaciones'
 
 export const variablesdeidentificacion = {
 
@@ -131,6 +131,13 @@ export const variablesdeidentificacion = {
     Ofrece:"string",
     Area:"string",
     Localidad:"string"
+  }
+  ],
+  Notificaciones: <Notificacion[]>[
+  {
+    titulo:"Bienvenido a la familia de Rejob!",
+    fecha:"08/05/2021",
+    descripcion:"Notificación de bienvenida a los nuevos usuarios"
   }
   ],
 
