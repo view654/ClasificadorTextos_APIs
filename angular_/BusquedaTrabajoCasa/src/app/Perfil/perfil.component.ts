@@ -21,6 +21,7 @@ export class perfil {
   edit = false;
   idiomas;
   listaIdiomas: string[];
+  contrasena:string;
   //@Input() item: string; // decorate the property with @Input()
   
   user: Usuario;
@@ -29,8 +30,11 @@ export class perfil {
   constructor(private dataService:DataService) {
     this.user=Object.assign({},variablesdeidentificacion.user);
     this.idiomas = new FormControl();
-    console.log(this.user.idiomas.split(";"));
-    this.idiomas.value = this.user.idiomas.split(";");
+    try{
+      this.idiomas.value = this.user.idiomas.split(";");
+    }catch(e){
+
+    }
     this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }
   ngOnInit() {
@@ -51,7 +55,8 @@ export class perfil {
     //var decodedHeader = jwt_decode(res.data.token, { header: true });
     //console.log(decodedHeader);
     var id = decoded['user_id'];
-    
+    this.user.idiomas = this.idiomas.value.join(';');
+    this.user.password=this.contrasena;
     this.dataService.modificarUsuario(id,this.user).subscribe((res:any) => {
       variablesdeidentificacion.iniciarSesion(this.user)
     });

@@ -16,6 +16,7 @@ import { NotificacionesComponent } from './notificaciones/notificaciones.compone
 import { login } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { favoritos } from './favoritos/favoritos.component';
+import { sendEmail } from './login/login.component';
 
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -26,6 +27,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -113,7 +116,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    NotificacionesComponent
+    NotificacionesComponent,
+    sendEmail
   ],
   imports: [
     BrowserModule,
@@ -134,7 +138,8 @@ const rutas: Routes = [
     MatCheckboxModule,
     MatRadioModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
