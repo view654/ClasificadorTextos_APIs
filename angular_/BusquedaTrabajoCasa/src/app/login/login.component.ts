@@ -68,7 +68,7 @@ export class login implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(this.codigo==result){
-        this.router.navigate(['/titlebar']);
+        this.router.navigate(['/password']);
       }
       
     });

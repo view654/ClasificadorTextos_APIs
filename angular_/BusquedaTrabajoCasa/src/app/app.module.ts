@@ -15,6 +15,7 @@ import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.compo
 import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { login } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { password } from './password/password.component';
 import { favoritos } from './favoritos/favoritos.component';
 import { sendEmail } from './login/login.component';
 
@@ -32,6 +33,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 /*
@@ -100,6 +103,10 @@ const rutas: Routes = [
   {
     path: 'RegisterComponent',
     component: RegisterComponent
+  },
+  {
+    path: 'password',
+    component: password
   }
   
 ]
@@ -113,6 +120,7 @@ const rutas: Routes = [
     perfil,
     MostrarInformacionComponent,
     login,
+    password,
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
@@ -139,7 +147,8 @@ const rutas: Routes = [
     MatRadioModule,
     MatIconModule,
     MatMenuModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

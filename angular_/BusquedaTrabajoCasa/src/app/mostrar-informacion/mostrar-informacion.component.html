@@ -63,12 +63,28 @@
         </div>
     </div>
     <div style="text-align: center;">
-        <div style="height: 10vw;width: 100%;">
+        <div style="height: 10vw;width: 100%; min-width:605px; min-height:235px;">
             <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
                 <label class="tituloCamp">Galeria</label>
                 <hr/>
             </div>
-            <label>Soy una Galeria</label>
+            <!-- __________________________________Galeria_______________________________________________ -->
+
+            <ngb-carousel *ngIf="images" style="background-color: blue;height: 10vw;width: 100%; min-width:585px; min-height:135px;">
+                <ng-template ngbSlide *ngFor="let imagen of images | slice:0:images.length; let i=index">
+                    <div class="ConjuntoImg" *ngFor="let imagen of images | slice:i:i+2; let ii=i">
+                        <div class="picsum-img-wrapper">
+                            <img [src]="imagen" alt="Random first slide">
+                        </div>
+                        <div class="carousel-caption">
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                </ng-template>
+              </ngb-carousel>
+
+            <!-- _________________________________________________________________________________ -->
         </div>
     </div>
     <div class="parentCont">

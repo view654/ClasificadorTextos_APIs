@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 
+use App\Mail\sendCode;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('usuarios', [UsuarioController::class,'getData']);
+Route::get('sendCode', function(){
+    $correo = new sendCode;
+    Mail::to('patricia2291997@gmail.com')->send($correo);
+    return "Mensaje enviado";
+});

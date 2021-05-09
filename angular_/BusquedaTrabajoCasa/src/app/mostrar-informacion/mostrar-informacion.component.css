@@ -74,3 +74,9 @@ th.mat-header-cell{
     width: 100%;
     z-index: 1;
 }
+
+.ConjuntoImg{
+    display: inline-block;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
