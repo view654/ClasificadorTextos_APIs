@@ -33,7 +33,7 @@ export class perfil {
     try{
       this.idiomas.value = this.user.idiomas.split(";");
     }catch(e){
-
+      this.idiomas.value=null;
     }
     this.listaIdiomas = ['Español', 'Ingles', 'Italiano', 'Frances', 'Aleman', 'Portugues', 'Ruso'];
   }

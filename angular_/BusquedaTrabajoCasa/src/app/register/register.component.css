@@ -59,9 +59,13 @@ hr{
     color:#3B6E90;
 }
 .contCamp{
-    border-radius:0.5vw;
-    height: 2vw;
-    width: 20vw;
+  border-style: inset;
+  border-radius:0.5vw;
+  /*border-width: 12px;*/
+  /*border-color: #3B6E90;*/
+  padding: 0.25vw;
+  width: 20vw;
+  /*width: 33vw;*/
 }
 
 .menuLateral{

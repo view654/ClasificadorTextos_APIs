@@ -29,3 +29,7 @@ Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@m
 Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
 
 Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
+
+Route::middleware(['cors'])->group(function () {
+    Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
+});
