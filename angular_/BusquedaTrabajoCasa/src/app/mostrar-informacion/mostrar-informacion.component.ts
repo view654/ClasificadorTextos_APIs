@@ -11,7 +11,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-mostrar-informacion',
   templateUrl: './mostrar-informacion.component.html',
-  styleUrls: ['./mostrar-informacion.component.css']
+  styleUrls: ['./mostrar-informacion.component.css'],
 })
 
 

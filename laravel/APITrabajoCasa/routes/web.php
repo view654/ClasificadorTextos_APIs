@@ -22,8 +22,9 @@ Route::get('/', function () {
 });
 
 Route::get('usuarios', [UsuarioController::class,'getData']);
-Route::get('sendCode', function(){
+Route::get('sendCode/{correoUser}', function($correoUser){
     $correo = new sendCode;
-    Mail::to('patricia2291997@gmail.com')->send($correo);
+    #$correoUser = 'patricia2291997@gmail.com';
+    Mail::to($correoUser)->send($correo);
     return "Mensaje enviado";
 });

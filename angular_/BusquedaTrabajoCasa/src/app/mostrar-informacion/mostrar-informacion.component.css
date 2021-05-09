@@ -80,3 +80,7 @@ th.mat-header-cell{
     margin-left: 1vw;
     margin-right: 1vw;
 }
+
+.carousel-indicators {
+    z-index: 2 !important;
+}

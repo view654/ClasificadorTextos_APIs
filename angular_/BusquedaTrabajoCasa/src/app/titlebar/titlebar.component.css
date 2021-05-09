@@ -61,7 +61,7 @@
   
     .toolbarB{
       position: fixed;
-      z-index: 5;
+      z-index: 15;
       bottom: 0;
       left: 0;
       right: 0;
@@ -74,7 +74,7 @@
     }
     .toolbar {
       position: fixed;
-      z-index: 5;
+      z-index: 15;
       top: 0;
       left: 0;
       right: 0;

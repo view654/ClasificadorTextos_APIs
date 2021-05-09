@@ -70,17 +70,16 @@
             </div>
             <!-- __________________________________Galeria_______________________________________________ -->
 
-            <ngb-carousel *ngIf="images" style="background-color: blue;height: 10vw;width: 100%; min-width:585px; min-height:135px;">
-                <ng-template ngbSlide *ngFor="let imagen of images | slice:0:images.length; let i=index">
-                    <div class="ConjuntoImg" *ngFor="let imagen of images | slice:i:i+2; let ii=i">
+            <ngb-carousel *ngIf="images" style="background-color: rgba(59,110,144,0.8); height: 10vw;width: 100%; min-width:585px; min-height:135px;">
+                <ng-template ngbSlide *ngFor="let imagen of images | slice:0:(images.length/2+1); let i=index">
+                    
+                    <div class="ConjuntoImg" *ngFor="let imagen of images | slice:i*2:i*2+2; let ii=index;">
                         <div class="picsum-img-wrapper">
                             <img [src]="imagen" alt="Random first slide">
                         </div>
-                        <div class="carousel-caption">
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                        </div>
+                        
                     </div>
+                    
                 </ng-template>
               </ngb-carousel>
 

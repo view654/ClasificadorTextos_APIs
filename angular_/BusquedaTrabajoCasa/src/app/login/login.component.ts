@@ -60,6 +60,9 @@ export class login implements OnInit {
   }
 
   sendEmail() {
+    this.dataService.sendCode('patricia2291997@gmail.com').subscribe((res:any) => {
+      console.log(res.data.token);
+    });
     const dialogRef = this.dialog.open(sendEmail, {
       width: '250px',
       data: {codigo: this.codigo}
@@ -93,6 +96,7 @@ export class sendEmail {
       this.codigo=cod.codigo;
       console.log(cod);
       console.log(this.codigo);
+ 
     }
 
     onComprobarCod(){
