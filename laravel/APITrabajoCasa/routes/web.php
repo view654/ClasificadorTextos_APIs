@@ -22,9 +22,24 @@ Route::get('/', function () {
 });
 
 Route::get('usuarios', [UsuarioController::class,'getData']);
-Route::get('sendCode/{correoUser}', function($correoUser){
-    $correo = new sendCode;
-    #$correoUser = 'patricia2291997@gmail.com';
-    Mail::to($correoUser)->send($correo);
-    return "Mensaje enviado";
+
+/*
+Route::group(['middleware' => ['cors']], function () {
+    Route::get('sendCode/{correoUser}', function($correoUser){
+        $correo = new sendCode;
+        #$correoUser = 'patricia2291997@gmail.com';
+        Mail::to($correoUser)->send($correo);
+        return "Mensaje enviado";
+    });
 });
+*/
+/*
+Route::middleware(['cors'])->group(function () {
+    Route::get('sendCode/{correoUser}', function($correoUser){
+        $correo = new sendCode;
+        #$correoUser = 'patricia2291997@gmail.com';
+        Mail::to($correoUser)->send($correo);
+        return "Mensaje enviado";
+    });
+});
+*/

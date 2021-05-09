@@ -34,8 +34,9 @@ export class DataService {
   }
 
   sendCode(correo){
-    var dir:string = 'http://127.0.0.1:8000/sendCode/';
+    var dir:string = 'http://127.0.0.1:8000/api/sendCode/';
     dir = dir.concat(correo);
+    console.log(dir);
     return this.httpClient.get(dir);
   }
 
