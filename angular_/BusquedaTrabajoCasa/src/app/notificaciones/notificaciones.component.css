@@ -47,7 +47,7 @@ p {
 }
 .titulo{
     text-align: center;
-    font-size: 16px;
+    font-size: 36px;
     margin-right: 10vw;
 }
 .tituloCamp{
@@ -58,3 +58,18 @@ p {
     height: 2vw;
     width: 20vw;
 }
+.tarjetas{
+    width:65vw; 
+    min-height: 130px;
+    height: 6vw; 
+    background-color: aqua;
+    margin: 2vw;
+    padding: 0.5vw;
+    border-style: inset;
+    border-radius:0.5vw;
+    border-width: 2px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    color: black;
+  }
