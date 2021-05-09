@@ -46,8 +46,8 @@
 }
 .tarjetas{
     display: inline-block;
-    height: 40px;
-    width: 200px;
+    height: 50px;
+    width: 225px;
     margin: 2vw;
     padding: 0.5vw;
     border-style: inset;
