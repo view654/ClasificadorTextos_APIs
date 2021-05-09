@@ -60,6 +60,7 @@ p {
 }
 .tarjetas{
     width:65vw; 
+    min-height: 130px;
     height: 6vw; 
     background-color: aqua;
     margin: 2vw;
