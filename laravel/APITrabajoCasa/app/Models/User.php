@@ -28,7 +28,8 @@ class User extends Authenticatable implements JWTSubject
         'fecha_nacimiento',
         'sector',
         'estudios',
-        'experiencia_laboral'
+        'experiencia_laboral',
+        'idiomas'
     ];
 
     public function trabajos(){

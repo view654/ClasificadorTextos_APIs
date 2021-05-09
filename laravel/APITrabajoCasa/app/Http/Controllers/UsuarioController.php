@@ -40,7 +40,7 @@ class UsuarioController extends Controller
 
     //Mostrar información de usuarios sin contraseña
     public function mostrarUsuarios(){
-        $usuarios = DB::select('select user_id, email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral from usuarios');
+        $usuarios = DB::select('select user_id, email, nombre, apellidos, fecha_nacimiento, sector, estudios, experiencia_laboral, idiomas from usuarios');
         return response()->json($usuarios);
     }
 
@@ -64,7 +64,6 @@ class UsuarioController extends Controller
             );
         }
         if ($request -> password) {
-            echo "con CONTRASEÑA";
             $usuario -> update([
                 'nombre'    => $request -> nombre,
                 'apellidos' => $request -> apellidos,
@@ -73,7 +72,8 @@ class UsuarioController extends Controller
                 'fecha_nacimiento' => $request -> fecha_nacimiento,
                 'sector'    => $request -> sector,
                 'estudios'    => $request -> estudios,
-                'experiencia_laboral'    => $request -> experiencia_laboral
+                'experiencia_laboral'    => $request -> experiencia_laboral,
+                'idiomas'    => $request -> idiomas
             ]);
             
         }else{
@@ -84,7 +84,8 @@ class UsuarioController extends Controller
                 'fecha_nacimiento' => $request -> fecha_nacimiento,
                 'sector'    => $request -> sector,
                 'estudios'    => $request -> estudios,
-                'experiencia_laboral'    => $request -> experiencia_laboral
+                'experiencia_laboral'    => $request -> experiencia_laboral,
+                'idiomas'    => $request -> idiomas
             ]);
         }
         
