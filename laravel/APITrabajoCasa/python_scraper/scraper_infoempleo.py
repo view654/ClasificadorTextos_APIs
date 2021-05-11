@@ -1,4 +1,5 @@
 import json
+import os
 from bs4 import BeautifulSoup
 import requests, re, datetime, time, threading
 
@@ -62,13 +63,22 @@ links_trabajos = []
 #Enlaces únicos, sin repetidos
 ofertas_trabajo_unicas = []
 
+
+dir = os.path.dirname(__file__) + "\ofertas_trabajo.json"
+
 #Se guardan toda la info del JSON anterior de ofertas de trabajo
-with open('laravel\APITrabajoCasa\data_json\ofertas_trabajo.json', 'r') as f:
+with open(dir, 'r') as f:
     trabajos_dict = json.load(f)
+    f.close()
+
 
 #Se recorre la información guardando únicamente los enlaces
 for trabajo in trabajos_dict:
         links_trabajos.append(trabajo['enlace'])
+
+print(links_trabajos)
+
+
 
 #Se ingresa a cada enlace para validar la existencia de la oferta de trabajo, 
 #de forma que se elimine o almacene nuevamente
@@ -78,6 +88,7 @@ for link in links_trabajos:
     pagina = soup1.find('div', class_ = 'top-bar oferta-inactiva offer-detail')
     if(pagina):
         links_trabajos.remove(link)
+
 
 #Se agregan nuevas ofertas de las páginas de infoempleo
 for url in urls:
@@ -160,9 +171,15 @@ for link in ofertas_trabajo_unicas:
         "area": area,
         "localidad": localidad
     }
+    print(oferta_trabajo)
 
-    ofertas_trabajo.append(oferta_trabajo)
+    ofertas_trabajo.append(oferta_trabajo) 
+
+for item in ofertas_trabajo:
+    item['jornada'] = item['jornada'].replace('\r\n                    ', '')
+    item['experiencia'] = item['experiencia'].replace('\r\n                ', '')
 
 #Se almacena la información en formato JSON en el archivo especificado
-with open('laravel\APITrabajoCasa\data_json\ofertas_trabajo.json', 'w') as json_file:
+with open(dir, 'w') as json_file:
     json.dump(ofertas_trabajo, json_file)
+ 

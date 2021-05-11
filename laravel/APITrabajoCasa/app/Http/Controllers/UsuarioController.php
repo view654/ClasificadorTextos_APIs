@@ -16,26 +16,23 @@ class UsuarioController extends Controller
     //Mostrar trabajos favoritos de usuario
     public function favoritosTrabajo($user_id){
         $usuario = User::find($user_id);
-        /* 
-        foreach ($usuario -> trabajos as $trabajo) {
-
-        } */
         return response() -> json($usuario -> trabajos);
     }
 
     //Mostrar viviendas favoritas de usuario
     public function favoritasViviendas($user_id){
         $usuario = User::find($user_id);
-        /* 
-        foreach ($usuario -> viviendas as $vivienda) {
-
-        } */
         return response() -> json($usuario -> viviendas);
     }
 
     //Obtener todos los usuarios raw
     function getData(){
         return User::all();
+    }
+
+    function eliminarUsuario($user_id){
+        $usuario = User::find($user_id);
+        $usuario -> delete();
     }
 
     //Mostrar información de usuarios sin contraseña
