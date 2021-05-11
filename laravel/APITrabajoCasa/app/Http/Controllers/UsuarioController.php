@@ -147,5 +147,11 @@ class UsuarioController extends Controller
         return response() -> json($response);
     }
 
+    public function sendCode($correoUser){
+        $correo = new sendCode;
+        #$correoUser = 'patricia2291997@gmail.com';
+        Mail::to($correoUser)->send($correo);
+        return "Mensaje enviado";
+    }
 
 }

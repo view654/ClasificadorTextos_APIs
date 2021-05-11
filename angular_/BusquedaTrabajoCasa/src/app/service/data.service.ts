@@ -33,4 +33,11 @@ export class DataService {
     return this.httpClient.post('http://127.0.0.1:8000/api/registro',datos);
   }
 
+  sendCode(correo){
+    var dir:string = 'http://127.0.0.1:8000/api/sendCode/';
+    dir = dir.concat(correo);
+    console.log(dir);
+    return this.httpClient.get(dir);
+  }
+
 }

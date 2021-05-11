@@ -58,3 +58,10 @@ Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasControl
 
 //Funciones de Favoritos o tabla intermedia de usuarios y viviendas
 Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritasViviendas');
+
+Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
+
+Route::middleware(['cors'])->group(function () {
+    Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
+});
+

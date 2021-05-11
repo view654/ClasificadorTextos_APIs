@@ -15,20 +15,25 @@ with open('viviendas.json', 'r') as f:
 for vivienda in viviendas_dict:
     array_links_antiguos.append(vivienda['link'])
 
+news = []
+for ea in array_links_antiguos:
+    if ea not in news:
+        news.append(ea)
+
 
 #borramos contenido json
 a_file = open("viviendas.json", "w")
 a_file.truncate()
 a_file.close()
 
-if(len(array_links_antiguos)!=0):
+if(len(news)!=0):
     #abrimos el viviendas.json para hacer append
     outF = open("viviendas.json", "a")
 
-    for i in range (len(array_links_antiguos)):
+    for i in range (len(news)):
         #Para saber cuantos nos quedan por consola 
-        print(len(array_links_antiguos)-i)
-        enlace = array_links_antiguos[i]
+        print(len(news)-i)
+        enlace = news[i]
         #Se hace dentro de un try por tema de automatizar el proceso
         try:
             #Hacemos el get del codigo fuente del enlace

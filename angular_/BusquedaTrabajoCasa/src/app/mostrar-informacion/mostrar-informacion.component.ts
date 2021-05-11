@@ -3,6 +3,7 @@ import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -10,7 +11,7 @@ import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 @Component({
   selector: 'app-mostrar-informacion',
   templateUrl: './mostrar-informacion.component.html',
-  styleUrls: ['./mostrar-informacion.component.css']
+  styleUrls: ['./mostrar-informacion.component.css'],
 })
 
 
@@ -21,9 +22,15 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   id:string;
   casas: Casa[] = variablesdeidentificacion.casas;
   
- 
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
   
-  constructor(private _Activatedroute:ActivatedRoute) {
+  constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute) {
+
+    /*this.ngbCarouselConfig.interval = 10000;
+    this.ngbCarouselConfig.wrap = false;
+    this.ngbCarouselConfig.keyboard = false;
+    this.ngbCarouselConfig.pauseOnHover = false;
+    */
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.casas.length; i++) {
       if(this.casas[i].ID == parseInt(this.id, 10)){

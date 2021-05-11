@@ -46,8 +46,8 @@
 }
 .tarjetas{
     display: inline-block;
-    height: 40px;
-    width: 200px;
+    height: 50px;
+    width: 225px;
     margin: 2vw;
     padding: 0.5vw;
     border-style: inset;
@@ -73,4 +73,14 @@ th.mat-header-cell{
     height: 100%;
     width: 100%;
     z-index: 1;
+}
+
+.ConjuntoImg{
+    display: inline-block;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.carousel-indicators {
+    z-index: 2 !important;
 }
