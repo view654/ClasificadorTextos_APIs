@@ -54,6 +54,16 @@ class TrabajosController extends Controller
         return $respuesta;
     } 
 
+    public function ActualizarTrabajos(){
+        $python = "C:\Python39\python.exe";
+
+        $cmd = $python." \"".base_path('python_scraper\actualizarTrabajos.py')."\"";
+        //dd($cmd);
+        $respuesta = shell_exec($cmd);
+
+        return $respuesta;
+    } 
+
     public function filtroProvincia($provincia){
         $path = '../python_scraper/ofertas_trabajo.json';
         $json = file_get_contents($path);
@@ -92,20 +102,36 @@ class TrabajosController extends Controller
         return response() -> json($filtrado); 
     }
 
-    public function filtroGeneral($contrato, $jornada, $provincia){
-        $contrato = ' '. $contrato . ' ';
-        $jornada = $jornada . ' ';
+    public function filtroGeneral($provincia = null, $contrato = null, $jornada = null){
         $path = '../python_scraper/ofertas_trabajo.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
+        $filtro = '';
 
-        $filtrado = array_filter($array, function($val) use ($contrato, $jornada, $provincia) { 
-            return  $val -> contrato == $contrato && 
-                    $val -> jornada == $jornada &&
-                    $val -> localidad == $provincia;
-        });
+        if($provincia){
+            $filtro = array_filter($array, function($val) use ($provincia) { 
+                return  $val -> localidad == $provincia;
+            });
+        }
 
-        return response() -> json($filtrado); 
+        if($contrato){
+            $contrato = ' '. $contrato . ' ';
+            $filtro = array_filter($filtro, function($val) use ($contrato) { 
+                return  $val -> contrato == $contrato;
+            });
+        }
+
+        if($jornada){
+            $jornada = $jornada . ' ';
+            $filtro = array_filter($filtro, function($val) use ($jornada) { 
+                return  $val -> jornada == $jornada;
+            });
+        }
+
+        
+
+        return response() -> json($filtro); 
+        
     }
 
 

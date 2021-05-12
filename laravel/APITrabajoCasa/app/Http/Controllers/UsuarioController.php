@@ -89,6 +89,21 @@ class UsuarioController extends Controller
         return response($usuario, 200);
     }
 
+    public function modificarContrasena(Request $request, $user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        
+        $usuario -> update([
+            'password'  => bcrypt($request -> password)
+        ]);
+        
+        return response($usuario, 200);
+    }
+
     //Registro
     public function registro(Request $request){
         $usuario = User::where('email', $request['email']) -> first();

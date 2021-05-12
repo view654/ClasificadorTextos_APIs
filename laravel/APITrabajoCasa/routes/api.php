@@ -29,6 +29,7 @@ Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@mostrarUsu
 Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioId');
 
 Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
+Route::put('modificarContrasena/{user_id}', 'App\Http\Controllers\UsuarioController@modificarContrasena');
 Route::delete('eliminarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@eliminarUsuario');
 
 /** --------------------------------TRABAJOS ----------------------------------------------- */
@@ -37,13 +38,13 @@ Route::get('mostrarTrabajosJSON', 'App\Http\Controllers\TrabajosController@mostr
 Route::get('mostrarTodosTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTodosTrabajos');
 Route::post('agregarTrabajos/{user_id}', 'App\Http\Controllers\TrabajosController@addTrabajo');
 Route::get('scraperTrabajos', 'App\Http\Controllers\TrabajosController@ScraperTrabajos');
-
+Route::get('ActualizarTrabajos', 'App\Http\Controllers\TrabajosController@ActualizarTrabajos');
 
 //Funciones de Filtros
 Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosController@filtroProvincia');
 Route::get('filtroJornada/{jornada}', 'App\Http\Controllers\TrabajosController@filtroJornada');
 Route::get('filtroContrato/{contrato}', 'App\Http\Controllers\TrabajosController@filtroContrato');
-Route::get('filtroGeneral/{contrato}/{jornada}/{provincia}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
+Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
 
 
 //Funciones de Favoritos o tabla intermedia de usuarios y trabajos
@@ -59,7 +60,6 @@ Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasControl
 //Funciones de Favoritos o tabla intermedia de usuarios y viviendas
 Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritasViviendas');
 
-Route::get('mostrarTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTrabajos');
 
 Route::middleware(['cors'])->group(function () {
     Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
