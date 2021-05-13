@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Mail;
+use App\Mail\sendCode;
 use App\Models\User;
 use App\Models\Trabajo;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -172,11 +174,13 @@ class UsuarioController extends Controller
         return response() -> json($response);
     }
 
+
     public function sendCode($correoUser){
-        $correo = new sendCode;
+        $codigo = rand(10000,99999);
+        $correo = new sendCode($codigo);
         #$correoUser = 'patricia2291997@gmail.com';
         Mail::to($correoUser)->send($correo);
-        return "Mensaje enviado";
+        return $codigo;
     }
 
 }

@@ -60,8 +60,9 @@ export class login implements OnInit {
   }
 
   sendEmail() {
-    this.dataService.sendCode('patricia2291997@gmail.com').subscribe((res:any) => {
-      console.log(res.data.token);
+    this.dataService.sendCode('clxudiajazmin@gmail.com').subscribe((res:any) => {
+      this.codigo = res
+      console.log(this.codigo);
     });
     const dialogRef = this.dialog.open(sendEmail, {
       width: '250px',

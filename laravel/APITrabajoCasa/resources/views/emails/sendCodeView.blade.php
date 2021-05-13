@@ -8,5 +8,6 @@
     </head>
     <body>
         <h1> Codigo: </h1>
+        <h2>{{ $codigo }}</h2>
     </body>
 </html>
