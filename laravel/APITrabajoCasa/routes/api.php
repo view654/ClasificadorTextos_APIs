@@ -36,7 +36,6 @@ Route::delete('eliminarUsuario/{user_id}', 'App\Http\Controllers\UsuarioControll
 
 Route::get('mostrarTrabajosJSON', 'App\Http\Controllers\TrabajosController@mostrarTrabajosJSON');
 Route::get('mostrarTodosTrabajos', 'App\Http\Controllers\TrabajosController@mostrarTodosTrabajos');
-Route::post('agregarTrabajos/{user_id}', 'App\Http\Controllers\TrabajosController@addTrabajo');
 Route::get('scraperTrabajos', 'App\Http\Controllers\TrabajosController@ScraperTrabajos');
 Route::get('ActualizarTrabajos', 'App\Http\Controllers\TrabajosController@ActualizarTrabajos');
 
@@ -49,6 +48,9 @@ Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Contro
 
 //Funciones de Favoritos o tabla intermedia de usuarios y trabajos
 Route::get('favoritosTrabajo/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosTrabajo');
+Route::post('agregarTrabajos/{user_id}', 'App\Http\Controllers\TrabajosController@addTrabajo');
+Route::delete('eliminarFavoritoTrabajo/{user_id}/{trabajo_id}', 'App\Http\Controllers\TrabajosController@eliminarFavoritoTrabajo');
+
 
 /** --------------------------------VIVIENDAS ----------------------------------------------- */
 

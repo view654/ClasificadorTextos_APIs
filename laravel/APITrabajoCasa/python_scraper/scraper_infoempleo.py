@@ -76,10 +76,6 @@ with open(dir, 'r') as f:
 for trabajo in trabajos_dict:
         links_trabajos.append(trabajo['enlace'])
 
-print(links_trabajos)
-
-
-
 #Se ingresa a cada enlace para validar la existencia de la oferta de trabajo, 
 #de forma que se elimine o almacene nuevamente
 for link in links_trabajos:
@@ -115,7 +111,8 @@ for link in links_trabajos:
         ofertas_trabajo_unicas.append(link)
 
 #Se realiza el scrapper de cada una de las ofertas por enlace
-for link in ofertas_trabajo_unicas:
+for link in ofertas_trabajo_unicas: 
+
     ioferta = requests.get(link)
     soup1 = BeautifulSoup(ioferta.content, 'html.parser')
 
@@ -129,11 +126,17 @@ for link in ofertas_trabajo_unicas:
 
     #DETALLES DE OFERTA
     p = soup1.find('p', class_ = 'small mt10')
-    detalles = p.get_text().split('-')
+    detalles = p.get_text().split(' - ')
+
     jornada = detalles[0]
+    jornada = jornada.replace('\r\n                    ', '')
+
     contrato = detalles[1]
+
     salario = detalles[2]
+
     experiencia = detalles[3]
+
 
     funciones = ''
     requisitos = ''
@@ -145,11 +148,15 @@ for link in ofertas_trabajo_unicas:
         pre = offer.find_all('pre')
         if(len(pre) > 2):
             funciones = pre[0].get_text()
+
             requisitos = pre[1].get_text()
+
             ofrece = pre[2].get_text()
         else:
             funciones = pre[0].get_text()
+
             requisitos = pre[1].get_text()
+
             ofrece = ''
 
     #AREA
@@ -157,14 +164,14 @@ for link in ofertas_trabajo_unicas:
     if(ul):
         li = ul.find_all('li')
         area = li[0].find('p').get_text()
-        
+            
     oferta_trabajo = {
         "titulo": titulo_oferta.get_text(),
         "enlace": link,
         "jornada": jornada,
         "contrato": contrato,
         "salario": salario,
-        "experiencia": experiencia,
+        "experiencia": experiencia[:-18],
         "funciones": funciones,
         "requisitos": requisitos,
         "ofrece": ofrece,
@@ -175,11 +182,8 @@ for link in ofertas_trabajo_unicas:
 
     ofertas_trabajo.append(oferta_trabajo) 
 
-for item in ofertas_trabajo:
-    item['jornada'] = item['jornada'].replace('\r\n                    ', '')
-    item['experiencia'] = item['experiencia'].replace('\r\n                ', '')
 
 #Se almacena la información en formato JSON en el archivo especificado
 with open(dir, 'w') as json_file:
-    json.dump(ofertas_trabajo, json_file)
+    json.dump(ofertas_trabajo, json_file) 
  
