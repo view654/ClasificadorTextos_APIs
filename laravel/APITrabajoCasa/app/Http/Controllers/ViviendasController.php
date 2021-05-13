@@ -11,7 +11,7 @@ class ViviendasController extends Controller{
     
     //Mostrar Viviendas en datos generales
     public function mostrarViviendasJSON(){
-        $path = '../data_json/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_vivienda.json';
         $json = file_get_contents($path);
         return $json;
     }

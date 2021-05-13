@@ -22,9 +22,9 @@ class CreateTrabajosTable extends Migration
             $table->string('contrato', 100)->nullable();
             $table->string('salario', 100)->nullable();
             $table->string('experiencia', 100)->nullable();
-            $table->string('funciones', 100)->nullable();
-            $table->string('requisitos', 100)->nullable();
-            $table->string('ofrece', 100)->nullable();
+            $table->text('funciones')->nullable();
+            $table->text('requisitos')->nullable();
+            $table->text('ofrece')->nullable();
             $table->string('area', 100)->nullable();
         });
     }

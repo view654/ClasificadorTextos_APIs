@@ -12,18 +12,7 @@ use DB;
 
 class UsuarioController extends Controller
 {   
-
-    //Mostrar trabajos favoritos de usuario
-    public function favoritosTrabajo($user_id){
-        $usuario = User::find($user_id);
-        return response() -> json($usuario -> trabajos);
-    }
-
-    //Mostrar viviendas favoritas de usuario
-    public function favoritasViviendas($user_id){
-        $usuario = User::find($user_id);
-        return response() -> json($usuario -> viviendas);
-    }
+    /** ------------------- MOSTRAR USUARIOS Y ELIMINAR -----------------------------------------*/
 
     //Obtener todos los usuarios raw
     function getData(){
@@ -51,6 +40,9 @@ class UsuarioController extends Controller
         }
         return response() -> json($usuario::find($user_id), 200);
     }
+
+
+    /** ------------------- MODIFICAR DATOS DE USUARIOS -----------------------------------------*/
 
     //Modificar información de Usuario
     public function modificarUsuarioId(Request $request, $user_id){
@@ -103,6 +95,24 @@ class UsuarioController extends Controller
         
         return response($usuario, 200);
     }
+
+
+    /** ------------------- FUNCIONES FAVORITOS USUARIOS - TRABAJOS - VIVIENDAS -----------------------------------------*/
+
+    //Mostrar trabajos favoritos de usuario
+    public function favoritosTrabajo($user_id){
+        $usuario = User::find($user_id);
+        return response() -> json($usuario -> trabajos);
+    }
+
+    //Mostrar viviendas favoritas de usuario
+    public function favoritasViviendas($user_id){
+        $usuario = User::find($user_id);
+        return response() -> json($usuario -> viviendas);
+    }
+
+
+    /** ------------------- FUNCIONES DE LOGIN Y REGISTRO DE USUARIOS -----------------------------------------*/
 
     //Registro
     public function registro(Request $request){
