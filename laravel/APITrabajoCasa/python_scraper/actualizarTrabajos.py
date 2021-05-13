@@ -18,7 +18,7 @@ for trabajo in trabajos_dict:
     pagina = soup1.find('div', class_ = 'top-bar oferta-inactiva offer-detail')
     if(pagina):
         print("ELIMINAR")
-        del trabajo['enlace']
+        del trabajo
 
 #Se almacena la información en formato JSON en el archivo especificado
 with open(dir, 'w') as json_file:
