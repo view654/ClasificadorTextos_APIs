@@ -31,6 +31,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -107,7 +108,7 @@ const rutas: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'password',
+    path: 'password/:correo',
     component: password
   }
   
@@ -150,7 +151,8 @@ const rutas: Routes = [
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
-    NgbModule
+    NgbModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
