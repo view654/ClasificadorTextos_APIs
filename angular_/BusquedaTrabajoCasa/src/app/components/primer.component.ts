@@ -11,7 +11,7 @@ import { Casa } from '../components/casa_interfaz';
 })
 
 export class primer{
-    public isLogged: boolean = false;
+    
     public isSearch: boolean = false;
 
     public busqueda: string;
@@ -21,8 +21,7 @@ export class primer{
     casas: Casa[] = variablesdeidentificacion.casas;
 
     constructor(){
-        console.log("Componente primer cargado!!");
-        
+        console.log("Componente primer cargado!!");        
     }
 
 }

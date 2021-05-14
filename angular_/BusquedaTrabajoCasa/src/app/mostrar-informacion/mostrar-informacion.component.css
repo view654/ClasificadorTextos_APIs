@@ -1,6 +1,7 @@
 
+
 .tituloCamp{
-    color:blue;
+    color:#3B6E90;
     font-weight:bold;
     font-size: 20px;
 }
@@ -11,7 +12,7 @@
     margin-top: 10px;
 }
 .contenido{
-    color:blue;
+    color:#3B6E90;
     font-size: 15px;
 }
 .contenido2{
@@ -40,19 +41,19 @@
 .boton {
     margin: 2vw;
     padding: 0.5vw;
-    background-color: #1976d2;
+    background-color: #3B6E90;
     border-radius:0.5vw;
 }
 .tarjetas{
     display: inline-block;
-    height: 40px;
-    width: 200px;
+    height: 50px;
+    width: 225px;
     margin: 2vw;
     padding: 0.5vw;
     border-style: inset;
     border-radius:0.5vw;
     border-width: 2px;
-    border-color: #1976d2;
+    border-color: #3B6E90;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
@@ -72,4 +73,14 @@ th.mat-header-cell{
     height: 100%;
     width: 100%;
     z-index: 1;
+}
+
+.ConjuntoImg{
+    display: inline-block;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.carousel-indicators {
+    z-index: 2 !important;
 }

@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 class ViviendasController extends Controller{
-    
+
     //Mostrar Viviendas en datos en el json
     public function mostrarViviendasJSON(){
         $path = '../python_scraper/ofertas_vivienda.json';
@@ -38,8 +38,8 @@ class ViviendasController extends Controller{
             $response['usuario_ID'] = $user_id;
             $response['vivienda_ID'] = $vivienda -> vivienda_ID;
         }
-        
-        return response() -> json($response); 
+
+        return response() -> json($response);
     }
 
     //Eliminar la relación entre user y vivienda de favoritos
@@ -57,7 +57,7 @@ class ViviendasController extends Controller{
         $respuesta = shell_exec($cmd);
 
         return $respuesta;
-    } 
+    }
 
     //filtros
     //filtro provincia
@@ -66,13 +66,13 @@ class ViviendasController extends Controller{
         $json = file_get_contents($path);
         $array = json_decode($json);
 
-        $filtrado = array_filter($array, function($val) use ($lugar) { 
+        $filtrado = array_filter($array, function($val) use ($lugar) {
             return $val -> lugar == $lugar;
         });
 
-        return response() -> json($filtrado); 
+        return response() -> json($filtrado);
     }
-    
+
     //General
     public function filtroGeneral($lugar, $preciomax, $preciomin, $habitacionesmax , $habitacionesmin, $banosmax , $banosmin, $metros2max, $metros2min, $planta, $compr_alq_compar, $tipo){
 
@@ -148,6 +148,5 @@ class ViviendasController extends Controller{
                 return $val -> tipo == $tipo
             });
         }
-        return response() -> json($array); 
+        return response() -> json($array);
     }
-

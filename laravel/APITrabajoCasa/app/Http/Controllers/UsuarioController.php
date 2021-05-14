@@ -13,7 +13,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 
 class UsuarioController extends Controller
-{   
+{
     /** ------------------- MOSTRAR USUARIOS Y ELIMINAR -----------------------------------------*/
 
     //Obtener todos los usuarios raw
@@ -66,7 +66,7 @@ class UsuarioController extends Controller
                 'experiencia_laboral'    => $request -> experiencia_laboral,
                 'idiomas'    => $request -> idiomas
             ]);
-            
+
         }else{
             $usuario -> update([
                 'nombre'    => $request -> nombre,
@@ -79,7 +79,7 @@ class UsuarioController extends Controller
                 'idiomas'    => $request -> idiomas
             ]);
         }
-        
+
         return response($usuario, 200);
     }
 
@@ -90,11 +90,11 @@ class UsuarioController extends Controller
                 ['message' => 'Usuario no encontrado'], 404
             );
         }
-        
+
         $usuario -> update([
             'password'  => bcrypt($request -> password)
         ]);
-        
+
         return response($usuario, 200);
     }
 
@@ -133,7 +133,7 @@ class UsuarioController extends Controller
                 'fecha_nacimiento' => $fecha_nacimiento,
                 'password'  => bcrypt($request -> password)
             ]);
-    
+
             $response['status'] = 1;
             $response['mensaje'] = "Usuario registrado correctamente";
             $response['codigo'] = 200;

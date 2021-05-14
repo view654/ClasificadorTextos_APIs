@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< Updated upstream
-=======
 
 
 //Funciones de login y registro
@@ -73,5 +71,3 @@ Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Cont
 Route::middleware(['cors'])->group(function () {
     Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
 });
-
->>>>>>> Stashed changes

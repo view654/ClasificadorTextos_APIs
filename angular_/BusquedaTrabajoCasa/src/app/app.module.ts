@@ -1,24 +1,36 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http'
+
 import { AppComponent } from './app.component';
 import { titlebar } from './titlebar/titlebar.component';
 import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
+import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+import { login } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { password } from './password/password.component';
+import { favoritos } from './favoritos/favoritos.component';
+import { sendEmail } from './login/login.component';
 
-
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -26,9 +38,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
+
 /*
 Explicacion del codigo:
-- Por ahora hay una sola ventana que tendra tres ventanas hijas(o almenos eso es lo que entiendo)
 - La ventana sera titlebar.component donde se situara la barra de arriba de la pagina
 - Desde la ventana app.component se accedera por defecto a la ventana titlebar.component y desde ella
     primer.component en la cual se tendra el contenido de su html + el de su padre (El acceso por
@@ -69,10 +81,34 @@ const rutas: Routes = [
         component: perfil
       },
       {
+        path: 'favoritos',
+        component: favoritos
+      },
+      {
         path: 'MostrarInformacionComponent/:id',
         component: MostrarInformacionComponent
+      },
+      {
+        path: 'MostrarTrabajoComponent/:id',
+        component: MostrarTrabajoComponent
+      },
+      {
+        path: 'NotificacionesComponent',
+        component: NotificacionesComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: login
+  },
+  {
+    path: 'RegisterComponent',
+    component: RegisterComponent
+  },
+  {
+    path: 'password',
+    component: password
   }
   
 ]
@@ -84,7 +120,14 @@ const rutas: Routes = [
     titlebar,
     primer,
     perfil,
-    MostrarInformacionComponent
+    MostrarInformacionComponent,
+    login,
+    password,
+    favoritos,
+    MostrarTrabajoComponent,
+    RegisterComponent,
+    NotificacionesComponent,
+    sendEmail
   ],
   imports: [
     BrowserModule,
@@ -93,6 +136,7 @@ const rutas: Routes = [
       paramsInheritanceStrategy: 'always',
       useHash: true
     }),
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -103,7 +147,10 @@ const rutas: Routes = [
     MatNativeDateModule,
     MatCheckboxModule,
     MatRadioModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

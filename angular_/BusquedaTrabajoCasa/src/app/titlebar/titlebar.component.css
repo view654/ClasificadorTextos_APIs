@@ -1,6 +1,4 @@
 
-
-
 .menuLateral{
     position:fixed;
     left: 0;
@@ -12,13 +10,13 @@
   
   }
   
-  
-  
-  
-  
-  
-  
-  
+.boton{
+  margin:1vw; 
+  padding: 2px; 
+  background-color:white; 
+  border-radius:0.25vw; 
+  border-color:antiquewhite;
+}  
   
   
   
@@ -61,16 +59,29 @@
       flex: 1;
     }
   
+    .toolbarB{
+      position: fixed;
+      z-index: 15;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 40px;
+      display: flex;
+      justify-content: space-around;
+      background-color: #3B6E90;
+      color: white;
+      font-weight: 600;
+    }
     .toolbar {
       position: fixed;
-      z-index: 5;
+      z-index: 15;
       top: 0;
       left: 0;
       right: 0;
       height: 60px;
       display: flex;
       align-items: center;
-      background-color: #1976d2;
+      background-color: #3B6E90;
       color: white;
       font-weight: 600;
     }
@@ -99,7 +110,7 @@
       align-items: center;*/
       flex-flow: row;
       flex-wrap: wrap;
-      margin-top: 60px;
+      padding-top: 60px;
       justify-content: center;
       
     }
@@ -167,7 +178,7 @@
     }
   
     .card.highlight-card {
-      background-color: #1976d2;
+      background-color: #3B6E90;
       color: white;
       font-weight: 600;
       border: none;

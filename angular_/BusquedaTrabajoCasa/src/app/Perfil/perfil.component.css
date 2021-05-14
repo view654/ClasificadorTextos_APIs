@@ -29,7 +29,7 @@ p {
     align-items: center;*/
     flex-flow: row;
     flex-wrap: wrap;
-    margin-top: 60px;
+    padding-top: 60px;
     justify-content: center;
     
 }
@@ -39,18 +39,27 @@ p {
 .boton {
     margin: 2vw;
     padding: 0.5vw;
-    background-color: #1976d2;
+    background-color: #3B6E90;
     border-radius:0.5vw;
 }
 .filaCuest{
     margin:1vw;
 }
-
-.tituloCamp{
-    font-weight:bold;
+.titulo{
+    text-align: center;
+    font-size: 16px;
+    margin-right: 10vw;
 }
+.tituloCamp{
+    color:#3B6E90;
+}
+
 .contCamp{
+    border-style: inset;
     border-radius:0.5vw;
-    height: 2vw;
+    /*border-width: 12px;*/
+    /*border-color: #3B6E90;*/
+    padding: 0.5vw;
     width: 20vw;
+    /*width: 33vw;*/
 }
