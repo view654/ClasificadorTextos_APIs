@@ -98,7 +98,6 @@ class UsuarioController extends Controller
         return response($usuario, 200);
     }
 
-
     /** ------------------- FUNCIONES FAVORITOS USUARIOS - TRABAJOS - VIVIENDAS -----------------------------------------*/
 
     //Mostrar trabajos favoritos de usuario
@@ -112,7 +111,6 @@ class UsuarioController extends Controller
         $usuario = User::find($user_id);
         return response() -> json($usuario -> viviendas);
     }
-
 
     /** ------------------- FUNCIONES DE LOGIN Y REGISTRO DE USUARIOS -----------------------------------------*/
 
@@ -173,7 +171,6 @@ class UsuarioController extends Controller
         $response['mensaje'] = "Login correcto";
         return response() -> json($response);
     }
-
 
     public function sendCode($correoUser){
         $codigo = rand(10000,99999);

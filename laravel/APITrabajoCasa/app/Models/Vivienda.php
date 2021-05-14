@@ -22,6 +22,7 @@ class Casa extends Model
         'planta',
         'compr_alq_compar',
         'tipo',
+        'contacto',
         'imagenes'
     ];
     public function usuarios(){
