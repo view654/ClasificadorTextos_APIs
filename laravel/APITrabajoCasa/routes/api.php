@@ -55,7 +55,8 @@ Route::delete('eliminarFavoritoTrabajo/{user_id}/{trabajo_id}', 'App\Http\Contro
 /** --------------------------------VIVIENDAS ----------------------------------------------- */
 
 Route::get('mostrarViviendasJSON', 'App\Http\Controllers\ViviendasController@mostrarViviendasJSON');
-Route::get('mostrarTodasViviendas', 'App\Http\Controllers\ViviendasController@mostrarTodosViviendas');
+
+Route::get('mostrarTodasViviendas', 'App\Http\Controllers\ViviendasController@mostrarTodasViviendas');
 Route::get('ActualizarViviendas', 'App\Http\Controllers\ViviendasController@ActualizarViviendas');
 
 //Funciones filtros
@@ -63,8 +64,8 @@ Route::get('filtroLugar/{lugar}', 'App\Http\Controllers\ViviendasController@filt
 Route::get('filtroGeneral/{lugar?}/{preciomax?}/{preciomin?}/{habitacionesmax?}/{habitacionesmin?}/{banosmax?}/{banosmin?}/{metros2max?}/{metros2min?}/{planta?}/{compr_alq_compar?}/{tipo?}/', 'App\Http\Controllers\ViviendasController@filtroGeneral');
 
 //Funciones de modificacion de la tabla de favoritos
-Route::get('favoritosVivienda/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosVivienda');
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
+Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritasViviendas');
 Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Controllers\ViviendasController@eliminarFavoritoVivienda');
 
 

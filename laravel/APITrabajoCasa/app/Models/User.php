@@ -38,9 +38,10 @@ class User extends Authenticatable implements JWTSubject
     }
 
     public function viviendas(){
-        return $this->belongsToMany(Trabajo::class, 'users_viviendas', 
+        return $this->belongsToMany(Vivienda::class, 'usuario_vivienda', 
         'user_ID', 'vivienda_ID');
     }
+    
 
     public function getJWTIdentifier()
     {
