@@ -24,8 +24,8 @@ class Vivienda extends Model
         'planta',
         'compr_alq_compar',
         'tipo',
-        'imagenes',
-        'contacto'
+        'contacto',
+        'imagenes'
     ];
 
     public function usuarios(){

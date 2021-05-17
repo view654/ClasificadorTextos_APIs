@@ -7,19 +7,30 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+
 class ViviendasController extends Controller
 {
+
+    //Mostrar Viviendas en datos en el json
+
     public function mostrarViviendasJSON(){
         $path = '../python_scraper/ofertas_vivienda.json';
         $json = file_get_contents($path);
         return $json;
     }
 
+
     public function mostrarTodasViviendas(){
         return Vivienda::all();
     }
 
-    //Añadir viviendas a la base de datos
+    //Viviendas en BBDD
+    public function mostrarTodasViviendas(){
+        return Vivienda::all();
+    }
+  
+    //Añadir vivienda a la base de datos, tabla viviendas y a favoritos
+
     public function addVivienda(Request $request, $user_id){
         $enlace_vivienda = Vivienda::where('link', $request['link']) -> first();
         if($enlace_vivienda){
@@ -37,7 +48,7 @@ class ViviendasController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['vivienda_ID'] = $vivienda -> vivienda_ID;
         }
-        
+    
         return response() -> json($response); 
     }
 
@@ -46,14 +57,16 @@ class ViviendasController extends Controller
         $usuario = User::find($user_id);
         $usuario -> viviendas() -> detach($vivienda_id);
     }
+  
     public function ActualizarViviendas(){
         $python = "C:\Python39\python.exe";
 
         $cmd = $python." \"".base_path('python_scraper\actualizarjsonviviendas.py')."\"";
-        dd($cmd);
-        /* $respuesta = shell_exec($cmd);
 
-        return $respuesta; */
+        //dd($cmd);
+        $respuesta = shell_exec($cmd);
+
+        return $respuesta; 
     }
 
     //filtros
@@ -69,7 +82,6 @@ class ViviendasController extends Controller
 
         return response() -> json($filtrado);
     }
-    
 
     //General
     public function filtroGeneral($lugar, $preciomax, $preciomin, $habitacionesmax , $habitacionesmin, $banosmax , $banosmin, $metros2max, $metros2min, $planta, $compr_alq_compar, $tipo){
@@ -80,72 +92,97 @@ class ViviendasController extends Controller
 
         if (!empty($lugar)){
             $array = array_filter($array, function($val) use ($lugar){
+
                 return $val -> lugar == $lugar;
+
             });
         }
 
         if (!empty($preciomax)){
             $array = array_filter($array, function($val) use ($preciomax){
+
                 return $val -> precio <= $preciomax;
+
             });
         }
 
         if (!empty($preciomin)){
             $array = array_filter($array, function($val) use ($preciomin){
+
                 return $val -> precio >= $preciomin;
+
             });
         }
 
         if (!empty($habitacionesmax)){
             $array = array_filter($array, function($val) use ($habitacionesmax){
+
                 return $val -> habitaciones <= $habitacionesmax;
+
             });
         }
         if (!empty($habitacionesmin)){
             $array = array_filter($array, function($val) use ($habitacionesmax){
+
                 return $val -> habitaciones >= $habitacionesmin;
+
             });
         }
 
         if (!empty($banosmax)){
             $array = array_filter($array, function($val) use ($banosmax){
+
                 return $val -> banos <= $banosmax;
+
             });
         }
         if (!empty($banosmin)){
             $array = array_filter($array, function($val) use ($banosmin){
+
                 return $val -> banos >= $banosmin;
+
             });
         }
 
         if (!empty($metros2max)){
             $array = array_filter($array, function($val) use ($metros2max){
+
                 return $val -> metros2 <= $metros2max;
+
             });
         }
         if (!empty($metros2min)){
             $array = array_filter($array, function($val) use ($metros2min){
+
                 return $val -> metros2 >= $metros2min;
+
             });
         }
 
         if (!empty($planta)){
             $array = array_filter($array, function($val) use ($planta){
+
                 return $val -> planta == $planta;
+
             });
         }
 
         if (!empty($compr_alq_compar)){
             $array = array_filter($array, function($val) use ($compr_alq_compar){
+
                 return $val -> compr_alq_compar == $compr_alq_compar;
+
             });
         }
 
         if (!empty($tipo)){
             $array = array_filter($array, function($val) use ($tipo){
+
                 return $val -> tipo == $tipo;
+
             });
         }
         return response() -> json($array);
     }
+
 }
