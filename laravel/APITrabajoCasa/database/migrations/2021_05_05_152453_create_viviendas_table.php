@@ -15,16 +15,17 @@ class CreateViviendasTable extends Migration
     {
         Schema::create('viviendas', function (Blueprint $table) {
             $table->increments('vivienda_ID');
-            $table->string('link', 100);
-            $table->string('lugar', 100);
-            $table->integer('precio');
-            $table->string('habitaciones', 100);
-            $table->string('banos', 100);
-            $table->string('metros2', 100);
-            $table->string('planta', 100);
-            $table->string('tipo', 100);
-            $table->string('compr_alq_compar', 100);
-            $table->text('imagenes');
+            $table->string('link', 100)->nullable();
+            $table->string('lugar', 100)->nullable();
+            $table->decimal('precio')->nullable();
+            $table->string('habitaciones', 100)->nullable();
+            $table->string('banos', 100)->nullable();
+            $table->string('metros2', 100)->nullable();
+            $table->string('planta', 100)->nullable();
+            $table->string('tipo', 100)->nullable();
+            $table->string('compr_alq_compar', 100)->nullable();
+            $table->text('imagenes')->nullable();
+            $table->string('contacto', 100)->nullable();
         });
     }
 
