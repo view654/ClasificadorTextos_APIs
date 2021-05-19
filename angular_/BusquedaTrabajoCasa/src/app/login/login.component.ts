@@ -60,9 +60,9 @@ export class login implements OnInit {
   }
 
   sendEmail() {
-    this.dataService.sendCode('clxudiajazmin@gmail.com').subscribe((res:any) => {
-      this.codigo = res
-      console.log(this.codigo);
+    var correo = 'patricia2291997@gmail.com'
+    this.dataService.sendCode(correo).subscribe((res:any) => {
+      console.log(res.data.token);
     });
     const dialogRef = this.dialog.open(sendEmail, {
       width: '250px',
@@ -72,7 +72,7 @@ export class login implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if(this.codigo==result){
-        this.router.navigate(['/password']);
+        this.router.navigate(['/password',correo]);
       }
       
     });

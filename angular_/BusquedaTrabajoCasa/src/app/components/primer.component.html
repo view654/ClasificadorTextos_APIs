@@ -1,7 +1,74 @@
 <div class="content">
-    <div *ngIf="isSearch" class=menuLateral><p>Filtros</p></div>
-    <div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">
-      &nbsp;
+    <div *ngIf="isSearch" class=menuLateral>
+      <!--<div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">-->
+      <div *ngIf="trabajo!='trabajo'; else filtrosTr"style="width:100%;">
+        <h1>Vivienda</h1>
+        <br>
+        <p>Precio</p>
+        <section class="example-section">
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" [(ngModel)]="value">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Min value</mat-label>
+            <input matInput type="number" [(ngModel)]="min">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Max value</mat-label>
+            <input matInput type="number" [(ngModel)]="max">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Step size</mat-label>
+            <input matInput type="number" [(ngModel)]="step">
+          </mat-form-field>
+        </section>
+        <mat-card class="example-result-card">
+          
+          <mat-card-content>        
+            <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
+              <h1>{{filtros.viviendaPrecio}}</h1>
+            </div>
+            <mat-slider
+                class="example-margin"
+                [invert]="false"
+                [max]="max"
+                [min]="min"
+                [step]="step"
+                [thumbLabel]="true"
+                [(ngModel)]="filtros.viviendaPrecio"
+                aria-labelledby="example-name-label">
+            </mat-slider>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <ng-template #filtrosTr style="width:100%;">
+        <h1>Trabajo</h1>
+        <br>
+        <p>Provincia: {{filtros.trabajoProvincia}}</p>
+        <mat-form-field style="height: 3.4vw" fill>
+          <mat-label>Filtro</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let provincia of arrayProvincias; let i=index" [value] = i>{{provincia}}</mat-option>
+                     
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <br>
+        <p>Jornada: {{filtros.trabajoJornada}}</p>
+        <mat-form-field style="height: 3.4vw" fill>
+          <mat-label>Filtro</mat-label>
+          <mat-select>
+            <mat-option [value] = 1>Cualquiera</mat-option>
+            <mat-option [value] = 2>Completa</mat-option>    
+            <mat-option [value] = 3>Media</mat-option>  
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <br>
+        <p>Contrato: {{filtros.trabajoContrato}}</p>
+        
+      </ng-template>
     </div>
     <div style="height: 90%; margin: 2vw; margin-right: 4vw; text-align:center; max-width: 70vw; min-width: 500px;">
       <div class="card highlight-card card-small">
@@ -18,15 +85,6 @@
         </section>
         <div style="margin:2vw;">
           
-          
-          <mat-form-field style="height: 3.4vw" fill>
-            <mat-label>Filtro</mat-label>
-            <mat-select>
-            <mat-option [value] = 1>Sueldo</mat-option>
-            <mat-option [value] = 2>Lugar</mat-option>                
-            
-            </mat-select>
-          </mat-form-field>
           <!--
           <label for="cars">Parametros</label>
           <select id="cars" name="cars">

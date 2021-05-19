@@ -1,7 +1,8 @@
 import { Usuario } from '../components/usuario_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
-import { Notificacion } from '../components/notificaciones'
+import { Filtro } from '../components/filtro_interfaz';
+import { Notificacion } from '../components/notificaciones';
 
 export const variablesdeidentificacion = {
 
@@ -117,22 +118,9 @@ export const variablesdeidentificacion = {
     Email:"email@email.com"
   }
   ],
-  trabajos: <Trabajo[]>[
-  {
-    ID:1,
-    Titulo:"Distribuidor",
-    Enlace:"",
-    Jornada:"string",
-    Contrato:"string",
-    Salario:"string",
-    Experiencia:"string",
-    Funciones:"string",
-    Requisitos:"string",
-    Ofrece:"string",
-    Area:"string",
-    Localidad:"string"
-  }
-  ],
+
+  trabajos: <Trabajo[]> null,
+
   Notificaciones: <Notificacion[]>[
   {
     titulo:"Bienvenido a la familia de Rejob!",
@@ -148,7 +136,27 @@ export const variablesdeidentificacion = {
   },
   cerrarSesion(){
     this.user=null;
+  },
+
+  filtros: <Filtro[]>
+  [
+    {
+      trabajoProvincia: null,
+      trabajoJornada: null,
+      trabajoContrato: null,
+      viviendaPrecio: 100
+      //viviendaM: null
+    }
+  ],
+  getjobs(){
+    this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
+      console.log(res);
+      this.trabajos=res;
+      console.log(this.trabajos);
+  });
   }
+
+
 };
 
 

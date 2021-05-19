@@ -21,14 +21,23 @@ p {
 }
 
 .menuLateral{
+    z-index: 1;
     position:fixed;
     left: 0;
     width:200px;
     max-width: 200px;
     min-width: 200px;
     height:90%;
-    background-color:rgb(5, 155, 147);
+    padding:1vw;
+    background-color:rgb(201, 238, 236);
   
+}
+.example-margin-bar{
+  max-width: 75px;
+  min-width: 75px;
+}
+.example-margin{
+  z-index: 2;
 }
 
 .toolbar {
