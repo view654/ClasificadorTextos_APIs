@@ -128,6 +128,8 @@ class TrabajosController extends Controller
             $filtro = array_filter($array, function($val) use ($provincia) { 
                 return  $val -> localidad == $provincia;
             });
+        }else{
+            $filtro = json_decode($json);
         }
 
         if($contrato){
