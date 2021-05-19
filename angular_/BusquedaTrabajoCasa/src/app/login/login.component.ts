@@ -60,9 +60,12 @@ export class login implements OnInit {
   }
 
   sendEmail() {
+
     var correo = 'patricia2291997@gmail.com'
+
     this.dataService.sendCode(correo).subscribe((res:any) => {
-      console.log(res.data.token);
+      this.codigo = res
+      console.log(this.codigo);
     });
     const dialogRef = this.dialog.open(sendEmail, {
       width: '250px',
