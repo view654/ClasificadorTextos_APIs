@@ -17,13 +17,11 @@ class TrabajosController extends Controller
         return $json;
     }
 
-
     /** ------------------- MOSTRAR DATOS ALMACENADOS EN LA BASE DE DATOS -----------------------------------------*/
     
     public function mostrarTodosTrabajos(){
         return Trabajo::all();
     }
-
 
     /** ------------------- FAVORITOS - RELACION CON USUARIOS-----------------------------------------*/
 
@@ -45,7 +43,6 @@ class TrabajosController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['trabajo_ID'] = $trabajo -> trabajo_ID;
         }
-        
         return response() -> json($response); 
     }
 
@@ -55,7 +52,6 @@ class TrabajosController extends Controller
         $usuario -> trabajos() -> detach($trabajo_id);
     }
 
-    
     /** ------------------- REALIZAR SCRIPTS DE PYTHON -----------------------------------------*/
 
     //Scrapper de Python para descargar los trabajos
@@ -132,6 +128,8 @@ class TrabajosController extends Controller
             $filtro = array_filter($array, function($val) use ($provincia) { 
                 return  $val -> localidad == $provincia;
             });
+        }else{
+            $filtro = json_decode($json);
         }
 
         if($contrato){
@@ -149,8 +147,5 @@ class TrabajosController extends Controller
         return response() -> json($filtro); 
         
     }
-
-
-
 
 }
