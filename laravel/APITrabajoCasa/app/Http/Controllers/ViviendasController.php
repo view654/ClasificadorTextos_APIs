@@ -20,10 +20,6 @@ class ViviendasController extends Controller
     }
 
 
-    public function mostrarTodasViviendas(){
-        return Vivienda::all();
-    }
-
     //Viviendas en BBDD
     public function mostrarTodasViviendas(){
         return Vivienda::all();
@@ -84,105 +80,114 @@ class ViviendasController extends Controller
     }
 
     //General
-    public function filtroGeneral($lugar, $preciomax, $preciomin, $habitacionesmax , $habitacionesmin, $banosmax , $banosmin, $metros2max, $metros2min, $planta, $compr_alq_compar, $tipo){
-
+    public function filtroGeneralViviendas($lugar = null, $preciomax= null, $preciomin= null, $habitacionesmax = null, $habitacionesmin= null, $banosmax = null, $banosmin= null, $metros2max= null, $metros2min= null, $planta= null, $compr_alq_compar= null, $tipo= null){
         $path = '../python_scraper/ofertas_vivienda.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
+        $filtro = '';
 
-        if (!empty($lugar)){
-            $array = array_filter($array, function($val) use ($lugar){
-
+        if ($lugar){
+            $filtro = array_filter($array, function($val) use ($lugar){
                 return $val -> lugar == $lugar;
+                
+            });
+        }else{
+            $filtro = json_decode($json);
+        }
+
+        if ($preciomax){
+            $filtro = array_filter($filtro, function($val) use ($preciomax){
+                $preciosinsimbolo = rtrim($preciomax, " €");
+                $intprecio = intval($preciosinsimbolo);
+                return $val -> precio <= $intprecio;
 
             });
         }
 
-        if (!empty($preciomax)){
-            $array = array_filter($array, function($val) use ($preciomax){
-
-                return $val -> precio <= $preciomax;
-
-            });
-        }
-
-        if (!empty($preciomin)){
-            $array = array_filter($array, function($val) use ($preciomin){
-
-                return $val -> precio >= $preciomin;
+        if ($preciomin){
+            $filtro = array_filter($filtro, function($val) use ($preciomin){
+                $preciosinsimbolo = rtrim($preciomin, " €");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> precio >= $intprecio;
 
             });
         }
 
-        if (!empty($habitacionesmax)){
-            $array = array_filter($array, function($val) use ($habitacionesmax){
-
-                return $val -> habitaciones <= $habitacionesmax;
-
+        if ($habitacionesmax){
+            $filtro = array_filter($filtro, function($val) use ($habitacionesmax){
+                $preciosinsimbolo = rtrim($habitacionesmax, " habs.");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> habitaciones <= $intprecio;
             });
         }
-        if (!empty($habitacionesmin)){
-            $array = array_filter($array, function($val) use ($habitacionesmax){
-
-                return $val -> habitaciones >= $habitacionesmin;
-
-            });
-        }
-
-        if (!empty($banosmax)){
-            $array = array_filter($array, function($val) use ($banosmax){
-
-                return $val -> banos <= $banosmax;
-
-            });
-        }
-        if (!empty($banosmin)){
-            $array = array_filter($array, function($val) use ($banosmin){
-
-                return $val -> banos >= $banosmin;
+        if ($habitacionesmin){
+            echo($habitacionesmin);
+            $filtro = array_filter($filtro, function($val) use ($habitacionesmin){
+                $preciosinsimbolo = rtrim($habitacionesmin, " habs.");
+                $intprecio = intval($preciosinsimbolo);  
+                echo($intprecio);
+                return $val -> habitaciones >= $intprecio;
 
             });
         }
 
-        if (!empty($metros2max)){
-            $array = array_filter($array, function($val) use ($metros2max){
-
-                return $val -> metros2 <= $metros2max;
-
-            });
-        }
-        if (!empty($metros2min)){
-            $array = array_filter($array, function($val) use ($metros2min){
-
-                return $val -> metros2 >= $metros2min;
+        if ($banosmax){
+            $filtro = array_filter($filtro, function($val) use ($banosmax){
+                $preciosinsimbolo = rtrim($banosmax, " baños");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> banos <= $intprecio;
 
             });
         }
+        if ($banosmin){
+            $filtro = array_filter($filtro, function($val) use ($banosmin){
+                $preciosinsimbolo = rtrim($banosmin, " baños");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> banos >= $intprecio;
 
-        if (!empty($planta)){
-            $array = array_filter($array, function($val) use ($planta){
+            });
+        }
 
+        if ($metros2max){
+            $filtro = array_filter($filtro, function($val) use ($metros2max){
+                $preciosinsimbolo = rtrim($metros2max, " m²");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> metros2 <= $intprecio;
+
+            });
+        }
+        if ($metros2min){
+            $filtro = array_filter($filtro, function($val) use ($metros2min){
+                $preciosinsimbolo = rtrim($metros2min, " m²");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> metros2 >= $intprecio;
+
+            });
+        }
+
+        if ($planta){
+            $filtro = array_filter($filtro, function($val) use ($planta){
                 return $val -> planta == $planta;
 
             });
         }
 
-        if (!empty($compr_alq_compar)){
-            $array = array_filter($array, function($val) use ($compr_alq_compar){
+        if ($compr_alq_compar){
+            $filtro = array_filter($filtro, function($val) use ($compr_alq_compar){
 
                 return $val -> compr_alq_compar == $compr_alq_compar;
 
             });
         }
 
-        if (!empty($tipo)){
-            $array = array_filter($array, function($val) use ($tipo){
+        if ($tipo){
+            $filtro = array_filter($filtro, function($val) use ($tipo){
 
                 return $val -> tipo == $tipo;
 
             });
         }
-        return response() -> json($array);
+        return response() -> json($filtro);
     }
 
 }
