@@ -20,7 +20,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   constructor(private _Activatedroute:ActivatedRoute) { 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.trabajos.length; i++) {
-      if(this.trabajos[i].ID == parseInt(this.id, 10)){
+      if(this.trabajos[i].enlace == this.id){
         this.trabajo_selec=this.trabajos[i];
 
       }
@@ -29,7 +29,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
   
   deftrabajo_selec(trabajo_seleccionada:Trabajo): void{
-  this.trabajo_selec = trabajo_seleccionada;
+    this.trabajo_selec = trabajo_seleccionada;
   }
 
   ngOnInit(): void {

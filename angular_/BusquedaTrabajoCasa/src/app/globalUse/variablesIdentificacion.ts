@@ -144,16 +144,12 @@ export const variablesdeidentificacion = {
       trabajoProvincia: null,
       trabajoJornada: null,
       trabajoContrato: null,
-      viviendaPrecio: 100
+      viviendaPrecio: 1000
       //viviendaM: null
     }
   ],
-  getjobs(){
-    this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
-      console.log(res);
-      this.trabajos=res;
-      console.log(this.trabajos);
-  });
+  getjobs(trabajos){
+    this.trabajos = trabajos;
   }
 
 

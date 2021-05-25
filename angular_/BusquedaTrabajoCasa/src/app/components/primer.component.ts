@@ -31,17 +31,26 @@ export class primer{
 
     autoTicks = false;
     invert = false;
-    max = 100;
-    min = 0;
-    step = 1;
+    max = 100000;
+    min = 1000;
+    step = 1000;
     value = 0;
   
     constructor(private dataService:DataService){
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
-        variablesdeidentificacion.getjobs();
+        this.getjobs();
         //this.user = this.rutaActiva.snapshot.params.user
-    }    
+    }   
+    getjobs(){
+        this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
+          console.log(res);
+          this.trabajos=res;
+          console.log(this.trabajos);
+          variablesdeidentificacion.getjobs(res);
+      });
+    }
+     
 
 }
