@@ -136,8 +136,9 @@
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos">
             <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
-              <p>Trabajo: {{trabajo.titulo}}</p>
-              <p>Enlace: {{trabajo.enlace}}</p>
+              <p>{{trabajo.titulo}}</p>
+              <p>Área: {{trabajo.area}}</p>
+              <p>Localidad: {{trabajo.localidad}}</p>
             </div>
           </div>
           <div class="tarjetas"></div>
