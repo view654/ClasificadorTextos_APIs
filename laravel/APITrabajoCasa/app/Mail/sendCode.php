@@ -12,15 +12,17 @@ class sendCode extends Mailable
     use Queueable, SerializesModels;
 
     public $subject = "Recuperar contraseña";
+    public $codigo;
+    
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($codigo)
     {
-        //
+        $this -> codigo = $codigo;
     }
 
     /**
@@ -28,6 +30,11 @@ class sendCode extends Mailable
      *
      * @return $this
      */
+
+
+
+    
+
     public function build()
     {
         return $this->view('emails.sendCodeView');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Mail;
+use App\Mail\sendCode;
 use App\Models\User;
 use App\Models\Trabajo;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -11,19 +13,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use DB;
 
 class UsuarioController extends Controller
-{   
-
-    //Mostrar trabajos favoritos de usuario
-    public function favoritosTrabajo($user_id){
-        $usuario = User::find($user_id);
-        return response() -> json($usuario -> trabajos);
-    }
-
-    //Mostrar viviendas favoritas de usuario
-    public function favoritasViviendas($user_id){
-        $usuario = User::find($user_id);
-        return response() -> json($usuario -> viviendas);
-    }
+{
+    /** ------------------- MOSTRAR USUARIOS Y ELIMINAR -----------------------------------------*/
 
     //Obtener todos los usuarios raw
     function getData(){
@@ -52,6 +43,9 @@ class UsuarioController extends Controller
         return response() -> json($usuario::find($user_id), 200);
     }
 
+
+    /** ------------------- MODIFICAR DATOS DE USUARIOS -----------------------------------------*/
+
     //Modificar información de Usuario
     public function modificarUsuarioId(Request $request, $user_id){
         $usuario = User::find($user_id);
@@ -72,7 +66,7 @@ class UsuarioController extends Controller
                 'experiencia_laboral'    => $request -> experiencia_laboral,
                 'idiomas'    => $request -> idiomas
             ]);
-            
+
         }else{
             $usuario -> update([
                 'nombre'    => $request -> nombre,
@@ -85,9 +79,40 @@ class UsuarioController extends Controller
                 'idiomas'    => $request -> idiomas
             ]);
         }
-        
+
         return response($usuario, 200);
     }
+
+    public function modificarContrasena(Request $request, $user_id){
+        $usuario = User::find($user_id);
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+
+        $usuario -> update([
+            'password'  => bcrypt($request -> password)
+        ]);
+
+        return response($usuario, 200);
+    }
+
+    /** ------------------- FUNCIONES FAVORITOS USUARIOS - TRABAJOS - VIVIENDAS -----------------------------------------*/
+
+    //Mostrar trabajos favoritos de usuario
+    public function favoritosTrabajo($user_id){
+        $usuario = User::find($user_id);
+        return response() -> json($usuario -> trabajos);
+    }
+
+    //Mostrar viviendas favoritas de usuario
+    public function favoritosViviendas($user_id){
+        $usuario = User::find($user_id);
+        return response() -> json($usuario -> viviendas);
+    }
+
+    /** ------------------- FUNCIONES DE LOGIN Y REGISTRO DE USUARIOS -----------------------------------------*/
 
     //Registro
     public function registro(Request $request){
@@ -106,7 +131,7 @@ class UsuarioController extends Controller
                 'fecha_nacimiento' => $fecha_nacimiento,
                 'password'  => bcrypt($request -> password)
             ]);
-    
+
             $response['status'] = 1;
             $response['mensaje'] = "Usuario registrado correctamente";
             $response['codigo'] = 200;
@@ -148,10 +173,11 @@ class UsuarioController extends Controller
     }
 
     public function sendCode($correoUser){
-        $correo = new sendCode;
+        $codigo = rand(10000,99999);
+        $correo = new sendCode($codigo);
         #$correoUser = 'patricia2291997@gmail.com';
         Mail::to($correoUser)->send($correo);
-        return "Mensaje enviado";
+        return $codigo;
     }
 
 }
