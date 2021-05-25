@@ -8,6 +8,7 @@ export class DataService {
 
 
   constructor(private httpClient:HttpClient) {}
+  //USUARIOS
   getData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
   }
@@ -33,6 +34,7 @@ export class DataService {
     return this.httpClient.post('http://127.0.0.1:8000/api/registro',datos);
   }
 
+  //MAIL
   sendCode(correo){
     var dir:string = 'http://127.0.0.1:8000/api/sendCode/';
     dir = dir.concat(correo);
@@ -40,4 +42,17 @@ export class DataService {
     return this.httpClient.get(dir);
   }
 
+  //Viviendas
+  mostrarTodasViviendas(){
+    var dir:string = 'http://127.0.0.1:8000/api/mostrarViviendasJSON/';
+    console.log(dir);
+    return this.httpClient.get(dir);
+  }
+
+    //Viviendas
+    mostrarTodosTrabajos(){
+      var dir:string = 'http://127.0.0.1:8000/api/mostrarTrabajosJSON/';
+      console.log(dir);
+      return this.httpClient.get(dir);
+    }
 }

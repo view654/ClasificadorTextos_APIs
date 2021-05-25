@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
-
+import { Trabajo } from '../components/trabajo_interfaz';
+import { DataService } from 'src/app/service/data.service';
 
 @Component({
     selector: 'primer',
@@ -18,10 +20,28 @@ export class primer{
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
-    casas: Casa[] = variablesdeidentificacion.casas;
+    public arrayProvincias:string[] = ['Albacete','Alicante','Almería','Álava','Asturias','Ávila','Badajoz','Balears','Barcelona','Bizkaia','Burgos','Cáceres','Cádiz','Cantabria',
+        'Castellón','Ciudad Real','Córdoba','Coruña','Cuenca','Gipuzkoa','Girona','Granada','Guadalajara','Huelva','Huesca','Jaén','León','Lleida','Lugo','Madrid',
+        'Málaga','Murcia','Navarra','Ourense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Santa Cruz de Tenerife','Segovia','Sevilla','Soria','Tarragona',
+        'Teruel','Toledo','Valencia','Valladolid','Zamora','Zaragoza','Ceuta','Melilla'];
 
-    constructor(){
+    casas: Casa[] = variablesdeidentificacion.casas;
+    trabajos: Trabajo[]
+    filtros: Filtro[] = variablesdeidentificacion.filtros;
+
+    autoTicks = false;
+    invert = false;
+    max = 100;
+    min = 0;
+    step = 1;
+    value = 0;
+  
+    constructor(private dataService:DataService){
         console.log("Componente primer cargado!!");        
     }
+    ngOnInit() {
+        variablesdeidentificacion.getjobs();
+        //this.user = this.rutaActiva.snapshot.params.user
+    }    
 
 }
