@@ -22,8 +22,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   id:string;
   casas: Casa[] = variablesdeidentificacion.casas;
   
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
-  
+  //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
+  images:string[]
   constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute) {
 
     /*this.ngbCarouselConfig.interval = 10000;
@@ -33,8 +33,20 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     */
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.casas.length; i++) {
-      if(this.casas[i].ID == parseInt(this.id, 10)){
+      if(this.casas[i].link == this.id){
+        //parseInt(this.id, 10)
         this.casa_selec=this.casas[i];
+        console.log('this.casa_selec.imagenes');
+        console.log(this.casa_selec.imagenes);
+        this.images=this.casa_selec.imagenes.split('\[\'');
+        console.log('this.images1');
+        console.log(this.images);
+        this.images=this.images[1].split('\'\]');
+        console.log('this.images2');
+        console.log(this.images);
+        this.images = this.images[0].split('\', \'');
+        console.log('this.images');
+        console.log(this.images);
 
       }
     }

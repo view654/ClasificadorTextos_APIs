@@ -69,7 +69,7 @@
           <mat-select>
             <mat-option [value] = 1>Cualquiera</mat-option>
             <mat-option [value] = 2>Completa</mat-option>    
-            <mat-option [value] = 3>Media</mat-option>  
+            <mat-option [value] = 3>Parcial</mat-option>  
           </mat-select>
         </mat-form-field>
         <br>
@@ -128,8 +128,9 @@
       <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas">
-            <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class="tarjetas" >
-              {{casa.Lugar}}
+            <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+              {{casa.planta}}
+              {{casa.precio}}
             </div>
           </div>
         </ng-container>
