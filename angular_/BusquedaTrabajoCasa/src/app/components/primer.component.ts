@@ -59,6 +59,12 @@ export class primer{
             this.trabajos = Object.values(res);
             variablesdeidentificacion.getjobs(Object.values(res));
         })
+
+        this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
+            this.casas = Object.values(res);
+            /* console.log(this.casas);
+            variablesdeidentificacion.getcasas(Object.values(res)); */
+        })
     }
      
 

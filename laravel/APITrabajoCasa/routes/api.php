@@ -63,6 +63,8 @@ Route::get('ActualizarViviendas', 'App\Http\Controllers\ViviendasController@Actu
 
 //Funciones filtros
 Route::get('filtroLugar/{lugar}', 'App\Http\Controllers\ViviendasController@filtroLugar');
+Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
+
 
 //Funciones de modificacion de la tabla de favoritos
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');

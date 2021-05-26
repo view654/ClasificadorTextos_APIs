@@ -62,7 +62,12 @@ export class DataService {
       query.replace('/', '');
       query.replace('%', '');
       dir = dir.concat(query);
-      console.log(dir)
+      return this.httpClient.get(dir);
+    }
+
+    filtroBusquedaVivienda(query){
+      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaVivienda/';
+      dir = dir.concat(query);
       return this.httpClient.get(dir);
     }
 }

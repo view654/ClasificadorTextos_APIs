@@ -152,6 +152,8 @@ export const variablesdeidentificacion = {
     this.trabajos = trabajos;
   }
 
+  
+
 
 };
 
