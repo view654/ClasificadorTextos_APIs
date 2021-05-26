@@ -142,7 +142,8 @@
         </ng-container>
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos">
-            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+            <div (click)="abrirOferta(trabajo)"  class="tarjetas">
+              
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>

@@ -4,6 +4,7 @@ import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
 import { DataService } from 'src/app/service/data.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'primer',
@@ -37,14 +38,23 @@ export class primer{
     step = 1000;
     value = 0;
   
-    constructor(private dataService:DataService){
+    constructor(private dataService:DataService, public router:Router){
+        
         console.log("Componente primer cargado!!");        
     }
+    
     ngOnInit() {
         this.getjobs();
         this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
-    }   
+    }
+    
+    abrirOferta(trabajo){
+        const url =this.router.serializeUrl(this.router.createUrlTree(['../MostrarTrabajoComponent',trabajo.enlace]));
+        console.log(url)
+        window.open(url, "_blank");
+    }
+
     getjobs(){
         this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
           //console.log(res);
