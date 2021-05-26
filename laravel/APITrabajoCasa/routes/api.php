@@ -44,6 +44,8 @@ Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosControll
 Route::get('filtroJornada/{jornada}', 'App\Http\Controllers\TrabajosController@filtroJornada');
 Route::get('filtroContrato/{contrato}', 'App\Http\Controllers\TrabajosController@filtroContrato');
 Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
+Route::get('filtroBusqueda/{request?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
+
 
 
 //Funciones de Favoritos o tabla intermedia de usuarios y trabajos

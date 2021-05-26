@@ -7,6 +7,8 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 class TrabajosController extends Controller
 {
     /** ------------------- MOSTRAR DATOS DESCARGADOS POR WEBSCRAPING -----------------------------------------*/
@@ -146,6 +148,23 @@ class TrabajosController extends Controller
 
         return response() -> json($filtro); 
         
+    }
+
+    public function filtroBusqueda($request = null){
+        $path = '../python_scraper/ofertas_trabajo.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
+
+        $filtrado = array_filter($array, function($val) use ($request) { 
+            $comprobar = Str::contains(strtolower($val -> titulo), strtolower($request));
+            if ($comprobar) {
+                return $val -> titulo;
+            }
+            
+        });
+
+        return response() -> json($filtrado); 
+
     }
 
 }

@@ -62,6 +62,7 @@ export class login implements OnInit {
   sendEmail() {
 
     var correo = 'patricia2291997@gmail.com'
+
     document.body.style.cursor = "progress";
     this.dataService.sendCode(correo).subscribe((res:any) => {
       
@@ -79,6 +80,7 @@ export class login implements OnInit {
         }
         
       });
+
     });
 
 

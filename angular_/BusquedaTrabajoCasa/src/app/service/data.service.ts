@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,15 @@ export class DataService {
     mostrarTodosTrabajos(){
       var dir:string = 'http://127.0.0.1:8000/api/mostrarTrabajosJSON/';
       console.log(dir);
+      return this.httpClient.get(dir);
+    }
+
+    filtroBusqueda(query){
+      var dir:string = 'http://127.0.0.1:8000/api/filtroBusqueda/';
+      query.replace('/', '');
+      query.replace('%', '');
+      dir = dir.concat(query);
+      console.log(dir)
       return this.httpClient.get(dir);
     }
 }

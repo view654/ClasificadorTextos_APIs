@@ -8,7 +8,7 @@
         <section class="example-section">
           <mat-form-field class="example-margin-bar">
             <mat-label>Value</mat-label>
-            <input matInput type="number" [(ngModel)]="value">
+            <input matInput type="number" [(ngModel)]="filtros.viviendaPrecio">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Min value</mat-label>
@@ -41,6 +41,11 @@
             </mat-slider>
           </mat-card-content>
         </mat-card>
+        <p>Nº de habitaciones</p>
+        <mat-form-field class="example-margin-bar">
+          <mat-label>Nº de habitaciones</mat-label>
+          <input matInput type="number" [(ngModel)]="habitaciones">
+        </mat-form-field>
       </div>
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
@@ -61,12 +66,12 @@
           <mat-select>
             <mat-option [value] = 1>Cualquiera</mat-option>
             <mat-option [value] = 2>Completa</mat-option>    
-            <mat-option [value] = 3>Media</mat-option>  
+            <mat-option [value] = 3>Parcial</mat-option>  
           </mat-select>
         </mat-form-field>
         <br>
         <br>
-        <p>Contrato: {{filtros.trabajoContrato}}</p>
+        <!--<p>Contrato: {{filtros.trabajoContrato}}</p>-->
         
       </ng-template>
     </div>
@@ -119,14 +124,38 @@
       </ng-container>
       <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
-          <div *ngFor="let casa of casas">
-            <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class="tarjetas" >
-              {{casa.Lugar}}
+          <div *ngFor="let casa of casas; let i = index">
+            <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+              <h2>m2: {{casa.metros2}}</h2>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <img [src]="images[i][0]" alt="No hay foto" width="275" height="175">
+              </div>
+              <div style="display: inline-block; height: 100%; width: 60%;">
+                <h3>Precio: {{casa.precio}} | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
+                <p>Habitaciones: {{casa.habitaciones}}</p>
+                <p>Baños: {{casa.banos}}</p>
+                <p>Tipo: {{casa.tipo}}</p>
+              </div>
             </div>
           </div>
         </ng-container>
         <ng-template #dispTrabajos>
-          <div [routerLink]="['../MostrarTrabajoComponent',1]"  class="tarjetas"></div>
+          <div *ngFor="let trabajo of trabajos">
+            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+              <h2>{{trabajo.titulo}}</h2>
+              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <p>Contrato: {{trabajo.contrato}}</p>
+                <p>Localidad: {{trabajo.localidad}}</p>
+                <p>Salario: {{trabajo.salario}}</p>
+              </div>
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                <p>{{trabajo.funciones}}</p>
+              </div>
+            </div>
+          </div>
           <div class="tarjetas"></div>
         </ng-template>
         

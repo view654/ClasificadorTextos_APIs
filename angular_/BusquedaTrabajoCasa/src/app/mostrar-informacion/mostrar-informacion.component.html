@@ -7,10 +7,13 @@
         </div>
         
         <div class="losTresContenedores">
+            <img [src]="images[0]" alt="Random first slide" width="350" height="200">
+            <!--
             <svg xmlns="http://www.w3.org/2000/svg" width="15vw" height="15vw" style="min-height: 14vw !important; min-width:14vw !important;" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
                 <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                 <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
             </svg>
+            -->
             <br/>
             <button class=boton  (click)="favoritos=!favoritos">Añadir favoritos
                 <svg xmlns="http://www.w3.org/2000/svg"  *ngIf="!favoritos; else favorito" style="margin-left: 5px;" width="10px" height="10px" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -32,23 +35,23 @@
                 </tr>
                 <tr>
                     <th><label class="contenido">Ubicacion</label></th>
-                    <th><label class="contenido2">{{casa_selec.Lugar}}</label></th>
+                    <th><label class="contenido2">{{casa_selec.lugar}}</label></th>
                 </tr>
                 <tr>
                     <th><label class="contenido">M<sup>2</sup></label></th>
-                    <th><label class="contenido2">{{casa_selec.M2}}</label></th>
+                    <th><label class="contenido2">{{casa_selec.metros2}}</label></th>
                 </tr>
                 <tr>
                     <th><label class="contenido">Tipo</label></th>
-                    <th><label class="contenido2">{{casa_selec.Tipo}}</label></th>
+                    <th><label class="contenido2">{{casa_selec.tipo}}</label></th>
                 </tr>
                 <tr>
                     <th><label class="contenido">Opcion</label></th>
-                    <th><label class="contenido2">{{casa_selec.Compr_alq_compar}}</label></th>
+                    <th><label class="contenido2">{{casa_selec.compr_alq_compar}}</label></th>
                 </tr>
                 <tr>
                     <th><label class="contenido">Precio</label></th>
-                    <th><label class="contenido2">{{casa_selec.Precio}}</label></th>
+                    <th><label class="contenido2">{{casa_selec.precio}}</label></th>
                 </tr>
             </table>
         </div>
@@ -63,19 +66,19 @@
         </div>
     </div>
     <div style="text-align: center;">
-        <div style="height: 10vw;width: 100%; min-width:605px; min-height:235px;">
+        <div style="height: 300px;width: 100%; min-width:605px; min-height:300px;">
             <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
                 <label class="tituloCamp">Galeria</label>
                 <hr/>
             </div>
             <!-- __________________________________Galeria_______________________________________________ -->
 
-            <ngb-carousel *ngIf="images" style="background-color: rgba(59,110,144,0.8); height: 10vw;width: 100%; min-width:585px; min-height:135px;">
-                <ng-template ngbSlide *ngFor="let imagen of images | slice:0:(images.length/2+1); let i=index">
+            <ngb-carousel *ngIf="images" style="background-color: rgba(59,110,144,0.8); height: 200px;width: 100%; min-width:585px; min-height:200px;">
+                <ng-template ngbSlide *ngFor="let imagen of images | slice:0:(images.length/3+1); let i=index">
                     
-                    <div class="ConjuntoImg" *ngFor="let imagen of images | slice:i*2:i*2+2; let ii=index;">
+                    <div class="ConjuntoImg" *ngFor="let imagen of images | slice:i*3:i*3+3; let ii=index;">
                         <div class="picsum-img-wrapper">
-                            <img [src]="imagen" alt="Random first slide">
+                            <img [src]="imagen" alt="Random first slide" width="300" height="200">
                         </div>
                         
                     </div>
@@ -86,15 +89,17 @@
             <!-- _________________________________________________________________________________ -->
         </div>
     </div>
+    <!--
     <div class="parentCont">
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
             <label class="tituloCamp">Descripcion</label>
             <hr/>
         </div>
         <div style="text-align: left;">
-            <label class="contenido2">{{casa_selec.Descripcion}}</label>
+            <label class="contenido2">{{casa_selec.habitaciones}}</label>
         </div>
     </div>
+    -->
     <div class="parentCont">
         
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
@@ -109,15 +114,15 @@
                     </svg>
                 </div>
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%;  vertical-align: middle;">
-                    <label >{{casa_selec.Telefono}}</label>
+                    <label >{{casa_selec.contacto}}</label>
                 </div>
             </div>
             <div class="tarjetas">
                 <div style="display: inline-block; width: 20%; vertical-align: middle;">
-                    <mat-icon style="font-size:20px; padding-top: 5px;"> email</mat-icon>
+                    <mat-icon style="font-size:20px; padding-top: 5px;"> Link</mat-icon>
                 </div>
-                <div style="display: inline-block; text-align: left;width: 70%; vertical-align: middle;">
-                    <label style="margin: 5px;">{{casa_selec.Email}}</label>
+                <div style="display: inline-block; text-align: left;width: 70%; vertical-align: middle; font-size: 5px;">
+                    <label style="margin: 5px;">{{casa_selec.link}}</label>
                 </div>
             </div>
             <div class="tarjetas">
