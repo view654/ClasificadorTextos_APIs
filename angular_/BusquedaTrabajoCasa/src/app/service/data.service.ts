@@ -57,8 +57,8 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    filtroBusqueda(query){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusqueda/';
+    filtroBusquedaTrabajo(query){
+      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaTrabajo/';
       query.replace('/', '');
       query.replace('%', '');
       dir = dir.concat(query);

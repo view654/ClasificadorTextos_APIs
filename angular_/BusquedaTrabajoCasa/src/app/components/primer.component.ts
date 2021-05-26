@@ -16,7 +16,6 @@ export class primer{
     
     public isSearch: boolean = false;
 
-    public busqueda: string;
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
@@ -29,6 +28,8 @@ export class primer{
     trabajos: Trabajo[]
     filtros: Filtro[] = variablesdeidentificacion.filtros;
 
+    request: string = '';
+
     autoTicks = false;
     invert = false;
     max = 100000;
@@ -40,16 +41,24 @@ export class primer{
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
-        this.getjobs();
+        //this.getjobs();
         //this.user = this.rutaActiva.snapshot.params.user
-    }   
+    }   /* 
     getjobs(){
         this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
           console.log(res);
           this.trabajos=res;
           console.log(this.trabajos);
-          variablesdeidentificacion.getjobs(res);
+          variablesdeidentificacion.getjobs(res); 
       });
+    } */
+
+    busqueda(request){
+        this.isSearch = true;
+        this.dataService.filtroBusquedaTrabajo(request).subscribe((res:any) => {
+            this.trabajos = Object.values(res);
+            variablesdeidentificacion.getjobs(Object.values(res));
+        })
     }
      
 
