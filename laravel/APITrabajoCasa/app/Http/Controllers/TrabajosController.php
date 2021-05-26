@@ -7,6 +7,8 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+
 class TrabajosController extends Controller
 {
     /** ------------------- MOSTRAR DATOS DESCARGADOS POR WEBSCRAPING -----------------------------------------*/
@@ -17,13 +19,11 @@ class TrabajosController extends Controller
         return $json;
     }
 
-
     /** ------------------- MOSTRAR DATOS ALMACENADOS EN LA BASE DE DATOS -----------------------------------------*/
     
     public function mostrarTodosTrabajos(){
         return Trabajo::all();
     }
-
 
     /** ------------------- FAVORITOS - RELACION CON USUARIOS-----------------------------------------*/
 
@@ -45,7 +45,6 @@ class TrabajosController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['trabajo_ID'] = $trabajo -> trabajo_ID;
         }
-        
         return response() -> json($response); 
     }
 
@@ -55,7 +54,6 @@ class TrabajosController extends Controller
         $usuario -> trabajos() -> detach($trabajo_id);
     }
 
-    
     /** ------------------- REALIZAR SCRIPTS DE PYTHON -----------------------------------------*/
 
     //Scrapper de Python para descargar los trabajos
@@ -132,6 +130,8 @@ class TrabajosController extends Controller
             $filtro = array_filter($array, function($val) use ($provincia) { 
                 return  $val -> localidad == $provincia;
             });
+        }else{
+            $filtro = json_decode($json);
         }
 
         if($contrato){
@@ -150,7 +150,21 @@ class TrabajosController extends Controller
         
     }
 
+    public function filtroBusqueda($request = null){
+        $path = '../python_scraper/ofertas_trabajo.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
 
+        $filtrado = array_filter($array, function($val) use ($request) { 
+            $comprobar = Str::contains(strtolower($val -> titulo), strtolower($request));
+            if ($comprobar) {
+                return $val -> titulo;
+            }
+            
+        });
 
+        return response() -> json($filtrado); 
+
+    }
 
 }

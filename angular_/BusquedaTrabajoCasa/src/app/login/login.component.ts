@@ -1,4 +1,3 @@
-import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
@@ -22,7 +21,7 @@ export interface DialogData {
 })
 export class login implements OnInit {
   public contrIncorrecta = false;
-  codigo = 1111
+  codigo:string
   constructor(private dataService:DataService, public router:Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -60,22 +59,31 @@ export class login implements OnInit {
   }
 
   sendEmail() {
+
     var correo = 'patricia2291997@gmail.com'
+
+    document.body.style.cursor = "progress";
     this.dataService.sendCode(correo).subscribe((res:any) => {
-      console.log(res.data.token);
-    });
-    const dialogRef = this.dialog.open(sendEmail, {
-      width: '250px',
-      data: {codigo: this.codigo}
+      
+      this.codigo = res;
+      console.log(this.codigo);
+      const dialogRef = this.dialog.open(sendEmail, {
+        width: '250px',
+        data: {codigo: this.codigo}
+      });
+      document.body.style.cursor = "pointer";
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        if(this.codigo==result){
+          this.router.navigate(['/password',correo]);
+        }
+        
+      });
+
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(this.codigo==result){
-        this.router.navigate(['/password',correo]);
-      }
-      
-    });
+
+
   }
 }
 @Component({
@@ -95,6 +103,7 @@ export class sendEmail {
       //this.codigo.toString();
       //this.codigo=String(this.codigo);
       this.codigo=cod.codigo;
+      console.log('codigo a introducir:');
       console.log(cod);
       console.log(this.codigo);
  
@@ -106,6 +115,7 @@ export class sendEmail {
       }else{
         this.dialogRef.close(this.codIntroducido);
       }
+
     }
 
     onNoClick(): void {

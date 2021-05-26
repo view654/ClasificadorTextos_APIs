@@ -1,12 +1,12 @@
 export interface Casa{
-    ID:number,
-    Lugar:string,
-    Precio:number,
-    Compr_alq_compar:string,
-    Tipo:string,
-    Link:string,
-    M2:number,
-    Descripcion:string,
-    Telefono:number,
-    Email:string
+    banos: string,
+    compr_alq_compar:string,
+    contacto:string,
+    habitaciones:string,
+    imagenes:string,
+    link:string,
+    lugar:string,
+    metros2:string,
+    precio:string,
+    tipo:string
 }
