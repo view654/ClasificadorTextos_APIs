@@ -146,7 +146,7 @@ p {
 
 .tarjetas{
   width:65vw; 
-  height: 6vw; 
+  min-height: 6vw; 
   background-color: aqua;
   margin: 2vw;
   padding: 0.5vw;

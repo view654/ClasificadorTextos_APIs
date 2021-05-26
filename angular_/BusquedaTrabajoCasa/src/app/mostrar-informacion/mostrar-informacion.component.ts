@@ -32,22 +32,13 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     this.ngbCarouselConfig.pauseOnHover = false;
     */
     this.id =_Activatedroute.snapshot.paramMap.get('id');
-    for (let i = 0; i < this.casas.length; i++) {
+    for (let i = 0; i < this.casas.length-1; i++) {
       if(this.casas[i].link == this.id){
         //parseInt(this.id, 10)
         this.casa_selec=this.casas[i];
-        console.log('this.casa_selec.imagenes');
-        console.log(this.casa_selec.imagenes);
         this.images=this.casa_selec.imagenes.split('\[\'');
-        console.log('this.images1');
-        console.log(this.images);
         this.images=this.images[1].split('\'\]');
-        console.log('this.images2');
-        console.log(this.images);
         this.images = this.images[0].split('\', \'');
-        console.log('this.images');
-        console.log(this.images);
-
       }
     }
     

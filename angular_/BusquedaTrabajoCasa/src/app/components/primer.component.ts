@@ -28,6 +28,7 @@ export class primer{
     casas: Casa[];
     trabajos: Trabajo[];
     filtros: Filtro[] = variablesdeidentificacion.filtros;
+    images: string[][];
 
     autoTicks = false;
     invert = false;
@@ -54,10 +55,25 @@ export class primer{
     }
     getcasas(){
         this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
-          //console.log(res);
-          this.casas=res;
-          console.log(this.casas);
-          variablesdeidentificacion.getcasas(res);
+            //console.log(res);
+            this.casas=res;
+            console.log(this.casas);
+            variablesdeidentificacion.getcasas(res);
+            this.images=new Array(this.casas.length);
+            for (let i = 0; i < (this.casas.length-1); i++) { 
+                //console.log('casa: ', this.casas[i])    
+                this.images[i]=this.casas[i].imagenes.split('\[\'');
+                //console.log('imagenes1: ', this.images[i])
+                if(this.images[i][1]){
+                    this.images[i]=this.images[i][1].split('\'\]');
+                    //console.log('imagenes2: ', this.images[i])
+                    this.images[i] =this.images[i][0].split('\', \''); 
+                    //console.log('imagenes3: ', this.images[i])
+                }            
+        
+            }
+            console.log('images: ')    
+            console.log(this.images)
       });
     }
      

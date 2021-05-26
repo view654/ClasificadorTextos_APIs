@@ -41,10 +41,7 @@
             </mat-slider>
           </mat-card-content>
         </mat-card>
-        <mat-form-field class="example-margin-bar">
-          <mat-label>Nº de habitaciones</mat-label>
-          <input matInput type="number" [(ngModel)]="habitaciones">
-        </mat-form-field>
+        <p>Nº de habitaciones</p>
         <mat-form-field class="example-margin-bar">
           <mat-label>Nº de habitaciones</mat-label>
           <input matInput type="number" [(ngModel)]="habitaciones">
@@ -74,7 +71,7 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Contrato: {{filtros.trabajoContrato}}</p>
+        <!--<p>Contrato: {{filtros.trabajoContrato}}</p>-->
         
       </ng-template>
     </div>
@@ -127,18 +124,36 @@
       </ng-container>
       <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
-          <div *ngFor="let casa of casas">
+          <div *ngFor="let casa of casas; let i = index">
             <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
-              {{casa.planta}}
-              {{casa.precio}}
+              <h2>m2: {{casa.metros2}}</h2>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <img [src]="images[i][0]" alt="No hay foto" width="275" height="175">
+              </div>
+              <div style="display: inline-block; height: 100%; width: 60%;">
+                <h3>Precio: {{casa.precio}} | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
+                <p>Habitaciones: {{casa.habitaciones}}</p>
+                <p>Baños: {{casa.banos}}</p>
+                <p>Tipo: {{casa.tipo}}</p>
+              </div>
             </div>
           </div>
         </ng-container>
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos">
             <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
-              <p>Trabajo: {{trabajo.titulo}}</p>
-              <p>Enlace: {{trabajo.enlace}}</p>
+              <h2>{{trabajo.titulo}}</h2>
+              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <p>Contrato: {{trabajo.contrato}}</p>
+                <p>Localidad: {{trabajo.localidad}}</p>
+                <p>Salario: {{trabajo.salario}}</p>
+              </div>
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                <p>{{trabajo.funciones}}</p>
+              </div>
             </div>
           </div>
           <div class="tarjetas"></div>
