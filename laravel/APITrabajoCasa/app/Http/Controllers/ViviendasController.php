@@ -7,6 +7,7 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
 
 class ViviendasController extends Controller
 {
@@ -22,6 +23,23 @@ class ViviendasController extends Controller
     //Viviendas en BBDD
     public function mostrarTodasViviendas(){
         return Vivienda::all();
+    }
+
+    public function filtroBusquedaVivienda($request = null){
+        $path = '../python_scraper/ofertas_vivienda.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
+
+        $filtrado = array_filter($array, function($val) use ($request) { 
+            $comprobar = Str::contains(strtolower($val -> lugar), strtolower($request));
+            if ($comprobar) {
+                return $val -> lugar;
+            }
+            
+        });
+
+        return response() -> json($filtrado); 
+
     }
   
     //Añadir vivienda a la base de datos, tabla viviendas y a favoritos

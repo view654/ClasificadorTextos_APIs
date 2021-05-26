@@ -102,8 +102,8 @@
         -->
         </div>
         <input type="text" id="name" name="name" required
-          minlength="4" maxlength="8" size="15">
-        <button (click)="isSearch=true" style="margin:2vw; background-color:rgba(255, 255, 255, 0)">
+          minlength="4" maxlength="24" size="30" [(ngModel)] = "request">
+        <button (click)="busqueda(request)" style="margin:2vw; background-color:rgba(255, 255, 255, 0)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
@@ -111,7 +111,7 @@
         
       </div>
       
-      <ng-container *ngIf="!isSearch; else busqueda">
+      <ng-container *ngIf="!isSearch; else busqueda1">
   
         <h2>¿Quienes somos?</h2>
         <!--
@@ -122,7 +122,7 @@
         <p style="text-align: center">Pablito clavó un clavito en la calva de un calvito. Un clavito clavó Pablito en la calva de un calvito. ¿Qué clavito clavó Pablito?</p>
         <p style="text-align: center">Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.</p>
       </ng-container>
-      <ng-template #busqueda>
+      <ng-template #busqueda1>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
@@ -156,7 +156,6 @@
               </div>
             </div>
           </div>
-          <div class="tarjetas"></div>
         </ng-template>
         
       </ng-template>

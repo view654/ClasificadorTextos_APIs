@@ -57,6 +57,8 @@ export const variablesdeidentificacion = {
     this.casas = casas;
   }
 
+  
+
 
 };
 

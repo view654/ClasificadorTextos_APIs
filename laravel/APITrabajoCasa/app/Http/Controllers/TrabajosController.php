@@ -156,9 +156,10 @@ class TrabajosController extends Controller
         $array = json_decode($json);
 
         $filtrado = array_filter($array, function($val) use ($request) { 
-            $comprobar = Str::contains(strtolower($val -> titulo), strtolower($request));
-            if ($comprobar) {
-                return $val -> titulo;
+            $titulo = Str::contains(strtolower($val -> titulo), strtolower($request));
+            $descripcion = Str::contains(strtolower($val -> funciones), strtolower($request));
+            if ($titulo | $descripcion) {
+                return $val -> titulo || $val -> funciones;
             }
             
         });
