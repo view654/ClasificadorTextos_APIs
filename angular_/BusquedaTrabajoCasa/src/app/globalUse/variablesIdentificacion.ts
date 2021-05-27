@@ -40,16 +40,14 @@ export const variablesdeidentificacion = {
     this.user=null;
   },
 
-  filtros: <Filtro[]>
-  [
+  filtros: <Filtro>
     {
-      trabajoProvincia: null,
-      trabajoJornada: null,
-      trabajoContrato: null,
+      Tprovincia: null,
+      Tcontrato: null,
+      Tjornada: null,
       viviendaPrecio: 1000
       //viviendaM: null
-    }
-  ],
+    },
   getjobs(trabajos){
     this.trabajos = trabajos;
   },

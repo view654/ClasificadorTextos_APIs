@@ -50,19 +50,49 @@ export class DataService {
     return this.httpClient.get(dir);
   }
 
-    //Viviendas
-    mostrarTodosTrabajos(){
-      var dir:string = 'http://127.0.0.1:8000/api/mostrarTrabajosJSON/';
-      console.log(dir);
-      return this.httpClient.get(dir);
-    }
+  //Trabajos
+  mostrarTodosTrabajos(){
+    var dir:string = 'http://127.0.0.1:8000/api/mostrarTrabajosJSON/';
+    console.log(dir);
+    return this.httpClient.get(dir);
+  }
 
-    filtroBusqueda(query){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusqueda/';
-      query.replace('/', '');
-      query.replace('%', '');
-      dir = dir.concat(query);
-      console.log(dir)
-      return this.httpClient.get(dir);
+  filtroGeneral(provincia, contrato, jornada){
+    var dir:string = 'http://127.0.0.1:8000/api/filtroGeneral/';
+    if(!provincia){
+      provincia='?'
     }
+    if(!contrato){
+      contrato='?'
+    }
+    if(!jornada){
+      jornada ='?'
+    }
+    dir = dir.concat(provincia,'/',contrato,'/',jornada);
+    dir=dir.replace(/ /g,'%20')
+    console.log('filtroGeneral: ',dir)
+    return this.httpClient.get(dir);
+  }
+
+  //Funciones de Filtros
+  /*
+  Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosController@filtroProvincia');
+  Route::get('filtroJornada/{jornada}', 'App\Http\Controllers\TrabajosController@filtroJornada');
+  Route::get('filtroContrato/{contrato}', 'App\Http\Controllers\TrabajosController@filtroContrato');
+  Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
+  Route::get('filtroBusqueda/{request?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
+  */
+
+
+
+
+
+  filtroBusqueda(query){
+    var dir:string = 'http://127.0.0.1:8000/api/filtroBusqueda/';
+    query.replace('/', '');
+    query.replace('%', '');
+    dir = dir.concat(query);
+    console.log(dir)
+    return this.httpClient.get(dir);
+  }
 }

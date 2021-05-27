@@ -27,7 +27,7 @@ export class primer{
 
     casas: Casa[];
     trabajos: Trabajo[];
-    filtros: Filtro[] = variablesdeidentificacion.filtros;
+    filtros: Filtro = variablesdeidentificacion.filtros;
     images: string[][];
 
     autoTicks = false;
@@ -46,12 +46,19 @@ export class primer{
         //this.user = this.rutaActiva.snapshot.params.user
     }   
     getjobs(){
+        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+            //console.log(res);
+            this.trabajos=Object.values(res);
+            console.log(this.trabajos);
+            variablesdeidentificacion.getjobs(res);
+        });
+        /*
         this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
-          //console.log(res);
-          this.trabajos=res;
-          console.log(this.trabajos);
-          variablesdeidentificacion.getjobs(res);
-      });
+            //console.log(res);
+            this.trabajos=res;
+            console.log(this.trabajos);
+            variablesdeidentificacion.getjobs(res);
+        });*/
     }
     getcasas(){
         this.dataService.mostrarTodasViviendas().subscribe((res:any) => {

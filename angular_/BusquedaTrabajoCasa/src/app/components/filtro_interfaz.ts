@@ -1,7 +1,7 @@
 export interface Filtro{
-    trabajoProvincia: string,
-    trabajoJornada: string,
-    trabajoContrato: string
+    Tprovincia: string,
+    Tcontrato: string,
+    Tjornada: string
     viviendaPrecio: number
     //viviendaM: null
 }
