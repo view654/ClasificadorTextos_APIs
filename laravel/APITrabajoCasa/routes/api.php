@@ -27,6 +27,8 @@ Route::post('login', 'App\Http\Controllers\UsuarioController@login');
 
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@mostrarUsuarios');
 Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioId');
+Route::get('mostrarUsuarioEmail/{email}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioEmail');
+
 
 Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
 Route::put('modificarContrasena/{user_id}', 'App\Http\Controllers\UsuarioController@modificarContrasena');

@@ -43,6 +43,18 @@ class UsuarioController extends Controller
         return response() -> json($usuario::find($user_id), 200);
     }
 
+    public function mostrarUsuarioEmail($email){
+        $usuario = DB::table('usuarios')
+                    -> where('email', '=', $email)
+                    -> get();
+        if (is_null($usuario)) {
+            return response() -> json(
+                ['message' => 'Usuario no encontrado'], 404
+            );
+        }
+        return response() -> json($usuario, 200);
+    }
+
 
     /** ------------------- MODIFICAR DATOS DE USUARIOS -----------------------------------------*/
 
