@@ -126,21 +126,24 @@ class TrabajosController extends Controller
         $array = json_decode($json);
         $filtro = '';
 
-        if($provincia){
-            $filtro = array_filter($array, function($val) use ($provincia) { 
-                return  $val -> localidad == $provincia;
-            });
-        }else{
+        if (strcmp($provincia, "null")===0){
             $filtro = json_decode($json);
+        }else{
+            $filtro = array_filter($array, function($val) use ($provincia){
+                return $val -> localidad == $provincia;});
         }
 
-        if($contrato){
+        if(strcmp($contrato, "null")===0){
+            
+        }else{
             $filtro = array_filter($filtro, function($val) use ($contrato) { 
                 return  $val -> contrato == $contrato;
             });
         }
 
-        if($jornada){
+        if(strcmp($jornada, "null")===0){
+            
+        }else{
             $filtro = array_filter($filtro, function($val) use ($jornada) { 
                 return  $val -> jornada == $jornada;
             });
