@@ -11,7 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 
 export interface DialogData {
-  codigo:string;
+  //codigo:string;
 }
 
 
@@ -61,30 +61,22 @@ export class login implements OnInit {
 
   sendEmail() {
 
-    var correo = 'patricia2291997@gmail.com'
+    //var correo = 'patricia2291997@gmail.com'
 
     document.body.style.cursor = "progress";
-    this.dataService.sendCode(correo).subscribe((res:any) => {
-      
-      this.codigo = res;
-      console.log(this.codigo);
-      const dialogRef = this.dialog.open(sendEmail, {
-        width: '250px',
-        data: {codigo: this.codigo}
-      });
-      document.body.style.cursor = "pointer";
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        if(this.codigo==result){
-          this.router.navigate(['/password',correo]);
-        }
-        
-      });
-
+    const dialogRef = this.dialog.open(sendEmail, {
+      width: '250px',
+      data: {}
+      //data: {codigo: this.codigo}
     });
-
-
-
+    document.body.style.cursor = "pointer";
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        this.router.navigate(['/password',result]);
+      }
+      
+    });
   }
 }
 @Component({
@@ -92,22 +84,35 @@ export class login implements OnInit {
   templateUrl: 'sendEmail.html',
 })
 export class sendEmail {
+  gotEmail = false;
+  email=null;
   contrIncorrecta = false;
   codigo:string;
   codIntroducido:string;
   
-  constructor(
+  constructor(private dataService:DataService,
     public dialogRef: MatDialogRef<sendEmail>,
     @Inject(MAT_DIALOG_DATA) public cod: DialogData
     ) {
       //this.codigo = JSON.stringify(cod);
       //this.codigo.toString();
       //this.codigo=String(this.codigo);
+      /*
       this.codigo=cod.codigo;
       console.log('codigo a introducir:');
       console.log(cod);
       console.log(this.codigo);
+      */
  
+    }
+    sending(){
+      if(this.email){
+        this.dataService.sendCode(this.email).subscribe((res:any) => {
+          this.codigo = res;
+          console.log(this.codigo);
+          this.gotEmail = true
+        });
+      }
     }
 
     onComprobarCod(){

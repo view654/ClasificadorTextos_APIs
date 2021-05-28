@@ -35,6 +35,14 @@ export class DataService {
     return this.httpClient.post('http://127.0.0.1:8000/api/registro',datos);
   }
 
+  modificarContrasena(id,datos){
+    var dir:string = 'http://127.0.0.1:8000/api/modificarContrasena/';
+    dir = dir.concat(id.toString());
+    return this.httpClient.put(dir,datos);
+  }
+
+  //modificarContrasena(Request $request, $user_id)
+
   //MAIL
   sendCode(correo){
     var dir:string = 'http://127.0.0.1:8000/api/sendCode/';
