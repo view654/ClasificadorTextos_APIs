@@ -125,7 +125,7 @@
       <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
-            <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+            <div (click)="abrirCasa(trabajo)"  class="tarjetas">
               <h2>m2: {{casa.metros2}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">

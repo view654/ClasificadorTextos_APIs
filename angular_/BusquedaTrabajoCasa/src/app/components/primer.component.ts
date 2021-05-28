@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { variablesdeidentificacion } from '../globalUse/variablesidentificacion';
 import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
 import { DataService } from 'src/app/service/data.service';
 import { Router, RouterLink } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 @Component({
     selector: 'primer',
@@ -38,7 +41,7 @@ export class primer{
     step = 1000;
     value = 0;
   
-    constructor(private dataService:DataService, public router:Router){
+    constructor(private dataService:DataService, public router:Router, public dialog: MatDialog){
         
         console.log("Componente primer cargado!!");        
     }
@@ -50,9 +53,12 @@ export class primer{
     }
     
     abrirOferta(trabajo){
-        const url =this.router.serializeUrl(this.router.createUrlTree(['../MostrarTrabajoComponent',trabajo.enlace]));
-        console.log(url)
-        window.open(url, "_blank");
+        this.dialog.open(MostrarTrabajoComponent)
+        
+    }
+
+    abrirCasa(Casa){
+        this.dialog.open(MostrarInformacionComponent)
     }
 
     getjobs(){
