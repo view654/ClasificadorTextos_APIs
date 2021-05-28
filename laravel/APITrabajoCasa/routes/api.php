@@ -61,7 +61,7 @@ Route::get('ActualizarViviendas', 'App\Http\Controllers\ViviendasController@Actu
 
 //Funciones filtros
 Route::get('filtroLugar/{lugar}', 'App\Http\Controllers\ViviendasController@filtroLugar');
-Route::get('filtroGeneralViviendas/{lugar?}/{preciomax?}/{preciomin?}/{habitacionesmax?}/{habitacionesmin?}/{banosmax?}/{banosmin?}/{metros2max?}/{metros2min?}/{planta?}/{compr_alq_compar?}/{tipo?}', 'App\Http\Controllers\ViviendasController@filtroGeneralViviendas');
+Route::get('filtroGeneralViviendas/{lugar}/{preciomax}/{preciomin}/{habitacionesmax}/{habitacionesmin}/{banosmax}/{banosmin}/{metros2max}/{metros2min}/{planta}/{compr_alq_compar}/{tipo}', 'App\Http\Controllers\ViviendasController@filtroGeneralViviendas');
 
 //Funciones de modificacion de la tabla de favoritos
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
