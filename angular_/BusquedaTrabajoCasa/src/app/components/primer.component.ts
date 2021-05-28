@@ -16,7 +16,6 @@ export class primer{
     
     public isSearch: boolean = false;
 
-    public busqueda: string;
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
@@ -30,6 +29,8 @@ export class primer{
     filtros: Filtro = variablesdeidentificacion.filtros;
     images: string[][];
 
+    request: string = '';
+
     autoTicks = false;
     invert = false;
     max = 100000;
@@ -41,8 +42,7 @@ export class primer{
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
-        this.getjobs();
-        this.getcasas();
+        //this.getjobs();
         //this.user = this.rutaActiva.snapshot.params.user
     }   
     getjobs(){

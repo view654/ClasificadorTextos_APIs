@@ -7,6 +7,7 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
 
 class ViviendasController extends Controller
 {
@@ -14,7 +15,7 @@ class ViviendasController extends Controller
     //Mostrar Viviendas en datos en el json
 
     public function mostrarViviendasJSON(){
-        $path = '../python_scraper/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         return $json;
     }
@@ -22,6 +23,23 @@ class ViviendasController extends Controller
     //Viviendas en BBDD
     public function mostrarTodasViviendas(){
         return Vivienda::all();
+    }
+
+    public function filtroBusquedaVivienda($request = null){
+        $path = '../python_scraper/ofertas_vivienda.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
+
+        $filtrado = array_filter($array, function($val) use ($request) { 
+            $comprobar = Str::contains(strtolower($val -> lugar), strtolower($request));
+            if ($comprobar) {
+                return $val -> lugar;
+            }
+            
+        });
+
+        return response() -> json($filtrado); 
+
     }
   
     //Añadir vivienda a la base de datos, tabla viviendas y a favoritos
@@ -67,7 +85,7 @@ class ViviendasController extends Controller
     //filtros
     //filtro provincia
     public function filtroLugar($lugar){
-        $path = '../python_scraper/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
 
@@ -78,5 +96,113 @@ class ViviendasController extends Controller
         return response() -> json($filtrado);
     }
 
+    //General
+    public function filtroGeneralViviendas($lugar = null, $preciomax= null, $preciomin= null, $habitacionesmax = null, $habitacionesmin= null, $banosmax = null, $banosmin= null, $metros2max= null, $metros2min= null, $planta= null, $compr_alq_compar= null, $tipo= null){
+        $path = '../python_scraper/ofertas_viviendas.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
+        $filtro = '';
+
+        if ($lugar){
+            $filtro = array_filter($array, function($val) use ($lugar){
+                return $val -> lugar == $lugar;
+                
+            });
+        }else{
+            $filtro = json_decode($json);
+        }
+
+        if ($preciomax){
+            $filtro = array_filter($filtro, function($val) use ($preciomax){
+                $preciosinsimbolo = rtrim($preciomax, " €");
+                $intprecio = intval($preciosinsimbolo);
+                return $val -> precio <= $intprecio;
+
+            });
+        }
+
+        if ($preciomin){
+            $filtro = array_filter($filtro, function($val) use ($preciomin){
+                $preciosinsimbolo = rtrim($preciomin, " €");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> precio >= $intprecio;
+
+            });
+        }
+
+        if ($habitacionesmax){
+            $filtro = array_filter($filtro, function($val) use ($habitacionesmax){
+                return $val -> habitaciones <= $habitacionesmax;
+            });
+        }
+        if ($habitacionesmin){
+            echo($habitacionesmin);
+            $filtro = array_filter($filtro, function($val) use ($habitacionesmin){
+                $preciosinsimbolo = rtrim($habitacionesmin, " habs.");
+                $intprecio = intval($preciosinsimbolo);  
+                echo($intprecio);
+                return $val -> habitaciones >= $intprecio;
+
+            });
+        }
+
+        if ($banosmax){
+            $filtro = array_filter($filtro, function($val) use ($banosmax){
+                $preciosinsimbolo = rtrim($banosmax, " baños");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> banos <= $intprecio;
+
+            });
+        }
+        if ($banosmin){
+            $filtro = array_filter($filtro, function($val) use ($banosmin){
+                $preciosinsimbolo = rtrim($banosmin, " baños");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> banos >= $intprecio;
+
+            });
+        }
+
+        if ($metros2max){
+            $filtro = array_filter($filtro, function($val) use ($metros2max){
+                $preciosinsimbolo = rtrim($metros2max, " m²");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> metros2 <= $intprecio;
+
+            });
+        }
+        if ($metros2min){
+            $filtro = array_filter($filtro, function($val) use ($metros2min){
+                $preciosinsimbolo = rtrim($metros2min, " m²");
+                $intprecio = intval($preciosinsimbolo);  
+                return $val -> metros2 >= $intprecio;
+
+            });
+        }
+
+        if ($planta){
+            $filtro = array_filter($filtro, function($val) use ($planta){
+                return $val -> planta == $planta;
+
+            });
+        }
+
+        if ($compr_alq_compar){
+            $filtro = array_filter($filtro, function($val) use ($compr_alq_compar){
+
+                return $val -> compr_alq_compar == $compr_alq_compar;
+
+            });
+        }
+
+        if ($tipo){
+            $filtro = array_filter($filtro, function($val) use ($tipo){
+
+                return $val -> tipo == $tipo;
+
+            });
+        }
+        return response() -> json($filtro);
+    }
 
 }

@@ -65,6 +65,7 @@ export class DataService {
     return this.httpClient.get(dir);
   }
 
+
   filtroGeneral(provincia, contrato, jornada){
     var dir:string = 'http://127.0.0.1:8000/api/filtroGeneral/';
     if(!provincia){
@@ -81,7 +82,19 @@ export class DataService {
     console.log('filtroGeneral: ',dir)
     return this.httpClient.get(dir);
   }
+  filtroBusquedaTrabajo(query){
+    var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaTrabajo/';
+    query.replace('/', '');
+    query.replace('%', '');
+    dir = dir.concat(query);
+    return this.httpClient.get(dir);
+  }
 
+  filtroBusquedaVivienda(query){
+    var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaVivienda/';
+    dir = dir.concat(query);
+    return this.httpClient.get(dir);
+  }
   //Funciones de Filtros
   /*
   Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosController@filtroProvincia');

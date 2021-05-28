@@ -27,6 +27,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.trabajos.length; i++) {
       if(this.trabajos[i].enlace == this.id){
+        console.log("Entro");
         this.trabajo_selec=this.trabajos[i];
       }
     }
@@ -38,7 +39,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   ofertasRelacionadas(titulo){
-    this.service.filtroBusqueda(titulo.substring(0,8)).subscribe((res:any) => {
+    this.service.filtroBusquedaTrabajo(titulo.substring(0,8)).subscribe((res:any) => {
       this.relacionados = Object.values(res);
     })
   }
