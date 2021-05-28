@@ -157,6 +157,7 @@
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
               <h2>m2: {{casa.metros2}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
@@ -172,8 +173,9 @@
           </div>
         </ng-container>
         <ng-template #dispTrabajos>
-          <div *ngFor="let trabajo of trabajos">
+          <div *ngFor="let trabajo of trabajos; let i=index">
             <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>

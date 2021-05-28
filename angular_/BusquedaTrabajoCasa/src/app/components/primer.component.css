@@ -145,6 +145,7 @@ p {
   }
 
 .tarjetas{
+  position: relative;
   width:65vw; 
   min-height: 6vw; 
   background-color: aqua;
