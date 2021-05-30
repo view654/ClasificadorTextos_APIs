@@ -45,8 +45,18 @@ export const variablesdeidentificacion = {
       Tprovincia: null,
       Tcontrato: null,
       Tjornada: null,
-      viviendaPrecio: 1000
-      //viviendaM: null
+      Vlugar: null,
+      Vpreciomax: 50000,
+      Vpreciomin: 25000,
+      Vhabitacionesmax: null,
+      Vhabitacionesmin: 0,
+      Vbanosmax: null,
+      Vbanosmin: 1,
+      Vmetros2max: 500,
+      Vmetros2min: 5,
+      Vplanta: null,
+      Vcompr_alq_compar: null,
+      Vtipo: null
     },
   getjobs(trabajos){
     this.trabajos = trabajos;

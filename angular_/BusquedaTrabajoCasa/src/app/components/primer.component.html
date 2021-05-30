@@ -8,21 +8,21 @@
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
-            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Tprovincia = provincia">{{provincia}}</mat-option>
+            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Vlugar = provincia">{{provincia}}</mat-option>
                      
           </mat-select>
         </mat-form-field>
         <br>
         <br>
-        <p>Precio</p>
+        <p>Metros cuadrados</p>
         <section class="example-section">
           <mat-form-field class="example-margin-bar">
             <mat-label>Value</mat-label>
-            <input matInput type="number" [(ngModel)]="filtros.viviendaPrecio">
+            <input matInput type="number" [(ngModel)]="filtros.Vmetros2max">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
-            <mat-label>Min value</mat-label>
-            <input matInput type="number" [(ngModel)]="min">
+            <mat-label>m2 minimos</mat-label>
+            <input matInput type="number" [(ngModel)]="filtros.Vmetros2min">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Max value</mat-label>
@@ -43,7 +43,7 @@
                 class="example-margin"
                 [invert]="false"
                 [max]="max"
-                [min]="min"
+                [min]="filtros.Vmetros2mmin"
                 [step]="step"
                 [thumbLabel]="true"
                 [(ngModel)]="filtros.viviendaPrecio"
@@ -53,10 +53,71 @@
         </mat-card>
         <br>
         <br>
+        <p>Precio</p>
+        <section class="example-section">
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Value</mat-label>
+            <input matInput type="number" [(ngModel)]="filtros.Vpreciomax">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Precio minimo</mat-label>
+            <input matInput type="number" [(ngModel)]="filtros.Vpreciomin">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Max value</mat-label>
+            <input matInput type="number" [(ngModel)]="max">
+          </mat-form-field>
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Step size</mat-label>
+            <input matInput type="number" [(ngModel)]="step">
+          </mat-form-field>
+        </section>
+        <mat-card class="example-result-card">
+          
+          <mat-card-content>        
+            <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
+              <h1>{{filtros.viviendaPrecio}}</h1>
+            </div>
+            <mat-slider
+                class="example-margin"
+                [invert]="false"
+                [max]="max"
+                [min]="filtros.Vpreciomin"
+                [step]="step"
+                [thumbLabel]="true"
+                [(ngModel)]="filtros.viviendaPrecio"
+                aria-labelledby="example-name-label">
+            </mat-slider>
+          </mat-card-content>
+        </mat-card>
+        <br>
+        <br>
+        <p>Contrato</p>
+        <mat-form-field class="example-margin-bar">
+          <mat-label>Contrato</mat-label>
+          <mat-form-field style="height: 3.4vw" fill>
+            <mat-label>Filtro</mat-label>
+            <mat-select>
+              <mat-option [value] = 1 (click)="filtros.Vcompr_alq_compar = null">Cualquiera</mat-option>
+              <mat-option [value] = 2 (click)="filtros.Vcompr_alq_compar = 'alquiler'">Alquilar</mat-option>    
+              <mat-option [value] = 3 (click)="filtros.Vcompr_alq_compar = 'comprar'">Comprar</mat-option> 
+              <mat-option [value] = 4 (click)="filtros.Vcompr_alq_compar = 'compartir'">Compartir</mat-option>  
+            </mat-select>
+          </mat-form-field>
+        </mat-form-field>
+        <br>
+        <br>
         <p>Nº de habitaciones</p>
         <mat-form-field class="example-margin-bar">
-          <mat-label>Nº de habitaciones</mat-label>
-          <input matInput type="number" [(ngModel)]="habitaciones">
+          <mat-label>Nº minimo de habitaciones</mat-label>
+          <input matInput type="number" [(ngModel)]="filtros.Vhabitacionesmin">
+        </mat-form-field>
+        <br>
+        <br>
+        <p>Nº de baños</p>
+        <mat-form-field class="example-margin-bar">
+          <mat-label>Nº minimo de baños</mat-label>
+          <input matInput type="number" [(ngModel)]="filtros.Vbanosmin">
         </mat-form-field>
         <br>
         <br>
@@ -65,7 +126,7 @@
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
         <br>
-        <p>Provincia: {{filtros.Tprovincia}}</p>
+        <p>Provincia: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -75,7 +136,7 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Jornada: {{filtros.Tjornada}}</p>
+        <p>Jornada: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -88,7 +149,7 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Contrato: {{filtros.Tcontrato}}</p>
+        <p>Contrato: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -142,7 +203,7 @@
         
       </div>
       
-      <ng-container *ngIf="!isSearch; else busqueda1">
+      <ng-container *ngIf="!isSearch; else busqueda">
   
         <h1><br><br>¿Quienes somos?</h1>
         <!--

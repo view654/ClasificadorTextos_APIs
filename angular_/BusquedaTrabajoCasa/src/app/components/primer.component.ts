@@ -30,13 +30,10 @@ export class primer{
     images: string[][];
 
     request: string = '';
-
     autoTicks = false;
     invert = false;
     max = 100000;
-    min = 1000;
     step = 1000;
-    value = 0;
   
     constructor(private dataService:DataService){
         console.log("Componente primer cargado!!");        
@@ -62,7 +59,7 @@ export class primer{
         });*/
     }
     getcasas(){
-        this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
+        this.dataService.filtroGeneralViviendas(this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
             //console.log(res);
             this.casas=res;
             console.log(this.casas);

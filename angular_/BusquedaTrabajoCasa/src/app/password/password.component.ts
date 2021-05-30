@@ -16,6 +16,7 @@ export class password implements OnInit {
   constructor(public router:Router,private dataService:DataService,private _Activatedroute:ActivatedRoute) {
     this.email =_Activatedroute.snapshot.paramMap.get('correo');
     this.dataService.sendCode(this.email).subscribe((res2:any) => {
+      console.log(res2);
       this.id = res2;
       
     });
