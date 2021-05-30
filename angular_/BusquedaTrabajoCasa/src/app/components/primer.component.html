@@ -106,7 +106,7 @@
         
       </ng-template>
     </div>
-    <div style="height: 90%; margin: 2vw; margin-right: 4vw; text-align:center; max-width: 70vw; min-width: 500px;">
+    <div style="padding-top: 48px; height: 90%; margin: 2vw; margin-right: 4vw; text-align:center; max-width: 70vw; min-width: 500px;">
       <div class="card highlight-card card-small">
         <!--
         <p style="margin:2vw;">Trabajo<input type="checkbox" ng-model="trabajo"></p>
@@ -133,9 +133,9 @@
         -->
         </div>
         <input type="text" id="name" name="name" required
-          minlength="4" maxlength="24" size="30" [(ngModel)] = "request">
-        <button (click)="this.isSearch = true;" style="margin:2vw; background-color:rgba(255, 255, 255, 0)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          minlength="4" maxlength="8" size="15">
+        <button (click)="isSearch=true" style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
         </button>
@@ -144,16 +144,21 @@
       
       <ng-container *ngIf="!isSearch; else busqueda1">
   
-        <h2>¿Quienes somos?</h2>
+        <h1><br><br>¿Quienes somos?</h1>
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
         <p>{{user.ID}}</p>
         <p>{{isLogged}}</p>-->
-        <p style="text-align: center">Tengo una gallina pinta, pipiripinta, pipirialegre y gorda, que tiene tres pollitos pintos, pipiripintos, pipirialegres y gordos. Si la gallina no hubiera sido pinta pipiripinta, pipirialegre y gorda; los pollitos no hubieran sido pintos, pipiripintos, pipirialegres y gordos.</p>
-        <p style="text-align: center">Pablito clavó un clavito en la calva de un calvito. Un clavito clavó Pablito en la calva de un calvito. ¿Qué clavito clavó Pablito?</p>
-        <p style="text-align: center">Cuando cuentes cuentos, cuenta cuántos cuentos cuentas, porque si no cuentas cuántos cuentos cuentas, nunca sabrás cuántos cuentos cuentas tú.</p>
-      </ng-container>
-      <ng-template #busqueda1>
+        <p style="text-align: justify;font-size: 16px;"><br>Esta página le ofrece un buscador de ofertas de empleo y viviendas, pudiendo filtrar dichas ofertas por múltiples filtros y así poder encontrar la que más se adapte a sus necesidades.
+        Contamos tambien con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
+        Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra para las asignaturas de <em>Proyecto de Computación II y III </em>
+        del tercer curso del grado de Ingeniería Informática de la <em>Universidad Europea de Madrid</em>, por lo que toda la información recopilada mediante web scrapping de fotocasa e infoempleo se empleará única y exclusivamente
+        para fines didácticos. <br>
+        
+        </p>
+        <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
+         </ng-container>
+      <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
