@@ -4,6 +4,7 @@ import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
 import { DataService } from 'src/app/service/data.service';
+import { FixedSizeVirtualScrollStrategy } from '@angular/cdk/scrolling';
 
 @Component({
     selector: 'primer',
@@ -32,13 +33,17 @@ export class primer{
     request: string = '';
     autoTicks = false;
     invert = false;
-    max = 100000;
-    step = 1000;
+    maxP =0;
+    stepP = 1000;
+    maxM =0;
+    stepM = 1000;
   
     constructor(private dataService:DataService){
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
+        this.maxP= this.filtros.Vpreciomax+this.filtros.Vpreciomax;
+        this.maxM= this.filtros.Vmetros2max+this.filtros.Vmetros2max;
         this.getjobs();
         this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
@@ -61,11 +66,18 @@ export class primer{
     getcasas(){
         this.dataService.filtroGeneralViviendas(this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
             //console.log(res);
-            this.casas=res;
+            this.casas=new Array(res.length);
+            var cont = 0
+            for(let key in res){
+                this.casas[cont] = res[key];
+                cont = cont + 1;
+            }
             console.log(this.casas);
             variablesdeidentificacion.getcasas(res);
             this.images=new Array(this.casas.length);
             for (let i = 0; i < (this.casas.length-1); i++) { 
+            //var cont = 0;
+            //for(let key in this.casas){
                 //console.log('casa: ', this.casas[i])    
                 this.images[i]=this.casas[i].imagenes.split('\[\'');
                 //console.log('imagenes1: ', this.images[i])

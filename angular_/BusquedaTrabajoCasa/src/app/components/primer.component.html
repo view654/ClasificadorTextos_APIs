@@ -26,27 +26,27 @@
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="max">
+            <input matInput type="number" [(ngModel)]="maxM">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="step">
+            <input matInput type="number" [(ngModel)]="stepM">
           </mat-form-field>
         </section>
         <mat-card class="example-result-card">
           
           <mat-card-content>        
             <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.viviendaPrecio}}</h1>
+              <h1>{{filtros.Vmetros2min}}</h1>
             </div>
             <mat-slider
                 class="example-margin"
                 [invert]="false"
-                [max]="max"
-                [min]="filtros.Vmetros2mmin"
-                [step]="step"
+                [max]="maxM"
+                [min]="filtros.Vmetros2min"
+                [step]="stepM"
                 [thumbLabel]="true"
-                [(ngModel)]="filtros.viviendaPrecio"
+                [(ngModel)]="filtros.Vmetros2max"
                 aria-labelledby="example-name-label">
             </mat-slider>
           </mat-card-content>
@@ -65,27 +65,27 @@
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="max">
+            <input matInput type="number" [(ngModel)]="maxP">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="step">
+            <input matInput type="number" [(ngModel)]="stepP">
           </mat-form-field>
         </section>
         <mat-card class="example-result-card">
           
           <mat-card-content>        
             <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.viviendaPrecio}}</h1>
+              <h1>{{filtros.Vpreciomax}}</h1>
             </div>
             <mat-slider
                 class="example-margin"
                 [invert]="false"
-                [max]="max"
+                [max]="maxP"
                 [min]="filtros.Vpreciomin"
-                [step]="step"
+                [step]="stepP"
                 [thumbLabel]="true"
-                [(ngModel)]="filtros.viviendaPrecio"
+                [(ngModel)]="filtros.Vpreciomax"
                 aria-labelledby="example-name-label">
             </mat-slider>
           </mat-card-content>
@@ -121,7 +121,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button (click)="getjobs()">Aplicar filtros</button>
+        <button (click)="getcasas()">Aplicar filtros</button>
       </div>
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
