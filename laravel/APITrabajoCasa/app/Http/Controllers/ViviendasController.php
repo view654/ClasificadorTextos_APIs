@@ -26,7 +26,7 @@ class ViviendasController extends Controller
     }
 
     public function filtroBusquedaVivienda($request = null){
-        $path = '../python_scraper/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
 
