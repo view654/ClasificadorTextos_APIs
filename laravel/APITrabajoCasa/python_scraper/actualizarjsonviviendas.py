@@ -10,7 +10,7 @@ import json
 
 array_links_antiguos = []
 #Lee json ya creado con las viviendas y guarda variables en el array links antiguos
-with open('viviendas.json', 'r') as f:
+with open('ofertas_vivienda.json', 'r') as f:
     viviendas_dict = json.load(f)
 for vivienda in viviendas_dict:
     array_links_antiguos.append(vivienda['link'])
@@ -31,6 +31,7 @@ if(len(news)!=0):
     outF = open("viviendas.json", "a")
 
     for i in range (len(news)):
+    #for i in range (0,1):
         #Para saber cuantos nos quedan por consola 
         print(len(news)-i)
         enlace = news[i]
@@ -75,40 +76,50 @@ if(len(news)!=0):
                         contacto = div_contacto.find('div', class_ = 're-ContactDetail-phone').text
                     linkvivienda = enlace
                     lugarvivienda = absa[0].replace("-", " ")
-                    preciovivienda = precio1.text
+                    hb = precio1.text
+                    h = hb.split(' ')
+                    ea = h[0].replace('.','')
+                    preciovivienda = int(ea)
 
                     #Inicializamos las variables por si en el anuncio no estan especificadas
-                    habitacionesvivienda  = 'no especificado'
-                    banosvivienda = 'no especificado'
-                    metroscuadradosvivienda = ' no especificado'
+                    habitacionesvivienda  = -1
+                    banosvivienda = -1
+                    metroscuadradosvivienda = -1
                     numeroplantavivienda = 'no especificado'
                     
                     #recorremos la lista buscando palabras clave para asignarlas a las variables
                     for a in range (len(lista)):
-                        i = lista[a]
+                        eb = lista[a].findAll('span')
+                        i = eb[3]
                         if ((i.text).find('hab') != -1):
-                            habitacionesvivienda = i.text
+                            hb = i.text
+                            h = hb.split(' ')
+                            habitacionesvivienda = int(h[0])
                         if ((i.text).find('ba') != -1):
-                            banosvivienda = i.text
-                        if ((i.text).find('m²') != -1):
-                            metroscuadradosvivienda = i.text
+                            hb = i.text
+                            h = hb.split(' ')
+                            banosvivienda = int(h[0])
+                        if ((i.text).find('m') != -1):
+                            hb = i.text
+                            h = hb.split(' ')
+                            metroscuadradosvivienda = int(h[0])
                         if (i.text == 'Bajos'):
                             numeroplantavivienda = 'Bajos'
                         if((i.text).find('Planta') != -1):
                             numeroplantavivienda = i.text
-                        
                     
                     #Si es compra, alquiler o compartir, se saca del enlace
                     compr_alq_comparvivienda = re.search(regexCAC, enlace).group(1)
                     tipovivienda = re.search(regexTipo, donde.text).group(1)
+
                     #Para las imagenes del anuncio se busca el tipo img de la siguiente clase y se guarda en un array
                     array_imagenes = []
                     for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
                         array_imagenes.append(item['src'])
-                    
+
                     #Construimos un string simulando la estructura de un objeto en json
-                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": \"" + preciovivienda + "\",\"habitaciones\": \"" + habitacionesvivienda + "\",\"banos\": \"" + banosvivienda + "\",\"metros2\": \"" + metroscuadradosvivienda + "\",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda +  "\",\"contacto\": \"" +contacto +"\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
-                    
+                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": " + str(preciovivienda) + ",\"habitaciones\": " + str(habitacionesvivienda) + ",\"banos\": " + str(banosvivienda) + ",\"metros2\": " + str(metroscuadradosvivienda) + ",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda +  "\",\"contacto\": \"" +contacto +"\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
+                    print(viv)
                     #Lo escribimos en el json
                     outF.write(viv)
         #Por saber donde falla
