@@ -69,10 +69,9 @@ export class login implements OnInit {
       data: {}
       //data: {codigo: this.codigo}
     });
-    document.body.style.cursor = "pointer";
+    document.body.style.cursor = "auto";
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(result){
+      if(result != 'Cancel'){
         this.router.navigate(['/password',result]);
       }
       
@@ -106,12 +105,25 @@ export class sendEmail {
  
     }
     sending(){
-      if(this.email){
-        this.dataService.sendCode(this.email).subscribe((res:any) => {
-          this.codigo = res;
-          console.log(this.codigo);
-          this.gotEmail = true
+      try{
+        document.body.style.cursor = "progress";
+        this.dataService.mostrarUsuarioEmail(this.email).subscribe((res:any) => {
+          var datosUs = res;
+          console.log('datosUs: ',datosUs);
+          if(datosUs == null){
+            this.email = null;
+          }
+          if(this.email){
+            this.dataService.sendCode(this.email).subscribe((res2:any) => {
+              this.codigo = res2;
+              console.log(this.codigo);
+              this.gotEmail = true
+              document.body.style.cursor = "auto";
+            });
+          }
         });
+      }catch(e){
+        document.body.style.cursor = "auto";
       }
     }
 
@@ -119,7 +131,7 @@ export class sendEmail {
       if(this.codigo != this.codIntroducido){
         this.contrIncorrecta = true;
       }else{
-        this.dialogRef.close(this.codIntroducido);
+        this.dialogRef.close(this.email);
       }
 
     }

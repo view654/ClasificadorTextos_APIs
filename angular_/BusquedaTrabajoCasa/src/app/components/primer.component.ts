@@ -42,7 +42,8 @@ export class primer{
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
-        //this.getjobs();
+        this.getjobs();
+        this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
     }   
     getjobs(){

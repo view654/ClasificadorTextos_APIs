@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { DataService } from 'src/app/service/data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-password',
@@ -8,8 +10,16 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class password implements OnInit {
   public contrIncorrecta = "";
+  email = null;
+  id = null;
 
-  constructor(public router:Router) { }
+  constructor(public router:Router,private dataService:DataService,private _Activatedroute:ActivatedRoute) {
+    this.email =_Activatedroute.snapshot.paramMap.get('correo');
+    this.dataService.sendCode(this.email).subscribe((res2:any) => {
+      this.id = res2;
+      
+    });
+   }
 
   ngOnInit(): void {
   }
@@ -28,7 +38,10 @@ export class password implements OnInit {
       if(!((/\d/.test(contra))&&!(/^\d+$/.test(contra))&&!(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(contra)))){
         this.contrIncorrecta="La contraseña debe incluir numeros y letras. No se permiten caracteres especiales.";
       }else{
-        this.router.navigate(['/login']);
+        this.dataService.modificarContrasena(this.id,contra).subscribe(result => {
+          this.router.navigate(['/login']);
+        });
+        
       }
     }
   }
