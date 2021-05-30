@@ -85,7 +85,53 @@ export class DataService {
     }
     dir = dir.concat(provincia,'/',contrato,'/',jornada);
     dir=dir.replace(/ /g,'%20')
-    console.log('filtroGeneral: ',dir)
+    return this.httpClient.get(dir);
+  }
+
+  filtroGeneralViviendas(lugar, preciomax, preciomin, habitacionesmax, habitacionesmin, banosmax, banosmin, metros2max, metros2min, planta, compr_alq_compar, tipo){
+    var dir:string = 'http://127.0.0.1:8000/api/filtroGeneralViviendas/';
+    if(!lugar){
+      lugar='?'
+    }
+    if(!preciomax){
+      preciomax='?'
+    }
+    if(!preciomin){
+      preciomin ='?'
+    }
+    if(!habitacionesmax){
+      habitacionesmax='?'
+    }
+    if(!preciomax){
+      preciomax='?'
+    }
+    if(!habitacionesmin){
+      habitacionesmin ='?'
+    }
+    if(!banosmax){
+      banosmax='?'
+    }
+    if(!banosmin){
+      banosmin='?'
+    }
+    if(!metros2max){
+      metros2max ='?'
+    }
+    if(!metros2min){
+      metros2min ='?'
+    }
+    if(!planta){
+      planta='?'
+    }
+    if(!compr_alq_compar){
+      compr_alq_compar='?'
+    }
+    if(!tipo){
+      tipo ='?'
+    }
+    dir = dir.concat(lugar,'/', preciomax,'/', preciomin,'/', habitacionesmax,'/', habitacionesmin,'/', banosmax,'/', banosmin,'/', metros2max,'/', metros2min,'/', planta,'/', compr_alq_compar,'/', tipo);
+    dir=dir.replace(/ /g,'%20')
+    console.log('filtroGeneral Vivienda: ',dir)
     return this.httpClient.get(dir);
   }
   filtroBusquedaTrabajo(query){
@@ -102,16 +148,7 @@ export class DataService {
     return this.httpClient.get(dir);
   }
   //Funciones de Filtros
-  /*
-  Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosController@filtroProvincia');
-  Route::get('filtroJornada/{jornada}', 'App\Http\Controllers\TrabajosController@filtroJornada');
-  Route::get('filtroContrato/{contrato}', 'App\Http\Controllers\TrabajosController@filtroContrato');
-  Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
-  Route::get('filtroBusqueda/{request?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
-  */
-
-
-
+ 
 
 
   filtroBusqueda(query){

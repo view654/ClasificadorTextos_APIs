@@ -24,10 +24,11 @@ p {
     z-index: 1;
     position:fixed;
     left: 0;
-    width:200px;
-    max-width: 200px;
-    min-width: 200px;
+    width:225px;
+    max-width: 225px;
+    min-width: 225px;
     height:90%;
+    overflow-y: scroll;
     padding:1vw;
     background-color:rgb(201, 238, 236);
   
