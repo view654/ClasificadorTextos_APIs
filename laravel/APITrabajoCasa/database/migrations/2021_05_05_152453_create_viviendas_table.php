@@ -17,10 +17,10 @@ class CreateViviendasTable extends Migration
             $table->increments('vivienda_ID');
             $table->string('link', 100)->nullable();
             $table->string('lugar', 100)->nullable();
-            $table->decimal('precio')->nullable();
-            $table->string('habitaciones', 100)->nullable();
-            $table->string('banos', 100)->nullable();
-            $table->string('metros2', 100)->nullable();
+            $table->integer('precio')->nullable();
+            $table->integer('habitaciones')->nullable();
+            $table->integer('banos')->nullable();
+            $table->integer('metros2')->nullable();
             $table->string('planta', 100)->nullable();
             $table->string('tipo', 100)->nullable();
             $table->string('compr_alq_compar', 100)->nullable();
