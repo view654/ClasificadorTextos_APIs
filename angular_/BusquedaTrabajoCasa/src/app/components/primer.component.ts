@@ -42,7 +42,8 @@ export class primer{
         console.log("Componente primer cargado!!");        
     }
     ngOnInit() {
-        this.getjobs();
+        /* this.getjobs();
+        this.getcasas(); */
         this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
     }   /* 
@@ -64,10 +65,24 @@ export class primer{
 
         this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
             this.casas = Object.values(res);
-            /* console.log(this.casas);
-            variablesdeidentificacion.getcasas(Object.values(res)); */
+            console.log(this.casas);
+            variablesdeidentificacion.getcasas(Object.values(res));
+            this.images=new Array(this.casas.length);
+            for (let i = 0; i < (this.casas.length-1); i++) { 
+                //console.log('casa: ', this.casas[i])    
+                this.images[i]=this.casas[i].imagenes.split('\[\'');
+                //console.log('imagenes1: ', this.images[i])
+                if(this.images[i][1]){
+                    this.images[i]=this.images[i][1].split('\'\]');
+                    //console.log('imagenes2: ', this.images[i])
+                    this.images[i] =this.images[i][0].split('\', \''); 
+                    //console.log('imagenes3: ', this.images[i])
+                }            
+        
+            }
         })
     }
+
     getcasas(){
         this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
             //console.log(res);

@@ -11,33 +11,33 @@ export class DataService {
   constructor(private httpClient:HttpClient) {}
   //USUARIOS
   getData(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
+    return this.httpClient.get('https://rejob-prueba.herokuapp.com/api/mostrarUsuarios');
   }
   log(datos){
-    return this.httpClient.post('http://127.0.0.1:8000/api/login',datos);
+    return this.httpClient.post('https://rejob-prueba.herokuapp.com/api/login',datos);
   }
   getUsuarios(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/mostrarUsuarios');
+    return this.httpClient.get('https://rejob-prueba.herokuapp.com/api/mostrarUsuarios');
   }
 
   getUsuarioByID(id){
-    var dir:string = 'http://127.0.0.1:8000/api/mostrarUsuario/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarUsuario/';
     dir = dir.concat(id.toString());
     return this.httpClient.get(dir);
   }
   modificarUsuario(id,datos){
-    var dir:string = 'http://127.0.0.1:8000/api/modificarUsuario/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/modificarUsuario/';
     dir = dir.concat(id.toString());
     return this.httpClient.put(dir,datos);
   }
    
   registro(datos){
-    return this.httpClient.post('http://127.0.0.1:8000/api/registro',datos);
+    return this.httpClient.post('https://rejob-prueba.herokuapp.com/api/registro',datos);
   }
 
   //MAIL
   sendCode(correo){
-    var dir:string = 'http://127.0.0.1:8000/api/sendCode/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/sendCode/';
     dir = dir.concat(correo);
     console.log(dir);
     return this.httpClient.get(dir);
@@ -45,20 +45,20 @@ export class DataService {
 
   //Viviendas
   mostrarTodasViviendas(){
-    var dir:string = 'http://127.0.0.1:8000/api/mostrarViviendasJSON/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarViviendasJSON/';
     console.log(dir);
     return this.httpClient.get(dir);
   }
 
     //Viviendas
     mostrarTodosTrabajos(){
-      var dir:string = 'http://127.0.0.1:8000/api/mostrarTrabajosJSON/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarTrabajosJSON/';
       console.log(dir);
       return this.httpClient.get(dir);
     }
 
     filtroBusquedaTrabajo(query){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaTrabajo/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaTrabajo/';
       query.replace('/', '');
       query.replace('%', '');
       dir = dir.concat(query);
@@ -66,7 +66,7 @@ export class DataService {
     }
 
     filtroBusquedaVivienda(query){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaVivienda/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaVivienda/';
       dir = dir.concat(query);
       return this.httpClient.get(dir);
     }
