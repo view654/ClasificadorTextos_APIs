@@ -7,6 +7,7 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
 
 class ViviendasController extends Controller
 {
@@ -14,11 +15,10 @@ class ViviendasController extends Controller
     //Mostrar Viviendas en datos en el json
 
     public function mostrarViviendasJSON(){
-        $path = '../python_scraper/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         return $json;
     }
-
 
     //Viviendas en BBDD
     public function mostrarTodasViviendas(){
@@ -68,7 +68,7 @@ class ViviendasController extends Controller
     //filtros
     //filtro provincia
     public function filtroLugar($lugar){
-        $path = '../python_scraper/ofertas_vivienda.json';
+        $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
 
@@ -81,9 +81,6 @@ class ViviendasController extends Controller
 
     //General
     public function filtroGeneralViviendas($lugar = null, $preciomax= null, $preciomin= null, $habitacionesmax = null, $habitacionesmin= null, $banosmax = null, $banosmin= null, $metros2max= null, $metros2min= null, $planta= null, $compr_alq_compar= null, $tipo= null){
-
-        //dd($lugar, $preciomax, $preciomin, $habitacionesmax, $habitacionesmin, $banosmax, $banosmin);
-
         $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         $array = json_decode($json);

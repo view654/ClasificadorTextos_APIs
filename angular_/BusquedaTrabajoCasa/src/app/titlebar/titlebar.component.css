@@ -12,23 +12,10 @@
   
 .boton{
   margin:1vw; 
-  padding: 2px; 
   background-color:white; 
-  border-radius:0.25vw; 
+  border-radius: 7px; 
   border-color:antiquewhite;
 }  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -58,9 +45,9 @@
     .spacer {
       flex: 1;
     }
-  
+    
     .toolbarB{
-      position: fixed;
+      position:relative;
       z-index: 15;
       bottom: 0;
       left: 0;
