@@ -26,27 +26,27 @@
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="max">
+            <input matInput type="number" [(ngModel)]="maxM">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="step">
+            <input matInput type="number" [(ngModel)]="stepM">
           </mat-form-field>
         </section>
         <mat-card class="example-result-card">
           
           <mat-card-content>        
             <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.viviendaPrecio}}</h1>
+              <h1>{{filtros.Vmetros2min}}</h1>
             </div>
             <mat-slider
                 class="example-margin"
                 [invert]="false"
-                [max]="max"
-                [min]="filtros.Vmetros2mmin"
-                [step]="step"
+                [max]="maxM"
+                [min]="filtros.Vmetros2min"
+                [step]="stepM"
                 [thumbLabel]="true"
-                [(ngModel)]="filtros.viviendaPrecio"
+                [(ngModel)]="filtros.Vmetros2max"
                 aria-labelledby="example-name-label">
             </mat-slider>
           </mat-card-content>
@@ -65,27 +65,27 @@
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="max">
+            <input matInput type="number" [(ngModel)]="maxP">
           </mat-form-field>
           <mat-form-field class="example-margin-bar">
             <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="step">
+            <input matInput type="number" [(ngModel)]="stepP">
           </mat-form-field>
         </section>
         <mat-card class="example-result-card">
           
           <mat-card-content>        
             <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.viviendaPrecio}}</h1>
+              <h1>{{filtros.Vpreciomax}}</h1>
             </div>
             <mat-slider
                 class="example-margin"
                 [invert]="false"
-                [max]="max"
+                [max]="maxP"
                 [min]="filtros.Vpreciomin"
-                [step]="step"
+                [step]="stepP"
                 [thumbLabel]="true"
-                [(ngModel)]="filtros.viviendaPrecio"
+                [(ngModel)]="filtros.Vpreciomax"
                 aria-labelledby="example-name-label">
             </mat-slider>
           </mat-card-content>
@@ -237,26 +237,30 @@
               </div>
             </div>
           </div>
+          <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
+          </mat-paginator>
         </ng-container>
+        
         <ng-template #dispTrabajos>
-          <div *ngFor="let trabajo of trabajos; let i=index">
-            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
-              <h2>{{trabajo.titulo}}</h2>
-              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
-              <hr>
-              <div style="display: inline-block; height: 100%; width: 35%;">
-                <p>Contrato: {{trabajo.contrato}}</p>
-                <p>Localidad: {{trabajo.localidad}}</p>
-                <p>Salario: {{trabajo.salario}}</p>
-              </div>
-              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
-                <p>{{trabajo.funciones}}</p>
+            <div *ngFor="let trabajo of trabajos; let i=index">
+              <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+                <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
+                <h2>{{trabajo.titulo}}</h2>
+                <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+                <hr>
+                <div style="display: inline-block; height: 100%; width: 35%;">
+                  <p>Contrato: {{trabajo.contrato}}</p>
+                  <p>Localidad: {{trabajo.localidad}}</p>
+                  <p>Salario: {{trabajo.salario}}</p>
+                </div>
+                <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                  <p>{{trabajo.funciones}}</p>
+                </div>
               </div>
             </div>
-          </div>
+          <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">
+          </mat-paginator>
         </ng-template>
-        
       </ng-template>
     </div>
     
