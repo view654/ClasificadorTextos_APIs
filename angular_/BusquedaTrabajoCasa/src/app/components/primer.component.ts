@@ -73,7 +73,6 @@ export class primer{
     }
     
     abrirOferta(trabajo_selec:Trabajo){
-        console.log(trabajo_selec);
         this.dialog.open(MostrarTrabajoComponent,{
             data:{trabajo_selec}
         });
@@ -81,6 +80,7 @@ export class primer{
     }
 
     abrirCasa(casa_selec:Casa){
+        console.log(casa_selec.link);
         this.dialog.open(MostrarInformacionComponent,{
             data:{casa_selec}
         });

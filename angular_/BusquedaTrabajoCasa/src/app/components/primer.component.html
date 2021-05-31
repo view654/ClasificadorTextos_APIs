@@ -222,7 +222,7 @@
       <ng-template #busqueda1>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
-            <div (click)="abrirCasa(trabajo)"  class="tarjetas">
+            <div (click)="abrirCasa(casa)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
               <h2>m2: {{casa.metros2}}</h2>
               <hr>
