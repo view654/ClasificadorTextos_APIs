@@ -97,11 +97,11 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
       console.log("Service hecho", trabajo_seleccionado);
       });
     }else{
-      this.favoritos= false;
+      /* this.favoritos= false;
       console.log(this.trabajo_selec);
       this.service.eliminarFavoritoTrabajo(id,this.trabajo_selec.trabajo_ID).subscribe((res:any) => {
         console.log("Eliminado");
-      });
+      }); */
     }
   }
 }

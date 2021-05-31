@@ -111,10 +111,10 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
         console.log("Service hecho", vivienda_seleccionada);
       });
     }else{
-      this.favoritos= false;
+      /* this.favoritos= false;
       this.service.eliminarFavoritoVivienda(id,this.casa_selec.vivienda_ID).subscribe((res:any) => {
         console.log("Eliminada");
-      });
+      }); */
     }
     
 
