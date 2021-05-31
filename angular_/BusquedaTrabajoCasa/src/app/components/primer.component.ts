@@ -52,13 +52,18 @@ export class primer{
         //this.user = this.rutaActiva.snapshot.params.user
     }
     
-    abrirOferta(trabajo){
-        this.dialog.open(MostrarTrabajoComponent)
+    abrirOferta(trabajo_selec:Trabajo){
+        console.log(trabajo_selec);
+        this.dialog.open(MostrarTrabajoComponent,{
+            data:{trabajo_selec}
+        });
         
     }
 
-    abrirCasa(Casa){
-        this.dialog.open(MostrarInformacionComponent)
+    abrirCasa(casa_selec:Casa){
+        this.dialog.open(MostrarInformacionComponent,{
+            data:{casa_selec}
+        });
     }
 
     getjobs(){

@@ -1,9 +1,15 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Trabajo } from '../components/trabajo_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { DataService } from '../service/data.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+
+export interface DialogData {
+  trabajo_selec: Trabajo;
+}
 
 @Component({
   selector: 'app-mostrar-trabajo',
@@ -23,7 +29,14 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
 
   
-  constructor(private _Activatedroute:ActivatedRoute, private service: DataService) { 
+  constructor(private _Activatedroute:ActivatedRoute, private service: DataService,
+    public dialogRef: MatDialogRef<MostrarTrabajoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Trabajo) { 
+    console.log("constructor");
+    
+    this.deftrabajo_selec(data["trabajo_selec"]);
+    console.log(this.trabajo_selec.enlace);
+
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.trabajos.length; i++) {
       if(this.trabajos[i].enlace == this.id){
@@ -36,14 +49,15 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   deftrabajo_selec(trabajo_seleccionada:Trabajo): void{
     this.trabajo_selec = trabajo_seleccionada;
   }
-
+  
   ofertasRelacionadas(titulo){
     this.service.filtroBusqueda(titulo.substring(0,8)).subscribe((res:any) => {
       this.relacionados = Object.values(res);
     })
   }
-
+  
   ngOnInit(): void {
+    
     this.ofertasRelacionadas(this.trabajo_selec.titulo)
     
   }
