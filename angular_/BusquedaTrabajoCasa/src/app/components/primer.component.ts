@@ -44,6 +44,7 @@ export class primer{
     ngOnInit() {
         /* this.getjobs();
         this.getcasas(); */
+        //this.getjobs();
         //this.user = this.rutaActiva.snapshot.params.user
     }   /* 
     getjobs(){

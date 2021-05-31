@@ -27,6 +27,8 @@ Route::post('login', 'App\Http\Controllers\UsuarioController@login');
 
 Route::get('mostrarUsuarios', 'App\Http\Controllers\UsuarioController@mostrarUsuarios');
 Route::get('mostrarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioId');
+Route::get('mostrarUsuarioEmail/{email}', 'App\Http\Controllers\UsuarioController@mostrarUsuarioEmail');
+
 
 Route::put('modificarUsuario/{user_id}', 'App\Http\Controllers\UsuarioController@modificarUsuarioId');
 Route::put('modificarContrasena/{user_id}', 'App\Http\Controllers\UsuarioController@modificarContrasena');
@@ -64,7 +66,7 @@ Route::get('ActualizarViviendas', 'App\Http\Controllers\ViviendasController@Actu
 //Funciones filtros
 Route::get('filtroLugar/{lugar}', 'App\Http\Controllers\ViviendasController@filtroLugar');
 Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
-
+Route::get('filtroGeneralViviendas/{lugar}/{preciomax}/{preciomin}/{habitacionesmax}/{habitacionesmin}/{banosmax}/{banosmin}/{metros2max}/{metros2min}/{planta}/{compr_alq_compar}/{tipo}', 'App\Http\Controllers\ViviendasController@filtroGeneralViviendas');
 
 //Funciones de modificacion de la tabla de favoritos
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
