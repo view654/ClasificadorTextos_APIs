@@ -55,7 +55,7 @@ class ViviendasController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['vivienda_ID'] = $enlace_vivienda -> vivienda_ID;
         }else{
-            $vivienda = Vivienda::create($request -> all());
+            $vivienda = Vivienda::create($request->json()->all());
             $usuario = User::find($user_id);
             $usuario -> viviendas() -> attach($vivienda -> vivienda_ID);
             $response['usuario_ID'] = $user_id;

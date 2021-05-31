@@ -76,4 +76,18 @@ export class DataService {
       dir = dir.concat(id.toString());
       return this.httpClient.post(dir,datos);
     }
+    
+
+    getFavoritosTrabajo(id){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/favoritosTrabajo/';
+      dir = dir.concat(id.toString());
+      return this.httpClient.get(dir);
+    }
+
+    agregarFavoritoVivienda(id, datos){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/agregarViviendas/';
+      dir = dir.concat(id.toString());
+      return this.httpClient.post(dir,datos);
+    }
+
 }

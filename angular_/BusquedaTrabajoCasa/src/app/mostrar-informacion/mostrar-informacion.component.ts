@@ -4,6 +4,10 @@ import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Usuario } from '../components/usuario_interfaz';
+import jwt_decode from "jwt-decode";
+import { DataService } from '../service/data.service';
+
 
 
 
@@ -17,14 +21,20 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnChanges {
   favoritos= false;
+  user: Usuario;
+  isLogged = false;
+
   public casa_selec: Casa;
   map: mapLeaflet;
   id:string;
   casas: Casa[] = variablesdeidentificacion.casas;
+
+  
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
   images:string[]
-  constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute) {
+  constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute, private service: DataService) {
+    this.user=Object.assign({},variablesdeidentificacion.user); 
 
     /*this.ngbCarouselConfig.interval = 10000;
     this.ngbCarouselConfig.wrap = false;
@@ -78,6 +88,24 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
         this.map.update(lat,lng,name);
     }
     */
-}
+  }
+
+  agregarFavoritoVivienda(){
+    console.log(variablesdeidentificacion.user);
+    this.user = Object.assign({},variablesdeidentificacion.user);
+    console.log(this.user);
+    this.favoritos= true;
+    console.log("Entra función");
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    var id = decoded['user_id'];
+    let vivienda_seleccionada = JSON.stringify(this.casa_selec);
+    console.log(this.casa_selec);
+
+    this.service.agregarFavoritoVivienda(id,vivienda_seleccionada).subscribe((res:any) => {
+      console.log("Service hecho", vivienda_seleccionada);
+    });
+
+  }
 
 }

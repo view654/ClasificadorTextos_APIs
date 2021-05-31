@@ -10,16 +10,16 @@
     <div style="padding-top: 2vw;">
       <p class = "titulo">Ofertas trabajo</p>
       <div style = "height: 30vw; width:330px; overflow: auto;">
-        <div *ngFor="let casa of casas">
-          <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class=filaCuest>
+        <div *ngFor="let trabajo of trabajos">
+          <div [routerLink]="['../MostrarInformacionComponent',trabajo.ID]" class=filaCuest>
             <div class="mitadCaja">
-              <label class=tituloCamp>{{casa.Lugar}}</label>
+              <label class=tituloCamp>{{trabajo.titulo}}</label>
               <br/>
-              <label class=tituloCamp>{{casa.Precio}}</label>
+              <label class=tituloCamp>{{trabajo.area}}</label>
             </div>
             <div>
               <div style="height: 60px; width: 200px; overflow: hidden;">
-                <label class=tituloCamp>{{casa.Descripcion}}</label>
+                <label class=tituloCamp>{{trabajo.sueldo}}</label>
               </div>
               <p>...</p>
             </div>

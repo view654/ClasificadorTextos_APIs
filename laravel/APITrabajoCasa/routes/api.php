@@ -68,7 +68,7 @@ Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasC
 
 //Funciones de modificacion de la tabla de favoritos
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
-Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritasViviendas');
+Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosViviendas');
 Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Controllers\ViviendasController@eliminarFavoritoVivienda');
 
 
