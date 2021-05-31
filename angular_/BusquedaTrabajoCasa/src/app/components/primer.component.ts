@@ -77,12 +77,10 @@ export class primer{
             variablesdeidentificacion.getjobs(res);
             
             var longitud = this.pageSizeT; 
-            
+            this.paglengthT=this.todosTrabajos.length;
             if(this.todosTrabajos.length<longitud){
                 longitud = this.todosTrabajos.length
-                this.paglengthT = 1;
-            }else{
-                this.paglengthT=this.todosTrabajos.length;
+                
             }
             this.trabajos = new Array(longitud);
             for(let i = 0; i<longitud; i++){
@@ -132,11 +130,10 @@ export class primer{
             }
          
             var longitud = this.pageSizeV; 
+            this.paglengthV=this.todasCasas.length;
             if(this.todasCasas.length<longitud){
                 longitud = this.todasCasas.length
-                this.paglengthV = 1;
-            }else{
-                this.paglengthV=this.todasCasas.length;
+                
             }
             this.casas = new Array(longitud);
             for(let i = 0; i<longitud; i++){
