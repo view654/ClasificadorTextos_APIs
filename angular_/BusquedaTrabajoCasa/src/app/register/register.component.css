@@ -43,29 +43,27 @@ p {
     border-radius:0.5vw;
 }
 .filaCuest{
-    margin:1vw;
+    margin:2vw;
 }
 hr{
-  margin-left: 16px;
-  width: 325px;
+  width: 154px;
+  margin-top: 0%;
 }
 .titulo{
-    text-align: left;
-    padding-left: 16px;
-    font-size: 16px;
-    margin-right: 10vw;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 500;
 }
 .tituloCamp{
     color:#3B6E90;
+    font-weight: 500;
 }
 .contCamp{
-  border-style: inset;
-  border-radius:0.5vw;
-  /*border-width: 12px;*/
-  /*border-color: #3B6E90;*/
+  border-style: solid;
+  border-radius: 0.7vw;
   padding: 0.25vw;
-  width: 20vw;
-  /*width: 33vw;*/
+  width: 22vw;
+  border-color: #2B5069 !important;
 }
 
 .menuLateral{
@@ -79,13 +77,24 @@ hr{
   
   }
   
+
+#mat-calendar-body-selected {
+  background-color: rgba(59,110,144, 0.85);
+}
 .boton{
-  margin:1vw; 
-  padding: 2px; 
-  background-color:white; 
-  border-radius:0.25vw; 
-  border-color:antiquewhite;
+  margin: 1vw;
+  padding: 0.5vw;
+  background-color: #3B6E90;
+  color: white;
+  border-radius:0.5vw;
 }  
+.pickerBtn{
+  margin: 0.5vw;
+  padding: 0.5vw;
+  background-color: #3B6E90;
+  color: white;
+  border-radius:0.5vw;
+}
   
   
   
