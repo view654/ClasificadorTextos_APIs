@@ -24,7 +24,7 @@ class CreateViviendasTable extends Migration
             $table->string('planta')->nullable();
             $table->string('tipo')->nullable();
             $table->string('compr_alq_compar')->nullable();
-            $table->longText('imagenes')->nullable();
+            $table->text('imagenes', 300)->nullable();
             $table->string('contacto')->nullable();
         });
     }

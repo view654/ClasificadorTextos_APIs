@@ -15,16 +15,16 @@ class CreateTrabajosTable extends Migration
     {
         Schema::create('trabajos', function (Blueprint $table) {
             $table->increments('trabajo_ID');
-            $table->string('titulo', 100)->nullable();
+            $table->string('titulo', 300)->nullable();
             $table->string('localidad', 100)->nullable();
-            $table->string('enlace', 100)->nullable();
+            $table->string('enlace', 300)->nullable();
             $table->string('jornada', 100)->nullable();
             $table->string('contrato', 100)->nullable();
             $table->string('salario', 100)->nullable();
             $table->string('experiencia', 100)->nullable();
-            $table->text('funciones')->nullable();
-            $table->text('requisitos')->nullable();
-            $table->text('ofrece')->nullable();
+            $table->text('funciones', 500)->nullable();
+            $table->text('requisitos', 500)->nullable();
+            $table->text('ofrece', 500)->nullable();
             $table->string('area', 100)->nullable();
         });
     }

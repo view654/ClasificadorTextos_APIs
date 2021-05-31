@@ -79,8 +79,9 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    filtroGeneral(provincia, contrato, jornada){
-      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroGeneral/';
+    filtroGeneral(trabajobusqueda,provincia, contrato, jornada){
+      console.log(trabajobusqueda);
+      var dir:string = 'https://127.0.0.1:8000/api/filtroGeneral/';
       if(!provincia){
         provincia='null'
       }
@@ -92,7 +93,8 @@ export class DataService {
       }
       dir = dir.concat(provincia,'/',contrato,'/',jornada);
       dir=dir.replace(/ /g,'%20')
-      return this.httpClient.get(dir);
+      console.log(dir);
+      return this.httpClient.get(dir, trabajobusqueda);
     }
 
     filtroBusquedaVivienda(query){

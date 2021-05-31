@@ -70,10 +70,13 @@ export class primer{
         }else{
             console.log('No existe paginator');
         }
-        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+
+        console.log(JSON.stringify(Object.values(this.trabajos)));
+        this.dataService.filtroGeneral(JSON.stringify(Object.values(this.trabajos)),this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+            console.log(this.trabajos);
             //console.log(res);
             this.todosTrabajos=Object.values(res);
-            
+            console.log(this.todosTrabajos);
             variablesdeidentificacion.getjobs(res);
             
             var longitud = this.pageSizeT; 
@@ -102,19 +105,49 @@ export class primer{
     } */
 
     busqueda(request){
+        if(this.paginator){
+            this.paginator.pageIndex = 0;
+        }else{
+            console.log('No existe paginator');
+        }
         this.isSearch = true;
         this.dataService.filtroBusquedaTrabajo(request).subscribe((res:any) => {
             this.trabajos = Object.values(res);
+            this.todosTrabajos=Object.values(res);
+            
             console.log(this.trabajos);
             variablesdeidentificacion.getjobs(Object.values(res));
+            
+            var longitud = this.pageSizeT; 
+            
+            if(this.todosTrabajos.length<longitud){
+                longitud = this.todosTrabajos.length
+                this.paglengthT = 1;
+            }else{
+                this.paglengthT=this.todosTrabajos.length;
+            }
+            this.trabajos = new Array(longitud);
+            for(let i = 0; i<longitud; i++){
+                this.trabajos[i] = this.todosTrabajos[i];
+            }
+            
         })
 
         this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
+            this.todasCasas=new Array(res.length);
+            var cont = 0
+            for(let key in res){
+                this.todasCasas[cont] = res[key];
+                cont = cont + 1;
+            }
+
             this.casas = Object.values(res);
             console.log(this.casas);
             variablesdeidentificacion.getcasas(Object.values(res));
-            this.images=new Array(this.casas.length);
-            for (let i = 0; i < (this.casas.length-1); i++) { 
+            this.images=new Array(this.todasCasas.length);
+            for (let i = 0; i < (this.todasCasas.length-1); i++) { 
+            //var cont = 0;
+            //for(let key in this.casas){
                 //console.log('casa: ', this.casas[i])    
                 this.images[i]=this.casas[i].imagenes.split('\[\'');
                 //console.log('imagenes1: ', this.images[i])
@@ -125,6 +158,18 @@ export class primer{
                     //console.log('imagenes3: ', this.images[i])
                 }            
         
+            }
+         
+            var longitud = this.pageSizeV; 
+            if(this.todasCasas.length<longitud){
+                longitud = this.todasCasas.length
+                this.paglengthV = 1;
+            }else{
+                this.paglengthV=this.todasCasas.length;
+            }
+            this.casas = new Array(longitud);
+            for(let i = 0; i<longitud; i++){
+                this.casas[i] = this.todasCasas[i];
             }
         })
     }

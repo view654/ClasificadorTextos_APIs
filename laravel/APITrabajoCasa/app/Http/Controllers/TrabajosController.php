@@ -121,17 +121,17 @@ class TrabajosController extends Controller
     }
 
     //Filtro de Jornada, Provincia y Contrato de Trabajos
-    public function filtroGeneral($provincia = null, $contrato = null, $jornada = null){
-        $path = '../python_scraper/ofertas_trabajo.json';
-        $json = file_get_contents($path);
-        $array = json_decode($json);
+    public function filtroGeneral(Request $request, $provincia = null, $contrato = null, $jornada = null){
+        $array = $request->json()->all();
         $filtro = '';
 
-        if (strcmp($provincia, "null")===0){
-            $filtro = json_decode($json);
+        /* if (strcmp($provincia, "null")===0){
+            $filtro = $array;
         }else{
             $filtro = array_filter($array, function($val) use ($provincia){
-                return $val -> localidad == $provincia;});
+                
+                return $val -> localidad == $provincia;
+            });
         }
 
         if(strcmp($contrato, "null")===0){
@@ -148,9 +148,9 @@ class TrabajosController extends Controller
             $filtro = array_filter($filtro, function($val) use ($jornada) { 
                 return  $val -> jornada == $jornada;
             });
-        }
+        } */
 
-        return response() -> json($filtro); 
+        return response() -> json($array); 
         
     }
 
