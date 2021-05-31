@@ -44,6 +44,7 @@ export class DataService {
   modificarContrasena(id,datos){
     var dir:string = 'http://127.0.0.1:8000/api/modificarContrasena/';
     dir = dir.concat(id.toString());
+    console.log('dir: ',dir,' datos: ',datos);
     return this.httpClient.put(dir,datos);
   }
 

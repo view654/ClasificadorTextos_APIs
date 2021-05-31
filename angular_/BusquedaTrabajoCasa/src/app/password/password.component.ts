@@ -15,9 +15,10 @@ export class password implements OnInit {
 
   constructor(public router:Router,private dataService:DataService,private _Activatedroute:ActivatedRoute) {
     this.email =_Activatedroute.snapshot.paramMap.get('correo');
-    this.dataService.sendCode(this.email).subscribe((res2:any) => {
-      console.log(res2);
-      this.id = res2;
+    this.dataService.mostrarUsuarioEmail(this.email).subscribe((res2:any) => {
+      console.log(res2[0]);
+      console.log(res2[0]['user_ID']);
+      this.id = res2[0]['user_ID'];
       
     });
    }
@@ -40,6 +41,7 @@ export class password implements OnInit {
         this.contrIncorrecta="La contraseña debe incluir numeros y letras. No se permiten caracteres especiales.";
       }else{
         this.dataService.modificarContrasena(this.id,contra).subscribe(result => {
+          console.log('contra: ',contra);
           this.router.navigate(['/login']);
         });
         

@@ -49,7 +49,7 @@ export const variablesdeidentificacion = {
       Vpreciomax: 50000,
       Vpreciomin: 25000,
       Vhabitacionesmax: null,
-      Vhabitacionesmin: 1,
+      Vhabitacionesmin: 0,
       Vbanosmax: null,
       Vbanosmin: 1,
       Vmetros2max: 500,

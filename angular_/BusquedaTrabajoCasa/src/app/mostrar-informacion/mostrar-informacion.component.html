@@ -1,5 +1,4 @@
-
-<div style="margin-top: 60px; padding: 4vw; padding-top: 0; text-align: center;">
+<mat-dialog-content style="margin-top: 60px; padding: 4vw; padding-top: 0; text-align: center;">
     <div class="parentCont">
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
             <label class="tituloCamp">Oferta</label>
@@ -26,8 +25,8 @@
                 </ng-template>
             </button>
         </div>
-        <div class="losTresContenedores" style="text-align: center;">
-            
+
+        <div class="losTresContenedores" style="text-align: center;">           
             <table style="width:70%; height: 70%; min-width: 100px; margin-left: 25%; margin-right: 15%; text-align: left;">
                 <tr>
                     <th><label class="subtituloCamp">Detalles</label></th>
@@ -55,6 +54,7 @@
                 </tr>
             </table>
         </div>
+
         <div class="losTresContenedores">
             <div id=map_cont_id></div>
             <!--
@@ -65,6 +65,7 @@
             -->
         </div>
     </div>
+
     <div style="text-align: center;">
         <div style="height: 300px;width: 100%; min-width:605px; min-height:300px;">
             <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
@@ -84,7 +85,7 @@
                     </div>
                     
                 </ng-template>
-              </ngb-carousel>
+            </ngb-carousel>
 
             <!-- _________________________________________________________________________________ -->
         </div>
@@ -100,12 +101,12 @@
         </div>
     </div>
     -->
-    <div class="parentCont">
-        
+    <div class="parentCont">  
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
             <label class="tituloCamp">Datos de contacto</label>
             <hr/>
         </div>
+
         <div>
             <div class="tarjetas">
                 <div style="display: inline-block; height: 100%; width: 20%; vertical-align: middle;">
@@ -113,33 +114,40 @@
                         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                     </svg>
                 </div>
+
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%;  vertical-align: middle;">
                     <label >{{casa_selec.contacto}}</label>
                 </div>
             </div>
+
             <div class="tarjetas">
                 <div style="display: inline-block; width: 20%; vertical-align: middle;">
                     <mat-icon style="font-size:20px; padding-top: 5px;"> Link</mat-icon>
                 </div>
+
                 <div style="display: inline-block; text-align: left;width: 70%; vertical-align: middle; font-size: 5px;">
                     <label style="margin: 5px;">{{casa_selec.link}}</label>
                 </div>
             </div>
+
             <div class="tarjetas">
                 <div style="display: inline-block; width: 20%; vertical-align: middle;">
                     <mat-icon style="font-size:20px; padding-top: 5px;">share</mat-icon>
                 </div>
+
                 <div style="display: inline-block; text-align: left;width: 70%; vertical-align: middle;">
                     <label style="margin: 5px;">Compartir</label>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="parentCont">
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
             <label class="tituloCamp">Ofertas relacionadas</label>
             <hr/>
         </div>
+
         <div>
             <div class="tarjetas">
                 <div style="display: inline-block; height: 100%; width: 29%; vertical-align: middle;">
@@ -149,10 +157,12 @@
                         <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
                     </svg>
                 </div>
+
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                     <label >Nombre Empresa</label>
                 </div>
             </div>
+
             <div class="tarjetas">
                 <div style="display: inline-block; height: 100%; width: 29%; vertical-align: middle;">
 
@@ -161,10 +171,12 @@
                         <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
                     </svg>
                 </div>
+
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                     <label >Nombre Empresa</label>
                 </div>
             </div>
+
             <div class="tarjetas">
                 <div style="display: inline-block; height: 100%; width: 29%; vertical-align: middle;">
 
@@ -173,13 +185,11 @@
                         <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
                     </svg>
                 </div>
+
                 <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                     <label >Nombre Empresa</label>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-
+</mat-dialog-content>
