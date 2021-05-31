@@ -237,26 +237,30 @@
               </div>
             </div>
           </div>
+          <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
+          </mat-paginator>
         </ng-container>
+        
         <ng-template #dispTrabajos>
-          <div *ngFor="let trabajo of trabajos; let i=index">
-            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
-              <h2>{{trabajo.titulo}}</h2>
-              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
-              <hr>
-              <div style="display: inline-block; height: 100%; width: 35%;">
-                <p>Contrato: {{trabajo.contrato}}</p>
-                <p>Localidad: {{trabajo.localidad}}</p>
-                <p>Salario: {{trabajo.salario}}</p>
-              </div>
-              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
-                <p>{{trabajo.funciones}}</p>
+            <div *ngFor="let trabajo of trabajos; let i=index">
+              <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+                <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
+                <h2>{{trabajo.titulo}}</h2>
+                <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+                <hr>
+                <div style="display: inline-block; height: 100%; width: 35%;">
+                  <p>Contrato: {{trabajo.contrato}}</p>
+                  <p>Localidad: {{trabajo.localidad}}</p>
+                  <p>Salario: {{trabajo.salario}}</p>
+                </div>
+                <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                  <p>{{trabajo.funciones}}</p>
+                </div>
               </div>
             </div>
-          </div>
+          <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">
+          </mat-paginator>
         </ng-template>
-        
       </ng-template>
     </div>
     

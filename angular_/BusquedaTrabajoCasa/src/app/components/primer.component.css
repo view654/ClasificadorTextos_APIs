@@ -31,6 +31,7 @@ p {
     overflow-y: scroll;
     padding:1vw;
     background-color:rgb(201, 238, 236);
+    padding-bottom: 50px;
   
 }
 .example-margin-bar{
