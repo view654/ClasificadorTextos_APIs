@@ -37,13 +37,13 @@
         <div *ngFor="let casa of casas">
           <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class=filaCuest>
             <div class="mitadCaja">
-              <label class=tituloCamp>{{casa.Lugar}}</label>
+              <label class=tituloCamp>{{casa.lugar}}</label>
               <br/>
-              <label class=tituloCamp>{{casa.Precio}}</label>
+              <label class=tituloCamp>{{casa.precio}}</label>
             </div>
             <div>
               <div style="height: 60px; width: 200px; overflow: hidden;">
-                <label class=tituloCamp>{{casa.Descripcion}}</label>
+                <label class=tituloCamp>{{casa.habitaciones}}</label>
               </div>
               <p>...</p>
             </div>

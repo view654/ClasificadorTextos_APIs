@@ -100,7 +100,7 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
     let vivienda_seleccionada = JSON.stringify(this.casa_selec);
-    console.log(this.casa_selec);
+    console.log(vivienda_seleccionada);
 
     this.service.agregarFavoritoVivienda(id,vivienda_seleccionada).subscribe((res:any) => {
       console.log("Service hecho", vivienda_seleccionada);

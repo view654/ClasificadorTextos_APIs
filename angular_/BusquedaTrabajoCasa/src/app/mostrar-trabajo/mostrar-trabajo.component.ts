@@ -90,7 +90,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
     let trabajo_seleccionado = JSON.stringify(this.trabajo_selec);
-    console.log(this.trabajo_selec);
+    console.log(trabajo_seleccionado);
 
     this.service.agregarFavoritoTrabajo(id,trabajo_seleccionado).subscribe((res:any) => {
       console.log("Service hecho", trabajo_seleccionado);

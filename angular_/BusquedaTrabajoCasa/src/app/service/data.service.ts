@@ -90,4 +90,10 @@ export class DataService {
       return this.httpClient.post(dir,datos);
     }
 
+    getFavoritosVivienda(id){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/favoritosViviendas/';
+      dir = dir.concat(id.toString());
+      return this.httpClient.get(dir);
+    }
+
 }

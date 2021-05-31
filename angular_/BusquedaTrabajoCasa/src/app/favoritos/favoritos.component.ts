@@ -26,6 +26,7 @@ export class favoritos implements OnInit {
   }
   ngOnInit() {
     this.getFavoritosTrabajo();
+    this.getFavoritosVivienda();
     //this.getUsersData();
     //this.user = this.rutaActiva.snapshot.params.user
   }
@@ -46,7 +47,20 @@ export class favoritos implements OnInit {
       this.trabajos = Object.values(res);
       variablesdeidentificacion.getjobs(Object.values(res));
   })
+  }
+
+  getFavoritosVivienda(){
+    this.user = Object.assign({},variablesdeidentificacion.user);
+    console.log(this.user);
+    console.log("Entra función");
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    var id = decoded['user_id'];
+    this.dataService.getFavoritosVivienda(id).subscribe((res:any) => {
+      this.casas = Object.values(res);
+      variablesdeidentificacion.getcasas(Object.values(res));
+  })
 
   }
-}
 
+}

@@ -46,9 +46,10 @@ class ViviendasController extends Controller
 
     public function addVivienda(Request $request, $user_id){
         $enlace_vivienda = Vivienda::where('link', $request['link']) -> first();
+
         if($enlace_vivienda){
             $response['status'] = 0;
-            $response['mensaje'] = "Trabajo ya existe";
+            $response['mensaje'] = "Vivienda ya existe";
             $response['codigo'] = 409;
             $usuario = User::find($user_id);
             $usuario -> viviendas() -> attach($enlace_vivienda -> vivienda_ID);
