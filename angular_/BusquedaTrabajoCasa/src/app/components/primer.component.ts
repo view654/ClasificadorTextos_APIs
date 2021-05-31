@@ -65,6 +65,7 @@ export class primer{
         this.isSearch = true;
         this.dataService.filtroBusquedaTrabajo(request).subscribe((res:any) => {
             this.trabajos = Object.values(res);
+            console.log(this.trabajos);
             variablesdeidentificacion.getjobs(Object.values(res));
         })
 

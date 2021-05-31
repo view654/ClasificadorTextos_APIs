@@ -121,7 +121,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button (click)="getjobs()">Aplicar filtros</button>
+        <button (click)="getcasas()">Aplicar filtros</button>
       </div>
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
@@ -194,8 +194,8 @@
         -->
         </div>
         <input type="text" id="name" name="name" required
-          minlength="4" maxlength="8" size="15">
-        <button (click)="isSearch=true" style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
+          minlength="4" maxlength="24" size="15" [(ngModel)] = "request">
+        <button (click)="busqueda(request)" style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
@@ -203,7 +203,7 @@
         
       </div>
       
-      <ng-container *ngIf="!isSearch; else busqueda">
+      <ng-container *ngIf="!isSearch; else busqueda1">
   
         <h1><br><br>¿Quienes somos?</h1>
         <!--
@@ -219,7 +219,7 @@
         </p>
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
          </ng-container>
-      <ng-template #busqueda>
+      <ng-template #busqueda1>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >

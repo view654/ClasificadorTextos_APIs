@@ -80,15 +80,15 @@ export class DataService {
     }
 
     filtroGeneral(provincia, contrato, jornada){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroGeneral/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroGeneral/';
       if(!provincia){
-        provincia='?'
+        provincia='null'
       }
       if(!contrato){
-        contrato='?'
+        contrato='null'
       }
       if(!jornada){
-        jornada ='?'
+        jornada ='null'
       }
       dir = dir.concat(provincia,'/',contrato,'/',jornada);
       dir=dir.replace(/ /g,'%20')
@@ -143,7 +143,7 @@ export class DataService {
     }
 
   filtroGeneralViviendas(lugar, preciomax, preciomin, habitacionesmax, habitacionesmin, banosmax, banosmin, metros2max, metros2min, planta, compr_alq_compar, tipo){
-    var dir:string = 'http://127.0.0.1:8000/api/filtroGeneralViviendas/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroGeneralViviendas/';
     if(!lugar){
       lugar='?'
     }
@@ -189,14 +189,4 @@ export class DataService {
     return this.httpClient.get(dir);
   }
  
-
-
-  filtroBusqueda(query){
-    var dir:string = 'http://127.0.0.1:8000/api/filtroBusqueda/';
-    query.replace('/', '');
-    query.replace('%', '');
-    dir = dir.concat(query);
-    console.log(dir)
-    return this.httpClient.get(dir);
-  }
 }
