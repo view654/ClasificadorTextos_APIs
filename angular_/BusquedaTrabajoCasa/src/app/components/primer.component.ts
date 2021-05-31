@@ -26,17 +26,14 @@ export class primer{
 
     casas: Casa[];
     trabajos: Trabajo[];
-    filtros: Filtro[] = variablesdeidentificacion.filtros;
+    filtros: Filtro = variablesdeidentificacion.filtros;
     images: string[][];
 
     request: string = '';
-
     autoTicks = false;
     invert = false;
     max = 100000;
-    min = 1000;
     step = 1000;
-    value = 0;
   
     constructor(private dataService:DataService){
         console.log("Componente primer cargado!!");        
@@ -46,8 +43,16 @@ export class primer{
         this.getcasas(); */
         //this.getjobs();
         //this.user = this.rutaActiva.snapshot.params.user
-    }   /* 
+    }   
     getjobs(){
+        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+            //console.log(res);
+            this.trabajos=Object.values(res);
+            console.log(this.trabajos);
+            variablesdeidentificacion.getjobs(res);
+        });
+    }
+        /*
         this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
           //console.log(res);
           this.trabajos=res;
@@ -86,6 +91,14 @@ export class primer{
     /* getcasas(){
         this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
             //console.log(res);
+            this.trabajos=res;
+            console.log(this.trabajos);
+            variablesdeidentificacion.getjobs(res);
+        });*/
+    
+    getcasas(){
+        this.dataService.filtroGeneralViviendas(this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
+            //console.log(res);
             this.casas=res;
             console.log(this.casas);
             variablesdeidentificacion.getcasas(res);
@@ -105,7 +118,7 @@ export class primer{
             console.log('images: ')    
             console.log(this.images)
       });
-    } */
+    } 
      
 
 }

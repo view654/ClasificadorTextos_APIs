@@ -62,8 +62,8 @@ class ViviendasController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['vivienda_ID'] = $vivienda -> vivienda_ID;
         }
-    
-        return response() -> json($response); 
+
+        return response() -> json($response);
     }
 
     //Eliminar la relación entre user y vivienda de favoritos
@@ -71,7 +71,7 @@ class ViviendasController extends Controller
         $usuario = User::find($user_id);
         $usuario -> viviendas() -> detach($vivienda_id);
     }
-  
+
     public function ActualizarViviendas(){
         $python = "C:\Python39\python.exe";
 
@@ -80,7 +80,7 @@ class ViviendasController extends Controller
         //dd($cmd);
         $respuesta = shell_exec($cmd);
 
-        return $respuesta; 
+        return $respuesta;
     }
 
     //filtros
@@ -99,25 +99,22 @@ class ViviendasController extends Controller
 
     //General
     public function filtroGeneralViviendas($lugar = null, $preciomax= null, $preciomin= null, $habitacionesmax = null, $habitacionesmin= null, $banosmax = null, $banosmin= null, $metros2max= null, $metros2min= null, $planta= null, $compr_alq_compar= null, $tipo= null){
-        
-        //dd($lugar, $preciomax, $preciomin, $habitacionesmax, $habitacionesmin, $banosmax, $banosmin);
-        
         $path = '../python_scraper/ofertas_viviendas.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
         $filtro = '';
 
         if (strcmp($lugar, "null")===0){
-            
+
             $filtro = json_decode($json);
         }else{
-            
+
             $filtro = array_filter($array, function($val) use ($lugar){
                 return $val -> lugar == $lugar;});
 
         }
         if (strcmp($preciomax, "null")===0){
-            
+
         }else{
             $filtro = array_filter($filtro, function($val) use ($preciomax){
                 return $val -> precio <= (int)$preciomax;
