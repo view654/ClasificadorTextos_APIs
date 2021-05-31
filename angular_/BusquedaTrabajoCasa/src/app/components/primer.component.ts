@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { variablesdeidentificacion } from '../globalUse/variablesidentificacion';
 import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
@@ -7,6 +7,10 @@ import { DataService } from 'src/app/service/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { newArray } from '@angular/compiler/src/util';
 import { ViewChild } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 @Component({
     selector: 'primer',
@@ -52,18 +56,37 @@ export class primer{
     //pageIndexV = 0;
     
   
-    constructor(private dataService:DataService){
+    constructor(private dataService:DataService, public router:Router, public dialog: MatDialog){
+        
         console.log("Componente primer cargado!!");        
     }
+    
     ngOnInit() {
         this.maxP= this.filtros.Vpreciomax+this.filtros.Vpreciomax;
         this.maxM= this.filtros.Vmetros2max+this.filtros.Vmetros2max;
         //this.user = this.rutaActiva.snapshot.params.user
+
     }   
     ngAfterViewInit(): void {
         this.getjobs();
         this.getcasas();
     }
+    
+    abrirOferta(trabajo_selec:Trabajo){
+        console.log(trabajo_selec);
+        this.dialog.open(MostrarTrabajoComponent,{
+            data:{trabajo_selec}
+        });
+        
+    }
+
+    abrirCasa(casa_selec:Casa){
+        this.dialog.open(MostrarInformacionComponent,{
+            data:{casa_selec}
+        });
+    }
+
+
     getjobs(){
         if(this.paginator){
             this.paginator.pageIndex = 0;
