@@ -94,17 +94,29 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     console.log(variablesdeidentificacion.user);
     this.user = Object.assign({},variablesdeidentificacion.user);
     console.log(this.user);
-    this.favoritos= true;
-    console.log("Entra función");
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
-    let vivienda_seleccionada = JSON.stringify(this.casa_selec);
-    console.log(vivienda_seleccionada);
 
-    this.service.agregarFavoritoVivienda(id,vivienda_seleccionada).subscribe((res:any) => {
-      console.log("Service hecho", vivienda_seleccionada);
-    });
+    if(this.favoritos == false){
+      this.favoritos= true;
+      console.log("Entra función");
+      var token = localStorage.getItem('token'); 
+      var decoded = jwt_decode(token);
+      var id = decoded['user_id'];
+      let vivienda_seleccionada = JSON.stringify(this.casa_selec);
+      console.log(vivienda_seleccionada);
+
+      this.service.agregarFavoritoVivienda(id,vivienda_seleccionada).subscribe((res:any) => {
+        console.log("Service hecho", vivienda_seleccionada);
+      });
+    }else{
+      this.favoritos= false;
+      this.service.eliminarFavoritoVivienda(id,this.casa_selec.vivienda_ID).subscribe((res:any) => {
+        console.log("Eliminada");
+      });
+    }
+    
 
   }
 

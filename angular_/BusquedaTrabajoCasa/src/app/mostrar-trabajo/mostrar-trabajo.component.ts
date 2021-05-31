@@ -83,22 +83,27 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   agregarFavoritoTrabajo(){
     console.log(variablesdeidentificacion.user);
     this.user = Object.assign({},variablesdeidentificacion.user);
-    console.log(this.user);
-    this.favoritos= true;
-    console.log("Entra función");
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
-    let trabajo_seleccionado = JSON.stringify(this.trabajo_selec);
-    console.log(trabajo_seleccionado);
+    console.log(this.user);
 
-    this.service.agregarFavoritoTrabajo(id,trabajo_seleccionado).subscribe((res:any) => {
+    if(this.favoritos == false){
+      this.favoritos= true;
+      console.log("Entra función");
+      let trabajo_seleccionado = JSON.stringify(this.trabajo_selec);
+
+      this.service.agregarFavoritoTrabajo(id,trabajo_seleccionado).subscribe((res:any) => {
       console.log("Service hecho", trabajo_seleccionado);
-    });
-
+      });
+    }else{
+      this.favoritos= false;
+      console.log(this.trabajo_selec);
+      this.service.eliminarFavoritoTrabajo(id,this.trabajo_selec.trabajo_ID).subscribe((res:any) => {
+        console.log("Eliminado");
+      });
+    }
   }
-
-  
 }
 
 
