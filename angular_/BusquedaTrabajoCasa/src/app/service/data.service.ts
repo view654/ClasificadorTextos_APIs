@@ -44,6 +44,7 @@ export class DataService {
   modificarContrasena(id,datos){
     var dir:string = 'http://127.0.0.1:8000/api/modificarContrasena/';
     dir = dir.concat(id.toString());
+    console.log('dir: ',dir,' datos: ',datos);
     return this.httpClient.put(dir,datos);
   }
 
@@ -91,43 +92,43 @@ export class DataService {
   filtroGeneralViviendas(lugar, preciomax, preciomin, habitacionesmax, habitacionesmin, banosmax, banosmin, metros2max, metros2min, planta, compr_alq_compar, tipo){
     var dir:string = 'http://127.0.0.1:8000/api/filtroGeneralViviendas/';
     if(!lugar){
-      lugar='?'
+      lugar='null'
     }
     if(!preciomax){
-      preciomax='?'
+      preciomax='null'
     }
     if(!preciomin){
-      preciomin ='?'
+      preciomin ='null'
     }
     if(!habitacionesmax){
-      habitacionesmax='?'
+      habitacionesmax='null'
     }
     if(!preciomax){
-      preciomax='?'
+      preciomax='null'
     }
     if(!habitacionesmin){
-      habitacionesmin ='?'
+      habitacionesmin ='null'
     }
     if(!banosmax){
-      banosmax='?'
+      banosmax='null'
     }
     if(!banosmin){
-      banosmin='?'
+      banosmin='null'
     }
     if(!metros2max){
-      metros2max ='?'
+      metros2max ='null'
     }
     if(!metros2min){
-      metros2min ='?'
+      metros2min ='null'
     }
     if(!planta){
-      planta='?'
+      planta='null'
     }
     if(!compr_alq_compar){
-      compr_alq_compar='?'
+      compr_alq_compar='null'
     }
     if(!tipo){
-      tipo ='?'
+      tipo ='null'
     }
     dir = dir.concat(lugar,'/', preciomax,'/', preciomin,'/', habitacionesmax,'/', habitacionesmin,'/', banosmax,'/', banosmin,'/', metros2max,'/', metros2min,'/', planta,'/', compr_alq_compar,'/', tipo);
     dir=dir.replace(/ /g,'%20')
