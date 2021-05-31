@@ -30,6 +30,7 @@ class TrabajosController extends Controller
     //Añadir trabajos a la base de datos con relación a usuario
     public function addTrabajo(Request $request, $user_id){
         $enlace_trabajo = Trabajo::where('enlace', $request['enlace']) -> first();
+        
         if($enlace_trabajo){
             $response['status'] = 0;
             $response['mensaje'] = "Trabajo ya existe";
@@ -39,7 +40,7 @@ class TrabajosController extends Controller
             $response['usuario_ID'] = $user_id;
             $response['trabajo_ID'] = $enlace_trabajo -> trabajo_ID;
         }else{
-            $trabajo = Trabajo::create($request -> all());
+            $trabajo = Trabajo::create($request->json()->all());
             $usuario = User::find($user_id);
             $usuario -> trabajos() -> attach($trabajo -> trabajo_ID);
             $response['usuario_ID'] = $user_id;

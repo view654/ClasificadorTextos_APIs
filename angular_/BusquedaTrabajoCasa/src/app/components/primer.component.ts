@@ -44,7 +44,6 @@ export class primer{
     ngOnInit() {
         /* this.getjobs();
         this.getcasas(); */
-        this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
     }   /* 
     getjobs(){
@@ -83,7 +82,7 @@ export class primer{
         })
     }
 
-    getcasas(){
+    /* getcasas(){
         this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
             //console.log(res);
             this.casas=res;
@@ -105,7 +104,7 @@ export class primer{
             console.log('images: ')    
             console.log(this.images)
       });
-    }
+    } */
      
 
 }

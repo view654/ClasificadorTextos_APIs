@@ -70,4 +70,10 @@ export class DataService {
       dir = dir.concat(query);
       return this.httpClient.get(dir);
     }
+
+    agregarFavoritoTrabajo(id, datos){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/agregarTrabajos/';
+      dir = dir.concat(id.toString());
+      return this.httpClient.post(dir,datos);
+    }
 }

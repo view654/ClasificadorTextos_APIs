@@ -49,6 +49,7 @@ export class perfil {
     this.user = Object.assign({},variablesdeidentificacion.user);
     console.log(this.user);
   }
+  
   sendValue(){    
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);

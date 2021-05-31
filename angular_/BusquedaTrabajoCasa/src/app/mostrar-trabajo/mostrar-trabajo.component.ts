@@ -4,6 +4,8 @@ import { Trabajo } from '../components/trabajo_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { DataService } from '../service/data.service';
+import { Usuario } from '../components/usuario_interfaz';
+import jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-mostrar-trabajo',
@@ -12,7 +14,11 @@ import { DataService } from '../service/data.service';
 })
 
 export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges{
+  
+  user: Usuario;
+  isLogged = false;
   favoritos= false;
+
   public trabajo_selec: Trabajo;
   map: mapLeaflet;
   id:string;
@@ -23,7 +29,8 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
 
   
-  constructor(private _Activatedroute:ActivatedRoute, private service: DataService) { 
+  constructor(private _Activatedroute:ActivatedRoute, private service: DataService) {
+    this.user=Object.assign({},variablesdeidentificacion.user); 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.trabajos.length; i++) {
       if(this.trabajos[i].enlace == this.id){
@@ -44,7 +51,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     })
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.ofertasRelacionadas(this.trabajo_selec.titulo)
     
   }
@@ -73,5 +80,25 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     window.open(url);
   }
 
+  agregarFavoritoTrabajo(){
+    console.log(variablesdeidentificacion.user);
+    this.user = Object.assign({},variablesdeidentificacion.user);
+    console.log(this.user);
+    this.favoritos= true;
+    console.log("Entra función");
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    var id = decoded['user_id'];
+    let trabajo_seleccionado = JSON.stringify(this.trabajo_selec);
+    console.log(this.trabajo_selec);
+
+    this.service.agregarFavoritoTrabajo(id,trabajo_seleccionado).subscribe((res:any) => {
+      console.log("Service hecho", trabajo_seleccionado);
+    });
+
+  }
+
   
 }
+
+
