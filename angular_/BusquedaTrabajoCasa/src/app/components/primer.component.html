@@ -222,7 +222,7 @@
       <ng-template #busqueda>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
-            <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+            <div (click)="abrirCasa(trabajo)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
               <h2>m2: {{casa.metros2}}</h2>
               <hr>
@@ -239,8 +239,8 @@
           </div>
         </ng-container>
         <ng-template #dispTrabajos>
-          <div *ngFor="let trabajo of trabajos; let i=index">
-            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+          <div *ngFor="let trabajo of trabajos">
+            <div (click)="abrirOferta(trabajo)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>

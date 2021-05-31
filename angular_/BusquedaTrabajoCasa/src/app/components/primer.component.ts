@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
+import { variablesdeidentificacion } from '../globalUse/variablesidentificacion';
 import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
 import { DataService } from 'src/app/service/data.service';
+import { Router, RouterLink } from '@angular/router';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 @Component({
     selector: 'primer',
@@ -35,14 +39,31 @@ export class primer{
     max = 100000;
     step = 1000;
   
-    constructor(private dataService:DataService){
+    constructor(private dataService:DataService, public router:Router, public dialog: MatDialog){
+        
         console.log("Componente primer cargado!!");        
     }
+    
     ngOnInit() {
         this.getjobs();
         this.getcasas();
         //this.user = this.rutaActiva.snapshot.params.user
-    }   
+    }
+    
+    abrirOferta(trabajo_selec:Trabajo){
+        console.log(trabajo_selec);
+        this.dialog.open(MostrarTrabajoComponent,{
+            data:{trabajo_selec}
+        });
+        
+    }
+
+    abrirCasa(casa_selec:Casa){
+        this.dialog.open(MostrarInformacionComponent,{
+            data:{casa_selec}
+        });
+    }
+
     getjobs(){
         this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
             //console.log(res);
