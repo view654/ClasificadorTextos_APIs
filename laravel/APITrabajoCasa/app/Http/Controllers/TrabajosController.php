@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Str;
 
+use DB;
+
 class TrabajosController extends Controller
 {
     /** ------------------- MOSTRAR DATOS DESCARGADOS POR WEBSCRAPING -----------------------------------------*/
@@ -54,6 +56,38 @@ class TrabajosController extends Controller
         $usuario = User::find($user_id);
         $usuario -> trabajos() -> detach($trabajo_id);
     }
+
+    public function eliminarFavoritoTrabajos(Request $request, $user_id){
+        $trabajo = Trabajo::where('enlace', $request['enlace']) -> first();
+        if($trabajo){
+            $usuario = User::find($user_id);
+            $usuario -> trabajos() -> detach($trabajo->trabajo_ID);
+        }
+
+        /* $response['usuario_ID'] = $user_id;
+        $response['trabajo_ID'] = $trabajo -> trabajo_ID; */
+        return response() -> json($request->getContent());
+        
+    }
+
+    public function existefavoritoTrabajo(Request $request, $user_id){
+        $favoritos = false;
+        $trabajo = Trabajo::where('enlace', $request['enlace']) -> first();
+        if($trabajo){
+            $usuario = User::find($user_id);
+            $exists = $usuario->trabajos->contains($trabajo->trabajo_ID);
+            if($exists){
+                $favoritos = true;
+            }else{
+                $favoritos = false;
+            }
+        }else{
+            $favoritos = false;
+        }
+
+        return $favoritos; 
+    }
+
 
     /** ------------------- REALIZAR SCRIPTS DE PYTHON -----------------------------------------*/
 

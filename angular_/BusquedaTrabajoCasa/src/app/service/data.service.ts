@@ -174,12 +174,18 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    eliminarFavoritoTrabajo(idUsuario, idTrabajo){
-      var dir:string = 'https://rejob-prueba.herokuapp.com/api/eliminarFavoritoTrabajo/';
+    eliminarFavoritoTrabajo(idUsuario, datos){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/eliminarFavoritoTrabajos/';
       dir = dir.concat(idUsuario.toString());
-      dir  = dir.concat("/");
-      dir = dir.concat(idTrabajo.toString());
-      return this.httpClient.delete(dir);
+      console.log(dir);
+      return this.httpClient.post(dir, datos);
+    }
+
+    existefavoritoTrabajo(idUsuario, datos){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/existefavoritoTrabajo/';
+      dir = dir.concat(idUsuario.toString());
+      console.log(dir);
+      return this.httpClient.post(dir, datos);
     }
 
 }

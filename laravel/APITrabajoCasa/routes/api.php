@@ -54,7 +54,8 @@ Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Contro
 Route::get('favoritosTrabajo/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosTrabajo');
 Route::post('agregarTrabajos/{user_id}', 'App\Http\Controllers\TrabajosController@addTrabajo');
 Route::delete('eliminarFavoritoTrabajo/{user_id}/{trabajo_id}', 'App\Http\Controllers\TrabajosController@eliminarFavoritoTrabajo');
-
+Route::post('existefavoritoTrabajo/{user_id}', 'App\Http\Controllers\TrabajosController@existefavoritoTrabajo');
+Route::post('eliminarFavoritoTrabajos/{user_id}', 'App\Http\Controllers\TrabajosController@eliminarFavoritoTrabajos');
 
 /** --------------------------------VIVIENDAS ----------------------------------------------- */
 
@@ -71,6 +72,7 @@ Route::get('filtroGeneralViviendas/{lugar}/{preciomax}/{preciomin}/{habitaciones
 Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@addVivienda');
 Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosViviendas');
 Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Controllers\ViviendasController@eliminarFavoritoVivienda');
+
 
 
 Route::middleware(['cors'])->group(function () {

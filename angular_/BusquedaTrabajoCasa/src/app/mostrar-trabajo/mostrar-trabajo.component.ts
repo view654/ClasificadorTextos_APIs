@@ -66,9 +66,12 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
   
   ngOnInit(): void {
+    this.user = Object.assign({},variablesdeidentificacion.user);
     
-    this.ofertasRelacionadas(this.trabajo_selec.localidad)
-    
+    console.log("Usuario",this.user);
+    this.existefavoritoTrabajo(); 
+    console.log("ONINIT", this.favoritos);
+    this.ofertasRelacionadas(this.trabajo_selec.localidad);
   }
 
   
@@ -96,13 +99,9 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   agregarFavoritoTrabajo(){
-    console.log(variablesdeidentificacion.user);
-    this.user = Object.assign({},variablesdeidentificacion.user);
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
-    console.log(this.user);
-
     if(this.favoritos == false){
       this.favoritos= true;
       console.log("Entra función");
@@ -110,14 +109,32 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
       this.service.agregarFavoritoTrabajo(id,trabajo_seleccionado).subscribe((res:any) => {
       console.log("Service hecho", trabajo_seleccionado);
+      console.log("Al dar favoritos",this.favoritos);
       });
     }else{
-      /* this.favoritos= false;
       console.log(this.trabajo_selec);
-      this.service.eliminarFavoritoTrabajo(id,this.trabajo_selec.trabajo_ID).subscribe((res:any) => {
+      this.service.eliminarFavoritoTrabajo(id,this.trabajo_selec).subscribe((res:any) => {
+        console.log(res);
         console.log("Eliminado");
-      }); */
+      });
+      this.favoritos= false;
     }
+  }
+
+  existefavoritoTrabajo(){
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    var id = decoded['user_id'];
+    console.log(this.user);
+    this.service.existefavoritoTrabajo(id,this.trabajo_selec).subscribe(res => {
+      if(res == null){
+        this.favoritos = false;
+      }else{
+        this.favoritos = true;
+      }
+
+      console.log("Al inicio",this.favoritos);
+    });
   }
 }
 
