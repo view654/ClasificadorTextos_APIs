@@ -195,7 +195,7 @@
         
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos; let i=index">
-            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+            <div (click)="abrirOferta(trabajo)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
