@@ -76,6 +76,6 @@ Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Cont
 
 Route::middleware(['cors'])->group(function () {
     Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
-    Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
+    Route::get('filtroBusquedaVivienda/{request?}/{lugar}/{preciomax}/{preciomin}/{habitacionesmax}/{habitacionesmin}/{banosmax}/{banosmin}/{metros2max}/{metros2min}/{planta}/{compr_alq_compar}/{tipo}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
     Route::get('filtroBusquedaTrabajo/{request?}/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
 });

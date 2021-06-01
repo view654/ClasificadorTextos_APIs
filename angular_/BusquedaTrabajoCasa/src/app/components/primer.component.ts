@@ -26,7 +26,7 @@ export class primer{
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
 
-    public arrayProvincias:string[] = ['A Coruña','Albacete','Alicante','Almería','Álava','Asturias','Ávila','Badajoz','Balears','Barcelona','Bizkaia','Burgos','Cáceres','Cádiz','Cantabria',
+    public arrayProvincias:string[] = ['Todas las Provincias','A Coruña','Albacete','Alicante','Almería','Álava','Asturias','Ávila','Badajoz','Balears','Barcelona','Bizkaia','Burgos','Cáceres','Cádiz','Cantabria',
         'Castellón','Ciudad Real','Córdoba','Cuenca','Gipuzkoa','Girona','Granada','Guadalajara','Huelva','Huesca','Jaén','León','Lleida','Lugo','Madrid',
         'Málaga','Murcia','Navarra','Ourense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Santa Cruz de Tenerife','Segovia','Sevilla','Soria','Tarragona',
         'Teruel','Toledo','Valencia','Valladolid','Zamora','Zaragoza','Ceuta','Melilla'];
@@ -121,12 +121,19 @@ export class primer{
     } */
 
     busqueda(request){
+        console.log(this.filtros.Tprovincia);
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
             console.log('No existe paginator');
         }
+
+        /*-----------TRABAJOS -------------------*/
         this.isSearch = true;
+        if(this.filtros.Tprovincia == 'Todas las Provincias'){
+            this.filtros.Tprovincia = 'null';
+        }
+
         this.dataService.filtroGeneral(request, this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
             this.trabajos = Object.values(res);
             this.todosTrabajos=Object.values(res);
@@ -148,8 +155,13 @@ export class primer{
             
         })
 
+        /*-----------VIVIENDAS -------------------*/
+        console.log(this.filtros.Vlugar);
+        if(this.filtros.Vlugar == 'Todas las Provincias'){
+            this.filtros.Vlugar = 'null';
+        }
 
-        this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
+        this.dataService.filtroBusquedaVivienda(request, this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
 
             this.todasCasas=new Array(res.length);
             var cont = 0
@@ -199,7 +211,7 @@ export class primer{
             variablesdeidentificacion.getjobs(res);
         });*/
     
-    getcasas(){
+    /* getcasas(){
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
@@ -242,7 +254,7 @@ export class primer{
                 this.casas[i] = this.todasCasas[i];
             }
       });
-    } 
+    }  */
      
       
     
@@ -269,12 +281,12 @@ export class primer{
         this.pageSizeV = event.pageSize;
         var primerElem = event.pageSize*event.pageIndex;
         var longitud = event.pageSize;
-        if(primerElem+longitud >=this.todosTrabajos.length){
-            longitud = primerElem+longitud-this.todosTrabajos.length
+        if(primerElem+longitud >=this.todasCasas.length){
+            longitud = primerElem+longitud-this.todasCasas.length
         }
         var viv = new Array(longitud);
         for(let i = primerElem; i<(primerElem+longitud); i++){
-            viv[(i-primerElem)] = this.todosTrabajos[i];
+            viv[(i-primerElem)] = this.todasCasas[i];
         }
         this.casas = Object.assign([], viv);
     }
