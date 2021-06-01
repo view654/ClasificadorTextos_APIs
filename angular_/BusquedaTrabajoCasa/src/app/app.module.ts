@@ -14,7 +14,6 @@ import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
 import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { login } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { password } from './password/password.component';
@@ -93,10 +92,6 @@ const rutas: Routes = [
       {
         path: 'MostrarTrabajoComponent/:id',
         component: MostrarTrabajoComponent
-      },
-      {
-        path: 'NotificacionesComponent',
-        component: NotificacionesComponent
       }
     ]
   },
@@ -128,7 +123,6 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    NotificacionesComponent,
     sendEmail
   ],
   imports: [
