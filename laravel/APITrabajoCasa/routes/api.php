@@ -72,3 +72,7 @@ Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Cont
 Route::middleware(['cors'])->group(function () {
     Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
 });
+
+/** --------------------------------COORDENADAS ----------------------------------------------- */
+
+Route::get('coordenadas/{provincia}', 'App\Http\Controllers\ProvinciaController@coordenadas');
