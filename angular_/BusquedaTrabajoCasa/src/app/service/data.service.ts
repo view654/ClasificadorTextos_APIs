@@ -97,9 +97,50 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    filtroBusquedaVivienda(query){
-      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaVivienda/';
-      dir = dir.concat(query);
+    filtroBusquedaVivienda(query,lugar, preciomax, preciomin, habitacionesmax, habitacionesmin, banosmax, banosmin, metros2max, metros2min, planta, compr_alq_compar, tipo){
+      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaVivienda/';
+      if(!lugar){
+        lugar='null'
+      }
+      if(!preciomax){
+        preciomax='null'
+      }
+      if(!preciomin){
+        preciomin ='null'
+      }
+      if(!habitacionesmax){
+        habitacionesmax='null'
+      }
+      if(!preciomax){
+        preciomax='null'
+      }
+      if(!habitacionesmin){
+        habitacionesmin ='null'
+      }
+      if(!banosmax){
+        banosmax='null'
+      }
+      if(!banosmin){
+        banosmin='null'
+      }
+      if(!metros2max){
+        metros2max ='null'
+      }
+      if(!metros2min){
+        metros2min ='null'
+      }
+      if(!planta){
+        planta='null'
+      }
+      if(!compr_alq_compar){
+        compr_alq_compar='null'
+      }
+      if(!tipo){
+        tipo ='null'
+      }
+      dir = dir.concat(query, '/',lugar,'/', preciomax,'/', preciomin,'/', habitacionesmax,'/', habitacionesmin,'/', banosmax,'/', banosmin,'/', metros2max,'/', metros2min,'/', planta,'/', compr_alq_compar,'/', tipo);
+      dir=dir.replace(/ /g,'%20')
+      console.log(dir);
       return this.httpClient.get(dir);
     }
 
