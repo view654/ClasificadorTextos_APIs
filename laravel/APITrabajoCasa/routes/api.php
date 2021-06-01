@@ -45,8 +45,8 @@ Route::get('ActualizarTrabajos', 'App\Http\Controllers\TrabajosController@Actual
 Route::get('filtroProvincia/{provincia}', 'App\Http\Controllers\TrabajosController@filtroProvincia');
 Route::get('filtroJornada/{jornada}', 'App\Http\Controllers\TrabajosController@filtroJornada');
 Route::get('filtroContrato/{contrato}', 'App\Http\Controllers\TrabajosController@filtroContrato');
-Route::get('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
-Route::get('filtroBusquedaTrabajo/{request?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
+Route::post('filtroGeneral/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroGeneral');
+
 
 
 
@@ -65,7 +65,7 @@ Route::get('ActualizarViviendas', 'App\Http\Controllers\ViviendasController@Actu
 
 //Funciones filtros
 Route::get('filtroLugar/{lugar}', 'App\Http\Controllers\ViviendasController@filtroLugar');
-Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
+
 Route::get('filtroGeneralViviendas/{lugar}/{preciomax}/{preciomin}/{habitacionesmax}/{habitacionesmin}/{banosmax}/{banosmin}/{metros2max}/{metros2min}/{planta}/{compr_alq_compar}/{tipo}', 'App\Http\Controllers\ViviendasController@filtroGeneralViviendas');
 
 //Funciones de modificacion de la tabla de favoritos
@@ -76,4 +76,6 @@ Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Cont
 
 Route::middleware(['cors'])->group(function () {
     Route::get('sendCode/{correoUser}', 'App\Http\Controllers\UsuarioController@sendCode');
+    Route::get('filtroBusquedaVivienda/{request?}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
+    Route::get('filtroBusquedaTrabajo/{request?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
 });

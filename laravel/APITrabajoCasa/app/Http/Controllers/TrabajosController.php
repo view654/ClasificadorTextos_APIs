@@ -122,14 +122,14 @@ class TrabajosController extends Controller
 
     //Filtro de Jornada, Provincia y Contrato de Trabajos
     public function filtroGeneral(Request $request, $provincia = null, $contrato = null, $jornada = null){
-        $array = $request->json()->all();
+        //$json = $request->getContent();
+        $array = json_decode($request->getContent());
         $filtro = '';
 
-        /* if (strcmp($provincia, "null")===0){
+        if (strcmp($provincia, "null")===0){
             $filtro = $array;
         }else{
             $filtro = array_filter($array, function($val) use ($provincia){
-                
                 return $val -> localidad == $provincia;
             });
         }
@@ -148,9 +148,9 @@ class TrabajosController extends Controller
             $filtro = array_filter($filtro, function($val) use ($jornada) { 
                 return  $val -> jornada == $jornada;
             });
-        } */
+        } 
 
-        return response() -> json($array); 
+        return response() -> json($filtro); 
         
     }
 

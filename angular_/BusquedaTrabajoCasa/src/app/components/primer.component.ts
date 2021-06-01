@@ -68,8 +68,6 @@ export class primer{
 
     }   
     ngAfterViewInit(): void {
-        this.getjobs();
-        this.getcasas();
     }
     
     abrirOferta(trabajo_selec:Trabajo){
@@ -94,12 +92,11 @@ export class primer{
             console.log('No existe paginator');
         }
 
-        console.log(JSON.stringify(Object.values(this.trabajos)));
-        this.dataService.filtroGeneral(JSON.stringify(Object.values(this.trabajos)),this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
-            console.log(this.trabajos);
-            //console.log(res);
-            this.todosTrabajos=Object.values(res);
-            console.log(this.todosTrabajos);
+        console.log(JSON.stringify(this.trabajos));
+        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada, JSON.stringify(this.trabajos)).subscribe((res:any) => {
+
+            this.todosTrabajos = res;
+            console.log(this.todosTrabajos, "TODOS TRABAJOS");
             variablesdeidentificacion.getjobs(res);
             
             var longitud = this.pageSizeT; 
@@ -136,7 +133,6 @@ export class primer{
             this.trabajos = Object.values(res);
             this.todosTrabajos=Object.values(res);
             
-            console.log(this.trabajos);
             variablesdeidentificacion.getjobs(Object.values(res));
             
             var longitud = this.pageSizeT; 
@@ -155,6 +151,7 @@ export class primer{
         })
 
         this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
+
             this.todasCasas=new Array(res.length);
             var cont = 0
             for(let key in res){
