@@ -44,7 +44,6 @@ export class DataService {
   modificarContrasena(id,datos){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/modificarContrasena/';
     dir = dir.concat(id.toString());
-    console.log('dir: ',dir,' datos: ',datos);
     return this.httpClient.put(dir,datos);
   }
 
@@ -52,14 +51,12 @@ export class DataService {
   sendCode(correo){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/sendCode/';
     dir = dir.concat(correo);
-    console.log(dir);
     return this.httpClient.get(dir);
   }
 
   /*----------------------VIVIENDAS-----------------------------*/
   mostrarTodasViviendas(){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarViviendasJSON/';
-    console.log(dir);
     return this.httpClient.get(dir);
   }
 
@@ -108,8 +105,7 @@ export class DataService {
       tipo ='null'
     }
     dir = dir.concat(query, '/',lugar,'/', preciomax,'/', preciomin,'/', habitacionesmax,'/', habitacionesmin,'/', banosmax,'/', banosmin,'/', metros2max,'/', metros2min,'/', planta,'/', compr_alq_compar,'/', tipo);
-    dir=dir.replace(/ /g,'%20')
-    console.log(dir);
+    dir=dir.replace(/ /g,'%20');
     return this.httpClient.get(dir);
   }
 
@@ -128,14 +124,12 @@ export class DataService {
   eliminarFavoritoVivienda(idUsuario, datos){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/eliminarFavoritoViviendas/';
     dir = dir.concat(idUsuario.toString());
-    console.log(dir);
     return this.httpClient.post(dir, datos);
   }
 
   existefavoritoVivienda(idUsuario, datos){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/existefavoritoVivienda/';
     dir = dir.concat(idUsuario.toString());
-    console.log(dir);
     return this.httpClient.post(dir, datos);
   }
 
@@ -143,7 +137,6 @@ export class DataService {
 
     mostrarTodosTrabajos(){
       var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarTrabajosJSON/';
-      console.log(dir);
       return this.httpClient.get(dir);
     }
 
@@ -163,7 +156,6 @@ export class DataService {
       }
       dir = dir.concat(request ,'/',provincia.toString(),'/',contrato.toString(),'/',jornada.toString());
       dir=dir.replace(/ /g,'%20');
-      console.log(dir);
       return this.httpClient.get(dir);
     }
 
@@ -183,14 +175,12 @@ export class DataService {
     eliminarFavoritoTrabajo(idUsuario, datos){
       var dir:string = 'https://rejob-prueba.herokuapp.com/api/eliminarFavoritoTrabajos/';
       dir = dir.concat(idUsuario.toString());
-      console.log(dir);
       return this.httpClient.post(dir, datos);
     }
 
     existefavoritoTrabajo(idUsuario, datos){
       var dir:string = 'https://rejob-prueba.herokuapp.com/api/existefavoritoTrabajo/';
       dir = dir.concat(idUsuario.toString());
-      console.log(dir);
       return this.httpClient.post(dir, datos);
     }
 
