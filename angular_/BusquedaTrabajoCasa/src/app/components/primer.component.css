@@ -43,8 +43,16 @@ p {
     padding:1vw;
     padding-left: 1.5%;
     background-color:rgba(95, 177, 232, 0.91);
+    overflow-y:hidden;
   
 }
+
+@media only screen and (max-width:960px){
+  menuLateral{
+      overflow-y:scroll;
+  }
+}
+
 .example-margin-bar{
   max-width: 75px;
   min-width: 75px;

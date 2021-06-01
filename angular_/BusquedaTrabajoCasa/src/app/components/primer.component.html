@@ -4,7 +4,7 @@
       <div *ngIf="trabajo!='trabajo'; else filtrosTr"style="width:100%;">
         <h1>Vivienda</h1>
         <br>
-        <p class= "txtFiltro">Provincia: {{filtros.Tprovincia}}</p>
+        <p class= "txtFiltro">Provincia:</p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -73,7 +73,7 @@
           </mat-form-field>
         </section>
 
-        <button class = "btn"(click)="getjobs()">Aplicar filtros</button>
+        <button class = "btn" (click)="getjobs()">Aplicar filtros</button>
       </div>
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
@@ -114,7 +114,7 @@
         </mat-form-field>
         <br>
         <br>
-        <button (click)="busqueda(request)">Aplicar filtros</button>
+        <button class="btn" (click)="busqueda(request)">Aplicar filtros</button>
         <!--<p>Contrato: {{filtros.trabajoContrato}}</p>-->
         
       </ng-template>
