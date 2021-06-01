@@ -43,10 +43,10 @@
     padding: 0.5vw;
     background-color: #3B6E90;
     border-radius:0.5vw;
+    color: white;
 }
 .tarjetas{
     display: inline-block;
-    height: 50px;
     width: 225px;
     margin: 2vw;
     padding: 0.5vw;
