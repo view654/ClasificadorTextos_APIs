@@ -104,7 +104,7 @@ class UsuarioController extends Controller
         }
 
         $usuario -> update([
-            'password'  => bcrypt($request -> password)
+            'password'  => bcrypt($request->getContent())
         ]);
 
         return response($usuario, 200);
