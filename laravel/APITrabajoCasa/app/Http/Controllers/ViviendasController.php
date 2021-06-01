@@ -303,7 +303,7 @@ class ViviendasController extends Controller
 
         if (strcmp($lugar, "null")===0){
 
-            $filtro = json_decode($json);
+            $filtro = $array;
         }else{
 
             $filtro = array_filter($array, function($val) use ($lugar){

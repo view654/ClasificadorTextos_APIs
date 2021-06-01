@@ -102,6 +102,7 @@ for url in urls:
 
         #LINK OFERTA
         link_oferta = "https://www.infoempleo.com" + link['href']
+        print(link_oferta)
 
         links_trabajos.append(link_oferta)
 
