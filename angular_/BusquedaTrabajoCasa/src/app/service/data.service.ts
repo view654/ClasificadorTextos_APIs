@@ -80,9 +80,8 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    filtroGeneral(provincia, contrato, jornada, datos){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroGeneral/';
-      console.log(datos);
+    filtroGeneral(request ,provincia, contrato, jornada){
+      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaTrabajo/';
       if(!provincia){
         provincia='null'
       }
@@ -92,10 +91,10 @@ export class DataService {
       if(!jornada){
         jornada ='null'
       }
-      dir = dir.concat(provincia.toString(),'/',contrato.toString(),'/',jornada.toString());
+      dir = dir.concat(request ,'/',provincia.toString(),'/',contrato.toString(),'/',jornada.toString());
       dir=dir.replace(/ /g,'%20');
       console.log(dir);
-      return this.httpClient.post(dir, datos);
+      return this.httpClient.get(dir);
     }
 
     filtroBusquedaVivienda(query){

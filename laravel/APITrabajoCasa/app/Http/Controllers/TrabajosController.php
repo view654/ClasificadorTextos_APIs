@@ -154,21 +154,75 @@ class TrabajosController extends Controller
         
     }
 
-    public function filtroBusqueda($request = null){
+    public function filtroBusqueda($request = null, $provincia = null, $contrato = null, $jornada = null){
         $path = '../python_scraper/ofertas_trabajo.json';
         $json = file_get_contents($path);
         $array = json_decode($json);
+        $filtro = '';
 
-        $filtrado = array_filter($array, function($val) use ($request) { 
-            $titulo = Str::contains(strtolower($val -> titulo), strtolower($request));
-            $descripcion = Str::contains(strtolower($val -> funciones), strtolower($request));
-            if ($titulo | $descripcion) {
-                return $val -> titulo || $val -> funciones;
+        if(strcmp($request, "null")===0){
+            $filtro = $json;
+
+            if (strcmp($provincia, "null")===0){
+                $filtro = $array;
+            }else{
+                $filtro = array_filter($array, function($val) use ($provincia){
+                    return $val -> localidad == $provincia;
+                });
             }
-            
-        });
+    
+            if(strcmp($contrato, "null")===0){
+                
+            }else{
+                $filtro = array_filter($filtro, function($val) use ($contrato) { 
+                    return  $val -> contrato == $contrato;
+                });
+            }
+    
+            if(strcmp($jornada, "null")===0){
+                
+            }else{
+                $filtro = array_filter($filtro, function($val) use ($jornada) { 
+                    return  $val -> jornada == $jornada;
+                });
+            }
+        }else{
+            $filtrado = array_filter($array, function($val) use ($request) { 
+                $titulo = Str::contains(strtolower($val -> titulo), strtolower($request));
+                $descripcion = Str::contains(strtolower($val -> funciones), strtolower($request));
+                if ($titulo | $descripcion) {
+                    return $val -> titulo || $val -> funciones;
+                }
+            });
 
-        return response() -> json($filtrado); 
+            if (strcmp($provincia, "null")===0){
+                $filtro = $filtrado;
+            }else{
+                $filtro = array_filter($filtrado, function($val) use ($provincia){
+                    return $val -> localidad == $provincia;
+                });
+            }
+    
+            if(strcmp($contrato, "null")===0){
+                
+            }else{
+                $filtro = array_filter($filtro, function($val) use ($contrato) { 
+                    return  $val -> contrato == $contrato;
+                });
+            }
+    
+            if(strcmp($jornada, "null")===0){
+                
+            }else{
+                $filtro = array_filter($filtro, function($val) use ($jornada) { 
+                    return  $val -> jornada == $jornada;
+                });
+            }
+
+
+        }
+
+        return response() -> json($filtro); 
 
     }
 

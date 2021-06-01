@@ -30,6 +30,10 @@ class ViviendasController extends Controller
         $json = file_get_contents($path);
         $array = json_decode($json);
 
+        if(strcmp($request, "null")===0){
+            $filtrado = $array;
+        }else{
+
         $filtrado = array_filter($array, function($val) use ($request) { 
             $comprobar = Str::contains(strtolower($val -> lugar), strtolower($request));
             if ($comprobar) {
@@ -37,7 +41,7 @@ class ViviendasController extends Controller
             }
             
         });
-
+        }
         return response() -> json($filtrado); 
 
     }

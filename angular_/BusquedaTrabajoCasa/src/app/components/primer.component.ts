@@ -75,7 +75,6 @@ export class primer{
         this.dialog.open(MostrarTrabajoComponent,{
             data:{trabajo_selec}
         });
-        
     }
 
     abrirCasa(casa_selec:Casa){
@@ -85,15 +84,14 @@ export class primer{
     }
 
 
-    getjobs(){
+    /* getjobs(){
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
             console.log('No existe paginator');
         }
 
-        console.log(JSON.stringify(this.trabajos));
-        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada, JSON.stringify(this.trabajos)).subscribe((res:any) => {
+        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada, JSON.stringify(this.trabajos_busqueda)).subscribe((res:any) => {
 
             this.todosTrabajos = res;
             console.log(this.todosTrabajos, "TODOS TRABAJOS");
@@ -111,7 +109,7 @@ export class primer{
             }
             
         });
-    }
+    } */
         
         /*
         this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
@@ -129,7 +127,7 @@ export class primer{
             console.log('No existe paginator');
         }
         this.isSearch = true;
-        this.dataService.filtroBusquedaTrabajo(request).subscribe((res:any) => {
+        this.dataService.filtroGeneral(request, this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
             this.trabajos = Object.values(res);
             this.todosTrabajos=Object.values(res);
             
@@ -149,6 +147,7 @@ export class primer{
             }
             
         })
+
 
         this.dataService.filtroBusquedaVivienda(request).subscribe((res:any) => {
 
