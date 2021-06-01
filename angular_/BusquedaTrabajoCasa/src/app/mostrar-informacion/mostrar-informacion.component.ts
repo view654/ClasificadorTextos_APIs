@@ -29,7 +29,7 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   map: mapLeaflet;
   id:string;
   casas: Casa[] = variablesdeidentificacion.casas;
-
+  todasCasas: Casa[]
   
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
@@ -37,19 +37,29 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute, private service: DataService,
     public dialogRef: MatDialogRef<MostrarInformacionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Casa) {
+    console.log(data)
     this.user=Object.assign({},variablesdeidentificacion.user); 
     this.defcasa_selec(data["casa_selec"]);
+    console.log(this.casa_selec.link);
     /*this.ngbCarouselConfig.interval = 10000;
     this.ngbCarouselConfig.wrap = false;
     this.ngbCarouselConfig.keyboard = false;
     this.ngbCarouselConfig.pauseOnHover = false;
     */
-    this.id =_Activatedroute.snapshot.paramMap.get('id');
+    
+    this.id = this.casa_selec.link;
     console.log(this.id);
-    for (let i = 0; i < this.casas.length-1; i++) {
-      if(this.casas[i].link == this.id){
+    this.todasCasas=new Array(this.casas.length);
+    var cont = 0
+    for(let key in this.casas){
+        this.todasCasas[cont] = this.casas[key];
+        cont = cont + 1;
+    }
+
+    for (let i = 0; i < this.todasCasas.length-1; i++) {
+      if(this.todasCasas[i].link == this.id){
         //parseInt(this.id, 10)
-        this.casa_selec=this.casas[i];
+        this.casa_selec=this.todasCasas[i];
         this.images=this.casa_selec.imagenes.split('\[\'');
         this.images=this.images[1].split('\'\]');
         this.images = this.images[0].split('\', \'');
