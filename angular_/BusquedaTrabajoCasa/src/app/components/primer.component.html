@@ -1,10 +1,10 @@
-<div class="content">
+<div class="content" [style.padding-left.vw] = "!isSearch ? 0:10" >
     <div *ngIf="isSearch" class=menuLateral>
       <!--<div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">-->
       <div *ngIf="trabajo!='trabajo'; else filtrosTr"style="width:100%;">
         <h1>Vivienda</h1>
         <br>
-        <p>Provincia: {{filtros.Tprovincia}}</p>
+        <p class= "txtFiltro">Provincia: {{filtros.Tprovincia}}</p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -14,88 +14,31 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Metros cuadrados</p>
+        <p class= "txtFiltro">Metros cuadrados</p>
         <section class="example-section">
           <mat-form-field class="example-margin-bar">
-            <mat-label>Value</mat-label>
-            <input matInput type="number" [(ngModel)]="filtros.Vmetros2max">
+            <mat-label>M² máx.</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vmetros2max">
           </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>m2 minimos</mat-label>
-            <input matInput type="number" [(ngModel)]="filtros.Vmetros2min">
-          </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="maxM">
-          </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="stepM">
+          <mat-form-field style="padding-left: 2vw;" class="example-margin-bar">
+            <mat-label>M² mín.</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vmetros2min">
           </mat-form-field>
         </section>
-        <mat-card class="example-result-card">
-          
-          <mat-card-content>        
-            <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.Vmetros2min}}</h1>
-            </div>
-            <mat-slider
-                class="example-margin"
-                [invert]="false"
-                [max]="maxM"
-                [min]="filtros.Vmetros2min"
-                [step]="stepM"
-                [thumbLabel]="true"
-                [(ngModel)]="filtros.Vmetros2max"
-                aria-labelledby="example-name-label">
-            </mat-slider>
-          </mat-card-content>
-        </mat-card>
-        <br>
-        <br>
-        <p>Precio</p>
+        <p class= "txtFiltro">Precio</p>
         <section class="example-section">
           <mat-form-field class="example-margin-bar">
-            <mat-label>Value</mat-label>
-            <input matInput type="number" [(ngModel)]="filtros.Vpreciomax">
+            <mat-label>Máximo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vpreciomax">
           </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>Precio minimo</mat-label>
-            <input matInput type="number" [(ngModel)]="filtros.Vpreciomin">
-          </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>Max value</mat-label>
-            <input matInput type="number" [(ngModel)]="maxP">
-          </mat-form-field>
-          <mat-form-field class="example-margin-bar">
-            <mat-label>Step size</mat-label>
-            <input matInput type="number" [(ngModel)]="stepP">
+          <mat-form-field style="padding-left: 2vw;" class="example-margin-bar">
+            <mat-label>Mínimo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vpreciomin">
           </mat-form-field>
         </section>
-        <mat-card class="example-result-card">
-          
-          <mat-card-content>        
-            <div class="example-label-container" [class]="vertical ? 'example-label-vertical' : 'example-label-horizontal'">
-              <h1>{{filtros.Vpreciomax}}</h1>
-            </div>
-            <mat-slider
-                class="example-margin"
-                [invert]="false"
-                [max]="maxP"
-                [min]="filtros.Vpreciomin"
-                [step]="stepP"
-                [thumbLabel]="true"
-                [(ngModel)]="filtros.Vpreciomax"
-                aria-labelledby="example-name-label">
-            </mat-slider>
-          </mat-card-content>
-        </mat-card>
-        <br>
-        <br>
-        <p>Contrato</p>
-        <mat-form-field class="example-margin-bar">
-          <mat-label>Contrato</mat-label>
-          <mat-form-field style="height: 3.4vw" fill>
+        <p class= "txtFiltro">Contrato</p>
+        <section class="example-section">
+          <mat-form-field style="height: 2.4vw" fill>
             <mat-label>Filtro</mat-label>
             <mat-select>
               <mat-option [value] = 1 (click)="filtros.Vcompr_alq_compar = null">Cualquiera</mat-option>
@@ -104,29 +47,38 @@
               <mat-option [value] = 4 (click)="filtros.Vcompr_alq_compar = 'compartir'">Compartir</mat-option>  
             </mat-select>
           </mat-form-field>
-        </mat-form-field>
+        </section>
         <br>
+        <p class= "txtFiltro">Nº de habitaciones</p>
+        <section class="example-section">
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Máximo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vhabitacionesmax">
+          </mat-form-field>
+          <mat-form-field style="padding-left: 2vw;" class="example-margin-bar">
+            <mat-label>Mínimo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vhabitacionesmin">
+          </mat-form-field>
+        </section>
         <br>
-        <p>Nº de habitaciones</p>
-        <mat-form-field class="example-margin-bar">
-          <mat-label>Nº minimo de habitaciones</mat-label>
-          <input matInput type="number" [(ngModel)]="filtros.Vhabitacionesmin">
-        </mat-form-field>
-        <br>
-        <br>
-        <p>Nº de baños</p>
-        <mat-form-field class="example-margin-bar">
-          <mat-label>Nº minimo de baños</mat-label>
-          <input matInput type="number" [(ngModel)]="filtros.Vbanosmin">
-        </mat-form-field>
-        <br>
-        <br>
-        <button (click)="getcasas()">Aplicar filtros</button>
+        <p class= "txtFiltro">Nº de baños</p>
+        <section class="example-section">
+          <mat-form-field class="example-margin-bar">
+            <mat-label>Máximo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vbanosmax">
+          </mat-form-field>
+          <mat-form-field style="padding-left: 2vw;"class="example-margin-bar">
+            <mat-label>Mínimo</mat-label>
+            <input matInput type="number" style ="text-align: center;"[(ngModel)]="filtros.Vbanosmin">
+          </mat-form-field>
+        </section>
+
+        <button class = "btn"(click)="getjobs()">Aplicar filtros</button>
       </div>
       <ng-template #filtrosTr style="width:100%;">
         <h1>Trabajo</h1>
         <br>
-        <p>Provincia: </p>
+        <p class= "txtFiltro">Provincia: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -136,7 +88,7 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Jornada: </p>
+        <p class= "txtFiltro">Jornada: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -149,7 +101,7 @@
         </mat-form-field>
         <br>
         <br>
-        <p>Contrato: </p>
+        <p class= "txtFiltro">Contrato: </p>
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
@@ -205,26 +157,26 @@
       
       <ng-container *ngIf="!isSearch; else busqueda1">
   
-        <h1><br><br>¿Quienes somos?</h1>
+        <h1><br><br>¿Quiénes somos?</h1>
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
         <p>{{user.ID}}</p>
         <p>{{isLogged}}</p>-->
         <p style="text-align: justify;font-size: 16px;"><br>Esta página le ofrece un buscador de ofertas de empleo y viviendas, pudiendo filtrar dichas ofertas por múltiples filtros y así poder encontrar la que más se adapte a sus necesidades.
         Contamos tambien con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
-        Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra para las asignaturas de <em>Proyecto de Computación II y III </em>
+        Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
         del tercer curso del grado de Ingeniería Informática de la <em>Universidad Europea de Madrid</em>, por lo que toda la información recopilada mediante web scrapping de fotocasa e infoempleo se empleará única y exclusivamente
         para fines didácticos. <br>
         
         </p>
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
          </ng-container>
-      <ng-template #busqueda1>
+      <ng-template  #busqueda1>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
-            <div (click)="abrirCasa(trabajo)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
-              <h2>m2: {{casa.metros2}}</h2>
+            <div [routerLink]="['../MostrarInformacionComponent',casa.link]" class="tarjetas" >
+              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2>m²: {{casa.metros2}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
                 <img [src]="images[i][0]" alt="No hay foto" width="275" height="175">
@@ -242,9 +194,9 @@
         </ng-container>
         
         <ng-template #dispTrabajos>
-          <div *ngFor="let trabajo of trabajos">
-            <div (click)="abrirOferta(trabajo)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgb(0, 170, 170)">{{i}}</h2>
+          <div *ngFor="let trabajo of trabajos; let i=index">
+            <div [routerLink]="['../MostrarTrabajoComponent',trabajo.enlace]"  class="tarjetas">
+              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
