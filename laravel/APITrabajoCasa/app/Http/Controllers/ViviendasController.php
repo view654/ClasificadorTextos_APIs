@@ -271,12 +271,9 @@ class ViviendasController extends Controller
 
     public function ActualizarViviendas(){
         $python = "C:\Python39\python.exe";
-
         $cmd = $python." \"".base_path('python_scraper\actualizarjsonviviendas.py')."\"";
-
         //dd($cmd);
         $respuesta = shell_exec($cmd);
-
         return $respuesta;
     }
 
