@@ -20,18 +20,29 @@ p {
     margin: 0;
 }
 
+.txtFiltro{
+  font-weight: 600;
+}
+.btn{
+  margin: 1vw;
+  padding: 1vw;
+  background-color: #3B6E90;
+  color: white;
+  border-radius:0.5vw;
+  border-color: white;
+}
 .menuLateral{
     z-index: 1;
     position:fixed;
     left: 0;
     width:225px;
-    max-width: 225px;
+    max-width: 200px;
     min-width: 225px;
-    height:90%;
+    height:95%;
     overflow-y: scroll;
     padding:1vw;
-    background-color:rgb(201, 238, 236);
-    padding-bottom: 50px;
+    padding-left: 1.5%;
+    background-color:rgba(95, 177, 232, 0.91);
   
 }
 .example-margin-bar{
@@ -80,11 +91,10 @@ p {
     flex-wrap: wrap;
     padding-top: 60px;
     justify-content: center;
-    
 }
-.content>* {
-    flex: 1 1 0%;
-}
+
+
+
 
 .card-container {
     display: flex;
@@ -150,7 +160,7 @@ p {
   position: relative;
   width:65vw; 
   min-height: 6vw; 
-  background-color: aqua;
+  background-color:rgba(95, 177, 231, 0.91);
   margin: 45px;
   padding: 0.5vw;
   border-style: inset;
@@ -162,7 +172,7 @@ p {
   color: black;
 }
 .tarjetas:hover {
-  background-color: rgb(109, 255, 255);
+  background-color:rgba(85, 158, 207, 0.81);
   cursor: pointer;
 }
 

@@ -121,9 +121,10 @@ class TrabajosController extends Controller
     }
 
     //Filtro de Jornada, Provincia y Contrato de Trabajos
-    public function filtroGeneral(Request $request, $provincia = null, $contrato = null, $jornada = null){
-        //$json = $request->getContent();
-        $array = json_decode($request->getContent());
+    public function filtroGeneral($provincia = null, $contrato = null, $jornada = null){
+        $path = '../python_scraper/ofertas_trabajo.json';
+        $json = file_get_contents($path);
+        $array = json_decode($json);
         $filtro = '';
 
         if (strcmp($provincia, "null")===0){

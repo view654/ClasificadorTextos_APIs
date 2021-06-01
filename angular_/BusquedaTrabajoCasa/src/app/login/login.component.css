@@ -1,3 +1,4 @@
+
 .content {
     width: 100%;
     display: flex;
@@ -24,6 +25,7 @@
     margin: 1vw;
     padding: 0.5vw;
     background-color: #3B6E90;
+    color: white;
     border-radius:0.5vw;
 }
 .imputCaja{
@@ -59,6 +61,29 @@
 }
 
 a{
-    color:blue;
-    text-decoration-line: underline;
+    color:blue !important;
+    text-decoration: underline !important;
+    
 }
+a:hover {
+    cursor: pointer;
+}
+
+.toolbar {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #3B6E90;
+    color: white;
+    font-weight: 600;
+  }
+  .spacer {
+    flex: 1;
+  }
+
+  
