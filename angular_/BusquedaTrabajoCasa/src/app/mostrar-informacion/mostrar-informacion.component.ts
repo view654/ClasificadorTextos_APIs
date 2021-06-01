@@ -101,8 +101,10 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   }
 
   ngOnInit(): void {
+    this.user = Object.assign({},variablesdeidentificacion.user);
+    this.existefavoritoVivienda();
     console.log(this.images);
-    this.ofertasRelacionadas(this.casa_selec.lugar)
+    this.ofertasRelacionadas(this.casa_selec.lugar);
   }
   ngAfterViewInit(): void{
     this.map=new mapLeaflet('map_cont_id');
@@ -121,9 +123,6 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   }
 
   agregarFavoritoVivienda(){
-    console.log(variablesdeidentificacion.user);
-    this.user = Object.assign({},variablesdeidentificacion.user);
-    console.log(this.user);
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
@@ -131,23 +130,36 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     if(this.favoritos == false){
       this.favoritos= true;
       console.log("Entra función");
-      var token = localStorage.getItem('token'); 
-      var decoded = jwt_decode(token);
-      var id = decoded['user_id'];
+      
       let vivienda_seleccionada = JSON.stringify(this.casa_selec);
-      console.log(vivienda_seleccionada);
 
       this.service.agregarFavoritoVivienda(id,vivienda_seleccionada).subscribe((res:any) => {
         console.log("Service hecho", vivienda_seleccionada);
       });
     }else{
-      /* this.favoritos= false;
-      this.service.eliminarFavoritoVivienda(id,this.casa_selec.vivienda_ID).subscribe((res:any) => {
+      this.service.eliminarFavoritoVivienda(id,this.casa_selec).subscribe((res:any) => {
         console.log("Eliminada");
-      }); */
+      });
+      this.favoritos= false;
     }
     
 
+  }
+
+  existefavoritoVivienda(){
+    var token = localStorage.getItem('token'); 
+    var decoded = jwt_decode(token);
+    var id = decoded['user_id'];
+    console.log(this.user);
+    this.service.existefavoritoVivienda(id,this.casa_selec).subscribe(res => {
+      if(res == null){
+        this.favoritos = false;
+      }else{
+        this.favoritos = true;
+      }
+
+      console.log("Al inicio",this.favoritos);
+    });
   }
 
 }

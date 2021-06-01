@@ -73,6 +73,9 @@ Route::post('agregarViviendas/{user_id}', 'App\Http\Controllers\ViviendasControl
 Route::get('favoritosViviendas/{user_id}', 'App\Http\Controllers\UsuarioController@favoritosViviendas');
 Route::delete('eliminarFavoritoVivienda/{user_id}/{vivienda_id}', 'App\Http\Controllers\ViviendasController@eliminarFavoritoVivienda');
 
+Route::post('existefavoritoVivienda/{user_id}', 'App\Http\Controllers\ViviendasController@existefavoritoVivienda');
+Route::post('eliminarFavoritoViviendas/{user_id}', 'App\Http\Controllers\ViviendasController@eliminarFavoritoViviendas');
+
 
 
 Route::middleware(['cors'])->group(function () {

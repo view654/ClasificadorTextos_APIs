@@ -102,6 +102,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     var token = localStorage.getItem('token'); 
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
+    
     if(this.favoritos == false){
       this.favoritos= true;
       console.log("Entra función");

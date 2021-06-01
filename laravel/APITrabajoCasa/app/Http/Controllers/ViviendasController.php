@@ -269,6 +269,34 @@ class ViviendasController extends Controller
         $usuario -> viviendas() -> detach($vivienda_id);
     }
 
+    public function eliminarFavoritoViviendas(Request $request, $user_id){
+        $vivienda = Vivienda::where('link', $request['link']) -> first();
+        if($vivienda){
+            $usuario = User::find($user_id);
+            $usuario -> viviendas() -> detach($vivienda->vivienda_ID);
+        }
+        return response() -> json($request->getContent());
+        
+    }
+
+    public function existefavoritoVivienda(Request $request, $user_id){
+        $favoritos = false;
+        $vivienda = Vivienda::where('link', $request['link']) -> first();
+        if($vivienda){
+            $usuario = User::find($user_id);
+            $exists = $usuario->viviendas->contains($vivienda->vivienda_ID);
+            if($exists){
+                $favoritos = true;
+            }else{
+                $favoritos = false;
+            }
+        }else{
+            $favoritos = false;
+        }
+
+        return $favoritos; 
+    }
+
     public function ActualizarViviendas(){
         $python = "C:\Python39\python.exe";
 

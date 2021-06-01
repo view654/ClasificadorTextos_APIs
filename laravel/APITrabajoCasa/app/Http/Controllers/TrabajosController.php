@@ -63,9 +63,6 @@ class TrabajosController extends Controller
             $usuario = User::find($user_id);
             $usuario -> trabajos() -> detach($trabajo->trabajo_ID);
         }
-
-        /* $response['usuario_ID'] = $user_id;
-        $response['trabajo_ID'] = $trabajo -> trabajo_ID; */
         return response() -> json($request->getContent());
         
     }
