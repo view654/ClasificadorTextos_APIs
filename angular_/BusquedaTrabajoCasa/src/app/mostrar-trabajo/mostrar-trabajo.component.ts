@@ -38,11 +38,8 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   constructor(private _Activatedroute:ActivatedRoute, private service: DataService,
     public dialogRef: MatDialogRef<MostrarTrabajoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Trabajo) { 
-      this.user=Object.assign({},variablesdeidentificacion.user); 
-    console.log("constructor");
-    
+    this.user=Object.assign({},variablesdeidentificacion.user); 
     this.deftrabajo_selec(data["trabajo_selec"]);
-    console.log(this.trabajo_selec.enlace);
 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     for (let i = 0; i < this.trabajos.length; i++) {
