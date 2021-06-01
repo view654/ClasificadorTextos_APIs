@@ -279,12 +279,12 @@ export class primer{
         this.pageSizeV = event.pageSize;
         var primerElem = event.pageSize*event.pageIndex;
         var longitud = event.pageSize;
-        if(primerElem+longitud >=this.todosTrabajos.length){
-            longitud = primerElem+longitud-this.todosTrabajos.length
+        if(primerElem+longitud >=this.todasCasas.length){
+            longitud = primerElem+longitud-this.todasCasas.length
         }
         var viv = new Array(longitud);
         for(let i = primerElem; i<(primerElem+longitud); i++){
-            viv[(i-primerElem)] = this.todosTrabajos[i];
+            viv[(i-primerElem)] = this.todasCasas[i];
         }
         this.casas = Object.assign([], viv);
     }
