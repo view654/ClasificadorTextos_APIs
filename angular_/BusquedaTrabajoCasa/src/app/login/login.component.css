@@ -1,5 +1,4 @@
 
-
 .content {
     width: 100%;
     display: flex;
@@ -69,3 +68,22 @@ a{
 a:hover {
     cursor: pointer;
 }
+
+.toolbar {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #3B6E90;
+    color: white;
+    font-weight: 600;
+  }
+  .spacer {
+    flex: 1;
+  }
+
+  
