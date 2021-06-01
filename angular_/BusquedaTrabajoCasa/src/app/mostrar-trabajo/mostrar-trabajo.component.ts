@@ -7,6 +7,7 @@ import { DataService } from '../service/data.service';
 import { Usuario } from '../components/usuario_interfaz';
 import jwt_decode from "jwt-decode";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Filtro } from '../components/filtro_interfaz';
 
 
 export interface DialogData {
@@ -29,6 +30,8 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   map: mapLeaflet;
   id:string;
   trabajos: Trabajo[] = variablesdeidentificacion.trabajos;
+
+  
 
   relacionados: any[];
 
@@ -55,15 +58,16 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     this.trabajo_selec = trabajo_seleccionada;
   }
   
-  ofertasRelacionadas(titulo){
-    this.service.filtroBusquedaTrabajo(titulo.substring(0,8)).subscribe((res:any) => {
+  ofertasRelacionadas(localidad){
+    this.service.filtroBusquedaVivienda(localidad, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null').subscribe((res:any) => {
       this.relacionados = Object.values(res);
+      console.log(this.relacionados.slice(0, 3));
     })
   }
   
   ngOnInit(): void {
     
-    this.ofertasRelacionadas(this.trabajo_selec.titulo)
+    this.ofertasRelacionadas(this.trabajo_selec.localidad)
     
   }
 

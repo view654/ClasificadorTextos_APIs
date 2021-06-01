@@ -121,6 +121,7 @@ export class primer{
     } */
 
     busqueda(request){
+        console.log(this.filtros.Tprovincia);
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
@@ -129,7 +130,7 @@ export class primer{
 
         /*-----------TRABAJOS -------------------*/
         this.isSearch = true;
-        if(this.filtros.Tprovincia == 'Todas las Provincias' || this.filtros.Vlugar == 'Todas las Provincias'){
+        if(this.filtros.Tprovincia == 'Todas las Provincias'){
             this.filtros.Tprovincia = 'null';
         }
 
@@ -155,6 +156,7 @@ export class primer{
         })
 
         /*-----------VIVIENDAS -------------------*/
+        console.log(this.filtros.Vlugar);
         if(this.filtros.Vlugar == 'Todas las Provincias'){
             this.filtros.Vlugar = 'null';
         }
@@ -209,7 +211,7 @@ export class primer{
             variablesdeidentificacion.getjobs(res);
         });*/
     
-    getcasas(){
+    /* getcasas(){
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
@@ -252,7 +254,7 @@ export class primer{
                 this.casas[i] = this.todasCasas[i];
             }
       });
-    } 
+    }  */
      
       
     

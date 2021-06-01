@@ -36,13 +36,13 @@ export class DataService {
   }
 
   mostrarUsuarioEmail(email){
-    var dir:string = 'http://127.0.0.1:8000/api/mostrarUsuarioEmail/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarUsuarioEmail/';
     dir = dir.concat(email.toString());
     return this.httpClient.get(dir);
   }
 
   modificarContrasena(id,datos){
-    var dir:string = 'http://127.0.0.1:8000/api/modificarContrasena/';
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/modificarContrasena/';
     dir = dir.concat(id.toString());
     console.log('dir: ',dir,' datos: ',datos);
     return this.httpClient.put(dir,datos);
@@ -72,16 +72,8 @@ export class DataService {
       return this.httpClient.get(dir);
     }
 
-    filtroBusquedaTrabajo(query){
-      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaTrabajo/';
-      query.replace('/', '');
-      query.replace('%', '');
-      dir = dir.concat(query);
-      return this.httpClient.get(dir);
-    }
-
     filtroGeneral(request ,provincia, contrato, jornada){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaTrabajo/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaTrabajo/';
       if(!provincia){
         provincia='null'
       }
@@ -98,7 +90,7 @@ export class DataService {
     }
 
     filtroBusquedaVivienda(query,lugar, preciomax, preciomin, habitacionesmax, habitacionesmin, banosmax, banosmin, metros2max, metros2min, planta, compr_alq_compar, tipo){
-      var dir:string = 'http://127.0.0.1:8000/api/filtroBusquedaVivienda/';
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/filtroBusquedaVivienda/';
       if(!lugar){
         lugar='null'
       }
@@ -143,6 +135,7 @@ export class DataService {
       console.log(dir);
       return this.httpClient.get(dir);
     }
+
 
     agregarFavoritoTrabajo(id, datos){
       var dir:string = 'https://rejob-prueba.herokuapp.com/api/agregarTrabajos/';

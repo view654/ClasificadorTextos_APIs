@@ -42,10 +42,10 @@ export const variablesdeidentificacion = {
 
   filtros: <Filtro>
     {
-      Tprovincia: null,
-      Tcontrato: null,
-      Tjornada: null,
-      Vlugar: null,
+      Tprovincia: 'null',
+      Tcontrato: 'null',
+      Tjornada: 'null',
+      Vlugar: 'null',
       Vpreciomax: 500000,
       Vpreciomin: 0,
       Vhabitacionesmax: 9,
@@ -54,9 +54,9 @@ export const variablesdeidentificacion = {
       Vbanosmin: 1,
       Vmetros2max: 500,
       Vmetros2min: 0,
-      Vplanta: null,
-      Vcompr_alq_compar: null,
-      Vtipo: null
+      Vplanta: 'null',
+      Vcompr_alq_compar: 'null',
+      Vtipo: 'null'
     },
   getjobs(trabajos){
     this.trabajos = trabajos;

@@ -30,6 +30,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   id:string;
   casas: Casa[] = variablesdeidentificacion.casas;
   todasCasas: Casa[]
+
+  relacionados: any[];
   
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
@@ -85,8 +87,22 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     this.casa_selec = casa_selecionada;
    }
 
+   ofertasRelacionadas(localidad){
+    this.service.filtroGeneral(localidad, 'null', 'null', 'null').subscribe((res:any) => {
+      this.relacionados = Object.values(res);
+      console.log(this.relacionados.slice(0, 3));
+    })
+  }
+
+  irOferta(){
+    let url = this.casa_selec.link
+    console.log(url)
+    window.open(url);
+  }
+
   ngOnInit(): void {
     console.log(this.images);
+    this.ofertasRelacionadas(this.casa_selec.lugar)
   }
   ngAfterViewInit(): void{
     this.map=new mapLeaflet('map_cont_id');
