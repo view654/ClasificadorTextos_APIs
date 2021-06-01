@@ -49,6 +49,5 @@ else:
     soup = BeautifulSoup(page.content, 'html.parser')
     islas = soup.find('td', class_ = "js-file-line")
     outF = open("./provincias.json", "a")
-
     outF.write(islas.text)
     outF.close()
