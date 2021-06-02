@@ -24,7 +24,7 @@ def arreglarLugar(lugar):
         ans.replace('ç','c')
         ans.replace('ñ','n')
         provincias.append((poid, ans))
-    with open('municios.json', 'r') as f:
+    with open('municipios.json', 'r') as f:
         municpios = json.load(f)
     for vivienda in municpios:
         poid = vivienda['provincia_id']

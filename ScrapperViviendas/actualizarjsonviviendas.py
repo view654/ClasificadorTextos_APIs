@@ -8,6 +8,69 @@ from random import randrange
 import json
 
 
+def arreglarLugar(lugar):
+    provincias = []
+    municipios = []
+    provincia = None
+    with open('provincias.json', 'r') as f:
+        viviendas_dict = json.load(f)
+    for vivienda in viviendas_dict:
+        poid = vivienda['provincia_id']
+        ans = vivienda['nombre']
+        ans.replace('á','a')
+        ans.replace('é','e')
+        ans.replace('í','i')
+        ans.replace('ú','u')
+        ans.replace('ç','c')
+        ans.replace('ñ','n')
+        provincias.append((poid, ans))
+    with open('municipios.json', 'r') as f:
+        municpios = json.load(f)
+    for vivienda in municpios:
+        poid = vivienda['provincia_id']
+        ans = vivienda['nombre']
+        ans.replace('á','a')
+        ans.replace('é','e')
+        ans.replace('í','i')
+        ans.replace('ú','u')
+        ans.replace('ç','c')
+        ans.replace('ñ','n')
+        municipios.append((poid, ans))
+
+    if(lugar.find('capital')):
+        nombre = lugar.split(' capital')
+        lugar = nombre[0]
+    for municipio in municipios:
+        mun = municipio[1].lower()
+        if(lugar == mun):
+            id = municipio[0]
+            for prov in provincias:
+                idp = prov[0]
+                if (id == idp):
+                    provincia = prov[1]
+    
+
+    if (lugar == 'donostia   san sebastian'):
+        provincia = 'Gipuzkoa'
+    if (lugar == 'alcala de henares'):
+        provincia = 'Madrid'
+    if (lugar == 'pulpi'):
+        provincia = 'Almería'
+    if (lugar == 'mataro'):
+        provincia = 'Barcelona'
+    if (lugar == 'betera'):
+        provincia = 'Valencia'
+    if (lugar == 'cordoba'):
+        provincia = 'Córdoba'
+    if (lugar == 'vilanova i la geltru'):
+        provincia = 'Barcelona'
+    if (lugar == 'l\'hospitalet de llobregat'):
+        provincia = 'Barcelona'
+    print(provincia)
+    return provincia
+    
+
+
 array_links_antiguos = []
 #Lee json ya creado con las viviendas y guarda variables en el array links antiguos
 with open('ofertas_vivienda.json', 'r') as f:
@@ -76,52 +139,56 @@ if(len(news)!=0):
                         contacto = div_contacto.find('div', class_ = 're-ContactDetail-phone').text
                     linkvivienda = enlace
                     lugarvivienda = absa[0].replace("-", " ")
-                    hb = precio1.text
-                    h = hb.split(' ')
-                    ea = h[0].replace('.','')
-                    preciovivienda = int(ea)
+                    lugar = arreglarLugar(lugarvivienda)
+                    if lugar != None:
 
-                    #Inicializamos las variables por si en el anuncio no estan especificadas
-                    habitacionesvivienda  = -1
-                    banosvivienda = -1
-                    metroscuadradosvivienda = -1
-                    numeroplantavivienda = 'no especificado'
-                    
-                    #recorremos la lista buscando palabras clave para asignarlas a las variables
-                    for a in range (len(lista)):
-                        eb = lista[a].findAll('span')
-                        i = eb[3]
-                        if ((i.text).find('hab') != -1):
-                            hb = i.text
-                            h = hb.split(' ')
-                            habitacionesvivienda = int(h[0])
-                        if ((i.text).find('ba') != -1):
-                            hb = i.text
-                            h = hb.split(' ')
-                            banosvivienda = int(h[0])
-                        if ((i.text).find('m') != -1):
-                            hb = i.text
-                            h = hb.split(' ')
-                            metroscuadradosvivienda = int(h[0])
-                        if (i.text == 'Bajos'):
-                            numeroplantavivienda = 'Bajos'
-                        if((i.text).find('Planta') != -1):
-                            numeroplantavivienda = i.text
-                    
-                    #Si es compra, alquiler o compartir, se saca del enlace
-                    compr_alq_comparvivienda = re.search(regexCAC, enlace).group(1)
-                    tipovivienda = re.search(regexTipo, donde.text).group(1)
+                        hb = precio1.text
+                        h = hb.split(' ')
+                        ea = h[0].replace('.','')
+                        preciovivienda = int(ea)
 
-                    #Para las imagenes del anuncio se busca el tipo img de la siguiente clase y se guarda en un array
-                    array_imagenes = []
-                    for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
-                        array_imagenes.append(item['src'])
+                        #Inicializamos las variables por si en el anuncio no estan especificadas
+                        habitacionesvivienda  = -1
+                        banosvivienda = -1
+                        metroscuadradosvivienda = -1
+                        numeroplantavivienda = 'no especificado'
+                        
+                        #recorremos la lista buscando palabras clave para asignarlas a las variables
+                        for a in range (len(lista)):
+                            eb = lista[a].findAll('span')
+                            i = eb[3]
+                            if ((i.text).find('hab') != -1):
+                                hb = i.text
+                                h = hb.split(' ')
+                                habitacionesvivienda = int(h[0])
+                            if ((i.text).find('ba') != -1):
+                                hb = i.text
+                                h = hb.split(' ')
+                                banosvivienda = int(h[0])
+                            if ((i.text).find('m²') != -1):
+                                hb = i.text
+                                
+                                h = hb.split(' ')
+                                metroscuadradosvivienda = int(h[0])
+                            if (i.text == 'Bajos'):
+                                numeroplantavivienda = 'Bajos'
+                            if((i.text).find('Planta') != -1):
+                                numeroplantavivienda = i.text
+                        
+                        #Si es compra, alquiler o compartir, se saca del enlace
+                        compr_alq_comparvivienda = re.search(regexCAC, enlace).group(1)
+                        tipovivienda = re.search(regexTipo, donde.text).group(1)
 
-                    #Construimos un string simulando la estructura de un objeto en json
-                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": " + str(preciovivienda) + ",\"habitaciones\": " + str(habitacionesvivienda) + ",\"banos\": " + str(banosvivienda) + ",\"metros2\": " + str(metroscuadradosvivienda) + ",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda +  "\",\"contacto\": \"" +contacto +"\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
-                    print(viv)
-                    #Lo escribimos en el json
-                    outF.write(viv)
+                        #Para las imagenes del anuncio se busca el tipo img de la siguiente clase y se guarda en un array
+                        array_imagenes = []
+                        for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
+                            array_imagenes.append(item['src'])
+                        
+                        #Construimos un string simulando la estructura de un objeto en json
+                            viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugar + "\",\"precio\": " + str(preciovivienda) + ",\"habitaciones\": " + str(habitacionesvivienda) + ",\"banos\": " + str(banosvivienda) + ",\"metros2\": " + str(metroscuadradosvivienda) + ",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda +  "\",\"contacto\": \"" +contacto +"\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
+                        #print(viv)
+                        #Lo escribimos en el json
+                            outF.write(viv)
         #Por saber donde falla
         except:
             print('F en ', i)

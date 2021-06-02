@@ -8,8 +8,7 @@
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
-            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Vlugar = provincia">{{provincia}}</mat-option>
-                     
+            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Vlugar = provincia">{{provincia}}</mat-option>     
           </mat-select>
         </mat-form-field>
         <br>
