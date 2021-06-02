@@ -19,10 +19,17 @@ h6 {
 p {
     margin: 0;
 }
+
+.absa{
+    position:absolute;
+    width:100%;
+    height:5vw;
+    bottom : 60px;
+}
 .content {
     width: 100%;
     display: flex;
-    min-height: calc(100% - 40px);
+    /*min-height: calc(100% - 40px);
     /*margin: 82px auto 32px;
     padding: 0 16px;
     max-width: 960px;
@@ -41,7 +48,11 @@ p {
     padding: 0.5vw;
     background-color: #3B6E90;
     border-radius:0.5vw;
+    color: white;
+    font-weight: 500;
+
 }
+
 .mitadCaja{
     margin:0.2vw;
     display:flex; 
@@ -67,7 +78,7 @@ p {
     text-align: center;
     font-size: 16px;
     margin-right: 10vw;
-
+    font-weight: 600;
 }
 .tituloCamp{
     color:#3B6E90;

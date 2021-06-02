@@ -17,13 +17,12 @@
 }
 .contenido2{
     font-size: 15px;
-    
+    margin-right: 4%;  
 }
 
 .parentCont{
     min-width: 800px;
     margin-top: 2vw;
-
 }
 
 
@@ -34,8 +33,7 @@
     height: 20vw;
     min-width: 250px;
     min-height: 250px;
-    vertical-align: middle;
-    
+    vertical-align: middle; 
 }
 
 .boton {
@@ -67,7 +65,6 @@ td.mat-cell{
 th.mat-header-cell{
     border-bottom-style: none;
 }
-
 
 #map_cont_id {
     height: 100%;
