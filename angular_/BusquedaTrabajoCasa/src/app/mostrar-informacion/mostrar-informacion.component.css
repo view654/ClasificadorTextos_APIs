@@ -17,6 +17,7 @@
 }
 .contenido2{
     font-size: 15px;
+    margin-right: 4%;
     
 }
 
@@ -43,6 +44,7 @@
     padding: 0.5vw;
     background-color: #3B6E90;
     border-radius:0.5vw;
+    color: white;
 }
 .tarjetas{
     display: inline-block;
@@ -84,3 +86,7 @@ th.mat-header-cell{
 .carousel-indicators {
     z-index: 2 !important;
 }
+
+.myTestClass div{
+    max-height: 200px !important;
+  } 
