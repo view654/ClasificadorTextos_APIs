@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
@@ -32,7 +32,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   todasCasas: Casa[]
 
   relacionados: any[];
-  
+  isloged = false;
+  screenWidth:number;
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
   images:string[]
@@ -43,6 +44,7 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     this.user=Object.assign({},variablesdeidentificacion.user); 
     this.defcasa_selec(data["casa_selec"]);
     console.log(this.casa_selec.link);
+    
     /*this.ngbCarouselConfig.interval = 10000;
     this.ngbCarouselConfig.wrap = false;
     this.ngbCarouselConfig.keyboard = false;
@@ -64,7 +66,7 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
         this.casa_selec=this.todasCasas[i];
         this.images=this.casa_selec.imagenes.split('\[\'');
         this.images=this.images[1].split('\'\]');
-        this.images = this.images[0].split('\', \'');
+        this.images = this.images[0].split('\', \'');        
       }
     }
     
@@ -90,7 +92,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
    ofertasRelacionadas(localidad){
     this.service.filtroGeneral(localidad, 'null', 'null', 'null').subscribe((res:any) => {
       this.relacionados = Object.values(res);
-      console.log(this.relacionados.slice(0, 3));
+      console.log('this.relacionados: ',this.relacionados)
+      //console.log(this.relacionados.slice(0, 3));
     })
   }
 
@@ -102,10 +105,29 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
 
   ngOnInit(): void {
     this.user = Object.assign({},variablesdeidentificacion.user);
-    this.existefavoritoVivienda();
-    console.log(this.images);
+    console.log('this.user: ',this.user);
+    if(variablesdeidentificacion.user){
+      this.existefavoritoVivienda();
+      this.isloged = true;
+    }else{
+      this.isloged = false;
+    }
+    console.log('this.images: ',this.images);
     this.ofertasRelacionadas(this.casa_selec.lugar);
-  }
+    this.screenWidth = window.innerWidth;
+
+}
+
+
+
+@HostListener('window:resize', ['$event'])
+onResize(event) {
+
+  this.screenWidth = window.innerWidth;
+  console.log('this.screenWidth: ',this.screenWidth);
+
+}
+  
   ngAfterViewInit(): void{
     this.map=new mapLeaflet('map_cont_id');
     this.map.update(40.373271,-3.921200,"UEM");

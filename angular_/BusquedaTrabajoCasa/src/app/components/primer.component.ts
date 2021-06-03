@@ -122,6 +122,7 @@ export class primer{
 
     busqueda(request){
         console.log(this.filtros.Tprovincia);
+        document.body.style.cursor = "progress";
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
@@ -135,6 +136,7 @@ export class primer{
         }
 
         this.dataService.filtroGeneral(request, this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+            
             this.trabajos = Object.values(res);
             this.todosTrabajos=Object.values(res);
             
@@ -152,6 +154,7 @@ export class primer{
             for(let i = 0; i<longitud; i++){
                 this.trabajos[i] = this.todosTrabajos[i];
             }
+            
             
         })
 
@@ -201,6 +204,7 @@ export class primer{
                 this.casas[i] = this.todasCasas[i];
             }
         })
+        document.body.style.cursor = "auto";
     }
 
     /* getcasas(){
