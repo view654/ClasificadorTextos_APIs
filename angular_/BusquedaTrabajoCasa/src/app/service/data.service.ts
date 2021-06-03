@@ -35,6 +35,12 @@ export class DataService {
     return this.httpClient.post('https://rejob-prueba.herokuapp.com/api/registro',datos);
   }
 
+  eliminarUsuario(id){
+    var dir:string = 'https://rejob-prueba.herokuapp.com/api/eliminarUsuario/';
+    dir = dir.concat(id.toString());
+    return this.httpClient.delete(dir);
+  }
+
   mostrarUsuarioEmail(email){
     var dir:string = 'https://rejob-prueba.herokuapp.com/api/mostrarUsuarioEmail/';
     dir = dir.concat(email.toString());
