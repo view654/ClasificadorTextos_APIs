@@ -52,7 +52,7 @@ p {
     font-weight: 500;
     font-size: large;
     width: 10vw;
-    height: 5vw;
+    /*height: 5vw;*/
   }
 .filaCuest{
     margin:1vw;

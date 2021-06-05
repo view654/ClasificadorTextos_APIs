@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
@@ -32,7 +32,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   todasCasas: Casa[]
 
   relacionados: any[];
-  
+  isloged = false;
+  screenWidth:number;
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
   images:string[]
@@ -43,11 +44,6 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     this.user=Object.assign({},variablesdeidentificacion.user); 
     this.defcasa_selec(data["casa_selec"]);
     console.log(this.casa_selec.link);
-    /*this.ngbCarouselConfig.interval = 10000;
-    this.ngbCarouselConfig.wrap = false;
-    this.ngbCarouselConfig.keyboard = false;
-    this.ngbCarouselConfig.pauseOnHover = false;
-    */
     
     this.id = this.casa_selec.link;
     console.log(this.id);
@@ -60,29 +56,14 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
 
     for (let i = 0; i < this.todasCasas.length-1; i++) {
       if(this.todasCasas[i].link == this.id){
-        //parseInt(this.id, 10)
         this.casa_selec=this.todasCasas[i];
         this.images=this.casa_selec.imagenes.split('\[\'');
         this.images=this.images[1].split('\'\]');
-        this.images = this.images[0].split('\', \'');
+        this.images = this.images[0].split('\', \'');        
       }
     }
-    
-    /*
-    this.casa_selec= {
-      ID:2,
-      Lugar:"Tokyo",
-      Precio:30000795,
-      Compr_alq_compar:"Alquilar",
-      Tipo:"Loft",
-      Link:"hhh.hhhhhh.hh",
-      M2:134,
-      Descripcion:"La descripción de la propiedad es el paso definitivo para convencer al potencial comprador para realizar una oferta por tu casa o al potencial inquilino para marcar tu número e interesarse por el alquiler que ofreces. \n Las fotografías y el video importan mucho, muchísmo, pero la descripción de un inmueble es imprescindible para darle fuerza al contenido visual. Estos tres elementos se complementan y unidos causan un efecto mayor.",
-      Telefono:654654654,
-      Email:"emailT@emailT.com"
-    };*/
-    
    }
+
    defcasa_selec(casa_selecionada:Casa): void{
     this.casa_selec = casa_selecionada;
    }
@@ -90,7 +71,8 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
    ofertasRelacionadas(localidad){
     this.service.filtroGeneral(localidad, 'null', 'null', 'null').subscribe((res:any) => {
       this.relacionados = Object.values(res);
-      console.log(this.relacionados.slice(0, 3));
+      console.log('this.relacionados: ',this.relacionados)
+      //console.log(this.relacionados.slice(0, 3));
     })
   }
 
@@ -102,24 +84,35 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
 
   ngOnInit(): void {
     this.user = Object.assign({},variablesdeidentificacion.user);
-    this.existefavoritoVivienda();
-    console.log(this.images);
+    console.log('this.user: ',this.user);
+    if(variablesdeidentificacion.user){
+      this.existefavoritoVivienda();
+      this.isloged = true;
+    }else{
+      this.isloged = false;
+    }
+    console.log('this.images: ',this.images);
     this.ofertasRelacionadas(this.casa_selec.lugar);
-  }
+    this.screenWidth = window.innerWidth;
+
+}
+
+
+
+@HostListener('window:resize', ['$event'])
+onResize(event) {
+
+  this.screenWidth = window.innerWidth;
+  console.log('this.screenWidth: ',this.screenWidth);
+
+}
+  
   ngAfterViewInit(): void{
     this.map=new mapLeaflet('map_cont_id');
     this.map.update(40.373271,-3.921200,"UEM");
   }
   ngOnChanges(changes:SimpleChanges):void{
-    /*
-    if(!this.map){
-        return;
-    }
-    if(changes.bridge.currentValue){
-        const {lat,lng,name} = changes.bridge.currentValue;
-        this.map.update(lat,lng,name);
-    }
-    */
+
   }
 
   agregarFavoritoVivienda(){
