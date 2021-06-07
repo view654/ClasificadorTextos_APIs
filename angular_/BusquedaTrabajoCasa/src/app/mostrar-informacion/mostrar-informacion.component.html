@@ -143,9 +143,8 @@
         </div>
 
         <div>
-            <div class="tarjetas" *ngFor="let item of relacionados.slice(0, 3);">
-
-                <div style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
+            <div class="tarjetas"  *ngFor="let item of relacionados.slice(0, 3);">
+                <div (click)="abrirOferta(item)" style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                     <label >{{item.titulo}}</label>
                 </div>
             </div>
