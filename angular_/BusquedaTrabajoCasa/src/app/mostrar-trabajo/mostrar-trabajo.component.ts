@@ -49,8 +49,9 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
         this.trabajo_selec=this.trabajos[i];
       }
     }
+    this.ofertasRelacionadas(this.trabajo_selec.localidad);
     
-    this.user=Object.assign({},variablesdeidentificacion.user); 
+    //this.user=Object.assign({},variablesdeidentificacion.user); 
   }
 
   
@@ -65,15 +66,18 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
   
   ngOnInit(): void {
-    this.user = Object.assign({},variablesdeidentificacion.user);
-    if(variablesdeidentificacion.user){
-      this.existefavoritoTrabajo();
-      this.isloged = true;
-    }else{
-      this.isloged = false;
+    var token = localStorage.getItem('token'); 
+    if(token){
+      var decoded = jwt_decode(token);
+      var id = decoded['user_id'];
+      if(id){
+        this.existefavoritoTrabajo();
+        this.isloged = true;
+      }else{
+        this.isloged = false;
+      }
     }
-    this.existefavoritoTrabajo(); 
-    this.ofertasRelacionadas(this.trabajo_selec.localidad);
+    
   }
 
   

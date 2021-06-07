@@ -82,13 +82,17 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   }
 
   ngOnInit(): void {
-    this.user = Object.assign({},variablesdeidentificacion.user);
-    //console.log('this.user: ',this.user);
-    if(variablesdeidentificacion.user){
-      this.existefavoritoVivienda();
-      this.isloged = true;
-    }else{
-      this.isloged = false;
+
+    var token = localStorage.getItem('token'); 
+    if(token){
+      var decoded = jwt_decode(token);
+      var id = decoded['user_id'];
+      if(id){
+        this.existefavoritoVivienda();
+        this.isloged = true;
+      }else{
+        this.isloged = false;
+      }
     }
     //console.log('this.images: ',this.images);
     this.ofertasRelacionadas(this.casa_selec.lugar);
