@@ -143,10 +143,26 @@ onResize(event) {
 
   }
 
+  compartir(val: string){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    window.alert("Enlace de oferta copiado");
+  }
 
   abrirOferta(trabajo_selec:Trabajo){
     console.log(trabajo_selec.enlace);
     this.dialog.open(MostrarTrabajoComponent,{
+        height: '400px',
+        width: '600px',
         data:{trabajo_selec}
     });
   }

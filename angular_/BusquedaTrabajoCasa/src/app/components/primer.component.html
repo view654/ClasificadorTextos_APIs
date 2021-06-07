@@ -174,7 +174,7 @@
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div (click)="abrirCasa(casa)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
               <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
@@ -195,7 +195,7 @@
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos; let i=index">
             <div (click)="abrirOferta(trabajo)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
@@ -214,5 +214,5 @@
         </ng-template>
       </ng-template>
     </div>
-    
-  </div>
+  
+</div>
