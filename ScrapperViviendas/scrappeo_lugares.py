@@ -48,6 +48,6 @@ if (page.status_code >= 400 and page.status_code <500):
 else:
     soup = BeautifulSoup(page.content, 'html.parser')
     islas = soup.find('td', class_ = "js-file-line")
-    outF = open("./provincias.json", "a")
+    outF = open("./provin.json", "a")
     outF.write(islas.text)
     outF.close()
