@@ -67,7 +67,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   ngOnInit(): void {
     this.user = Object.assign({},variablesdeidentificacion.user);
     
-    this.existefavoritoTrabajo(); 
+    this.existefavoritoTrabajo();
     this.ofertasRelacionadas(this.trabajo_selec.localidad);
   }
 
