@@ -90,17 +90,7 @@
             <!-- _________________________________________________________________________________ -->
         </div>
     </div>
-    <!--
-    <div class="parentCont">
-        <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
-            <label class="tituloCamp">Descripcion</label>
-            <hr/>
-        </div>
-        <div style="text-align: left;">
-            <label class="contenido2">{{casa_selec.habitaciones}}</label>
-        </div>
-    </div>
-    -->
+
     <div class="parentCont">  
         <div style="width: 100%; padding: 1vw; padding-left: 0; text-align: left;">
             <label class="tituloCamp">Datos de contacto</label>
@@ -129,7 +119,7 @@
                     <mat-icon style="font-size:20px; padding-top: 5px;">share</mat-icon>
                 </div>
 
-                <div style="display: inline-block; text-align: left;width: 70%; vertical-align: middle;">
+                <div (click)="compartir(casa_selec.link)" style="display: inline-block; text-align: left;width: 70%; vertical-align: middle;">
                     <label style="margin: 5px;">Compartir</label>
                 </div>
             </div>
@@ -143,11 +133,12 @@
         </div>
 
         <div>
-            <div class="tarjetas"  *ngFor="let item of relacionados.slice(0, 3);">
+            <div class="tarjetas" *ngFor="let item of relacionados.slice(0, 3);">
                 <div (click)="abrirOferta(item)" style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                     <label >{{item.titulo}}</label>
                 </div>
             </div>
         </div>
     </div>
+
 </mat-dialog-content>
