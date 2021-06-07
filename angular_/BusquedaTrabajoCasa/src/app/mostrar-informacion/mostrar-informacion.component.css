@@ -88,4 +88,8 @@ th.mat-header-cell{
 
 .myTestClass div{
     max-height: 200px !important;
-  } 
+  }
+
+.related{
+    cursor: pointer;
+}

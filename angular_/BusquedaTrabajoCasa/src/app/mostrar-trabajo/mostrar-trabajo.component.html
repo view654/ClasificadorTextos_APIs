@@ -90,7 +90,7 @@
             </div>
            
             <div>
-                <div class="tarjetas" *ngFor="let item of relacionados.slice(0, 3);">
+                <div class="tarjetas related" *ngFor="let item of relacionados.slice(0, 3);">
                     <div (click)="abrirOferta(item)" style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
                         <label >Localidad: {{item.lugar}}</label>
                         <label >m2: {{item.metros2}}</label>
@@ -102,17 +102,17 @@
         </div>
     </div>
     
-    <div style="position: fixed; bottom: 300px; right: 170px;">   
-        <button (click) = "irOferta()" class=boton style="width: 180px; height: 40px;">Ver oferta original
-            <mat-icon style="margin-left: 5px; font-size:15px;">language</mat-icon>  
+    <div style="position: fixed; bottom: 300px; right: 175px;">   
+        <button (click)="irOferta()" class=boton title="Ver oferta original" class=boton style="width: 40px; height: 40px;">
+            <mat-icon style="margin-left:-3px; font-size:15px;">language</mat-icon>  
         </button>
         <br>
-        <button class=boton  style="width: 180px; height: 40px;" *ngIf="isloged" (click)="agregarFavoritoTrabajo()">Añadir favoritos
-            <svg xmlns="http://www.w3.org/2000/svg"  *ngIf="!favoritos; else favorito" style="margin-left: 5px;" width="15px" height="15px" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+        <button class=boton  style="width: 40px; height: 40px;" title="Añadir favoritos" *ngIf="isloged" (click)="agregarFavoritoTrabajo()">
+            <svg xmlns="http://www.w3.org/2000/svg"  *ngIf="!favoritos; else favorito" width="15px" height="15px" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
                 <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
             </svg>
             <ng-template #favorito>
-                <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 5px; color:red"width="10px" height="10px" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" style="color:red" width="10px" height="10px" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                 </svg>
             </ng-template>

@@ -60,3 +60,7 @@ th.mat-header-cell{
     width: 80%;
     z-index: 1;
 }
+
+.related{
+    cursor: pointer;
+}
