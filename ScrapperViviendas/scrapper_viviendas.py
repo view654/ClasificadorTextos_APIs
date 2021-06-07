@@ -18,6 +18,36 @@ with open ("./nuevos.txt") as f:
     content = f.read()
 array_enlaces_nuevo = content.split(",")
 
+def arreglarLugar(lugar):
+    provincias = []
+    municipios = []
+    provincia = None
+    with open('provincias.json', 'r') as f:
+        viviendas_dict = json.load(f)
+    for vivienda in viviendas_dict:
+        provincias.append((vivienda['provincina_id']), vivienda['nombre'])
+    with open('municipios.json', 'r') as f:
+        viviendas_dict = json.load(f)
+    for vivienda in viviendas_dict:
+        municipios.append((vivienda['provincina_id']), vivienda['nombre'])
+
+    if(lugar.find('capital')):
+        nombre = lugar.split(' ')
+        lugar = nombre[0]
+    for municipio in municipios:
+        mun = municipio[1].lower()
+        if(lugar == mun):
+            id = municipio[0]
+            for prov in provincias:
+                idp = prov[0]
+                if (id == idp):
+                    provincia = prov[1]
+    
+    if provincia == None:
+        provincia = lugar
+    return provincia
+    
+
 
 '''
 #En su defecto añadir un array a pelo aquí por código
@@ -118,8 +148,8 @@ def insertar_array_json():
                     array_imagenes = []
                     for item in soup.find_all('img', class_ = 're-DetailMosaicPhoto'):
                         array_imagenes.append(item['src'])
-
-                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugarvivienda + "\",\"precio\": \"" + preciovivienda + "\",\"habitaciones\": \"" + habitacionesvivienda + "\",\"banos\": \"" + banosvivienda + "\",\"metros2\": \"" + metroscuadradosvivienda + "\",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda + "\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
+                    lugar = arreglarLugar(lugarvivienda)
+                    viv ="\n{\"link\": \"" + linkvivienda + "\",\"lugar\": \"" + lugar + "\",\"precio\": \"" + preciovivienda + "\",\"habitaciones\": \"" + habitacionesvivienda + "\",\"banos\": \"" + banosvivienda + "\",\"metros2\": \"" + metroscuadradosvivienda + "\",\"planta\": \"" + numeroplantavivienda + "\",\"compr_alq_compar\": \"" + compr_alq_comparvivienda + "\",\"tipo\": \"" +tipovivienda + "\",\"imagenes\": \"" + str(array_imagenes) + "\"},"
                     outF = open("viviendas.json", "a")
                     outF.write(viv)
                     outF.close()

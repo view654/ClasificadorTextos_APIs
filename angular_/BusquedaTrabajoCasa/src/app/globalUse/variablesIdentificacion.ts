@@ -34,7 +34,7 @@ export const variablesdeidentificacion = {
   iniciarSesion(usuarioLogueado){
     this.user = usuarioLogueado;
     
-    //console.log(this.user);
+    console.log('this.user: ',this.user);
   },
   cerrarSesion(){
     this.user=null;

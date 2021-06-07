@@ -83,3 +83,7 @@ Route::middleware(['cors'])->group(function () {
     Route::get('filtroBusquedaVivienda/{request?}/{lugar}/{preciomax}/{preciomin}/{habitacionesmax}/{habitacionesmin}/{banosmax}/{banosmin}/{metros2max}/{metros2min}/{planta}/{compr_alq_compar}/{tipo}', 'App\Http\Controllers\ViviendasController@filtroBusquedaVivienda');
     Route::get('filtroBusquedaTrabajo/{request?}/{provincia?}/{contrato?}/{jornada?}', 'App\Http\Controllers\TrabajosController@filtroBusqueda');
 });
+
+/** --------------------------------COORDENADAS ----------------------------------------------- */
+
+Route::get('coordenadas/{provincia}', 'App\Http\Controllers\ProvinciaController@coordenadas');
