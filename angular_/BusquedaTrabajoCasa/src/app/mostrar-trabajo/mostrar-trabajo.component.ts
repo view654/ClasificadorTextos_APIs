@@ -23,7 +23,7 @@ export interface DialogData {
 export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges{
   
   user: Usuario;
-  isLogged = false;
+  isloged = false;
   favoritos= false;
 
   public trabajo_selec: Trabajo;
@@ -66,7 +66,12 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   
   ngOnInit(): void {
     this.user = Object.assign({},variablesdeidentificacion.user);
-    
+    if(variablesdeidentificacion.user){
+      this.existefavoritoTrabajo();
+      this.isloged = true;
+    }else{
+      this.isloged = false;
+    }
     this.existefavoritoTrabajo(); 
     this.ofertasRelacionadas(this.trabajo_selec.localidad);
   }
