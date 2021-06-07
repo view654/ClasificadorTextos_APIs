@@ -6,6 +6,9 @@ import { DataService } from 'src/app/service/data.service';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
 import jwt_decode from "jwt-decode";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 
 @Component({
@@ -22,13 +25,16 @@ export class favoritos implements OnInit {
   trabajos: Trabajo[] = variablesdeidentificacion.trabajos;
   //constructor(private rutaActiva: ActivatedRoute) { }
   
-  constructor(private dataService:DataService) {
+  constructor(private dataService:DataService, public dialog: MatDialog) {
   }
   ngOnInit() {
+
     this.getFavoritosTrabajo();
     this.getFavoritosVivienda();
+    
     //this.getUsersData();
     //this.user = this.rutaActiva.snapshot.params.user
+
   }
   /* getUsersData(){
     this.dataService.getData().subscribe(res => {
@@ -62,5 +68,19 @@ export class favoritos implements OnInit {
   })
 
   }
+
+  abrirOferta(trabajo_selec:Trabajo){
+    console.log(trabajo_selec.enlace);
+    this.dialog.open(MostrarTrabajoComponent,{
+        data:{trabajo_selec}
+    });
+  }
+
+  abrirCasa(casa_selec:Casa){
+    console.log(casa_selec.link);
+    this.dialog.open(MostrarInformacionComponent,{
+        data:{casa_selec}
+    });
+}
 
 }

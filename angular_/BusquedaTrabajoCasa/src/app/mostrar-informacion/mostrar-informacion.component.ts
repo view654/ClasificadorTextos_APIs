@@ -46,21 +46,11 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
     
     this.id = this.casa_selec.link;
     console.log(this.id);
-    this.todasCasas=new Array(this.casas.length);
-    var cont = 0
-    for(let key in this.casas){
-        this.todasCasas[cont] = this.casas[key];
-        cont = cont + 1;
-    }
 
-    for (let i = 0; i < this.todasCasas.length-1; i++) {
-      if(this.todasCasas[i].link == this.id){
-        this.casa_selec=this.todasCasas[i];
-        this.images=this.casa_selec.imagenes.split('\[\'');
-        this.images=this.images[1].split('\'\]');
-        this.images = this.images[0].split('\', \'');        
-      }
-    }
+    this.images=this.casa_selec.imagenes.split('\[\'');
+    this.images=this.images[1].split('\'\]');
+    this.images = this.images[0].split('\', \'');        
+
    }
 
    defcasa_selec(casa_selecionada:Casa): void{

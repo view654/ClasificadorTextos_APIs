@@ -1,18 +1,22 @@
 <div style="height: calc(100% - 40px);">
 <div class="content" role="main">
-    <div style="padding-top: 2vw;">
+    <div style="padding-top: 2vw; display:flex; flex-direction: column; align-items: center;">
+      
+      
       <p class = "titulo">Ofertas trabajo</p>
-      <div style = "height: 30vw; width:330px; overflow: auto;">
+      
+      <br>
+      <div class=listaElementos>
         <div *ngFor="let trabajo of trabajos">
-          <div [routerLink]="['../MostrarInformacionComponent',trabajo.ID]" class=filaCuest>
+          <div (click)="abrirOferta(trabajo)" class=filaCuest>
             <div class="mitadCaja">
               <label class=tituloCamp>{{trabajo.titulo}}</label>
               <br/>
               <label class=tituloCamp>{{trabajo.area}}</label>
             </div>
             <div>
-              <div style="height: 60px; width: 200px; overflow: hidden;">
-                <label class=tituloCamp>{{trabajo.sueldo}}</label>
+              <div style="height: 60px;margin-top: 10px; width: 200px; overflow: hidden;">
+                <label class=tituloCamp>{{trabajo.funciones}}</label>
               </div>
               <p>...</p>
             </div>
@@ -24,21 +28,21 @@
         -->
       </div>
     </div>
-    <div  style="padding-top: 2vw;">
+    <div style="padding-top: 2vw; display:flex; flex-direction: column; align-items: center;">
       <p class = "titulo">Ofertas viviendas</p>
-      <div style = "height: 30vw; width:330px; overflow: auto;">
+      <br>
+      <div class =listaElementos>
         <div *ngFor="let casa of casas">
-          <div [routerLink]="['../MostrarInformacionComponent',casa.ID]" class=filaCuest>
+          <div (click)="abrirCasa(casa)" class=filaCuest>
             <div class="mitadCaja">
               <label class=tituloCamp>{{casa.lugar}}</label>
               <br/>
-              <label class=tituloCamp>{{casa.precio}}</label>
+              <label class=tituloCamp>{{casa.precio}} €</label>
             </div>
-            <div>
-              <div style="height: 60px; width: 200px; overflow: hidden;">
-                <label class=tituloCamp>{{casa.habitaciones}}</label>
-              </div>
-              <p>...</p>
+            <div class="mitadCaja">             
+              <label class=tituloCamp>habitaciones: {{casa.habitaciones}}</label>
+              <label class=tituloCamp>m2: {{casa.metros2}}</label>
+              <label class=tituloCamp>{{casa.compr_alq_compar}}</label>
             </div>
           </div>
         </div>

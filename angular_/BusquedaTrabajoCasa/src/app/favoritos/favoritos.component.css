@@ -26,6 +26,7 @@ p {
     height:5vw;
     bottom : 60px;
 }
+
 .content {
     width: 100%;
     display: flex;
@@ -37,6 +38,8 @@ p {
     flex-flow: row;
     flex-wrap: wrap;
     padding-top: 60px;
+    padding-left: 2vw;
+    padding-right: 2vw;
     justify-content: center;
     
 }
@@ -56,18 +59,47 @@ p {
 .mitadCaja{
     margin:0.2vw;
     display:flex; 
-    justify-content: center; 
+    align-items: center; 
     text-align: center; 
     flex-direction: column; 
+    width: 190px;
+    max-width: 190px;
 }
+
+.listaElementos{
+    border-radius:1vw; 
+    height: 30vw; 
+    width:440px; 
+    padding-bottom: 2vw;
+    overflow: auto;
+    overflow-x: hidden;
+    text-align: center;
+    background-color:rgba(95, 177, 232, 0.91);
+    display:flex; 
+    flex-direction: column; 
+    align-items: center;
+    
+}
+
+.listaElementos::-webkit-scrollbar {   display: none; }
+
+.ContenedorFav{
+    padding-top: 2vw; 
+    display:flex; 
+    flex-direction: column; 
+    align-items: center; 
+    border-radius:0.5vw; 
+    border-width: 2px;
+}
+
 .filaCuest{
     margin-top:1vw;
     display:flex; 
     justify-content: center; 
     text-align: center; 
     flex-direction: row; 
-    height: 80px;
-    width: 300px;
+    min-height: 100px;
+    width: 400px;
     border-style: inset;
     border-radius:0.5vw;
     border-width: 2px;
@@ -79,9 +111,14 @@ p {
     font-size: 16px;
     margin-right: 10vw;
     font-weight: 600;
+    font-weight: bold;
 }
 .tituloCamp{
-    color:#3B6E90;
+    color:#000000;
+    font-weight: bold;
+    word-wrap: break-word;
+    width: 190px;
+    max-width: 190px;
 }
 .contCamp{
     border-radius:0.5vw;

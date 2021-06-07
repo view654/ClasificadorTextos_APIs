@@ -44,11 +44,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     this.deftrabajo_selec(data["trabajo_selec"]);
 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
-    for (let i = 0; i < this.trabajos.length; i++) {
-      if(this.trabajos[i].enlace == this.id){
-        this.trabajo_selec=this.trabajos[i];
-      }
-    }
+    
     this.ofertasRelacionadas(this.trabajo_selec.localidad);
     
     //this.user=Object.assign({},variablesdeidentificacion.user); 
