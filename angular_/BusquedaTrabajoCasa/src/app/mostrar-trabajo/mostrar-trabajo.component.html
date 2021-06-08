@@ -92,10 +92,10 @@
             <div>
                 <div class="tarjetas related" *ngFor="let item of relacionados.slice(0, 3);">
                     <div (click)="abrirOferta(item)" style="display: inline-block; padding-top: 5px; text-align: left;width: 70%; vertical-align: middle;">
-                        <label >Localidad: {{item.lugar}}</label>
-                        <label >m2: {{item.metros2}}</label>
-                        <label >Opcion: {{item.compr_alq_compar}}</label>
-                        <label >Precio: {{item.precio}}</label>
+                        <label >Localidad: {{item.lugar}} </label>
+                        <label >Metros: {{item.metros2}} m²</label>
+                        <label >Opción: {{item.compr_alq_compar}} </label>
+                        <label >Precio: {{item.precio}} €</label>
                     </div>
                 </div>
             </div>
