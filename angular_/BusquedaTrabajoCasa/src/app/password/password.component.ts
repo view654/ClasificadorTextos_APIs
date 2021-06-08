@@ -36,10 +36,10 @@ export class password implements OnInit {
   cumpleSeg(contra){
     //this.contrIncorrecta =!(/\d/.test(contra));
     if(contra.length < 4){
-      this.contrIncorrecta="Contraseña debe tener un minimo 4 caracteres";
+      this.contrIncorrecta="Contraseña debe tener un mínimo 4 caracteres";
     }else{
       if(!((/\d/.test(contra))&&!(/^\d+$/.test(contra))&&!(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(contra)))){
-        this.contrIncorrecta="La contraseña debe incluir numeros y letras. No se permiten caracteres especiales.";
+        this.contrIncorrecta="La contraseña debe incluir dígitos y letras. No se permiten caracteres especiales.";
       }else{
         this.dataService.modificarContrasena(this.id,contra).subscribe(result => {
           console.log('contra: ',contra);
