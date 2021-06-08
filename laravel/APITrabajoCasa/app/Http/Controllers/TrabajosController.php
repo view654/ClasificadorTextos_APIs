@@ -220,7 +220,7 @@ class TrabajosController extends Controller
             }
         }else{
             $filtrado = array_filter($array, function($val) use ($request) { 
-                $titulo = Str::contains(strtolower($val -> titulo), strtolower($request));
+                $titulo = Str::contains(strtolower($request), strtolower($val -> titulo));
                 $descripcion = Str::contains(strtolower($val -> funciones), strtolower($request));
                 if ($titulo | $descripcion) {
                     return $val -> titulo || $val -> funciones;

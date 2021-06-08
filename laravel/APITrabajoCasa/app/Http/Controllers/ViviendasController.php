@@ -132,7 +132,7 @@ class ViviendasController extends Controller
         }else{
 
             $filtrado = array_filter($array, function($val) use ($request) { 
-                $comprobar = Str::contains(strtolower($val -> lugar), strtolower($request));
+                $comprobar = Str::contains(strtolower($request), strtolower($val -> lugar));
                 if ($comprobar) {
                     return $val -> lugar;
                 }
