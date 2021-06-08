@@ -1,33 +1,33 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>Hola</h1>
 <div *ngIf="!gotEmail else gotEmailT;">
   <div mat-dialog-content>
-    <p>Introduce tu email</p>
+    <p>Introduzca su email:</p>
     <!--<p style="color:orange">(No implementado, codigo: 1111. Se devolvera a la pagina principal en caso de introducir el codigo correcto)</p>-->
-    <p *ngIf="contrIncorrecta" style="color:red">Email icorrecto o cuenta no creada</p>
+    <p *ngIf="contrIncorrecta" style="color:#DB412B">Email incorrecto o cuenta no creada</p>
     <mat-form-field>
       <mat-label>email</mat-label>
       <input matInput [(ngModel)]=email>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button (click)="sending()" cdkFocusInitial>Ok</button>
+    <button mat-button style="margin: 0.5vw;padding: 0.5vw;background-color: #3B6E90;color: white;border-radius:0.5vw;" (click)="onNoClick()">Cancelar</button>
+    <button mat-button style="margin: 0.5vw;padding: 0.5vw;background-color: #3B6E90;color: white;border-radius:0.5vw;" (click)="sending()" cdkFocusInitial>Continuar</button>
     <!--[mat-dialog-close]=codigo -->
   </div>
 </div>
 <ng-template #gotEmailT>
   <div mat-dialog-content>
-    <p>Introduce el codigo enviado</p>
+    <p>Introduzca el código recibido:</p>
     <!--<p style="color:orange">(No implementado, codigo: 1111. Se devolvera a la pagina principal en caso de introducir el codigo correcto)</p>-->
-    <p *ngIf="contrIncorrecta" style="color:red">Codigo incorrecto</p>
+    <p *ngIf="contrIncorrecta" style="color:#DB412B">Código incorrecto</p>
     <mat-form-field>
-      <mat-label>codigo</mat-label>
+      <mat-label>código</mat-label>
       <input matInput [(ngModel)]=codIntroducido>
     </mat-form-field>
   </div>
   <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button (click)="onComprobarCod()" cdkFocusInitial>Ok</button>
+    <button mat-button style="margin: 0.5vw;padding: 0.5vw;background-color: #3B6E90;color: white;border-radius:0.5vw;" (click)="onNoClick()">Cancelar</button>
+    <button mat-button style="margin: 0.5vw;padding: 0.5vw;background-color: #3B6E90;color: white;border-radius:0.5vw;" (click)="onComprobarCod()" cdkFocusInitial>Continuar</button>
     <!--[mat-dialog-close]=codigo -->
   </div>
 </ng-template>

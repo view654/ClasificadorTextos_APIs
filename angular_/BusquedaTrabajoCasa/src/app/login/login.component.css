@@ -62,9 +62,10 @@
 
 a{
     color:blue !important;
-    text-decoration: underline !important;
-    
+    text-decoration: underline !important;  
 }
+
+    
 a:hover {
     cursor: pointer;
 }
