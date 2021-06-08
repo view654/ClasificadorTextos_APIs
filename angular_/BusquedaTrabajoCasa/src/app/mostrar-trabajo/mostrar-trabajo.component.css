@@ -22,18 +22,7 @@
 
 .parentCont{
     min-width: 800px;
-    margin-top: 2vw;
-}
-
-
-.losTresContenedores{
-    display: inline-block;
-    padding: 1vw;
-    width: 36vw;
-    height: 25vw;
-    min-width: 250px;
-    min-height: 250px;
-    vertical-align: middle; 
+    margin-top: 1vw;
 }
 
 .boton {
@@ -68,6 +57,10 @@ th.mat-header-cell{
 
 #map_cont_id {
     height: 100%;
-    width: 100%;
+    width: 80%;
     z-index: 1;
+}
+
+.related{
+    cursor: pointer;
 }

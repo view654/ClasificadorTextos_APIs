@@ -17,7 +17,9 @@
   border-color:antiquewhite;
 }  
   
-  
+#logo{
+  cursor: pointer;
+}
   
   /*No se que es no lo toco*/
   :host {
