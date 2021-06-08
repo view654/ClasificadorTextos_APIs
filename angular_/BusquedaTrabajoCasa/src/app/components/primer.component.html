@@ -105,7 +105,7 @@
           <mat-label>Filtro</mat-label>
           <mat-select>
             <mat-option [value] = 1 (click)="filtros.Tcontrato = null">Cualquiera</mat-option>
-            <mat-option [value] = 2 (click)="filtros.Tcontrato = 'Contrato De duración determinada'">Contrato De duración determinada</mat-option>    
+            <mat-option [value] = 2 (click)="filtros.Tcontrato = 'Contrato De duración determinada'">Contrato de duración determinada</mat-option>    
             <mat-option [value] = 3 (click)="filtros.Tcontrato = 'Contrato Indefinido'">Contrato Indefinido</mat-option> 
             <mat-option [value] = 4 (click)="filtros.Tcontrato = 'Contrato Formativo'">Contrato Formativo</mat-option>  
             <mat-option [value] = 5 (click)="filtros.Tcontrato = 'Contrato Autónomo o freelance'">Contrato Autónomo o freelance</mat-option> 
@@ -162,8 +162,8 @@
         <p>{{user.ID}}</p>
         <p>{{isLogged}}</p>-->
         <p style="text-align: justify;font-size: 16px;"><br>Esta página le ofrece un buscador de ofertas de empleo y viviendas, pudiendo filtrar dichas ofertas por múltiples filtros y así poder encontrar la que más se adapte a sus necesidades.
-        Contamos tambien con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
-        Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
+        Contamos también con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
+        Este proyecto ha sido realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
         del tercer curso del grado de Ingeniería Informática de la <em>Universidad Europea de Madrid</em>, por lo que toda la información recopilada mediante web scrapping de fotocasa e infoempleo se empleará única y exclusivamente
         para fines didácticos. <br>
         
@@ -197,7 +197,7 @@
             <div (click)="abrirOferta(trabajo)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
-              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+              <p>Área: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
                 <p>Contrato: {{trabajo.contrato}}</p>
