@@ -26,7 +26,7 @@ class ProvinciaController extends Controller
             }
         });
         
-        return response() -> json($filtrado);
+        return $filtrado;
     }
 
 }
