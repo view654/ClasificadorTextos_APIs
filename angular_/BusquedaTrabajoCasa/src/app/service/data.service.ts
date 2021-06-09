@@ -10,6 +10,7 @@ export class DataService {
 
   constructor(private httpClient:HttpClient) {}
   /*----------------------USUARIOS-----------------------------*/
+  /*LOCAL : http://127.0.0.1:8000/api */
   getData(){
     return this.httpClient.get('https://rejob-prueba.herokuapp.com/api/mostrarUsuarios');
   }

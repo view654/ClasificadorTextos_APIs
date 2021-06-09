@@ -22,12 +22,11 @@ class ProvinciaController extends Controller
                 $long = $val->longitud;
                 $lat .= ',';
                 $lat .= $long;
-                dd($lat);
                 return $lat;
             }
         });
-
-        return $filtrado;
+        
+        return response() -> json($filtrado);
     }
 
 }
