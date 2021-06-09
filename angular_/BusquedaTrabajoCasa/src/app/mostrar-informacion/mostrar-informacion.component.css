@@ -48,7 +48,6 @@
 }
 .tarjetas{
     display: inline-block;
-    height: 50px;
     width: 225px;
     margin: 2vw;
     padding: 0.5vw;
@@ -89,4 +88,8 @@ th.mat-header-cell{
 
 .myTestClass div{
     max-height: 200px !important;
-  } 
+  }
+
+.related{
+    cursor: pointer;
+}

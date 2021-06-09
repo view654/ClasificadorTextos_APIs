@@ -42,9 +42,10 @@ p {
     overflow-y: scroll;
     padding:1vw;
     padding-left: 1.5%;
+    padding-bottom: 6vw;
     background-color:rgba(95, 177, 232, 0.91);
-    overflow-y:hidden;
-  
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
 }
 
 @media only screen and (max-width:960px){
@@ -53,6 +54,9 @@ p {
   }
 }
 
+.menuLateral::-webkit-scrollbar {
+  display: none;
+}
 .example-margin-bar{
   max-width: 75px;
   min-width: 75px;

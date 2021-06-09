@@ -25,7 +25,7 @@ class ProvinciaController extends Controller
                 return $lat;
             }
         });
-
+        
         return $filtrado;
     }
 

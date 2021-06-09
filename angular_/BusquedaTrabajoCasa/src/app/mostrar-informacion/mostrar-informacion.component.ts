@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Casa } from '../components/casa_interfaz';
+import { Trabajo } from '../components/trabajo_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +9,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import jwt_decode from "jwt-decode";
 import { DataService } from '../service/data.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
 
 
 
@@ -36,7 +37,7 @@ export class MostrarInformacionComponent implements OnInit, AfterViewInit, OnCha
   
   //images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/185/135`);
   images:string[]
-  constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute, private service: DataService,
+  constructor(private ngbCarouselConfig:NgbCarouselConfig,private _Activatedroute:ActivatedRoute, public dialog: MatDialog, private service: DataService,
     public dialogRef: MatDialogRef<MostrarInformacionComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Casa) {
     console.log(data)
@@ -130,6 +131,30 @@ onResize(event) {
     }
     
 
+  }
+
+  compartir(val: string){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    window.alert("Enlace de oferta copiado");
+  }
+
+  abrirOferta(trabajo_selec:Trabajo){
+    console.log(trabajo_selec.enlace);
+    this.dialog.open(MostrarTrabajoComponent,{
+        height: '400px',
+        width: '600px',
+        data:{trabajo_selec}
+    });
   }
 
   existefavoritoVivienda(){

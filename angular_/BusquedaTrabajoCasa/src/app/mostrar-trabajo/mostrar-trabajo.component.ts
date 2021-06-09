@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Trabajo } from '../components/trabajo_interfaz';
+import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { DataService } from '../service/data.service';
@@ -8,6 +9,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import jwt_decode from "jwt-decode";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Filtro } from '../components/filtro_interfaz';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 
 export interface DialogData {
@@ -68,7 +70,8 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
 
 
-  constructor(private _Activatedroute:ActivatedRoute, private service: DataService,
+  
+  constructor(private _Activatedroute:ActivatedRoute, private service: DataService, public dialog: MatDialog,
     public dialogRef: MatDialogRef<MostrarTrabajoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Trabajo) { 
     this.deftrabajo_selec(data["trabajo_selec"]);
@@ -129,7 +132,14 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     
   }
 
-  
+  abrirOferta(casa_selec:Casa){
+    console.log(casa_selec.link);
+    this.dialog.open(MostrarInformacionComponent,{
+      height: '400px',
+      width: '600px',
+      data:{casa_selec}
+    });
+  }
 
   ngAfterViewInit(): void{
     //this.map=new mapLeaflet('map_cont_id');
@@ -174,5 +184,3 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     });
   }
 }
-
-
