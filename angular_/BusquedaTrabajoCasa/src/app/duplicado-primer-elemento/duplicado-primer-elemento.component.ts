@@ -1,3 +1,5 @@
+
+
 import { Component } from '@angular/core';
 import { variablesdeidentificacion } from '../globalUse/variablesidentificacion';
 import { Filtro } from '../components/filtro_interfaz';
@@ -13,16 +15,16 @@ import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.compo
 import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component'; 
 
 @Component({
-    selector: 'primer',
-    templateUrl:'./primer.component.html',
-    styleUrls: ['./primer.component.css']
-
+  selector: 'app-duplicado-primer-elemento',
+  templateUrl: './duplicado-primer-elemento.component.html',
+  styleUrls: ['./duplicado-primer-elemento.component.css']
 })
 
-export class primer{
+export class DuplicadoPrimerElementoComponent{
     
     public isSearch: boolean = false;
     public isSearch1: boolean = false;
+
 
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
@@ -93,6 +95,7 @@ export class primer{
         }else{
             console.log('No existe paginator');
         }
+    
 
         /*-----------TRABAJOS -------------------*/
         this.isSearch = true;
@@ -171,9 +174,6 @@ export class primer{
         })
         document.body.style.cursor = "auto";
     }
-
-   
-
 
     busquedaduplicado(request){
         console.log(this.filtros.Tprovincia);
@@ -183,9 +183,10 @@ export class primer{
         }else{
             console.log('No existe paginator');
         }
+    
 
         /*-----------TRABAJOS -------------------*/
-        this.isSearch = true;
+        this.isSearch1 = true;
         if(this.filtros.Tprovincia == 'Todas las Provincias'){
             this.filtros.Tprovincia = 'null';
         }
@@ -213,54 +214,10 @@ export class primer{
             
         })
 
-        /*-----------VIVIENDAS -------------------*/
-        console.log(this.filtros.Vlugar);
-        if(this.filtros.Vlugar == 'Todas las Provincias'){
-            this.filtros.Vlugar = 'null';
-        }
-
-        this.dataService.filtroBusquedaVivienda(request, this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
-
-            this.todasCasas=new Array(res.length);
-            var cont = 0
-            for(let key in res){
-                this.todasCasas[cont] = res[key];
-                cont = cont + 1;
-            }
-
-            this.casas = Object.values(res);
-            console.log(this.casas);
-            variablesdeidentificacion.getcasas(Object.values(res));
-            this.images=new Array(this.todasCasas.length);
-            for (let i = 0; i < (this.todasCasas.length-1); i++) { 
-            //var cont = 0;
-            //for(let key in this.casas){
-                //console.log('casa: ', this.casas[i])    
-                this.images[i]=this.casas[i].imagenes.split('\[\'');
-                //console.log('imagenes1: ', this.images[i])
-                if(this.images[i][1]){
-                    this.images[i]=this.images[i][1].split('\'\]');
-                    //console.log('imagenes2: ', this.images[i])
-                    this.images[i] =this.images[i][0].split('\', \''); 
-                    //console.log('imagenes3: ', this.images[i])
-                }            
-        
-            }
-         
-            var longitud = this.pageSizeV; 
-            if(this.todasCasas.length<longitud){
-                longitud = this.todasCasas.length
-                this.paglengthV = 1;
-            }else{
-                this.paglengthV=this.todasCasas.length;
-            }
-            this.casas = new Array(longitud);
-            for(let i = 0; i<longitud; i++){
-                this.casas[i] = this.todasCasas[i];
-            }
-        })
         document.body.style.cursor = "auto";
     }
+
+   
     
     pageEventT(event){
        

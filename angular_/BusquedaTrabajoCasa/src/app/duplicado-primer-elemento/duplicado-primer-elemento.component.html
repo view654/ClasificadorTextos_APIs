@@ -146,23 +146,19 @@
         </div>
         <input type="text" id="name" name="name" required
           minlength="4" maxlength="24" size="15" [(ngModel)] = "request">
-        <button (click)="busqueda(request)" style="margin:2vw; color: white; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
-          Busqueda alternativa
-
-        </button>
-
-        <button (click)="busquedaduplicado(request)" style="margin:2vw;  background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
-        
+        <button (click)="busqueda(request)" style="margin:2vw; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" style="vertical-align: text-bottom;">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
+        </button>
+
+        <button (click)="busquedaduplicado(request)" style="margin:2vw; color: white; background-color:rgba(255, 255, 255, 0); border-radius: 7px;">
+          Busqueda alternativa
         </button>
         
       </div>
       
       <ng-container *ngIf="!isSearch ; else busqueda1">
-        <ng-container *ngIf="!isSearch1; else busquedaduplicada">
-
         <h1><br><br>¿Quiénes somos?</h1>
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
@@ -179,6 +175,7 @@
       </ng-container>
 
 
+      <ng-container *ngIf="!isSearch1; else busquedaduplicada">
       </ng-container>
 
       <ng-template  #busqueda1>
@@ -214,11 +211,8 @@
                 <p>Contrato: {{trabajo.contrato}}</p>
                 <p>Localidad: {{trabajo.localidad}}</p>
                 <p>Salario: {{trabajo.salario}}</p>
-                <p>Requisitos: {{trabajo.requisitos}}</p>
-                <p>Ofrece: {{trabajo.ofrece}}</p>
-
               </div>
-              <div style="display: inline-block; width: 50%; margin-left: 5%;">
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
                 <p>{{trabajo.funciones}}</p>
               </div>
             </div>
@@ -245,11 +239,8 @@
                 <p>Contrato: {{trabajo.contrato}}</p>
                 <p>Localidad: {{trabajo.localidad}}</p>
                 <p>Salario: {{trabajo.salario}}</p>
-                <p>Requisitos: {{trabajo.requisitos}}</p>
-                <p>Ofrece: {{trabajo.ofrece}}</p>
-
               </div>
-              <div style="display: inline-block; width: 50%; margin-left: 5%;">
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
                 <p>{{trabajo.funciones}}</p>
               </div>
             </div>

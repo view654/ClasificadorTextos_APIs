@@ -36,6 +36,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DuplicadoPrimerElementoComponent } from './duplicado-primer-elemento/duplicado-primer-elemento.component';
 
 
 
@@ -76,6 +77,10 @@ const rutas: Routes = [
       {
         path: 'primer',
         component: primer
+      },
+      {
+        path: 'DuplicadoPrimerElementoComponent',
+        component: DuplicadoPrimerElementoComponent
       },
       {
         path: 'profile',
@@ -123,7 +128,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    DuplicadoPrimerElementoComponent
   ],
   imports: [
     BrowserModule,

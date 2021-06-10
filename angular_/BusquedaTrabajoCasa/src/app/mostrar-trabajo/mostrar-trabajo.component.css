@@ -1,7 +1,7 @@
 
 
 .tituloCamp{
-    color:#3B6E90;
+    color:#9E2D16;
     font-weight:bold;
     font-size: 20px;
 }
@@ -12,7 +12,7 @@
     margin-top: 10px;
 }
 .contenido{
-    color:#3B6E90;
+    color:#9E2D16;
     font-size: 15px;
 }
 .contenido2{
@@ -39,7 +39,7 @@
 .boton {
     margin: 2vw;
     padding: 0.5vw;
-    background-color: #3B6E90;
+    background-color: #9E2D16;
     border-radius:0.5vw;
     color: white;
 }
@@ -51,7 +51,7 @@
     border-style: inset;
     border-radius:0.5vw;
     border-width: 2px;
-    border-color: #3B6E90;
+    border-color: #9E2D16;
     text-align: center;
     font-weight: bold;
     vertical-align: middle;
