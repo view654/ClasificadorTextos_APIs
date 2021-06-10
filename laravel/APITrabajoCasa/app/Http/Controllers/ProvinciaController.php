@@ -22,6 +22,7 @@ class ProvinciaController extends Controller
                 $long = $val->longitud;
                 $lat .= ',';
                 $lat .= $long;
+                dd($lat);
                 return $lat;
             }
         });

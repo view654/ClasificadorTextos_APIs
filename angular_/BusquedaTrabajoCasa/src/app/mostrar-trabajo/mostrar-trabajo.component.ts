@@ -37,6 +37,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
 
 
+  
   constructor(private _Activatedroute:ActivatedRoute, private service: DataService,
     public dialogRef: MatDialogRef<MostrarTrabajoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Trabajo) { 
