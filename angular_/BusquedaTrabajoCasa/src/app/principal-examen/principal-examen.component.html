@@ -156,11 +156,15 @@
       
       <ng-container *ngIf="!isSearch; else busqueda1">
   
-        <h1><br><br>¿Quiénes somos?</h1>
+        <h1><br><br>Hola {{user.nombre}} a continuacion te diremos quienes somos:</h1>
+        <h2>Aqui le mostraremos trabajos relaccionados con su especializacion {{user.sector}}</h2>
+
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
         <p>{{user.ID}}</p>
         <p>{{isLogged}}</p>-->
+        <br>
+        <h3>¿Quienes somos?</h3>
         <p style="text-align: justify;font-size: 16px;"><br>Esta página le ofrece un buscador de ofertas de empleo y viviendas, pudiendo filtrar dichas ofertas por múltiples filtros y así poder encontrar la que más se adapte a sus necesidades.
         Contamos tambien con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
         Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
@@ -169,13 +173,12 @@
         
         </p>
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
-        <button [routerLink]="['../PrincipalExamenComponent']">Ir a la pagina del examen</button>
-      </ng-container>
+         </ng-container>
       <ng-template  #busqueda1>
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div (click)="abrirCasa(casa)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:white;">{{i}}</h2>
               <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
@@ -196,7 +199,7 @@
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos; let i=index">
             <div (click)="abrirOferta(trabajo)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:white;">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>

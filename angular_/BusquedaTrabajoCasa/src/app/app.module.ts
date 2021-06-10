@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { password } from './password/password.component';
 import { favoritos } from './favoritos/favoritos.component';
 import { sendEmail } from './login/login.component';
+import { PrincipalExamenComponent } from './principal-examen/principal-examen.component';
 
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -36,6 +37,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -76,6 +78,10 @@ const rutas: Routes = [
       {
         path: 'primer',
         component: primer
+      },
+      {
+        path: 'PrincipalExamenComponent',
+        component: PrincipalExamenComponent
       },
       {
         path: 'profile',
@@ -123,7 +129,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    PrincipalExamenComponent
   ],
   imports: [
     BrowserModule,

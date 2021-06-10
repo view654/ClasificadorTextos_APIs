@@ -61,7 +61,11 @@ export class perfil {
     //var decodedHeader = jwt_decode(res.data.token, { header: true });
     //console.log(decodedHeader);
     var id = decoded['user_id'];
-    this.user.idiomas = this.idiomas.value.join(';');
+    if(this.user.idiomas){
+      this.user.idiomas = this.idiomas.value.join(';');
+    }else{
+      this.user.idiomas = this.idiomas.value
+    }
     this.user.password=this.contrasena;
     this.dataService.modificarUsuario(id,this.user).subscribe((res:any) => {
       variablesdeidentificacion.iniciarSesion(this.user)
