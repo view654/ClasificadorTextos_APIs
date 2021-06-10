@@ -36,6 +36,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CopiaPrimerComponenteComponent } from './components/copia-primer-componente/copia-primer-componente.component';
 
 
 
@@ -106,6 +107,10 @@ const rutas: Routes = [
   {
     path: 'password/:correo',
     component: password
+  },
+  {
+    path: 'checkpoint',
+    component: CopiaPrimerComponenteComponent
   }
   
 ]
@@ -123,7 +128,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    CopiaPrimerComponenteComponent
   ],
   imports: [
     BrowserModule,

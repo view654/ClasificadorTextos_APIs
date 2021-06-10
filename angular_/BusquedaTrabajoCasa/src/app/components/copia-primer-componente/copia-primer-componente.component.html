@@ -1,3 +1,9 @@
+<div *ngIf = "UsuarioLog">
+  <h1>Usuario activo</h1>
+  {{user.nombre}} {{user.apellidos}}
+</div>
+
+
 
 <div class="content" [style.padding-left.vw] = "!isSearch ? 0:10" >
     <div *ngIf="isSearch" class=menuLateral>
@@ -187,6 +193,9 @@
                 <p>Baños: {{casa.banos}}</p>
                 <p>Tipo: {{casa.tipo}}</p>
               </div>
+              <button (click) = "irOferta(casa.link)" class=boton style="width: 180px; height: 40px;">Ver oferta original
+                <mat-icon style="margin-left: 5px; font-size:15px;">language</mat-icon>  
+            </button>
             </div>
           </div>
           <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
@@ -200,14 +209,34 @@
               <h2>{{trabajo.titulo}}</h2>
               <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
-              <div style="display: inline-block; height: 100%; width: 35%;">
-                <p>Contrato: {{trabajo.contrato}}</p>
-                <p>Localidad: {{trabajo.localidad}}</p>
-                <p>Salario: {{trabajo.salario}}</p>
+              <div class="container">
+                <div class="row">
+                  <div class="col-4">
+                    <p>Contrato: {{trabajo.contrato}}</p>
+                  </div>
+                  <div class="col-4">
+                    <p>Localidad: {{trabajo.localidad}}</p>
+                  </div>
+                  <div class="col-4">
+                    <p>Salario: {{trabajo.salario}}</p>
+                  </div>
+                </div>
+                <div class="row" style="display: inline-block; height: 60px; overflow: hidden; margin-left: 5%;">
+                  Funciones: <br>
+                  <p>{{trabajo.funciones}}</p>
+                </div>
+                <div class="row" style="display: inline-block; height: 60px;  overflow: hidden; margin-left: 5%;">
+                  <p>Requisitos: <br>{{trabajo.requisitos}}</p>
+                </div>
+                <div class="row" style="display: inline-block; height: 60px;  overflow: hidden; margin-left: 5%;" *ngIf = "trabajo.ofrece">
+                  <p>Ofrece: <br>{{trabajo.ofrece}}</p>
+                </div>
               </div>
-              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
-                <p>{{trabajo.funciones}}</p>
-              </div>
+              
+              
+              <button (click) = "irOferta(trabajo.enlace)" class=boton style="width: 180px; height: 40px;">Ver oferta original
+                <mat-icon style="margin-left: 5px; font-size:15px;">language</mat-icon>  
+            </button>
             </div>
           </div>
           <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">

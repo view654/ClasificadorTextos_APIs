@@ -1,0 +1,21 @@
+No es necesaria la implementación de la base de datos ni del proyecto de
+laravel al momento de probar el programa, ya que, 
+la parte back se encuentra online. Solo es necesario ejecutar el proyecto de angular en local.
+
+
+
+Se puede registrar o puede utilizar la siguiente cuenta:
+correo : clxudiajazmin@gmail.com
+contraseña: aabb1122
+
+
+En la pantalla inicial del proyecto hay un boton "IR A CHECKPOINT" para acceder a la 
+ventana duplicada de busqueda de trabajos y viviendas, SE NECESITA ESTAR LOGUEADO PARA QUE CARGUE LA PÁGINA.
+
+El nombre y apellidos del usuario logueado se mostrará en la parte de arriba de la pantalla del checkpoint.
+
+A la pantalla inicial del checkpoint se ha agregado tdos los datos de las ofertas de trabajo y vivienda; 
+así como un botón para ir a la oferta original en las páginas correspondientes de vivienda o trabajo.
+
+Se ha cambiado el color de las tarjetas del componente a naranja, al igual que reordenar los datos que
+se muestran.
