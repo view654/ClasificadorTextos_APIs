@@ -15,6 +15,12 @@ import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-info
 export interface DialogData {
   trabajo_selec: Trabajo;
 }
+export interface provincia{
+  latitud: string
+  longitud: string
+  nombre: string
+  provincia_id: string
+}
 
 @Component({
   selector: 'app-mostrar-trabajo',
@@ -37,6 +43,31 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
   relacionados: any[];
 
+  public arrayProvincias:string[][] = [['A Coruña','Coruña,%20A'],['Albacete','Albacete'],['Alicante','Alicante/Alacant'],['Almería','Almería'],['Álava','Araba/Álava'],
+        ['Asturias','Asturias'],['Ávila','Ávila'], ['Badajoz','Badajoz'],['Balears','Balears, Illes'],['Barcelona','Barcelona'],['Bizkaia','Bizkaia'],['Burgos','Burgos'],
+        ['Cáceres','Cáceres'], ['Cádiz','Cádiz'],['Cantabria','Cantabria'],['Castellón','Castellón/Castelló'],['Ciudad Real','Ciudad%20Real'],['Córdoba','Córdoba'],
+        ['Cuenca','Cuenca'],['Gipuzkoa','Gipuzkoa'],['Girona','Girona'],['Granada','Granada'],['Guadalajara','Guadalajara'],['Huelva','Huelva'],['Huesca','Huesca'],
+        ['Jaén','Jaén'],['León','León'],['Lleida','Lleida'],['Lugo','Lugo'],['Madrid','Madrid'],['Málaga','Málaga'],['Murcia','Murcia'],['Navarra','Navarra'],['Ourense','Ourense'],
+        ['Palencia','Palencia'],['Las Palmas','Palmas,%20Las'],['Pontevedra','Pontevedra'],['La Rioja','Rioja,%20La'],['Salamanca','Salamanca'],['Santa Cruz de Tenerife','Santa%20Cruz%20de%20Tenerife'],
+        ['Segovia','Segovia'],['Sevilla','Sevilla'],['Soria','Soria'],['Tarragona','Tarragona'],['Teruel','Teruel'],['Toledo','Toledo'],['Valencia','Valencia/València'],
+        ['Valladolid','Valladolid'],['Zamora','Zamora'],['Zaragoza','Zaragoza'],['Ceuta','Ceuta'],['Melilla','Melilla']];
+
+  /*
+  public arrayProvincias:string[][] = [['A Coruña','A%20Coru&ntildea'],['Albacete','Albacete'],['Alicante','Alicante'],['Almería','Almer&iacutea'],['Álava','&Aacutelava'],
+        ['Asturias','Asturias'],['Ávila','&Aacutevila'], ['Badajoz','Badajoz'],['Balears','Balears'],['Barcelona','Barcelona'],['Bizkaia'],['Burgos','Burgos'],['Cáceres','C&aacuteceres'],
+        ['Cádiz','C&aacutediz'],['Cantabria','Cantabria'],['Castellón','Castell&oacuten'],['Ciudad Real','Ciudad%20Real'],'Córdoba','Cuenca','Gipuzkoa','Girona','Granada','Guadalajara','Huelva','Huesca','Jaén','León','Lleida','Lugo','Madrid',
+        'Málaga','Murcia','Navarra','Ourense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Santa Cruz de Tenerife','Segovia','Sevilla','Soria','Tarragona',
+        'Teruel','Toledo','Valencia','Valladolid','Zamora','Zaragoza','Ceuta','Melilla'];
+  */
+  /*
+  á -> &aacute;
+  é -> &eacute;
+  í -> &iacute;
+  ó -> &oacute;
+  ú -> &uacute;
+  ñ -> &ntilde;
+  */
+
 
 
   
@@ -48,7 +79,30 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     this.id =_Activatedroute.snapshot.paramMap.get('id');
     
     this.ofertasRelacionadas(this.trabajo_selec.localidad);
-    
+    var provincia_ = this.trabajo_selec.localidad;
+    var provincia;
+    for(var prov in this.arrayProvincias){
+      //console.log('this.trabajo_selec.localidad: ',this.trabajo_selec.localidad, ' prov: ',this.arrayProvincias[prov]);
+      if(this.trabajo_selec.localidad.includes(this.arrayProvincias[prov][0])){
+        
+        provincia = this.arrayProvincias[prov][1];
+      }
+    }
+ 
+    //console.log('this.trabajo_selec: ',this.trabajo_selec);
+    //console.log(provincia);
+    this.service.coordenadas(provincia).subscribe((res:any) => {
+      //console.log('this.trabajo_selec: ',this.trabajo_selec);   
+      //console.log(provincia,': ',res);
+      
+      var prov:provincia[];
+      prov = Object.values(res) as unknown as provincia[];
+      //console.log('Object.values(res): ', Object.values(res));
+      //console.log(provincia,': ',prov[0].latitud,', ', prov[0].longitud);
+      this.map=new mapLeaflet('map_cont_id');
+      this.map.update(parseInt(prov[0].latitud),parseInt(prov[0].longitud),provincia_);
+      
+    });
     //this.user=Object.assign({},variablesdeidentificacion.user); 
   }
 
@@ -88,8 +142,8 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   ngAfterViewInit(): void{
-    this.map=new mapLeaflet('map_cont_id');
-    this.map.update(40.373271,-3.921200,"UEM");
+    //this.map=new mapLeaflet('map_cont_id');
+    //this.map.update(40.373271,-3.921200,"UEM");
   }
   ngOnChanges(changes:SimpleChanges):void{
   }
