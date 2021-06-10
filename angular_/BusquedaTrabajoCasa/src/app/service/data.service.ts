@@ -191,4 +191,11 @@ export class DataService {
       return this.httpClient.post(dir, datos);
     }
 
+    coordenadas(provincia){
+      var dir:string = 'https://rejob-prueba.herokuapp.com/api/coordenadas/';
+      dir = dir.concat(provincia.toString());
+      console.log('coordenadas: ', dir);
+      return this.httpClient.get(dir);
+    }
+
 }
