@@ -1,4 +1,4 @@
-<div class="content" [style.padding-left.vw] = "!isSearch ? 0:10" >
+<p>new-comp works!</p><div class="content" [style.padding-left.vw] = "!isSearch ? 0:10" >
     <div *ngIf="isSearch" class=menuLateral>
       <!--<div *ngIf="isSearch"style="max-width: 200px; min-width: 200px;">-->
       <div *ngIf="trabajo!='trabajo'; else filtrosTr"style="width:100%;">
@@ -156,14 +156,16 @@
       
       <ng-container *ngIf="!isSearch; else busqueda1">
   
-        <h1><br><br>Haz click en el boton checkpoint para acceder a la nueva vista/componente del checkpoint</h1>
-
+        <h1><br><br> Estás en el nuevo component del checkpoint</h1>
+        
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
          </ng-container>
       <ng-template  #busqueda1>
+        
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
+          Hola <input class=contCamp [disabled]="!edit" [(ngModel)]=user.nombre type="text"/>
           <div *ngFor="let casa of casas; let i = index">
-            <div (click)="abrirCasa(casa)"  class="tarjetas">
+            <div (click)="abrirCasa(casa)"  class="tarjetas row">
               <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
               <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
               <hr>
@@ -183,6 +185,8 @@
         </ng-container>
         
         <ng-template #dispTrabajos>
+          Hola<input class=contCamp [disabled]="!edit" [(ngModel)]=user.nombre type="text"/>
+
           <div *ngFor="let trabajo of trabajos; let i=index">
             <div (click)="abrirOferta(trabajo)"  class="tarjetas">
               <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>

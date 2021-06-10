@@ -6,7 +6,7 @@
     max-width: 200px;
     min-width: 200px;
     height:100%;
-    background-color:rgb(5, 155, 147);
+    background-color:rgb(5, 155, 57);
   
   }
   
@@ -55,7 +55,7 @@
       height: 40px;
       display: flex;
       justify-content: space-around;
-      background-color: #3B6E90;
+      background-color: #52903b;
       color: white;
       font-weight: 600;
     }
@@ -68,7 +68,7 @@
       height: 60px;
       display: flex;
       align-items: center;
-      background-color: #3B6E90;
+      background-color: #52903b;
       color: white;
       font-weight: 600;
     }
@@ -165,7 +165,7 @@
     }
   
     .card.highlight-card {
-      background-color: #3B6E90;
+      background-color: #52903b;
       color: white;
       font-weight: 600;
       border: none;
@@ -196,12 +196,12 @@
     a,
     a:visited,
     a:hover {
-      color: #1976d2;
+      color: #35d219;
       text-decoration: none;
     }
   
     a:hover {
-      color: #125699;
+      color: #209912;
     }
   
     .terminal {

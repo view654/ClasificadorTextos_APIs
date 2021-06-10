@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { password } from './password/password.component';
 import { favoritos } from './favoritos/favoritos.component';
 import { sendEmail } from './login/login.component';
+import { NewCompComponent } from './new-comp/new-comp.component';
 
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
@@ -36,6 +37,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -68,6 +70,10 @@ const rutas: Routes = [
     path: 'titlebar',
     component: titlebar,
     children:[
+      {
+        path:'NewCompComponent',
+        component:NewCompComponent
+      },
       {
         path: '',
         pathMatch: 'full',
@@ -123,7 +129,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    NewCompComponent
   ],
   imports: [
     BrowserModule,
