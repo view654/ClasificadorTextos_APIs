@@ -30,7 +30,7 @@ export class DataService {
     dir = dir.concat(id.toString());
     return this.httpClient.put(dir,datos);
   }
-   
+
   registro(datos){
     return this.httpClient.post('https://rejob-prueba.herokuapp.com/api/registro',datos);
   }
@@ -170,7 +170,7 @@ export class DataService {
       dir = dir.concat(id.toString());
       return this.httpClient.post(dir,datos);
     }
-    
+
 
     getFavoritosTrabajo(id){
       var dir:string = 'https://rejob-prueba.herokuapp.com/api/favoritosTrabajo/';

@@ -16,13 +16,12 @@ class ProvinciaController extends Controller
         $array = json_decode($json);
         $lat = '';
 
-        $filtrado = array_filter($array, function($val) use ($provincia) { 
+        $filtrado = array_filter($array, function($val) use ($provincia) {
             if($val -> nombre == $provincia){
                 $lat = $val->latitud;
                 $long = $val->longitud;
                 $lat .= ',';
                 $lat .= $long;
-                dd($lat);
                 return $lat;
             }
         });

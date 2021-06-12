@@ -8,7 +8,7 @@
         <mat-form-field style="height: 3.4vw" fill>
           <mat-label>Filtro</mat-label>
           <mat-select>
-            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Vlugar = provincia">{{provincia}}</mat-option>     
+            <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Vlugar = provincia">{{provincia}}</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
@@ -41,9 +41,9 @@
             <mat-label>Filtro</mat-label>
             <mat-select>
               <mat-option [value] = 1 (click)="filtros.Vcompr_alq_compar = null">Cualquiera</mat-option>
-              <mat-option [value] = 2 (click)="filtros.Vcompr_alq_compar = 'alquiler'">Alquilar</mat-option>    
-              <mat-option [value] = 3 (click)="filtros.Vcompr_alq_compar = 'comprar'">Comprar</mat-option> 
-              <mat-option [value] = 4 (click)="filtros.Vcompr_alq_compar = 'compartir'">Compartir</mat-option>  
+              <mat-option [value] = 2 (click)="filtros.Vcompr_alq_compar = 'alquiler'">Alquilar</mat-option>
+              <mat-option [value] = 3 (click)="filtros.Vcompr_alq_compar = 'comprar'">Comprar</mat-option>
+              <mat-option [value] = 4 (click)="filtros.Vcompr_alq_compar = 'compartir'">Compartir</mat-option>
             </mat-select>
           </mat-form-field>
         </section>
@@ -82,7 +82,7 @@
           <mat-label>Filtro</mat-label>
           <mat-select>
             <mat-option  *ngFor="let provincia of arrayProvincias; let i=index" [value] = i (click)="filtros.Tprovincia = provincia">{{provincia}}</mat-option>
-                     
+
           </mat-select>
         </mat-form-field>
         <br>
@@ -92,10 +92,10 @@
           <mat-label>Filtro</mat-label>
           <mat-select>
             <mat-option [value] = 1 (click)="filtros.Tjornada = null">Cualquiera</mat-option>
-            <mat-option [value] = 2 (click)="filtros.Tjornada = 'Jornada Completa'">Jornada Completa</mat-option>    
-            <mat-option [value] = 3 (click)="filtros.Tjornada = 'Jornada Parcial'">Jornada Parcial</mat-option> 
-            <mat-option [value] = 4 (click)="filtros.Tjornada = 'Jornada Intensiva'">Jornada Intensiva</mat-option>  
-            <mat-option [value] = 5 (click)="filtros.Tjornada = 'Jornada Flexible'">Jornada Flexible</mat-option> 
+            <mat-option [value] = 2 (click)="filtros.Tjornada = 'Jornada Completa'">Jornada Completa</mat-option>
+            <mat-option [value] = 3 (click)="filtros.Tjornada = 'Jornada Parcial'">Jornada Parcial</mat-option>
+            <mat-option [value] = 4 (click)="filtros.Tjornada = 'Jornada Intensiva'">Jornada Intensiva</mat-option>
+            <mat-option [value] = 5 (click)="filtros.Tjornada = 'Jornada Flexible'">Jornada Flexible</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
@@ -105,24 +105,24 @@
           <mat-label>Filtro</mat-label>
           <mat-select>
             <mat-option [value] = 1 (click)="filtros.Tcontrato = null">Cualquiera</mat-option>
-            <mat-option [value] = 2 (click)="filtros.Tcontrato = 'Contrato De duración determinada'">Contrato De duración determinada</mat-option>    
-            <mat-option [value] = 3 (click)="filtros.Tcontrato = 'Contrato Indefinido'">Contrato Indefinido</mat-option> 
-            <mat-option [value] = 4 (click)="filtros.Tcontrato = 'Contrato Formativo'">Contrato Formativo</mat-option>  
-            <mat-option [value] = 5 (click)="filtros.Tcontrato = 'Contrato Autónomo o freelance'">Contrato Autónomo o freelance</mat-option> 
+            <mat-option [value] = 2 (click)="filtros.Tcontrato = 'Contrato De duración determinada'">Contrato de duración determinada</mat-option>
+            <mat-option [value] = 3 (click)="filtros.Tcontrato = 'Contrato Indefinido'">Contrato Indefinido</mat-option>
+            <mat-option [value] = 4 (click)="filtros.Tcontrato = 'Contrato Formativo'">Contrato Formativo</mat-option>
+            <mat-option [value] = 5 (click)="filtros.Tcontrato = 'Contrato Autónomo o freelance'">Contrato Autónomo o freelance</mat-option>
           </mat-select>
         </mat-form-field>
         <br>
         <br>
         <button class="btn" (click)="busqueda(request)">Aplicar filtros</button>
         <!--<p>Contrato: {{filtros.trabajoContrato}}</p>-->
-        
+
       </ng-template>
     </div>
     <div style="padding-top: 48px; height: 90%; margin: 2vw; margin-right: 4vw; text-align:center; max-width: 70vw; min-width: 500px;">
       <div class="card highlight-card card-small">
         <!--
         <p style="margin:2vw;">Trabajo<input type="checkbox" ng-model="trabajo"></p>
-  
+
         <p style="margin:2vw;">Vivienda<input type="checkbox" ng-model="!trabajo"></p>
         -->
         <section class="example-section">
@@ -132,7 +132,7 @@
           </mat-radio-group>
         </section>
         <div style="margin:2vw;">
-          
+
           <!--
           <label for="cars">Parametros</label>
           <select id="cars" name="cars">
@@ -151,22 +151,22 @@
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
           </svg>
         </button>
-        
+
       </div>
-      
+
       <ng-container *ngIf="!isSearch; else busqueda1">
-  
+
         <h1><br><br>¿Quiénes somos?</h1>
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
         <p>{{user.ID}}</p>
         <p>{{isLogged}}</p>-->
         <p style="text-align: justify;font-size: 16px;"><br>Esta página le ofrece un buscador de ofertas de empleo y viviendas, pudiendo filtrar dichas ofertas por múltiples filtros y así poder encontrar la que más se adapte a sus necesidades.
-        Contamos tambien con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
-        Este proyecto se ha realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
+        Contamos también con la posibilidad de crear su cuenta y así poder marcar como favoritas esas ofertas que más le gusten, para poder consultarlas en cualquier otro momento.<br><br>
+        Este proyecto ha sido realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
         del tercer curso del grado de Ingeniería Informática de la <em>Universidad Europea de Madrid</em>, por lo que toda la información recopilada mediante web scrapping de fotocasa e infoempleo se empleará única y exclusivamente
         para fines didácticos. <br>
-        
+
         </p>
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
          </ng-container>
@@ -174,11 +174,11 @@
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div (click)="abrirCasa(casa)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
               <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
-                <img [src]="images[i][0]" alt="No hay foto" width="275" height="175">
+                <img [src]="images[primerElemV+i][0]" alt="No hay foto" width="275" height="175">
               </div>
               <div style="display: inline-block; height: 100%; width: 60%;">
                 <h3>Precio: {{casa.precio}} € | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
@@ -191,13 +191,13 @@
           <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
           </mat-paginator>
         </ng-container>
-        
+
         <ng-template #dispTrabajos>
           <div *ngFor="let trabajo of trabajos; let i=index">
             <div (click)="abrirOferta(trabajo)"  class="tarjetas">
-              <h2 style="position: absolute; left: 1vw; color:rgba(85, 158, 207, 0.81);">{{i}}</h2>
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
               <h2>{{trabajo.titulo}}</h2>
-              <p>Area: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+              <p>Área: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
               <div style="display: inline-block; height: 100%; width: 35%;">
                 <p>Contrato: {{trabajo.contrato}}</p>
@@ -214,5 +214,5 @@
         </ng-template>
       </ng-template>
     </div>
-    
-  </div>
+
+</div>

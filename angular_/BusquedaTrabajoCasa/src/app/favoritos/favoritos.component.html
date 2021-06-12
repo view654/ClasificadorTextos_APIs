@@ -1,10 +1,10 @@
 <div style="height: calc(100% - 40px);">
 <div class="content" role="main">
     <div style="padding-top: 2vw; display:flex; flex-direction: column; align-items: center;">
-      
-      
+
+
       <p class = "titulo">Ofertas trabajo</p>
-      
+
       <br>
       <div class=listaElementos>
         <div *ngFor="let trabajo of trabajos">
@@ -39,9 +39,9 @@
               <br/>
               <label class=tituloCamp>{{casa.precio}} €</label>
             </div>
-            <div class="mitadCaja">             
-              <label class=tituloCamp>habitaciones: {{casa.habitaciones}}</label>
-              <label class=tituloCamp>m2: {{casa.metros2}}</label>
+            <div class="mitadCaja">
+              <label class=tituloCamp>Habitaciones: {{casa.habitaciones}}</label>
+              <label class=tituloCamp>Metros: {{casa.metros2}} m²</label>
               <label class=tituloCamp>{{casa.compr_alq_compar}}</label>
             </div>
           </div>
@@ -52,10 +52,10 @@
         -->
       </div>
     </div>
-    
+
 </div>
 <div class = "absa" style=" width: 100%; text-align: right;">
-  <button class=boton [routerLink]="['../primer']">Atras</button>
+  <button class=boton [routerLink]="['../primer']">Atrás</button>
 </div>
 </div>
 <!--<a [routerLink]="['/primer']">Volver a la pagina principal</a>-->

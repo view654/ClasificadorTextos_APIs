@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit, OnChanges, SimpleChanges, Inject } from '@angular/core';
 import {mapLeaflet} from '../globalUse/mapLeaflet'
 import { Trabajo } from '../components/trabajo_interfaz';
+import { Casa } from '../components/casa_interfaz';
 import { ActivatedRoute } from '@angular/router';
 import {variablesdeidentificacion} from '../globalUse/variablesidentificacion';
 import { DataService } from '../service/data.service';
@@ -8,6 +9,7 @@ import { Usuario } from '../components/usuario_interfaz';
 import jwt_decode from "jwt-decode";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Filtro } from '../components/filtro_interfaz';
+import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component';
 
 
 export interface DialogData {
@@ -27,7 +29,7 @@ export interface provincia{
 })
 
 export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges{
-  
+
   user: Usuario;
   isloged = false;
   favoritos= false;
@@ -37,7 +39,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   id:string;
   trabajos: Trabajo[] = variablesdeidentificacion.trabajos;
 
-  
+
 
   relacionados: any[];
 
@@ -68,55 +70,55 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
 
 
 
-  
-  constructor(private _Activatedroute:ActivatedRoute, private service: DataService,
+
+  constructor(private _Activatedroute:ActivatedRoute, private service: DataService, public dialog: MatDialog,
     public dialogRef: MatDialogRef<MostrarTrabajoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Trabajo) { 
+    @Inject(MAT_DIALOG_DATA) public data: Trabajo) {
     this.deftrabajo_selec(data["trabajo_selec"]);
 
     this.id =_Activatedroute.snapshot.paramMap.get('id');
-    
+
     this.ofertasRelacionadas(this.trabajo_selec.localidad);
     var provincia_ = this.trabajo_selec.localidad;
     var provincia;
     for(var prov in this.arrayProvincias){
       //console.log('this.trabajo_selec.localidad: ',this.trabajo_selec.localidad, ' prov: ',this.arrayProvincias[prov]);
       if(this.trabajo_selec.localidad.includes(this.arrayProvincias[prov][0])){
-        
+
         provincia = this.arrayProvincias[prov][1];
       }
     }
- 
+
     //console.log('this.trabajo_selec: ',this.trabajo_selec);
     //console.log(provincia);
     this.service.coordenadas(provincia).subscribe((res:any) => {
-      //console.log('this.trabajo_selec: ',this.trabajo_selec);   
+      //console.log('this.trabajo_selec: ',this.trabajo_selec);
       //console.log(provincia,': ',res);
-      
+
       var prov:provincia[];
       prov = Object.values(res) as unknown as provincia[];
       //console.log('Object.values(res): ', Object.values(res));
       //console.log(provincia,': ',prov[0].latitud,', ', prov[0].longitud);
       this.map=new mapLeaflet('map_cont_id');
       this.map.update(parseInt(prov[0].latitud),parseInt(prov[0].longitud),provincia_);
-      
+
     });
-    //this.user=Object.assign({},variablesdeidentificacion.user); 
+    //this.user=Object.assign({},variablesdeidentificacion.user);
   }
 
-  
+
   deftrabajo_selec(trabajo_seleccionada:Trabajo): void{
     this.trabajo_selec = trabajo_seleccionada;
   }
-  
+
   ofertasRelacionadas(localidad){
     this.service.filtroBusquedaVivienda(localidad, 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null', 'null').subscribe((res:any) => {
       this.relacionados = Object.values(res);
     })
   }
-  
+
   ngOnInit(): void {
-    var token = localStorage.getItem('token'); 
+    var token = localStorage.getItem('token');
     if(token){
       var decoded = jwt_decode(token);
       var id = decoded['user_id'];
@@ -127,10 +129,17 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
         this.isloged = false;
       }
     }
-    
+
   }
 
-  
+  abrirOferta(casa_selec:Casa){
+    console.log(casa_selec.link);
+    this.dialog.open(MostrarInformacionComponent,{
+      height: '400px',
+      width: '600px',
+      data:{casa_selec}
+    });
+  }
 
   ngAfterViewInit(): void{
     //this.map=new mapLeaflet('map_cont_id');
@@ -145,10 +154,10 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   agregarFavoritoTrabajo(){
-    var token = localStorage.getItem('token'); 
+    var token = localStorage.getItem('token');
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
-    
+
     if(this.favoritos == false){
       this.favoritos= true;
       let trabajo_seleccionado = JSON.stringify(this.trabajo_selec);
@@ -163,7 +172,7 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   }
 
   existefavoritoTrabajo(){
-    var token = localStorage.getItem('token'); 
+    var token = localStorage.getItem('token');
     var decoded = jwt_decode(token);
     var id = decoded['user_id'];
     this.service.existefavoritoTrabajo(id,this.trabajo_selec).subscribe(res => {
@@ -175,5 +184,3 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
     });
   }
 }
-
-
