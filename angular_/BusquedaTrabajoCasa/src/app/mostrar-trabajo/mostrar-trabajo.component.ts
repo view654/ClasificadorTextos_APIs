@@ -135,8 +135,6 @@ export class MostrarTrabajoComponent implements OnInit, AfterViewInit, OnChanges
   abrirOferta(casa_selec:Casa){
     console.log(casa_selec.link);
     this.dialog.open(MostrarInformacionComponent,{
-      height: '400px',
-      width: '600px',
       data:{casa_selec}
     });
   }

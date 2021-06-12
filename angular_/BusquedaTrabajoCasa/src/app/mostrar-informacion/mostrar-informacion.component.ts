@@ -151,8 +151,6 @@ onResize(event) {
   abrirOferta(trabajo_selec:Trabajo){
     console.log(trabajo_selec.enlace);
     this.dialog.open(MostrarTrabajoComponent,{
-        height: '400px',
-        width: '600px',
         data:{trabajo_selec}
     });
   }
