@@ -109,10 +109,15 @@ export class sendEmail {
         this.dataService.mostrarUsuarioEmail(this.email).subscribe((res:any) => {
           var datosUs = res;
           console.log('datosUs: ',datosUs);
-          if(datosUs == null){
+          //console.log('datosUs: ',datosUs[0]['user_ID']);
+          //console.log('datosUs: ',datosUs[0]('user_id'));
+          //console.log('datosUs: ',datosUs('user_id'));
+          if(datosUs[0] == undefined){
             this.email = null;
+            this.contrIncorrecta = true
           }
           if(this.email){
+            this.contrIncorrecta = false
             this.dataService.sendCode(this.email).subscribe((res2:any) => {
               this.codigo = res2;
               console.log(this.codigo);

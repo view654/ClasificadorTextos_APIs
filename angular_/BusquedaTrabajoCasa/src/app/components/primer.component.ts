@@ -49,16 +49,18 @@ export class primer{
     @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
     paglengthT=100;
     pageSizeT=10;
+    primerElemT = 0
     //pageIndexT = 0;
     //pageSizeOptionsT="[5, 10, 25, 100]";
     paglengthV=100;
     pageSizeV=10;
+    primerElemV = 0
     //pageIndexV = 0;
     
   
     constructor(private dataService:DataService, public router:Router, public dialog: MatDialog){
         
-        console.log("Componente primer cargado!!");        
+        //console.log("Componente primer cargado!!");        
     }
     
     ngOnInit() {
@@ -71,57 +73,22 @@ export class primer{
     }
     
     abrirOferta(trabajo_selec:Trabajo){
+        //console.log(trabajo_selec.enlace);
         this.dialog.open(MostrarTrabajoComponent,{
             data:{trabajo_selec}
         });
     }
 
     abrirCasa(casa_selec:Casa){
-        console.log(casa_selec.link);
+        //console.log(casa_selec.link);
         this.dialog.open(MostrarInformacionComponent,{
             data:{casa_selec}
         });
     }
 
-
-    /* getjobs(){
-        if(this.paginator){
-            this.paginator.pageIndex = 0;
-        }else{
-            console.log('No existe paginator');
-        }
-
-        this.dataService.filtroGeneral(this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada, JSON.stringify(this.trabajos_busqueda)).subscribe((res:any) => {
-
-            this.todosTrabajos = res;
-            console.log(this.todosTrabajos, "TODOS TRABAJOS");
-            variablesdeidentificacion.getjobs(res);
-            
-            var longitud = this.pageSizeT; 
-            this.paglengthT=this.todosTrabajos.length;
-            if(this.todosTrabajos.length<longitud){
-                longitud = this.todosTrabajos.length
-                
-            }
-            this.trabajos = new Array(longitud);
-            for(let i = 0; i<longitud; i++){
-                this.trabajos[i] = this.todosTrabajos[i];
-            }
-            
-        });
-    } */
-        
-        /*
-        this.dataService.mostrarTodosTrabajos().subscribe((res:any) => {
-          //console.log(res);
-          this.trabajos=res;
-          console.log(this.trabajos);
-          variablesdeidentificacion.getjobs(res); 
-      });
-    } */
-
     busqueda(request){
-        console.log(this.filtros.Tprovincia);
+        //console.log(this.filtros.Tprovincia);
+        document.body.style.cursor = "progress";
         if(this.paginator){
             this.paginator.pageIndex = 0;
         }else{
@@ -135,28 +102,29 @@ export class primer{
         }
 
         this.dataService.filtroGeneral(request, this.filtros.Tprovincia, this.filtros.Tcontrato, this.filtros.Tjornada).subscribe((res:any) => {
+            
             this.trabajos = Object.values(res);
             this.todosTrabajos=Object.values(res);
-            
+            console.log('this.trabajos: ',this.trabajos)
             variablesdeidentificacion.getjobs(Object.values(res));
             
             var longitud = this.pageSizeT; 
             
             if(this.todosTrabajos.length<longitud){
                 longitud = this.todosTrabajos.length
-                this.paglengthT = 1;
-            }else{
-                this.paglengthT=this.todosTrabajos.length;
             }
+            this.paglengthT=this.todosTrabajos.length;            
+            
             this.trabajos = new Array(longitud);
             for(let i = 0; i<longitud; i++){
                 this.trabajos[i] = this.todosTrabajos[i];
             }
             
+            
         })
 
         /*-----------VIVIENDAS -------------------*/
-        console.log(this.filtros.Vlugar);
+        //console.log(this.filtros.Vlugar);
         if(this.filtros.Vlugar == 'Todas las Provincias'){
             this.filtros.Vlugar = 'null';
         }
@@ -171,7 +139,7 @@ export class primer{
             }
 
             this.casas = Object.values(res);
-            console.log(this.casas);
+            console.log('this.casas: ',this.casas);
             variablesdeidentificacion.getcasas(Object.values(res));
             this.images=new Array(this.todasCasas.length);
             for (let i = 0; i < (this.todasCasas.length-1); i++) { 
@@ -185,108 +153,51 @@ export class primer{
                     //console.log('imagenes2: ', this.images[i])
                     this.images[i] =this.images[i][0].split('\', \''); 
                     //console.log('imagenes3: ', this.images[i])
-                }            
+                }          
         
             }
          
             var longitud = this.pageSizeV; 
+            
             if(this.todasCasas.length<longitud){
                 longitud = this.todasCasas.length
-                this.paglengthV = 1;
-            }else{
-                this.paglengthV=this.todasCasas.length;
             }
+            this.paglengthV=this.todasCasas.length;
             this.casas = new Array(longitud);
             for(let i = 0; i<longitud; i++){
                 this.casas[i] = this.todasCasas[i];
             }
         })
+        document.body.style.cursor = "auto";
     }
 
-    /* getcasas(){
-        this.dataService.mostrarTodasViviendas().subscribe((res:any) => {
-            //console.log(res);
-            this.trabajos=res;
-            console.log(this.trabajos);
-            variablesdeidentificacion.getjobs(res);
-        });*/
-    
-    /* getcasas(){
-        if(this.paginator){
-            this.paginator.pageIndex = 0;
-        }else{
-            console.log('No existe paginator');
-        }
-        this.dataService.filtroGeneralViviendas(this.filtros.Vlugar, this.filtros.Vpreciomax, this.filtros.Vpreciomin, this.filtros.Vhabitacionesmax, this.filtros.Vhabitacionesmin, this.filtros.Vbanosmax, this.filtros.Vbanosmin, this.filtros.Vmetros2max, this.filtros.Vmetros2min, this.filtros.Vplanta, this.filtros.Vcompr_alq_compar, this.filtros.Vtipo).subscribe((res:any) => {
-            //console.log(res);
-            this.todasCasas=new Array(res.length);
-            var cont = 0
-            for(let key in res){
-                this.todasCasas[cont] = res[key];
-                cont = cont + 1;
-            }
-            
-            variablesdeidentificacion.getcasas(res);
-            this.images=new Array(this.todasCasas.length);
-            for (let i = 0; i < (this.todasCasas.length-1); i++) { 
-            //var cont = 0;
-            //for(let key in this.casas){
-                //console.log('casa: ', this.casas[i])    
-                this.images[i]=this.casas[i].imagenes.split('\[\'');
-                //console.log('imagenes1: ', this.images[i])
-                if(this.images[i][1]){
-                    this.images[i]=this.images[i][1].split('\'\]');
-                    //console.log('imagenes2: ', this.images[i])
-                    this.images[i] =this.images[i][0].split('\', \''); 
-                    //console.log('imagenes3: ', this.images[i])
-                }            
-        
-            }
-         
-            var longitud = this.pageSizeV; 
-            this.paglengthV=this.todasCasas.length;
-            if(this.todasCasas.length<longitud){
-                longitud = this.todasCasas.length
-                
-            }
-            this.casas = new Array(longitud);
-            for(let i = 0; i<longitud; i++){
-                this.casas[i] = this.todasCasas[i];
-            }
-      });
-    }  */
-     
-      
+   
     
     pageEventT(event){
        
         this.pageSizeT = event.pageSize;
-        var primerElem = (event.pageSize*event.pageIndex);
+        this.primerElemT = (event.pageSize*event.pageIndex);
+        
         var longitud = event.pageSize;
-        if((primerElem+longitud) >=this.todosTrabajos.length){
-            longitud = this.todosTrabajos.length-primerElem;
+        if((this.primerElemT+longitud) >=this.todosTrabajos.length){
+            longitud = this.todosTrabajos.length-this.primerElemT;
         }
-        /*
-        console.log('primerElem: ',primerElem);
-        console.log('UltimoElement: ',primerElem+longitud);
-        console.log('Total de elementos: ', this.todosTrabajos.length);
-        */
         var tra = new Array(longitud);
-        for(let i = primerElem; i<(primerElem+longitud); i++){
-            tra[(i-primerElem)] = this.todosTrabajos[i];
+        for(let i = this.primerElemT; i<(this.primerElemT+longitud); i++){
+            tra[(i-this.primerElemT)] = this.todosTrabajos[i];
         }
         this.trabajos = Object.assign([], tra);
     }
     pageEventV(event){
         this.pageSizeV = event.pageSize;
-        var primerElem = event.pageSize*event.pageIndex;
+        this.primerElemV = event.pageSize*event.pageIndex;
         var longitud = event.pageSize;
-        if(primerElem+longitud >=this.todasCasas.length){
-            longitud = primerElem+longitud-this.todasCasas.length
+        if(this.primerElemV+longitud >=this.todasCasas.length){
+            longitud = this.primerElemV+longitud-this.todasCasas.length
         }
         var viv = new Array(longitud);
-        for(let i = primerElem; i<(primerElem+longitud); i++){
-            viv[(i-primerElem)] = this.todasCasas[i];
+        for(let i = this.primerElemV; i<(this.primerElemV+longitud); i++){
+            viv[(i-this.primerElemV)] = this.todasCasas[i];
         }
         this.casas = Object.assign([], viv);
     }
