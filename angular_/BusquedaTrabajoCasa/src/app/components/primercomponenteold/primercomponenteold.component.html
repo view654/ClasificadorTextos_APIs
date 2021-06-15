@@ -174,32 +174,20 @@
         <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
           <div *ngFor="let casa of casas; let i = index">
             <div (click)="abrirCasa(casa)"  class="tarjetas">
-              <div class="container">
-                <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
-                <h2>{{casa.tipo}} en {{casa.lugar}} para {{casa.compr_alq_compar}}</h2>
-                <hr>
-                <div class="row">
-                  <div class="col">
-                    <img [src]="images[primerElemV+i][0]" alt="No hay foto" width="275" height="175">
-                  </div>
-                  <div class="col">
-                    <span class="badge badge-light" style="font-size: 15px; text-align: left;">Precio: {{casa.precio}}</span>
-                    <br><br>
-                    <span class="badge badge-light" style="font-size: 15px; text-align: left;">Habitaciones: {{casa.habitaciones}}</span>
-                    <br><br>
-                    <span class="badge badge-light" style="font-size: 15px; text-align: left;">M2: {{casa.metros2}}</span>
-                    <br><br>
-                  </div>
-                  <div class="col">
-                    <button (click) = "irOferta(casa.link)" class=boton style="width: 180px; height: 40px;">Ver oferta original
-                      <mat-icon style="margin-left: 5px; font-size:15px;">language</mat-icon>  
-                    </button>
-                  </div>
-                </div>
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
+              <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <img [src]="images[primerElemV+i][0]" alt="No hay foto" width="275" height="175">
+              </div>
+              <div style="display: inline-block; height: 100%; width: 60%;">
+                <h3>Precio: {{casa.precio}} € | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
+                <p>Habitaciones: {{casa.habitaciones}}</p>
+                <p>Baños: {{casa.banos}}</p>
+                <p>Tipo: {{casa.tipo}}</p>
               </div>
             </div>
           </div>
-          
           <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
           </mat-paginator>
         </ng-container>
@@ -211,51 +199,15 @@
               <h2>{{trabajo.titulo}}</h2>
               <p>Área: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
               <hr>
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <p>Contrato: {{trabajo.contrato}}</p>
-                  </div>
-                  <div class="col">
-                    <p>Localidad: {{trabajo.localidad}}</p>
-                  </div>
-                  <div class="col">
-                    <p>Salario: {{trabajo.salario}}</p>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col" style="font-size: 15px;">
-                    <p>Funciones</p>
-                  </div>
-                  <div class="col-8">
-                    <p>{{trabajo.funciones}}</p>
-                  </div>
-                </div>
-                <br>
-                <div class="row">
-                  <div class="col" style="font-size: 15px;">
-                    <p>Requisitos</p>
-                  </div>
-                  <div class="col-8">
-                    <p>{{trabajo.requisitos}}</p>
-                  </div>
-                </div>
-                <br>
-                <div class="row" *ngIf = "trabajo.ofrece">
-                  <div class="col" style="font-size: 15px;">
-                    <p>Ofrece</p>
-                  </div>
-                  <div class="col-8">
-                    <p>{{trabajo.ofrece}}</p>
-                  </div>
-                </div>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <p>Contrato: {{trabajo.contrato}}</p>
+                <p>Localidad: {{trabajo.localidad}}</p>
+                <p>Salario: {{trabajo.salario}}</p>
               </div>
-              <button (click) = "irOferta(trabajo.enlace)" class=boton style="width: 180px; height: 40px;">Ver oferta original
-                <mat-icon style="margin-left: 5px; font-size:15px;">language</mat-icon>  
-              </button>
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                <p>{{trabajo.funciones}}</p>
+              </div>
             </div>
-          
           </div>
           <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">
           </mat-paginator>
@@ -264,3 +216,4 @@
     </div>
 
 </div>
+

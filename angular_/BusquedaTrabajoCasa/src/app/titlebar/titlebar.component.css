@@ -6,7 +6,7 @@
     max-width: 200px;
     min-width: 200px;
     height:100%;
-    background-color:rgb(5, 155, 147);
+    background-color:#e6aa51;
   
   }
   
@@ -57,7 +57,7 @@
       height: 40px;
       display: flex;
       justify-content: space-around;
-      background-color: #3B6E90;
+      background-color: #e6aa51;
       color: white;
       font-weight: 600;
     }
@@ -70,7 +70,7 @@
       height: 60px;
       display: flex;
       align-items: center;
-      background-color: #3B6E90;
+      background-color: #e6aa51;
       color: white;
       font-weight: 600;
     }
@@ -167,7 +167,7 @@
     }
   
     .card.highlight-card {
-      background-color: #3B6E90;
+      background-color: #e6aa51;
       color: white;
       font-weight: 600;
       border: none;

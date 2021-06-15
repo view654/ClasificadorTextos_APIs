@@ -28,6 +28,7 @@
       Registrarse
     </button>
     <ng-template #logueado>
+      <h3>Hola! {{user.nombre}} {{user.apellidos}}</h3>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin:2vw; border-color: rgba(255, 255, 255, 0); background-color:rgba(255, 255, 255, 0);">
         <mat-icon style="color:white">more_vert</mat-icon>
       </button>

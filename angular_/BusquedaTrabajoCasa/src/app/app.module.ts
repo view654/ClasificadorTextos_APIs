@@ -36,6 +36,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PrimercomponenteoldComponent } from './components/primercomponenteold/primercomponenteold.component';
 
 
 
@@ -123,7 +124,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    PrimercomponenteoldComponent
   ],
   imports: [
     BrowserModule,

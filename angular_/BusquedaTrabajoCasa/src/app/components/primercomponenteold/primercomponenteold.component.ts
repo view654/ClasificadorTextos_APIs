@@ -1,27 +1,25 @@
 import { Component } from '@angular/core';
-import { variablesdeidentificacion } from '../globalUse/variablesidentificacion';
-import { Filtro } from '../components/filtro_interfaz';
-import { Casa } from '../components/casa_interfaz';
-import { Trabajo } from '../components/trabajo_interfaz';
+import { variablesdeidentificacion } from '../../globalUse/variablesidentificacion';
+import { Filtro } from '../../components/filtro_interfaz';
+import { Casa } from '../../components/casa_interfaz';
+import { Trabajo } from '../../components/trabajo_interfaz';
 import { DataService } from 'src/app/service/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { newArray } from '@angular/compiler/src/util';
 import { ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
-import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component';
+import { MostrarTrabajoComponent} from '../../mostrar-trabajo/mostrar-trabajo.component';
+import { MostrarInformacionComponent } from '../../mostrar-informacion/mostrar-informacion.component';
 
 @Component({
-    selector: 'primer',
-    templateUrl:'./primer.component.html',
-    styleUrls: ['./primer.component.css']
-
+  selector: 'app-primercomponenteold',
+  templateUrl: './primercomponenteold.component.html',
+  styleUrls: ['./primercomponenteold.component.css']
 })
+export class PrimercomponenteoldComponent {
 
-export class primer{
-
-    public isSearch: boolean = false;
+  public isSearch: boolean = false;
 
     public trabajo: 'trabajo' | 'vivienda' = 'trabajo';
     public parametro: number;
@@ -204,7 +202,6 @@ export class primer{
 
     irOferta(enlace){
         window.open(enlace);
-      }
-
+    }
 
 }
