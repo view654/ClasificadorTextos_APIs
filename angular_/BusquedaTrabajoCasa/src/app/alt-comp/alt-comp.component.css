@@ -26,7 +26,7 @@ p {
 .btn{
   margin: 1vw;
   padding: 1vw;
-  background-color: #228e01;
+  background-color: #3B6E90;
   color: white;
   border-radius:0.5vw;
   border-color: white;
@@ -43,7 +43,7 @@ p {
     padding:1vw;
     padding-left: 1.5%;
     padding-bottom: 6vw;
-    background-color:rgba(12, 243, 124, 0.303);
+    background-color:rgba(95, 177, 232, 0.91);
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
 }
@@ -73,7 +73,7 @@ p {
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #045b3f;
+    background-color: #3B6E90;
     color: white;
     font-weight: 600;
   }
@@ -154,7 +154,7 @@ p {
   }
 
   .card.highlight-card {
-    background-color: #447832;
+    background-color: #3B6E90;
     color: white;
     font-weight: 600;
     border: none;
@@ -172,7 +172,7 @@ p {
   position: relative;
   width:65vw; 
   min-height: 6vw; 
-  background-color:rgba(23, 154, 58, 0.91);
+  background-color:rgba(95, 177, 231, 0.91);
   margin: 45px;
   padding: 0.5vw;
   border-style: inset;
@@ -184,7 +184,7 @@ p {
   color: black;
 }
 .tarjetas:hover {
-  background-color:rgba(14, 222, 63, 0.81);
+  background-color:rgba(85, 158, 207, 0.81);
   cursor: pointer;
 }
 

@@ -36,6 +36,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AltCompComponent } from './alt-comp/alt-comp.component';
 
 
 
@@ -69,9 +70,14 @@ const rutas: Routes = [
     component: titlebar,
     children:[
       {
+        
         path: '',
         pathMatch: 'full',
         redirectTo: 'primer'
+      },
+      {
+        path:'AltCompComponent',
+        component: AltCompComponent,
       },
       {
         path: 'primer',
@@ -123,7 +129,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    AltCompComponent
   ],
   imports: [
     BrowserModule,

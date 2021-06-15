@@ -12,7 +12,7 @@
   <!-- Toolbar -->
   <div class="toolbar" role="banner">
     <img  id="logo"
-      [routerLink]="['primer']"
+      [routerLink]="['AltCompComponent']"
       width="50"
       alt="ReJob Logo"
       src="../../assets/img/logo_B.png"
@@ -21,6 +21,10 @@
     <div class="spacer"></div>
     <span style="font-size: 2vw;">BIENVENIDO</span>
     <div class="spacer"></div>
+    <button [routerLink]="['./AltCompComponent']" class = "boton" style="background-color: rgb(230, 236, 224);">
+      Backup
+    </button>
+    <div class="spacer"></div>
     <button [routerLink]="['../login']" *ngIf="!isLogged else logueado;" class = "boton">
       Log-in
     </button>
@@ -28,6 +32,7 @@
       Registrarse
     </button>
     <ng-template #logueado>
+      <p>Hola <input class=contCamp [disabled]="!edit" [(ngModel)]=user.nombre type="text"/></p>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" style="margin:2vw; border-color: rgba(255, 255, 255, 0); background-color:rgba(255, 255, 255, 0);">
         <mat-icon style="color:white">more_vert</mat-icon>
       </button>
