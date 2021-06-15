@@ -3,6 +3,7 @@ import { variablesdeidentificacion } from '../globalUse/variablesidentificacion'
 import { Filtro } from '../components/filtro_interfaz';
 import { Casa } from '../components/casa_interfaz';
 import { Trabajo } from '../components/trabajo_interfaz';
+import { Usuario } from '../components/usuario_interfaz';
 import { DataService } from 'src/app/service/data.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { newArray } from '@angular/compiler/src/util';
@@ -11,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MostrarTrabajoComponent} from '../mostrar-trabajo/mostrar-trabajo.component';
 import { MostrarInformacionComponent } from '../mostrar-informacion/mostrar-informacion.component';
+import jwt_decode from "jwt-decode";
 
 @Component({
     selector: 'primer',
@@ -57,6 +59,11 @@ export class primer{
     primerElemV = 0
     //pageIndexV = 0;
 
+    user:Usuario;
+    isLogged = false;
+
+    historialCasas:Casa[] = [null,null,null,null,null];
+    historialTrabajos:Trabajo[] = [null,null,null,null,null];
 
     constructor(private dataService:DataService, public router:Router, public dialog: MatDialog){
 
@@ -67,6 +74,27 @@ export class primer{
         this.maxP= this.filtros.Vpreciomax+this.filtros.Vpreciomax;
         this.maxM= this.filtros.Vmetros2max+this.filtros.Vmetros2max;
         //this.user = this.rutaActiva.snapshot.params.user
+        this.user = variablesdeidentificacion.user;
+        if(this.user == null){
+            var token = localStorage.getItem('token'); 
+            if(token){
+                var decoded = jwt_decode(token);
+                var id = decoded['user_id'];
+                if(id){
+                this.dataService.getUsuarioByID(id).subscribe((res:any) => {
+                    //console.log(res)
+                    variablesdeidentificacion.iniciarSesion(res)
+                    this.user = variablesdeidentificacion.user;
+                    this.isLogged = true;
+                });
+                }
+            }else{
+                this.isLogged = false;
+            }
+        }else{
+            this.isLogged = true;
+        }
+        console.log('isLogged: ', this.isLogged);
 
     }
     ngAfterViewInit(): void {
@@ -74,6 +102,24 @@ export class primer{
 
     abrirOferta(trabajo_selec:Trabajo){
         //console.log(trabajo_selec.enlace);
+
+        if(this.historialTrabajos.indexOf(null) == -1){
+
+            for(var i = this.historialTrabajos.length-1; i>0;i--){
+                this.historialTrabajos[i] = this.historialTrabajos[i-1];
+            }
+            this.historialTrabajos[0] =trabajo_selec;
+        }else{
+            for(var i = this.historialTrabajos.length-1; i>-1;i--){
+                if(this.historialTrabajos[i] == null){
+                    this.historialTrabajos[i] = trabajo_selec;
+                    break;
+                }
+            }
+        }
+        console.log('Historial de trabajos: ');
+        console.log(this.historialTrabajos);
+
         this.dialog.open(MostrarTrabajoComponent,{
             data:{trabajo_selec}
         });
@@ -81,6 +127,22 @@ export class primer{
 
     abrirCasa(casa_selec:Casa){
         //console.log(casa_selec.link);
+        if(this.historialCasas.indexOf(null) == -1){
+
+            for(var i = this.historialCasas.length-1; i>0;i--){
+                this.historialCasas[i] = this.historialCasas[i-1];
+            }
+            this.historialCasas[0] =casa_selec;
+        }else{
+            for(var i = this.historialCasas.length-1; i>-1;i--){
+                if(this.historialCasas[i] == null){
+                    this.historialCasas[i] = casa_selec;
+                    break;
+                }
+            }
+        }
+        console.log('Historial de casas: ');
+        console.log(this.historialCasas);
         this.dialog.open(MostrarInformacionComponent,{
             data:{casa_selec}
         });

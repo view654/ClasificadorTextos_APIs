@@ -155,10 +155,8 @@
       </div>
 
       <ng-container *ngIf="!isSearch; else busqueda1">
-        <ng-container *ngIf="isLogged">
-          <h1>Hola {{user.nombre}}</h1>
-        </ng-container>
-        <h1><br>¿Quiénes somos?</h1>
+
+        <h1><br><br>¿Quiénes somos?</h1>
         <!--
         <p>imasndolaksndpoailshnd {{user.Fecha_nacimiento}}</p>
         <p>{{user.ID}}</p>
@@ -168,75 +166,52 @@
         Este proyecto ha sido realizado por Patricia Colmenares Carretero, Sofía Martínez Parada, Claudia Jazmín Soria Saavedra y Diego Vázquez Parés para las asignaturas de <em>Proyecto de Computación II y III </em>
         del tercer curso del grado de Ingeniería Informática de la <em>Universidad Europea de Madrid</em>, por lo que toda la información recopilada mediante web scrapping de fotocasa e infoempleo se empleará única y exclusivamente
         para fines didácticos. <br>
+
         </p>
         <p style="text-align: center; font-weight: bold;"><br>En caso de cualquier consulta o pregunta, no dude en contactarnos.</p>
-        <button [routerLink]="['../ExamenComponent']">Ir a la copia</button>
-      </ng-container>
+         </ng-container>
       <ng-template  #busqueda1>
-        <div style="width: 70%; ">
-          <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
-            <div *ngFor="let casa of casas; let i = index">
-              <div (click)="abrirCasa(casa)"  class="tarjetas">
-                <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
-                <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
-                <hr>
-                <div style="display: inline-block; height: 100%; width: 35%;">
-                  <img [src]="images[primerElemV+i][0]" alt="No hay foto" width="275" height="175">
-                </div>
-                <div style="display: inline-block; height: 100%; width: 60%;">
-                  <h3>Precio: {{casa.precio}} € | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
-                  <p>Habitaciones: {{casa.habitaciones}}</p>
-                  <p>Baños: {{casa.banos}}</p>
-                  <p>Tipo: {{casa.tipo}}</p>
-                </div>
+        <ng-container *ngIf="trabajo!='trabajo'; else dispTrabajos">
+          <div *ngFor="let casa of casas; let i = index">
+            <div (click)="abrirCasa(casa)"  class="tarjetas">
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
+              <h2>{{casa.tipo}} en {{casa.lugar}}</h2>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <img [src]="images[primerElemV+i][0]" alt="No hay foto" width="275" height="175">
+              </div>
+              <div style="display: inline-block; height: 100%; width: 60%;">
+                <h3>Precio: {{casa.precio}} € | Lugar: {{casa.lugar}} | {{casa.compr_alq_compar}}</h3>
+                <p>Habitaciones: {{casa.habitaciones}}</p>
+                <p>Baños: {{casa.banos}}</p>
+                <p>Tipo: {{casa.tipo}}</p>
               </div>
             </div>
-            <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
-            </mat-paginator>
-            <div style="position: fixed; right: 0; top:80px; width: 11%;">
-              <h3>Historial</h3>
-              <div *ngFor="let casa of historialCasas; let i=index">            
-                <ng-container *ngIf="casa!=null">
-                  <div  (click)="abrirCasa(casa)" style="width: 10vw; background-color: rgb(214, 162, 94);  margin: 1vw">
-                    {{casa.tipo}} en {{casa.lugar}}
-                  </div>
-                </ng-container>
-              </div>
-            </div>
-          </ng-container>
+          </div>
+          <mat-paginator #paginator [length]="paglengthV" [pageSize]="pageSizeV" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexV" (page)="pageEventV($event)">
+          </mat-paginator>
+        </ng-container>
 
-          <ng-template #dispTrabajos>
-            <div *ngFor="let trabajo of trabajos; let i=index">
-              <div (click)="abrirOferta(trabajo)"  class="tarjetas">
-                <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
-                <h2>{{trabajo.titulo}}</h2>
-                <p>Área: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
-                <hr>
-                <div style="display: inline-block; height: 100%; width: 35%;">
-                  <p>Contrato: {{trabajo.contrato}}</p>
-                  <p>Localidad: {{trabajo.localidad}}</p>
-                  <p>Salario: {{trabajo.salario}}</p>
-                </div>
-                <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
-                  <p>{{trabajo.funciones}}</p>
-                </div>
+        <ng-template #dispTrabajos>
+          <div *ngFor="let trabajo of trabajos; let i=index">
+            <div (click)="abrirOferta(trabajo)"  class="tarjetas">
+              <h2 style="position: absolute; left: 1vw; color:rgb(7, 68, 109);">{{i}}</h2>
+              <h2>{{trabajo.titulo}}</h2>
+              <p>Área: {{trabajo.area}} | Jornada: {{trabajo.jornada}}</p>
+              <hr>
+              <div style="display: inline-block; height: 100%; width: 35%;">
+                <p>Contrato: {{trabajo.contrato}}</p>
+                <p>Localidad: {{trabajo.localidad}}</p>
+                <p>Salario: {{trabajo.salario}}</p>
+              </div>
+              <div style="display: inline-block; height: 60px; width: 50%; overflow: hidden; margin-left: 5%;">
+                <p>{{trabajo.funciones}}</p>
               </div>
             </div>
-            <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">
-            </mat-paginator>
-            <div style="position: fixed; right: 0; top:80px; width: 11%;">
-              <h3>Historial</h3>
-              <div *ngFor="let trabajo of historialTrabajos; let i=index">            
-                <ng-container *ngIf="trabajo!=null">
-                  <div  (click)="abrirOferta(trabajo)" style="width: 10vw; background-color: rgb(214, 162, 94);  margin: 1vw">
-                    {{trabajo.titulo}}
-                  </div>
-                </ng-container>
-              </div>
-            </div>
-          </ng-template>
-        </div>
-        
+          </div>
+          <mat-paginator #paginator [length]="paglengthT" [pageSize]="pageSizeT" [pageSizeOptions]="[5, 10, 25, 100]" [pageIndex]="pageIndexT" (page)="pageEventT($event)">
+          </mat-paginator>
+        </ng-template>
       </ng-template>
     </div>
 

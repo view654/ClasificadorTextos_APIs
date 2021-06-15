@@ -61,7 +61,10 @@ export class titlebar implements OnInit {
     variablesdeidentificacion.cerrarSesion();
     this.user = null;
     localStorage.clear();
-    this.router.navigate(['/titlebar']);
+    this.router.navigate(['/titlebar'])
+    .then(() => {
+      window.location.reload();
+    });
   }
   /*
   static amILoged(){
