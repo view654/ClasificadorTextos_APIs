@@ -49,7 +49,7 @@ p {
 .boton {
     margin: 2vw;
     padding: 0.5vw;
-    background-color: #3B6E90;
+    background-color: #9E2D16;
     border-radius:0.5vw;
     color: white;
     font-weight: 500;
@@ -103,7 +103,7 @@ p {
     border-style: inset;
     border-radius:0.5vw;
     border-width: 2px;
-    border-color: #3B6E90;
+    border-color: #9E2D16;
 
 }
 .titulo{

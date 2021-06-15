@@ -36,6 +36,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExamenComponent } from './examen_old/examen_old.component';
 
 
 
@@ -123,7 +124,8 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
-    sendEmail
+    sendEmail,
+    ExamenComponent
   ],
   imports: [
     BrowserModule,
